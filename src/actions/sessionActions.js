@@ -1,16 +1,10 @@
 import * as types from './actionTypes';
 import sessionApi from '../api/sessionApi';
 import * as session from '../services/sessionService';
+import { SubmissionError } from 'redux-form';
 
 export const loginSuccess = () => {
   return { type: types.LOGIN_SUCCESS };
-};
-
-export const loginError = (response) => {
-  return {
-    type: types.LOGIN_ERROR,
-    response
-  };
 };
 
 export const logoutSuccess = () => {
@@ -23,7 +17,9 @@ export const login = (user) => {
       session.saveUser(response.data);
       dispatch(loginSuccess());
     }).catch(err => {
-      dispatch(loginError(err));
+      throw new SubmissionError({
+        _error: err.errors[0]
+      });
     });
   };
 };

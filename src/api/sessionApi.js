@@ -9,6 +9,10 @@ class Session {
   static logout() {
     return api.delete(`${consts.API_URL}/users/sign_out`);
   }
+
+  static signUp(user) {
+    return api.post(`${consts.API_URL}/users`, user);
+  }
 }
 
 export default Session;

@@ -28,6 +28,7 @@
   "author": "Bernabe Gonzalez",
   "license": "MIT",
   "dependencies": {
+    "humps": "2.0.0",
     "isomorphic-fetch": "2.2.1",
     "localforage": "1.4.3",
     "object-assign": "4.1.0",
@@ -38,8 +39,9 @@
     "react-router-redux": "4.0.6",
     "react-router-scroll": "0.4.1",
     "redux": "3.6.0",
-    "redux-form": "6.2.0",
-    "redux-thunk": "2.1.0"
+    "redux-form": "6.4.3",
+    "redux-thunk": "2.1.0",
+    "validate.js": "0.11.1"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",

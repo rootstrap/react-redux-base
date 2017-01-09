@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import * as session from '../services/sessionService';
 import { browserHistory } from 'react-router';
+import humps from 'humps';
 
 const handleErrors = (response) =>
   new Promise((resolve, reject) => {
@@ -20,14 +21,13 @@ const handleErrors = (response) =>
       if (response.status === 401) {
         session.deleteSession();
         browserHistory.replace('/login');
-        reject({ message: 'Unauthorized' });
         return;
       }
     });
 
     response.json()
       .then(json => {
-        const error = json || { message: response.statusText };
+        const error = humps.camelizeKeys(json) || { message: response.statusText };
         reject(error);
       }).catch(() => reject({ message: 'Response not JSON' }));
     }
@@ -38,7 +38,7 @@ const getResponseBody = (response) => {
   if (bodyIsEmpty) {
     return Promise.resolve();
   }
-  return response.json();
+  return humps.camelizeKeys(response.json());
 };
 
 const saveSessionHeaders = (headers) => {
@@ -87,13 +87,14 @@ class Api {
   }
 
   post(uri, data) {
+    const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
     .then(data => {
@@ -102,13 +103,14 @@ class Api {
   }
 
   delete(uri, data) {
+    const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'delete',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
     .then(data => {
@@ -117,13 +119,14 @@ class Api {
   }
 
   put(uri, data) {
+    const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'put',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
     .then(data => {
@@ -132,13 +135,14 @@ class Api {
   }
 
   patch(uri, data) {
+    const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'patch',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
     .then(data => {

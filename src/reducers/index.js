@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import session from './sessionReducer';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
+import session from './sessionReducer';
+import signUp from './signUpReducer';
 
 const rootReducer = combineReducers({
-  session,
   form: formReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  session,
+  signUp
 });
 
 export default rootReducer;

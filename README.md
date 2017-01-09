@@ -28,4 +28,8 @@
 | [Editor Config](http://editorconfig.org) | Enforce consistent editor settings (spaces vs tabs, etc). |
 | [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. |
 | [Stylelint](https://github.com/stylelint/stylelint) | Modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets. |
-| [LocalForage](https://github.com/localForage/localForage) |  fast and simple storage library, improves the offline experience of your web app by using asynchronous storage (IndexedDB or WebSQL) |
+| [LocalForage](https://github.com/localForage/localForage) |  Fast and simple storage library, improves the offline experience of your web app by using asynchronous storage (IndexedDB or WebSQL) |
+| [ReduxForm](http://redux-form.com/6.4.3/) |  redux-form works with React Redux to enable an html form in React to use Redux to store all of its state. |
+| [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch) |  Is a Promise-based mechanism for programatically making web requests in the browser. |
+| [Validate.js](https://validatejs.org/) | provides a declarative way of validating javascript objects. |
+| [Humps](https://github.com/domchristie/humps) | Underscore-to-camelCase converter (and vice versa) for strings and object keys in JavaScript.|
