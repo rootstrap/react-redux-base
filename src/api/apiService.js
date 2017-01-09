@@ -11,8 +11,15 @@ const handleErrors = (response) =>
     }
 
     if (response.ok) {
-      saveSessionHeaders(response.headers);
-      resolve(response);
+      const sessionHeaders = getSessionHeaders(response.headers);
+      const { token, uid, client } = sessionHeaders;
+      console.log(sessionHeaders);
+      if (token && uid && client) {
+        saveSessionHeaders(response.headers);
+        resolve(response);
+      } else {
+        reject({ message: 'Invalid token provided from the api' });
+      }
       return;
     }
 
@@ -41,13 +48,17 @@ const getResponseBody = (response) => {
   return humps.camelizeKeys(response.json());
 };
 
-const saveSessionHeaders = (headers) => {
+const getSessionHeaders = (headers) => {
   const sessionHeaders = {
     token: headers.get('access-token'),
     uid: headers.get('uid'),
     client: headers.get('client')
   };
-  session.saveSession(sessionHeaders);
+  return sessionHeaders;
+}
+
+const saveSessionHeaders = (headers) => {
+  return session.saveSession(getSessionHeaders(headers));
 };
 
 class Api {
