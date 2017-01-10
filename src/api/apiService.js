@@ -11,15 +11,8 @@ const handleErrors = (response) =>
     }
 
     if (response.ok) {
-      const sessionHeaders = getSessionHeaders(response.headers);
-      const { token, uid, client } = sessionHeaders;
-      console.log(sessionHeaders);
-      if (token && uid && client) {
-        saveSessionHeaders(response.headers);
-        resolve(response);
-      } else {
-        reject({ message: 'Invalid token provided from the api' });
-      }
+      saveSessionHeaders(response.headers);
+      resolve(response);
       return;
     }
 
@@ -34,7 +27,7 @@ const handleErrors = (response) =>
 
     response.json()
       .then(json => {
-        const error = humps.camelizeKeys(json) || { message: response.statusText };
+        const error = json || { message: response.statusText };
         reject(error);
       }).catch(() => reject({ message: 'Response not JSON' }));
     }
@@ -45,20 +38,16 @@ const getResponseBody = (response) => {
   if (bodyIsEmpty) {
     return Promise.resolve();
   }
-  return humps.camelizeKeys(response.json());
+  return response.json();
 };
 
-const getSessionHeaders = (headers) => {
+const saveSessionHeaders = (headers) => {
   const sessionHeaders = {
     token: headers.get('access-token'),
     uid: headers.get('uid'),
     client: headers.get('client')
   };
-  return sessionHeaders;
-}
-
-const saveSessionHeaders = (headers) => {
-  return session.saveSession(getSessionHeaders(headers));
+  session.saveSession(sessionHeaders);
 };
 
 class Api {
@@ -68,8 +57,8 @@ class Api {
       fetch(uri, requestData)
         .then(handleErrors)
         .then(getResponseBody)
-        .then(response => resolve(response))
-        .catch(error => reject(error));
+        .then(response => resolve(humps.camelizeKeys(response)))
+        .catch(error => reject(humps.camelizeKeys(error)));
     });
   }
 

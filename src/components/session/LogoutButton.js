@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import * as sessionActions from '../actions/sessionActions';
+import * as sessionActions from '../../actions/sessionActions';
 
 class LogoutButton extends Component {
   constructor(props, context) {

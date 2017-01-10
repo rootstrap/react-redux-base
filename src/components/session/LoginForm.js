@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import Input from './common/Input';
-import * as constraints from '../utils/constraints';
+import Input from '../common/Input';
+import * as constraints from '../../utils/constraints';
 
 const LoginForm = ({ handleSubmit, error }) => {
   return (

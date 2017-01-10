@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-const signUpReducer = (state = initialState.session, action) => {
+const signUpReducer = (state = initialState.signUp, action) => {
   switch (action.type) {
     case types.SIGN_UP_SUCCESS: {
       return { signUpSuccess: true };
