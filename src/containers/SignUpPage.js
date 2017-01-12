@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import * as signUpActions from '../actions/signUpActions';
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../components/user/SignUpForm';
 
 class SignUpPage extends Component {
   constructor(props, context) {

@@ -27,7 +27,7 @@ const handleErrors = (response) =>
 
     response.json()
       .then(json => {
-        const error = humps.camelizeKeys(json) || { message: response.statusText };
+        const error = json || { message: response.statusText };
         reject(error);
       }).catch(() => reject({ message: 'Response not JSON' }));
     }
@@ -38,7 +38,7 @@ const getResponseBody = (response) => {
   if (bodyIsEmpty) {
     return Promise.resolve();
   }
-  return humps.camelizeKeys(response.json());
+  return response.json();
 };
 
 const saveSessionHeaders = (headers) => {
@@ -57,8 +57,8 @@ class Api {
       fetch(uri, requestData)
         .then(handleErrors)
         .then(getResponseBody)
-        .then(response => resolve(response))
-        .catch(error => reject(error));
+        .then(response => resolve(humps.camelizeKeys(response)))
+        .catch(error => reject(humps.camelizeKeys(error)));
     });
   }
 

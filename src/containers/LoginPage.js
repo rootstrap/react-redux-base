@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory, Link } from 'react-router';
 import * as sessionActions from '../actions/sessionActions';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/session/LoginForm';
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor(props, context) {
     super(props, context);
   }
