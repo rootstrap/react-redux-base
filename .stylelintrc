@@ -1,4 +1,8 @@
 {
   "extends": "stylelint-config-standard",
-  defaultSeverity: "warning"
+  defaultSeverity: "warning",
+  "rules": {
+    "number-leading-zero": "never",
+    "declaration-block-properties-order": "alphabetical"
+  }
 }
