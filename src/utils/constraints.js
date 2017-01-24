@@ -19,7 +19,8 @@ export const signUp = {
     presence: true
   },
   passwordConfirmation: {
-    presence: true
+    presence: true,
+    equality: 'password'
   }
 };
 
