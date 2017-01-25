@@ -33,6 +33,7 @@
     "humps": "2.0.0",
     "isomorphic-fetch": "2.2.1",
     "localforage": "1.4.3",
+    "lodash": "4.17.4",
     "object-assign": "4.1.0",
     "react": "15.4.0",
     "react-dom": "15.4.0",
@@ -42,6 +43,7 @@
     "react-router-scroll": "0.4.1",
     "redux": "3.6.0",
     "redux-form": "6.4.3",
+    "redux-logger": "2.7.4",
     "redux-thunk": "2.1.0",
     "validate.js": "0.11.1"
   },

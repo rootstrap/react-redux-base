@@ -47,6 +47,7 @@
     "object-curly-spacing": [1, "always"],
     "space-before-blocks" : [1, "always"],
     "keyword-spacing": 1,
+    "indent": [1, 2, { "SwitchCase": 1 }],
     "react/display-name": [ 1, { "ignoreTranspilerName": false }],
     "react/forbid-prop-types": [1, { "forbid": ["any"] }],
     "react/jsx-boolean-value": 0,

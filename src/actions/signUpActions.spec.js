@@ -34,44 +34,17 @@ describe('Actions::SignUp', () => {
     };
 
     describe('success with correct credentials', () => {
-      const response = {
-        user: {
-          email: 'test@test.com',
-          id: 1
-        }
-      };
-
-      const headers = {
-        'access-token': '1234-1234',
-        'uid': 'example',
-        'client': 'example'
-      };
-
-      it('should return the action signUpSuccess', () => {
-        nock(consts.API_URL)
-        .post('/users', { user })
-        .reply(200, response, headers);
-
-        const expectedAction = [{ type: types.SIGN_UP_SUCCESS }];
-        const store = mockStore(initialState.signUp);
-
-        return store.dispatch(signUpActions.signUp(user))
-        .then(() => {
-          expect(store.getActions()).to.deep.equal(expectedAction);
-        });
-      });
-
-      it('should change the signUpSuccess in the redux store', () => {
+      it('should change the authenticated flag in the redux store', () => {
         const store = createStore(rootReducer, initialState);
         const action = signUpActions.signUpSuccess();
 
         store.dispatch(action);
-        expect(store.getState().signUp.signUpSuccess).to.equal(true);
+        expect(store.getState().session.authenticated).to.equal(true);
       });
     });
 
     describe('failure with wrong credentials', () => {
-      it('should not change the signUpSuccess in the redux store', () => {
+      it('should not change the authenticated flag in the redux store', () => {
         nock(consts.API_URL)
           .post('/users', { user })
           .reply(401, { error: "Error" });
@@ -80,7 +53,7 @@ describe('Actions::SignUp', () => {
 
         return store.dispatch(signUpActions.signUp(user))
         .catch(() => {
-          expect(store.getState().signUp.signUpSuccess).to.equal(false);
+          expect(store.getState().session.authenticated).to.equal(false);
         });
       });
     });

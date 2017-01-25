@@ -30,8 +30,7 @@ const handleErrors = (response) =>
         const error = json || { message: response.statusText };
         reject(error);
       }).catch(() => reject({ message: 'Response not JSON' }));
-    }
-  );
+  });
 
 const getResponseBody = (response) => {
   const bodyIsEmpty = response.status === 204;
