@@ -1,7 +1,8 @@
+import { SubmissionError } from 'redux-form';
+import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 import sessionApi from '../api/sessionApi';
 import * as session from '../services/sessionService';
-import { SubmissionError } from 'redux-form';
 
 export const loginSuccess = () => {
   return { type: types.LOGIN_SUCCESS };
@@ -11,11 +12,22 @@ export const logoutSuccess = () => {
   return { type: types.LOGOUT_SUCCESS };
 };
 
+export const getSessionSuccess = () => {
+  return { type: types.GET_SESSION_SUCCESS };
+};
+
+export const getSessionError = () => {
+  return { type: types.GET_SESSION_ERROR };
+};
+
 export const login = (user) => {
   return (dispatch) => {
     return sessionApi.login({ user }).then(response => {
-      session.saveUser(response.data);
-      dispatch(loginSuccess());
+      session.saveUser(response.data)
+      .then(() => {
+        dispatch(loginSuccess());
+        browserHistory.replace('/');
+      });
     }).catch(err => {
       throw new SubmissionError({
         _error: err.errors[0]
@@ -30,8 +42,19 @@ export const logout = () => {
       session.deleteSession();
       session.deleteUser();
       dispatch(logoutSuccess());
+      browserHistory.replace('/login');
     }).catch(err => {
       throw (err);
+    });
+  };
+};
+
+export const checkSession = () => {
+  return (dispatch) => {
+    return session.isLogged().then(() => {
+      dispatch(getSessionSuccess());
+    }).catch(() => {
+      dispatch(getSessionError());
     });
   };
 };

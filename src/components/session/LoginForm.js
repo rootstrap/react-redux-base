@@ -3,30 +3,28 @@ import { Field, reduxForm } from 'redux-form';
 import Input from '../common/Input';
 import * as constraints from '../../utils/constraints';
 
-const LoginForm = ({ handleSubmit, error }) => {
-  return (
-    <form onSubmit={handleSubmit}>
-      {error && <strong>{error}</strong>}
-      <div>
-        <Field
-          name="email"
-          label="Email"
-          component={Input}
-          type="email"
-        />
-      </div>
-      <div>
-        <Field
-          name="password"
-          label="Password"
-          component={Input}
-          type="password"
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+const LoginForm = ({ handleSubmit, error }) => (
+  <form onSubmit={handleSubmit}>
+    {error && <strong>{error}</strong>}
+    <div>
+      <Field
+        name="email"
+        label="Email"
+        component={Input}
+        type="email"
+      />
+    </div>
+    <div>
+      <Field
+        name="password"
+        label="Password"
+        component={Input}
+        type="password"
+      />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+);
 
 const { func, string } = PropTypes;
 
