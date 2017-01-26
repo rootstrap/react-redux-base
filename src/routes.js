@@ -6,10 +6,16 @@ import HomePage from './containers/HomePage';
 import LoginPage from './containers/LoginPage'; // eslint-disable-line import/no-named-as-default
 import SignUpPage from './containers/SignUpPage';
 
+export const routes = {
+  index: '/',
+  login: 'login',
+  signUp: 'sign-up'
+};
+
 export default (
-  <Route path="/" component={App}>
+  <Route path={routes.index} component={App}>
     <IndexRoute onEnter={checkAuth} component={HomePage} />
-    <Route path="login" component={LoginPage} />
-    <Route path="sign-up" component={SignUpPage} />
+    <Route path={routes.login} component={LoginPage} />
+    <Route path={routes.signUp} component={SignUpPage} />
   </Route>
 );

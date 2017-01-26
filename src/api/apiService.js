@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import * as session from '../services/sessionService';
 import { browserHistory } from 'react-router';
 import humps from 'humps';
+import { routes } from '../routes';
 
 const handleErrors = (response) =>
   new Promise((resolve, reject) => {
@@ -20,7 +21,7 @@ const handleErrors = (response) =>
     .catch(() => {
       if (response.status === 401) {
         session.deleteSession();
-        browserHistory.replace('/login');
+        browserHistory.replace(routes.login);
         return;
       }
     });
