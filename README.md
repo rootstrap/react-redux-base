@@ -9,6 +9,12 @@
 ##Initial Machine Setup
 **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
 
+##Deploying to AWS S3
+1. **Install [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)**
+2. **Configure AWS** with the command `aws configure`
+3. **Set the buckets for your app** in the script `/tools/deployS3.js`
+4. **Run the command to deploy** `npm run deploy:staging` or `npm run deploy:production`
+
 ##Technologies
 
 | **Tech** | **Description**
