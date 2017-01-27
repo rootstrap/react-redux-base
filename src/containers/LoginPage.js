@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import * as sessionActions from '../actions/sessionActions';
 import LoginForm from '../components/session/LoginForm';
+import { routes } from '../routes';
 
 export const LoginPage = ({ actions: { login } }) => (
   <div>
     <p>LOGIN</p>
     <LoginForm onSubmit={login}/>
-    <Link to="sign-up"> Sign up </Link>
+    <Link to={routes.signUp}> Sign up </Link>
   </div>
 );
 

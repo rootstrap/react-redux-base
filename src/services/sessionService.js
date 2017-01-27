@@ -1,5 +1,6 @@
 import * as constant from '../constants/apiConstants';
 import * as localForage from 'localforage';
+import { routes } from '../routes';
 
 export const loadSession = () => {
   return localForage.getItem(constant.USER_SESSION)
@@ -28,7 +29,7 @@ export const checkAuth = (nextState, replace, next) => {
   .then(() => next())
   .catch(() => {
     replace({
-      pathname: '/login',
+      pathname: routes.login,
       state: { nextPathname: nextState.location.pathname }
     });
     next();

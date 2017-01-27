@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 import sessionApi from '../api/sessionApi';
 import * as session from '../services/sessionService';
+import { routes } from '../routes';
 
 export const loginSuccess = () => {
   return { type: types.LOGIN_SUCCESS };
@@ -26,7 +27,7 @@ export const login = (user) => {
       session.saveUser(response.data)
       .then(() => {
         dispatch(loginSuccess());
-        browserHistory.replace('/');
+        browserHistory.replace(routes.index);
       });
     }).catch(err => {
       throw new SubmissionError({
@@ -42,7 +43,7 @@ export const logout = () => {
       session.deleteSession();
       session.deleteUser();
       dispatch(logoutSuccess());
-      browserHistory.replace('/login');
+      browserHistory.replace(routes.login);
     }).catch(err => {
       throw (err);
     });
