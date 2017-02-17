@@ -1,8 +1,9 @@
 {
   "extends": "stylelint-config-standard",
   defaultSeverity: "warning",
+  "plugins": [ "stylelint-order" ],
   "rules": {
     "number-leading-zero": "never",
-    "declaration-block-properties-order": "alphabetical"
+    "order/declaration-block-properties-alphabetical-order": true
   }
 }
