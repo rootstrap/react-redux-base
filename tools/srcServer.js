@@ -1,59 +1,43 @@
-// This file configures the development web server
-// which supports hot reloading and synchronized testing.
+/* eslint no-console: 0 */
 
-// Require Browsersync along with webpack and middleware for it
-import browserSync from 'browser-sync';
-// Required for react-router browserHistory
-// see https://github.com/BrowserSync/browser-sync/issues/204#issuecomment-102623643
-import historyApiFallback from 'connect-history-api-fallback';
+import path from 'path';
+import express from 'express';
 import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import opn from 'opn';
 import config from '../webpack.config.dev';
+import { chalkInfo } from './chalkConfig';
 
-const bundler = webpack(config);
+const port = 3000;
+const app = express();
 
-// Run Browsersync and use middleware for Hot Module Replacement
-browserSync({
-  port: 8000,
-  ui: {
-    port: 8001
-  },
-  server: {
-    baseDir: 'src',
+const compiler = webpack(config);
+const middleware = webpackMiddleware(compiler, {
+  publicPath: config.output.publicPath,
+  contentBase: 'src',
+  stats: {
+    assets: false,
+    colors: true,
+    version: false,
+    hash: false,
+    timings: false,
+    chunks: false,
+    chunkModules: false
+  }
+});
 
-    middleware: [
-      historyApiFallback(),
+app.use(middleware);
+app.use(webpackHotMiddleware(compiler));
+app.get('*', function response(req, res) {
+  res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '../dist/index.html')));
+  res.end();
+});
 
-      webpackDevMiddleware(bundler, {
-        // Dev middleware can't access config, so we provide publicPath
-        publicPath: config.output.publicPath,
-
-        // These settings suppress noisy webpack output so only errors are displayed to the console.
-        noInfo: false,
-        quiet: false,
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: false,
-          chunks: false,
-          chunkModules: false
-        },
-
-        // for other settings see
-        // http://webpack.github.io/docs/webpack-dev-middleware.html
-      }),
-
-      // bundler should be the same as above
-      webpackHotMiddleware(bundler)
-    ]
-  },
-
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [
-    'src/*.html'
-  ]
+app.listen(port, '0.0.0.0', function onStart(err) {
+  if (err) {
+    console.log(err);
+  }
+  console.info(chalkInfo(`==> Listening on port ${port}. Open up http://0.0.0.0:${port}/ in your browser.`));
+  opn(`http://localhost:${port}`);
 });

@@ -1,8 +1,5 @@
 /* eslint-disable */
-const chalk = require('chalk');
-
-const chalkSuccess = chalk.green;
-const chalkInfo = chalk.cyan;
+import { chalkSuccess, chalkInfo } from './chalk';
 
 const environment = process.argv[2];
 
