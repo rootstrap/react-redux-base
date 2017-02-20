@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import * as sessionActions from '../actions/sessionActions';
 import LoginForm from '../components/session/LoginForm';
-import { routes } from '../routes';
+import { routes } from '../constants/routesPaths';
 
 export const LoginPage = ({ actions: { login } }) => (
   <div>

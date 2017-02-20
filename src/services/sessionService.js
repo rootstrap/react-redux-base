@@ -1,6 +1,6 @@
 import * as constant from '../constants/apiConstants';
 import * as localForage from 'localforage';
-import { routes } from '../routes';
+import { routes } from '../constants/routesPaths';
 
 export const loadSession = () => {
   return localForage.getItem(constant.USER_SESSION)
