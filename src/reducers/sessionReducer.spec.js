@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import sessionReducer from './sessionReducer';
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
@@ -8,7 +7,7 @@ describe('Reducer::Session', () => {
     const action = { type: 'unknown' };
     const expected = initialState.session;
 
-    expect(sessionReducer(undefined, action)).to.deep.equal(expected);
+    expect(sessionReducer(undefined, action)).toEqual(expected);
   });
 
   it('should handle LOGIN_SUCCESS', () => {
@@ -17,7 +16,7 @@ describe('Reducer::Session', () => {
       authenticated: true
     };
 
-    expect(sessionReducer(initialState.session, action)).to.deep.equal(expected);
+    expect(sessionReducer(initialState.session, action)).toEqual(expected);
   });
 
   it('should handle SIGN_UP_SUCCESS', () => {
@@ -26,7 +25,7 @@ describe('Reducer::Session', () => {
       authenticated: true
     };
 
-    expect(sessionReducer(initialState.session, action)).to.deep.equal(expected);
+    expect(sessionReducer(initialState.session, action)).toEqual(expected);
   });
 
   it('should handle GET_SESSION_SUCCESS', () => {
@@ -35,7 +34,7 @@ describe('Reducer::Session', () => {
       authenticated: true
     };
 
-    expect(sessionReducer(initialState.session, action)).to.deep.equal(expected);
+    expect(sessionReducer(initialState.session, action)).toEqual(expected);
   });
 
   it('should handle LOGOUT_SUCCESS', () => {
@@ -44,7 +43,7 @@ describe('Reducer::Session', () => {
       authenticated: false
     };
 
-    expect(sessionReducer(initialState.session, action)).to.deep.equal(expected);
+    expect(sessionReducer(initialState.session, action)).toEqual(expected);
   });
 
   it('should handle GET_SESSION_ERROR', () => {
@@ -53,6 +52,6 @@ describe('Reducer::Session', () => {
       authenticated: false
     };
 
-    expect(sessionReducer(initialState.session, action)).to.deep.equal(expected);
+    expect(sessionReducer(initialState.session, action)).toEqual(expected);
   });
 });
