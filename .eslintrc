@@ -81,5 +81,6 @@
     "react/wrap-multilines": 1
   },
   "globals": {
+    "config": true
   }
 }

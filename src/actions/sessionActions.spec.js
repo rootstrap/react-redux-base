@@ -3,10 +3,14 @@ import * as types from '../actions/actionTypes';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
-import * as consts from '../constants/apiConstants.js';
+import { config } from '../constants/devConstants.js';
 import initialState from '../reducers/initialState';
 import rootReducer from '../reducers';
 import { createStore } from 'redux';
+
+global.config = {
+  API_URL: config.API_URL
+};
 
 describe('Actions::Session', () => {
   describe('create user session', () => {
@@ -52,7 +56,7 @@ describe('Actions::Session', () => {
 
     describe('failure with wrong credentials', () => {
       it('should not change the authenticated flag in the redux store', () => {
-        nock(consts.API_URL)
+        nock(config.API_URL)
           .post('/users/sign_in', { user })
           .reply(401, { error: ["Invalid login credentials. Please try again."] });
 
@@ -83,7 +87,7 @@ describe('Actions::Session', () => {
 
     describe('failure', () => {
       it('does not change the authenticated flag in the redux store', () => {
-        nock(consts.API_URL)
+        nock(config.API_URL)
           .post('/users/sign_out')
           .reply(401, { errors: ["Error"] });
 
