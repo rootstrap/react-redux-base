@@ -5,6 +5,7 @@ node_js:
   - "4"
 script:
   - npm run lint
+  - npm run test:CI
 after_success:
   # Send coverage data to coveralls.
-  - npm run test:cover:travis
+  - npm run test:cover:CI

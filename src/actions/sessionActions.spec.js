@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import * as sessionActions from '../actions/sessionActions';
 import * as types from '../actions/actionTypes';
 import thunk from 'redux-thunk';
@@ -15,7 +14,7 @@ describe('Actions::Session', () => {
       const expectedAction = { type: types.LOGIN_SUCCESS };
       const action = sessionActions.loginSuccess();
 
-      expect(action).to.deep.equal(expectedAction);
+      expect(action).toEqual(expectedAction);
     });
   });
 
@@ -24,7 +23,7 @@ describe('Actions::Session', () => {
       const expectedAction = { type: types.LOGOUT_SUCCESS };
       const action = sessionActions.logoutSuccess();
 
-      expect(action).to.deep.equal(expectedAction);
+      expect(action).toEqual(expectedAction);
     });
   });
 
@@ -47,7 +46,7 @@ describe('Actions::Session', () => {
         const action = sessionActions.loginSuccess();
 
         store.dispatch(action);
-        expect(store.getState().session.authenticated).to.equal(true);
+        expect(store.getState().session.authenticated).toEqual(true);
       });
     });
 
@@ -61,7 +60,7 @@ describe('Actions::Session', () => {
 
         return store.dispatch(sessionActions.login(user))
         .catch(() => {
-          expect(store.getState().session.authenticated).to.equal(false);
+          expect(store.getState().session.authenticated).toEqual(false);
         });
       });
     });
@@ -78,7 +77,7 @@ describe('Actions::Session', () => {
         const action = sessionActions.loginSuccess();
 
         store.dispatch(action);
-        expect(store.getState().session.authenticated).to.equal(true);
+        expect(store.getState().session.authenticated).toEqual(true);
       });
     });
 
@@ -92,7 +91,7 @@ describe('Actions::Session', () => {
 
         return store.dispatch(sessionActions.logout())
         .catch(() => {
-          expect(store.getState().session.authenticated).to.equal(false);
+          expect(store.getState().session.authenticated).toEqual(false);
         });
       });
     });

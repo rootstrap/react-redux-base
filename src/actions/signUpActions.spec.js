@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import * as signUpActions from '../actions/signUpActions';
 import * as types from '../actions/actionTypes';
 import thunk from 'redux-thunk';
@@ -15,7 +14,7 @@ describe('Actions::SignUp', () => {
       const expectedAction = { type: types.SIGN_UP_SUCCESS };
       const action = signUpActions.signUpSuccess();
 
-      expect(action).to.deep.equal(expectedAction);
+      expect(action).toEqual(expectedAction);
     });
   });
 
@@ -39,7 +38,7 @@ describe('Actions::SignUp', () => {
         const action = signUpActions.signUpSuccess();
 
         store.dispatch(action);
-        expect(store.getState().session.authenticated).to.equal(true);
+        expect(store.getState().session.authenticated).toEqual(true);
       });
     });
 
@@ -53,7 +52,7 @@ describe('Actions::SignUp', () => {
 
         return store.dispatch(signUpActions.signUp(user))
         .catch(() => {
-          expect(store.getState().session.authenticated).to.equal(false);
+          expect(store.getState().session.authenticated).toEqual(false);
         });
       });
     });
