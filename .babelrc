@@ -6,8 +6,7 @@
   "env": {
     "development": {
       "presets": [
-        "latest",
-        "react-hmre"
+        "latest"
       ]
     },
     "production": {

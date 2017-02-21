@@ -5,12 +5,7 @@ import { checkAuth } from './services/sessionService';
 import HomePage from './containers/HomePage';
 import LoginPage from './containers/LoginPage'; // eslint-disable-line import/no-named-as-default
 import SignUpPage from './containers/SignUpPage';
-
-export const routes = {
-  index: '/',
-  login: 'login',
-  signUp: 'sign-up'
-};
+import { routes } from './constants/routesPaths';
 
 export default (
   <Route path={routes.index} component={App}>

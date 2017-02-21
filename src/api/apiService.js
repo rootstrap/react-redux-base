@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import * as session from '../services/sessionService';
 import { browserHistory } from 'react-router';
 import humps from 'humps';
-import { routes } from '../routes';
+import { routes } from '../constants/routesPaths';
 
 const handleErrors = (response) =>
   new Promise((resolve, reject) => {

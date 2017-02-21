@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 import sessionApi from '../api/sessionApi';
 import * as session from '../services/sessionService';
-import { routes } from '../routes';
+import { routes } from '../constants/routesPaths';
 
 export const loginSuccess = () => {
   return { type: types.LOGIN_SUCCESS };

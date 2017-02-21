@@ -9,6 +9,9 @@ export default {
   },
   devtool: 'eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: [
+    'react-hot-loader/patch',
+    // activate HMR for React
+
     // must be first entry to properly set public path
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
@@ -26,6 +29,7 @@ export default {
       __DEV__: true
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',
@@ -50,7 +54,14 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+          babelrc: false,
+          presets: [['es2015', { modules: false }], 'react', 'stage-1'],
+          plugins: ['react-hot-loader/babel'],
+        }
+      },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
