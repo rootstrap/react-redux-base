@@ -42,19 +42,22 @@ const getResponseBody = (response) => {
 };
 
 const saveSessionHeaders = (headers) => {
-  const sessionHeaders = {
-    token: headers.get('access-token'),
-    uid: headers.get('uid'),
-    client: headers.get('client')
-  };
-  session.saveSession(sessionHeaders);
+  if (headers.get('access-token')) {
+    const sessionHeaders = {
+      token: headers.get('access-token'),
+      uid: headers.get('uid'),
+      client: headers.get('client')
+    };
+    session.saveSession(sessionHeaders);
+  }
 };
 
 class Api {
 
-  performRequest(uri, requestData = {}) {
+  performRequest(uri, apiUrl, requestData = {}) {
+    const url = `${apiUrl}${uri}`;
     return new Promise((resolve, reject) => {
-      fetch(uri, requestData)
+      fetch(url, requestData)
         .then(handleErrors)
         .then(getResponseBody)
         .then(response => resolve(humps.camelizeKeys(response)))
@@ -73,7 +76,7 @@ class Api {
     }).catch(() => requestData);
   }
 
-  get(uri) {
+  get(uri, apiUrl = config.API_URL) {
     let requestData = {
       method: 'get',
       headers: {
@@ -82,11 +85,11 @@ class Api {
     };
     return this.addTokenHeader(requestData)
     .then(data => {
-      return this.performRequest(uri, data);
+      return this.performRequest(uri, apiUrl, data);
     });
   }
 
-  post(uri, data) {
+  post(uri, data, apiUrl = config.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'post',
@@ -98,11 +101,11 @@ class Api {
     };
     return this.addTokenHeader(requestData)
     .then(data => {
-      return this.performRequest(uri, data);
+      return this.performRequest(uri, apiUrl, data);
     });
   }
 
-  delete(uri, data) {
+  delete(uri, data, apiUrl = config.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'delete',
@@ -114,11 +117,11 @@ class Api {
     };
     return this.addTokenHeader(requestData)
     .then(data => {
-      return this.performRequest(uri, data);
+      return this.performRequest(uri, apiUrl, data);
     });
   }
 
-  put(uri, data) {
+  put(uri, data, apiUrl = config.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'put',
@@ -130,11 +133,11 @@ class Api {
     };
     return this.addTokenHeader(requestData)
     .then(data => {
-      return this.performRequest(uri, data);
+      return this.performRequest(uri, apiUrl, data);
     });
   }
 
-  patch(uri, data) {
+  patch(uri, data, apiUrl = config.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     let requestData = {
       method: 'patch',
@@ -146,7 +149,7 @@ class Api {
     };
     return this.addTokenHeader(requestData)
     .then(data => {
-      return this.performRequest(uri, data);
+      return this.performRequest(uri, apiUrl, data);
     });
   }
 }

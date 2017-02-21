@@ -1,27 +1,27 @@
-import * as constant from '../constants/apiConstants';
+import { USER_SESSION, USER_DATA } from '../constants/constants';
 import * as localForage from 'localforage';
 import { routes } from '../constants/routesPaths';
 
 export const loadSession = () => {
-  return localForage.getItem(constant.USER_SESSION)
+  return localForage.getItem(USER_SESSION)
   .then(value => value)
   .catch(err => err);
 };
 
 export const saveSession = (session) => {
-  return localForage.setItem(constant.USER_SESSION, session);
+  return localForage.setItem(USER_SESSION, session);
 };
 
 export const deleteSession = () => {
-  return localForage.removeItem(constant.USER_SESSION);
+  return localForage.removeItem(USER_SESSION);
 };
 
 export const saveUser = (user) => {
-  return localForage.setItem(constant.USER_DATA, user);
+  return localForage.setItem(USER_DATA, user);
 };
 
 export const deleteUser = () => {
-  return localForage.removeItem(constant.USER_DATA);
+  return localForage.removeItem(USER_DATA);
 };
 
 export const checkAuth = (nextState, replace, next) => {

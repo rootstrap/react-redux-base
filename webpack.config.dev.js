@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
+import { config } from './src/constants/devConstants'; // eslint-disable-line import/no-unresolved
 
 export default {
   resolve: {
@@ -50,6 +51,9 @@ export default {
         context: '/',
         postcss: () => [autoprefixer],
       }
+    }),
+    new webpack.DefinePlugin({
+      'config': JSON.stringify(config)
     })
   ],
   module: {
