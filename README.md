@@ -6,6 +6,23 @@
 3. **Lint the app**. `npm run lint`
 4. **Test the app**. `npm run test`
 
+##Getting Started
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Create two constants files in `./src` folder(devConstant.js and prodConstants.js):
+  * devConstants is used while you are developing(on `npm start` script)
+  * prodConstats is used once you build the app(on `npm run build` script)
+
+  Those files should include the `API_URL` constant.
+
+  devConstants.js or prodConstants.js example:
+  ```javascript
+  export const config = {
+    API_URL: 'http://your-api-url.com'
+  };
+  ```
+4. Start the dev server: `npm start -s`
+
 ##Initial Machine Setup
 **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
 
@@ -23,7 +40,7 @@
 |  [Redux](http://redux.js.org) |  Enforces unidirectional data flows and immutable, hot reloadable store. Supports time-travel debugging.|
 |  [React Router](https://github.com/reactjs/react-router) | A complete routing library for React |
 |  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.|
-| [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [react-transform-hmr](https://www.npmjs.com/package/react-transform-hmr). |
+| [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [React Hot Loader](https://github.com/gaearon/react-hot-loader). |
 | [Express](https://github.com/expressjs/express) | Fast, unopinionated, minimalist web framework for node. |
 | [Jest](https://facebook.github.io/jest/) | Automated tests with built-in expect assertions and  [Enzyme](https://github.com/airbnb/enzyme) for DOM testing without a browser using Node. |
 | [ESLint](http://eslint.org/)| Lint JS. Reports syntax and style issues. Using [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules. |

@@ -3,13 +3,12 @@ import * as types from '../actions/actionTypes';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
-import { config } from '../constants/devConstants.js';
 import initialState from '../reducers/initialState';
 import rootReducer from '../reducers';
 import { createStore } from 'redux';
 
 global.config = {
-  API_URL: config.API_URL
+  API_URL: 'http://api-testing-url.com'
 };
 
 describe('Actions::Session', () => {
