@@ -25,7 +25,8 @@
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
     "deploy:staging": "npm run just-build && babel-node tools/deployS3 staging",
-    "deploy:production": "npm run just-build &&  babel-node tools/deployS3 production"
+    "deploy:production": "npm run just-build &&  babel-node tools/deployS3 production",
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "Bernabe Gonzalez",
   "license": "MIT",
@@ -98,6 +99,7 @@
    "stylelint-order": "0.2.2",
    "url-loader": "0.5.7",
    "webpack": "2.2.1",
+   "webpack-bundle-analyzer": "2.3.0",
    "webpack-dev-middleware": "1.10.0",
    "webpack-hot-middleware": "2.17.0",
    "webpack-md5-hash": "0.0.5"
