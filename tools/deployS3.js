@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { chalkSuccess, chalkInfo } from './chalk';
+import { chalkSuccess, chalkInfo } from './chalkConfig';
 
 const environment = process.argv[2];
 
