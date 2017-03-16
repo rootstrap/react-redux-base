@@ -6,7 +6,7 @@
 3. **Lint the app**. `npm run lint`
 4. **Test the app**. `npm run test`
 
-##Getting Started
+## Getting Started
 1. Clone the repository
 2. Install dependencies: `npm install`
 3. Create two constants files in `./src` folder(devConstant.js and prodConstants.js):
@@ -23,7 +23,7 @@
   ```
 4. Start the dev server: `npm start -s`
 
-##Initial Machine Setup
+## Initial Machine Setup
 **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
 
 ##Deploying to AWS S3
@@ -32,7 +32,7 @@
 3. **Set the buckets for your app** in the script `/tools/deployS3.js`
 4. **Run the command to deploy** `npm run deploy:staging` or `npm run deploy:production`
 
-##Technologies
+## Technologies
 
 | **Tech** | **Description**
 |----------|-------
