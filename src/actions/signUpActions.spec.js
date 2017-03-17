@@ -7,10 +7,6 @@ import initialState from '../reducers/initialState';
 import rootReducer from '../reducers';
 import { createStore } from 'redux';
 
-global.config = {
-  API_URL: 'http://api-testing-url.com'
-};
-
 describe('Actions::SignUp', () => {
   describe('sign up a user', () => {
     it('should return the signUpSuccess action', () => {
