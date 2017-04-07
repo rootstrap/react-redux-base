@@ -1,5 +1,3 @@
 export default {
-  session: {
-    authenticated: false
-  }
+  // initial state of the redux store
 };
