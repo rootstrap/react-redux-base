@@ -3785,7 +3785,7 @@ loader-utils@0.2.x, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-localforage@1.4.3:
+localforage@1.4.3, "localforage@^1.4.0 || ^1.5.0":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.4.3.tgz#a212543c39c7c76424edd12bf474c489aaca494c"
   dependencies:
@@ -5417,6 +5417,12 @@ redux-logger@2.8.1:
 redux-mock-store@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.1.tgz#630c0e2642927d1417c844d935266b501f2fc231"
+
+redux-react-session@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/redux-react-session/-/redux-react-session-1.1.2.tgz#0196e36eee2237af036abcb693f990750d1b7045"
+  dependencies:
+    localforage "^1.4.0 || ^1.5.0"
 
 redux-thunk@2.2.0:
   version "2.2.0"
