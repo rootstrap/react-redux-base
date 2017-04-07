@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import Input from '../common/Input';
 import * as constraints from '../../utils/constraints';
 
-const LoginForm = ({ handleSubmit, error }) => (
+export const LoginForm = ({ handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     {error && <strong>{error}</strong>}
     <div>
