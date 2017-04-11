@@ -6,7 +6,7 @@ import * as sessionActions from '../actions/sessionActions';
 import LoginForm from '../components/session/LoginForm';
 import { routes } from '../constants/routesPaths';
 
-export const LoginPage = ({ actions: { login } }) => (
+const LoginPage = ({ actions: { login } }) => (
   <div>
     <p>LOGIN</p>
     <LoginForm onSubmit={login}/>
