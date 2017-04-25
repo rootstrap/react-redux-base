@@ -3575,6 +3575,10 @@ js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
 
+js-cookie@2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.1.4.tgz#da4ec503866f149d164cf25f579ef31015025d8d"
+
 js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
@@ -5418,10 +5422,11 @@ redux-mock-store@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.1.tgz#630c0e2642927d1417c844d935266b501f2fc231"
 
-redux-react-session@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/redux-react-session/-/redux-react-session-1.1.2.tgz#0196e36eee2237af036abcb693f990750d1b7045"
+redux-react-session@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/redux-react-session/-/redux-react-session-1.2.0.tgz#e02d6891a5ead10d501874f393a5ba65b521ac87"
   dependencies:
+    js-cookie "2.1.4"
     localforage "^1.4.0 || ^1.5.0"
 
 redux-thunk@2.2.0:

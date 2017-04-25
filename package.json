@@ -45,7 +45,7 @@
     "redux": "3.6.0",
     "redux-form": "6.5.0",
     "redux-logger": "2.8.1",
-    "redux-react-session": "^1.1.2",
+    "redux-react-session": "1.2.0",
     "redux-thunk": "2.2.0",
     "validate.js": "0.11.1"
   },
