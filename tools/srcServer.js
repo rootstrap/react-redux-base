@@ -9,7 +9,7 @@ import opn from 'opn';
 import config from '../webpack.config.dev';
 import { chalkInfo } from './chalkConfig';
 
-const port = 3000;
+const port = 8000;
 const app = express();
 
 const compiler = webpack(config);
