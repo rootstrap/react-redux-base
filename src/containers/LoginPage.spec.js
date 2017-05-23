@@ -29,6 +29,10 @@ describe('<LoginPage />', () => {
     form = subject.find('form');
     username = subject.find('input').at(0);
     password = subject.find('input').at(1);
+
+    sessionService.saveUser = jest.fn(() => Promise.resolve());
+    sessionService.saveSession = jest.fn(() => Promise.resolve());
+    sessionService.loadSession = jest.fn(() => Promise.resolve());
   });
 
   it('should display an email input', () => {
@@ -63,6 +67,8 @@ describe('<LoginPage />', () => {
       username.simulate('change', { target: { value: 'joe@joe.com' } });
       password.simulate('change', { target: { value: 'password' } });
       form.simulate('submit');
+
+      browserHistory.push = jest.fn(() => Promise.resolve());
     });
 
     it('should call redux-session-service to save the user data', (done) => {
@@ -70,6 +76,7 @@ describe('<LoginPage />', () => {
       sessionService.saveUser = jest.fn(() => {
         expect(sessionService.saveUser).toHaveBeenCalled();
         done();
+        return Promise.resolve();
       });
     });
 
@@ -78,12 +85,11 @@ describe('<LoginPage />', () => {
       sessionService.saveUser = jest.fn(() => {
         expect(sessionService.saveUser).toHaveBeenCalledWith(userResponse.data);
         done();
+        return Promise.resolve();
       });
     });
 
     it('should redirect to the home page', (done) => {
-      sessionService.saveUser = jest.fn(() => Promise.resolve());
-
       // wait for the call to redirect
       browserHistory.push = jest.fn(() => {
         expect(browserHistory.push).toHaveBeenCalledWith(routes.index);
