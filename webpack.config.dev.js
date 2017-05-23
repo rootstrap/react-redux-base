@@ -62,7 +62,7 @@ export default {
         options: {
           cacheDirectory: true,
           babelrc: false,
-          presets: [['es2015', { modules: false }], 'react', 'stage-1'],
+          presets: [['env', { modules: false }], 'react', 'stage-1'],
           plugins: ['react-hot-loader/babel'],
         }
       },

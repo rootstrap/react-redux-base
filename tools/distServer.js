@@ -8,7 +8,7 @@ import historyApiFallback from 'connect-history-api-fallback';
 
 console.log(chalkProcessing('Opening production build...'));
 
-const port = 3000;
+const port = 8000;
 const app = express();
 
 app.use(historyApiFallback());

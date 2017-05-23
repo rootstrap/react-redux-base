@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import * as sessionActions from '../actions/sessionActions';
-import LoginForm from '../components/session/LoginForm';
+import LoginForm from '../components/session/LoginForm'; // eslint-disable-line import/no-named-as-default
 import { routes } from '../constants/routesPaths';
 
 const LoginPage = ({ actions: { login } }) => (
