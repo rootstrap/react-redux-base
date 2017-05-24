@@ -6,7 +6,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import _ from 'lodash';
 
 export default function configureStore(initialState) {

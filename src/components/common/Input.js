@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Input = ({ input, label, type, placeholder, meta: { touched, error } }) => (
   <div>

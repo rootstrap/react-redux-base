@@ -1,5 +1,6 @@
 // This component handles the App template used on every page.
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
