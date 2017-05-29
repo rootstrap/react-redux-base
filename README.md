@@ -1,14 +1,14 @@
 # React Redux Base
 
 ## Npm commands
-1. **Run the app**. `npm start -s`
-2. **Build the app**. `npm run build`
-3. **Lint the app**. `npm run lint`
-4. **Test the app**. `npm run test`
+1. **Run the app**. `yarn start` or `npm start`
+2. **Build the app**. `yarn build` or `npm run build`
+3. **Lint the app**. `yarn lint` or `npm run lint`
+4. **Test the app**. `yarn test` or `npm run test`
 
 ## Getting Started
 1. Clone the repository
-2. Install dependencies: `npm install`
+2. Install dependencies: `yarn` or `npm install`
 3. Create two constants files in `./src` folder(devConstant.js and prodConstants.js):
   * devConstants is used while you are developing(on `npm start` script)
   * prodConstats is used once you build the app(on `npm run build` script)
@@ -21,10 +21,12 @@
     API_URL: 'http://your-api-url.com'
   };
   ```
-4. Start the dev server: `npm start -s`
+4. Start the dev server: `yarn start` or `npm start -s`
 
 ## Initial Machine Setup
-**Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
+**Install [Node 4.0.0 or greater](https://nodejs.org)** - (6.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
+
+**Install [Yarn](https://yarnpkg.com/en/docs/install)** - Fast, reliable, and secure package manager
 
 ## Deploying to AWS S3
 1. **Install [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)**
