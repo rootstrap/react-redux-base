@@ -4,6 +4,7 @@
 
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { Iterable } from 'immutable';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import { createLogger } from 'redux-logger';
@@ -14,8 +15,18 @@ export default function configureStore(initialState) {
     collapsed: true,
     predicate: (getState, { type }) => {
       return !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form');
+    },
+    stateTransformer: (state) => {
+      let newState = {};
+
+      Object.keys(state).forEach((i) => {
+        newState[i] = Iterable.isIterable(state[i]) ? state[i].toJS() : state[i];
+      });
+
+      return newState;
     }
   });
+
   const middewares = [
     reduxImmutableStateInvariant(),
 
