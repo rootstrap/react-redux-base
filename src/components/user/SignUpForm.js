@@ -34,11 +34,10 @@ const SignUpForm = ({ handleSubmit }) => (
   </form>
 );
 
-const { func, string } = PropTypes;
+const { func } = PropTypes;
 
 SignUpForm.propTypes = {
-  handleSubmit: func.isRequired,
-  error: string
+  handleSubmit: func.isRequired
 };
 
 export default reduxForm({

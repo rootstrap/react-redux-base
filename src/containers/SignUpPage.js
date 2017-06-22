@@ -8,7 +8,7 @@ import SignUpForm from '../components/user/SignUpForm';
 const SignUpPage = ({ actions: { signUp } }) => (
   <div>
     <p>SIGN UP</p>
-    <SignUpForm onSubmit={signUp}/>
+    <SignUpForm onSubmit={signUp} />
   </div>
 );
 
@@ -18,10 +18,8 @@ SignUpPage.propTypes = {
   actions: object.isRequired
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    actions: bindActionCreators(signUpActions, dispatch)
-  };
-};
+const mapDispatch = dispatch => ({
+  actions: bindActionCreators(signUpActions, dispatch)
+});
 
 export default connect(null, mapDispatch)(SignUpPage);

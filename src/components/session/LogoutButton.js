@@ -16,10 +16,8 @@ LogoutButton.propTypes = {
   actions: object.isRequired
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    actions: bindActionCreators(sessionActions, dispatch)
-  };
-};
+const mapDispatch = dispatch => ({
+  actions: bindActionCreators(sessionActions, dispatch)
+});
 
 export default connect(null, mapDispatch)(LogoutButton);
