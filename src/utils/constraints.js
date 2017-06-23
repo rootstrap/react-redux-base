@@ -24,5 +24,5 @@ export const signUp = {
   }
 };
 
-export const validations = (constraints) =>
-  (data) => validate(data, constraints) || {};
+export const validations = constraints =>
+  data => validate(data, constraints) || {};

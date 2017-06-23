@@ -53,12 +53,14 @@ export default {
       }
     }),
     new webpack.DefinePlugin({
-      'config': JSON.stringify(config)
+      config: JSON.stringify(config)
     })
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader',
+      { test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
         options: {
           cacheDirectory: true,
           babelrc: false,

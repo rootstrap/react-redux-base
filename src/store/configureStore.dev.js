@@ -5,19 +5,17 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Iterable } from 'immutable';
-import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import { createLogger } from 'redux-logger';
 import _ from 'lodash';
+import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
   const logger = createLogger({
     collapsed: true,
-    predicate: (getState, { type }) => {
-      return !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form');
-    },
+    predicate: (getState, { type }) => !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form'),
     stateTransformer: (state) => {
-      let newState = {};
+      const newState = {};
 
       Object.keys(state).forEach((i) => {
         newState[i] = Iterable.isIterable(state[i]) ? state[i].toJS() : state[i];

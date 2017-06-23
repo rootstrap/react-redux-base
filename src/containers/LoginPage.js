@@ -10,7 +10,7 @@ import { routes } from '../constants/routesPaths';
 const LoginPage = ({ actions: { login } }) => (
   <div>
     <p>LOGIN</p>
-    <LoginForm onSubmit={login}/>
+    <LoginForm onSubmit={login} />
     <Link to={routes.signUp}> Sign up </Link>
   </div>
 );
@@ -21,10 +21,8 @@ LoginPage.propTypes = {
   actions: object.isRequired
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    actions: bindActionCreators(sessionActions, dispatch)
-  };
-};
+const mapDispatch = dispatch => ({
+  actions: bindActionCreators(sessionActions, dispatch)
+});
 
 export default connect(null, mapDispatch)(LoginPage);

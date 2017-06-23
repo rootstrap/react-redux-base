@@ -70,7 +70,7 @@ export default {
     }),
 
     new webpack.DefinePlugin({
-      'config': JSON.stringify(config)
+      config: JSON.stringify(config)
     })
   ],
   module: {

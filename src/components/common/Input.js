@@ -5,7 +5,7 @@ const Input = ({ input, label, type, placeholder, meta: { touched, error } }) =>
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input {...input} {...{ placeholder, type }}/>
+      <input {...input} {...{ placeholder, type }} />
       {touched && error && <span>{error}</span>}
     </div>
   </div>
