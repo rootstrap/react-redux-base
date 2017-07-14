@@ -6,8 +6,8 @@ import { routes } from '../constants/routesPaths';
 
 export const login = user =>
   () =>
-    sessionApi.login({ user }).then((response) => {
-      sessionService.saveUser(response.data)
+    sessionApi.login({ user }).then(({ user }) => {
+      sessionService.saveUser(user)
       .then(() => {
         browserHistory.push(routes.index);
       });
