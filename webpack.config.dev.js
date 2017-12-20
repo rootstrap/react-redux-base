@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
-import { config } from './src/constants/devConstants'; // eslint-disable-line import/no-unresolved
+import Dotenv from 'dotenv-webpack';
 
 export default {
   resolve: {
@@ -52,8 +52,9 @@ export default {
         postcss: () => [autoprefixer],
       }
     }),
-    new webpack.DefinePlugin({
-      config: JSON.stringify(config)
+    new Dotenv({
+      path: path.resolve(__dirname, '.env.dev'),
+      systemvars: true,
     })
   ],
   module: {

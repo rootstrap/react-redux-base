@@ -59,7 +59,7 @@ describe('<LoginPage />', () => {
         }
       };
 
-      nock(config.API_URL)
+      nock(process.env.API_URL)
       .post('/users/sign_in', { user })
       .reply(200, userResponse);
 
@@ -163,7 +163,7 @@ describe('<LoginPage />', () => {
       };
       const serverError = { errors: ['Invalid login credentials. Please try again.'] };
 
-      nock(config.API_URL)
+      nock(process.env.API_URL)
       .post('/users/sign_in', { user })
       .reply(401, serverError);
 

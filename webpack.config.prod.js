@@ -6,7 +6,7 @@ import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
-import { config } from './src/constants/prodConstants'; // eslint-disable-line import/no-unresolved
+import Dotenv from 'dotenv-webpack';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -69,8 +69,9 @@ export default {
       }
     }),
 
-    new webpack.DefinePlugin({
-      config: JSON.stringify(config)
+    new Dotenv({
+      path: path.resolve(__dirname, `.env.${process.env.ENVIRONMENT}`),
+      systemvars: true,
     })
   ],
   module: {
