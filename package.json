@@ -20,16 +20,20 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node tools/build.js && npm run open:dist",
-    "just-build": "babel-node tools/build.js",
-    "test": "jest",
+    "build:dev": "npm run just-build:dev && npm run open:dist",
+    "build:staging": "npm run just-build:staging && npm run open:dist",
+    "build:prod": "npm run just-build:prod && npm run open:dist",
+    "just-build:dev": "ENVIRONMENT=dev babel-node tools/build.js",
+    "just-build:staging": "ENVIRONMENT=staging babel-node tools/build.js",
+    "just-build:prod": "ENVIRONMENT=prod babel-node tools/build.js",
+    "test": "jest --setupTestFrameworkScriptFile ./tools/testSetup",
     "test:CI": "node --harmony_proxies node_modules/jest/bin/jest",
     "test:cover": "npm run test -- --coverage",
     "test:cover:CI": "npm run test:cover && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/lcov-report/index.html",
-    "deploy:staging": "npm run just-build && babel-node tools/deployS3 staging",
-    "deploy:production": "npm run just-build &&  babel-node tools/deployS3 production",
+    "deploy:staging": "npm run just-build:staging && babel-node tools/deployS3 staging",
+    "deploy:prod": "npm run just-build:prod &&  babel-node tools/deployS3 production",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "Bernabe Gonzalez",
@@ -71,6 +75,8 @@
     "connect-history-api-fallback": "1.3.0",
     "coveralls": "2.11.16",
     "css-loader": "0.28.1",
+    "dotenv": "4.0.0",
+    "dotenv-webpack": "1.5.4",
     "enzyme": "2.8.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
@@ -113,11 +119,6 @@
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
       "^.+\\.(gif|ttf|eot|svg|woff|woff2|ico)$": "<rootDir>/tools/fileMock.js"
-    },
-    "globals": {
-      "config": {
-        "API_URL": "http://api-testing-url.com"
-      }
     }
   },
   "keywords": [],

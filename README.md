@@ -9,17 +9,12 @@
 ## Getting Started
 1. Clone the repository
 2. Install dependencies: `yarn` or `npm install`
-3. Create two constants files in `./src` folder(devConstant.js and prodConstants.js):
-  * devConstants is used while you are developing(on `npm start` script)
-  * prodConstats is used once you build the app(on `npm run build` script)
+3. Create the environment variables files in root folder(.env.dev, .env.staging and .env.prod):
 
-  Those files should include the `API_URL` constant.
-
-  devConstants.js or prodConstants.js example:
-  ```javascript
-  export const config = {
-    API_URL: 'http://your-api-url.com'
-  };
+  `.env.example` example:
+  ```
+    API_URL=http://your-api-url.com
+    CABLE_URL=wss://your-api-url.com/cable
   ```
 4. Start the dev server: `yarn start` or `npm start -s`
 

@@ -75,7 +75,7 @@ class Api {
     }).catch(() => requestData);
   }
 
-  get(uri, apiUrl = config.API_URL) {
+  get(uri, apiUrl = process.env.API_URL) {
     const requestData = {
       method: 'get',
       headers: {
@@ -86,7 +86,7 @@ class Api {
     .then(data => this.performRequest(uri, apiUrl, data));
   }
 
-  post(uri, data, apiUrl = config.API_URL) {
+  post(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'post',
@@ -100,7 +100,7 @@ class Api {
     .then(data => this.performRequest(uri, apiUrl, data));
   }
 
-  delete(uri, data, apiUrl = config.API_URL) {
+  delete(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'delete',
@@ -114,7 +114,7 @@ class Api {
     .then(data => this.performRequest(uri, apiUrl, data));
   }
 
-  put(uri, data, apiUrl = config.API_URL) {
+  put(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'put',
@@ -128,7 +128,7 @@ class Api {
     .then(data => this.performRequest(uri, apiUrl, data));
   }
 
-  patch(uri, data, apiUrl = config.API_URL) {
+  patch(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'patch',

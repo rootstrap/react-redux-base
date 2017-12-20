@@ -38,6 +38,7 @@ dist
 # Mac files
 .DS_Store
 
-# Environments constants
-src/constants/devConstants.js
-src/constants/prodConstants.js
+# Environment variables
+.env.dev
+.env.staging
+.env.prod
