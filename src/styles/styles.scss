@@ -1,3 +1,7 @@
+@import "~foundation-sites/scss/foundation";
+@include foundation-everything;
+@include foundation-xy-grid-classes;
+
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
