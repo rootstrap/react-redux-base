@@ -161,7 +161,7 @@ describe('<LoginPage />', () => {
         email: 'joe@joe.com',
         password: 'invalidPassword'
       };
-      const serverError = { errors: ['Invalid login credentials. Please try again.'] };
+      const serverError = { error: 'Invalid login credentials. Please try again.' };
 
       nock(process.env.API_URL)
       .post('/users/sign_in', { user })
