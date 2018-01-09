@@ -13,7 +13,7 @@ export const login = user =>
       });
     }).catch((err) => {
       throw new SubmissionError({
-        _error: err.errors[0]
+        _error: err.error
       });
     });
 
