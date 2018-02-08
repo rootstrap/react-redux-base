@@ -1,8 +1,27 @@
-@import "~foundation-sites/scss/foundation";
+@import '~foundation-sites/scss/foundation';
+@import '~loaders.css/src/animations/ball-scale-multiple';
+
 @include foundation-everything;
 @include foundation-xy-grid-classes;
 
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
+}
+
+.loading-wrapper {
+  align-items: center;
+  background-color: $white;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  // These two classes are required by react-loaders
+  .loader-hidden { display: none; }
+  .loader-active { display: block; }
 }
