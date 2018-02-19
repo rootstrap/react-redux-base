@@ -6,11 +6,17 @@ import { Link, browserHistory } from 'react-router';
 import * as signUpActions from '../actions/signUpActions';
 import SignUpForm from '../components/user/SignUpForm';
 import { routes } from '../constants/routesPaths';
+import Loading from '../components/common/Loading';
 
-const SignUpPage = ({ actions: { signUp }, authenticated }) => {
+const SignUpPage = ({ actions: { signUp }, authenticated, loading }) => {
   if (authenticated) {
     browserHistory.push(routes.index);
   }
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <p>SIGN UP</p>
@@ -24,11 +30,13 @@ const { bool, object } = PropTypes;
 
 SignUpPage.propTypes = {
   actions: object.isRequired,
-  authenticated: bool.isRequired
+  authenticated: bool.isRequired,
+  loading: bool.isRequired,
 };
 
-const mapStateToProps = ({ session: { authenticated } }) => ({
-  authenticated
+const mapStateToProps = ({ session: { authenticated }, auth: { loading } }) => ({
+  authenticated,
+  loading,
 });
 
 const mapDispatch = dispatch => ({

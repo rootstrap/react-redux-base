@@ -176,21 +176,25 @@ describe('<LoginPage />', () => {
     it('should not be a valid form', (done) => {
       // wait for changes in the redux store
       const unsubscribe = store.subscribe(() => {
-        const loginForm = subject.find(LoginForm);
-        expect(loginForm.props().valid).toEqual(false);
-        unsubscribe();
-        done();
+        if (store.getState().form.login.submitFailed) {
+          const loginForm = subject.find(LoginForm);
+          expect(loginForm.props().valid).toEqual(false);
+          unsubscribe();
+          done();
+        }
       });
     });
 
     it('should display the server error in the form', (done) => {
       // wait for changes in the redux store
       const unsubscribe = store.subscribe(() => {
-        const generalError = subject.find('strong');
-        const error = 'Invalid login credentials. Please try again.';
-        expect(generalError.text()).toEqual(error);
-        unsubscribe();
-        done();
+        if (store.getState().form.login.submitFailed) {
+          const generalError = subject.find('strong');
+          const error = 'Invalid login credentials. Please try again.';
+          expect(generalError.text()).toEqual(error);
+          unsubscribe();
+          done();
+        }
       });
     });
   });

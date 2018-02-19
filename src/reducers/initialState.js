@@ -1,3 +1,6 @@
+// Initial state of the redux store
 export default {
-  // initial state of the redux store
+  auth: {
+    loading: false,
+  }
 };
