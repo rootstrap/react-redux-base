@@ -42,6 +42,7 @@
     "foundation-sites": "6.4.4-rc1",
     "humps": "2.0.0",
     "immutable": "3.8.1",
+    "intl": "1.2.5",
     "isomorphic-fetch": "2.2.1",
     "loaders.css": "0.1.2",
     "lodash": "4.17.4",

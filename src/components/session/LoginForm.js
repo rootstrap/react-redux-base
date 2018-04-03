@@ -1,29 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import {
+  injectIntl,
+  intlShape,
+  defineMessages,
+  FormattedMessage
+} from 'react-intl';
 import Input from '../common/Input';
 import * as constraints from '../../utils/constraints';
 
-export const LoginForm = ({ handleSubmit, error }) => (
+const messages = defineMessages({
+  email: {
+    id: 'login.form.email',
+    // defaultMessage: 'About Us - Just In Case'
+  },
+  password: { id: 'login.form.password' },
+  emailPresence: {
+    id: 'login.form.email.presence',
+    //defaultMessage: 'You must enter an email to continue'
+  },
+  emailInvalid: {
+    id: 'login.form.email.invalid',
+    //defaultMessage: 'You must enter a valid email'
+  },
+  passwordPresence: {
+    id: 'login.form.password.presence',
+    defaultMessage: 'You must enter a password to continue'
+  },
+});
+
+export const LoginForm = ({ handleSubmit, error, intl }) => (
   <form onSubmit={handleSubmit}>
     {error && <strong>{error}</strong>}
     <div>
       <Field
         name="email"
-        label="Email"
+        label={intl.formatMessage(messages.email)}
         component={Input}
+        messages={messages}
         type="email"
       />
     </div>
     <div>
       <Field
         name="password"
-        label="Password"
+        label={intl.formatMessage(messages.password)}
         component={Input}
+        messages={messages}
         type="password"
       />
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit">
+      <FormattedMessage id="login.form.submit" /></button>
   </form>
 );
 
@@ -31,10 +60,11 @@ const { func, string } = PropTypes;
 
 LoginForm.propTypes = {
   handleSubmit: func.isRequired,
+  intl: intlShape.isRequired,
   error: string
 };
 
 export default reduxForm({
   form: 'login',
-  validate: constraints.validations(constraints.login)
-})(LoginForm);
+  validate: constraints.validations(constraints.login, { fullMessages: false })
+})(injectIntl(LoginForm));

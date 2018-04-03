@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bool } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import LogoutButton from '../components/session/LogoutButton';
 import Loading from '../components/common/Loading';
 
@@ -11,7 +12,7 @@ const HomePage = ({ logoutLoading }) => {
 
   return (
     <div>
-      <p>Welcome to React Redux Base</p>
+      <p><FormattedMessage id="home.welcome" /></p>
       <LogoutButton />
     </div>
   );

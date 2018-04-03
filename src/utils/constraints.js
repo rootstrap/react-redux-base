@@ -2,25 +2,25 @@ import validate from 'validate.js';
 
 export const login = {
   email: {
-    presence: true,
-    email: true
+    presence: { message: '^emailPresence' },
+    email: { message: '^emailInvalid' },
   },
   password: {
-    presence: true
+    presence: { message: '^passwordPresence' },
   }
 };
 
 export const signUp = {
   email: {
-    presence: true,
-    email: true
+    presence: { message: '^emailPresence' },
+    email: { message: '^emailInvalid' }
   },
   password: {
-    presence: true
+    presence: { message: '^passwordPresence' }
   },
   passwordConfirmation: {
-    presence: true,
-    equality: 'password'
+    presence: { message: '^confirmationPresence' },
+    equality: { attribute: 'password', message: '^confirmationEquality' }
   }
 };
 
