@@ -40,7 +40,8 @@ export const LoginForm = ({ handleSubmit, error, intl }) => (
       />
     </div>
     <button type="submit">
-      <FormattedMessage id="login.form.submit" /></button>
+      <FormattedMessage id="login.form.submit" />
+    </button>
   </form>
 );
 

@@ -8,6 +8,7 @@ import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 import locales from '../locales';
 
+// Fix for browsers that don't implement Intl by default e.g.: Safari)
 if (!window.Intl) {
   require.ensure([
     'intl',
