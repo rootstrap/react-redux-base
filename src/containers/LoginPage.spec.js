@@ -10,6 +10,7 @@ import LoginPage from './LoginPage';
 import { LoginForm } from '../components/session/LoginForm';
 import Input from '../components/common/Input';
 import { routes } from '../constants/routesPaths';
+import { withStore } from '../utils/testHelpers';
 
 describe('<LoginPage />', () => {
   let store;
@@ -22,9 +23,7 @@ describe('<LoginPage />', () => {
   beforeEach(() => {
     store = configureStore();
     subject = mount(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      withStore(<LoginPage />, store)
     );
     form = subject.find('form');
     username = subject.find('input').at(0);
