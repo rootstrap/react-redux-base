@@ -52,3 +52,4 @@
 | [Validate.js](https://validatejs.org/) | Provides a declarative way of validating javascript objects. |
 | [Humps](https://github.com/domchristie/humps) | Underscore-to-camelCase converter (and vice versa) for strings and object keys in JavaScript.|
 | [Immutable.js](https://github.com/facebook/immutable-js/) | Immutable persistent data collections for Javascript which increase efficiency and simplicity. |
+| [react-intl](https://github.com/yahoo/react-intl/) | Localization for language support. |
