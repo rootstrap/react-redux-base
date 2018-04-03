@@ -2,7 +2,6 @@ export default {
   'login.title': 'LOGIN',
   'login.signup': 'Sign up',
 
-  'login.header.text': 'Find the right legal documents for common situations.',
   'login.form.email': 'Email',
   'login.form.password': 'Password',
   'login.form.submit': 'Submit',

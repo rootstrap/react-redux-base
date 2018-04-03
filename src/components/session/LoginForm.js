@@ -11,23 +11,11 @@ import Input from '../common/Input';
 import * as constraints from '../../utils/constraints';
 
 const messages = defineMessages({
-  email: {
-    id: 'login.form.email',
-    // defaultMessage: 'About Us - Just In Case'
-  },
+  email: { id: 'login.form.email' },
   password: { id: 'login.form.password' },
-  emailPresence: {
-    id: 'login.form.email.presence',
-    //defaultMessage: 'You must enter an email to continue'
-  },
-  emailInvalid: {
-    id: 'login.form.email.invalid',
-    //defaultMessage: 'You must enter a valid email'
-  },
-  passwordPresence: {
-    id: 'login.form.password.presence',
-    defaultMessage: 'You must enter a password to continue'
-  },
+  emailPresence: { id: 'login.form.email.presence' },
+  emailInvalid: { id: 'login.form.email.invalid' },
+  passwordPresence: { id: 'login.form.password.presence' },
 });
 
 export const LoginForm = ({ handleSubmit, error, intl }) => (

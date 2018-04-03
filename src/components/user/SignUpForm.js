@@ -14,18 +14,9 @@ const messages = defineMessages({
   email: { id: 'login.form.email' },
   password: { id: 'login.form.password' },
   passConfirmation: { id: 'signup.form.passconfirmation' },
-  emailPresence: {
-    id: 'login.form.email.presence',
-    //defaultMessage: 'You must enter an email to continue'
-  },
-  emailInvalid: {
-    id: 'login.form.email.invalid',
-    //defaultMessage: 'You must enter a valid email'
-  },
-  passwordPresence: {
-    id: 'login.form.password.presence',
-    defaultMessage: 'You must enter a password to continue'
-  },
+  emailPresence: { id: 'login.form.email.presence' },
+  emailInvalid: { id: 'login.form.email.invalid' },
+  passwordPresence: { id: 'login.form.password.presence' },
   confirmationPresence: { id: 'signup.form.confirmation.presence' },
   confirmationEquality: { id: 'signup.form.confirmation.equality' },
 });
