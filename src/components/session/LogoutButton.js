@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { FormattedMessage } from 'react-intl';
 import * as sessionActions from '../../actions/sessionActions';
 
 const LogoutButton = ({ actions: { logout } }) => (
   <button onClick={logout}>
-    LOGOUT
+    <FormattedMessage id="logout.button" />
   </button>
 );
 

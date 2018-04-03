@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
 import nock from 'nock';
 import { Field } from 'redux-form';
 import { browserHistory } from 'react-router';
@@ -10,6 +9,7 @@ import LoginPage from './LoginPage';
 import { LoginForm } from '../components/session/LoginForm';
 import Input from '../components/common/Input';
 import { routes } from '../constants/routesPaths';
+import { withStore } from '../utils/testHelpers';
 
 describe('<LoginPage />', () => {
   let store;
@@ -21,11 +21,7 @@ describe('<LoginPage />', () => {
 
   beforeEach(() => {
     store = configureStore();
-    subject = mount(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
-    );
+    subject = mount(withStore(<LoginPage />, store));
     form = subject.find('form');
     username = subject.find('input').at(0);
     password = subject.find('input').at(1);

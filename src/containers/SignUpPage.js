@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link, browserHistory } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 import * as signUpActions from '../actions/signUpActions';
 import SignUpForm from '../components/user/SignUpForm';
 import { routes } from '../constants/routesPaths';
@@ -19,9 +20,11 @@ const SignUpPage = ({ actions: { signUp }, authenticated, loading }) => {
 
   return (
     <div>
-      <p>SIGN UP</p>
+      <p><FormattedMessage id="signup.title" /></p>
       <SignUpForm onSubmit={signUp} />
-      <Link to={routes.login}> Sign in </Link>
+      <Link to={routes.login}>
+        <FormattedMessage id="signup.signin" />
+      </Link>
     </div>
   );
 };
