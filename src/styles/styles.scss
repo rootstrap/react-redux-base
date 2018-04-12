@@ -1,8 +1,5 @@
-@import '~foundation-sites/scss/foundation';
 @import '~loaders.css/src/animations/ball-scale-multiple';
-
-@include foundation-everything;
-@include foundation-xy-grid-classes;
+@import 'settings';
 
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
