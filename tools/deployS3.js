@@ -1,13 +1,11 @@
 /* eslint-disable */
-import { chalkSuccess, chalkInfo } from './chalkConfig';
+import { chalkSuccess, chalkInfo, chalkError } from './chalkConfig';
+import s3 from 's3';
+import path from 'path';
+import dotenv from 'dotenv';
 
-const environment = process.argv[2];
-
-// Set the buckets for your app
-const devBucket = 's3://dev-your-app';
-const devRegion = 'dev-region';
-const prodBucket = 's3://prod-your-app';
-const prodRegion = 'prod-region';
+const environment = process.env.ENV;
+dotenv.config({ path: path.resolve(__dirname, `../.env.${environment}`) });
 
 if (environment) {
   // Get current branch from git
@@ -19,6 +17,7 @@ if (environment) {
     } else {
       const branch = stdout;
       console.log(chalkInfo(`Environment: ${environment}`));
+      console.log(chalkInfo(`Bucket to deploy: ${process.env.AWS_BUCKET}`));
       console.log(chalkInfo(`Branch you're in: ${branch}`));
 
       // Config readline
@@ -33,30 +32,34 @@ if (environment) {
         rl.close();
         if (answer === 'y') {
           console.log(chalkInfo('Deploying to AWS S3...'));
-          let bucket;
-          let region;
-          if (environment === 'staging') {
-            bucket = devBucket;
-            region = devRegion;
-          } else if (environment === 'production') {
-            bucket = prodBucket;
-            region = prodRegion;
-          } else {
-            throw new Error('Invalid environment parameter. Options are: staging and production');
+          const client = s3.createClient({
+            s3Options: {
+              accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+              secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+              region: process.env.AWS_REGION
+            }
+          });
+          const params = {
+            localDir: path.resolve(__dirname, '../dist'),
+            deleteRemoved: true,
+            s3Params: {
+              Bucket: process.env.AWS_BUCKET,
+              ACL: 'public-read'
+            }
+          };
+          const uploader = client.uploadDir(params);
+          uploader.on('error', function(err) {
+            throw new Error(err.stack);
             process.exit(1);
-          }
-          const flags = `--region ${region} --acl public-read --delete --cache-control`;
-          const deploy = require('child_process').exec;
-          deploy(`aws s3 sync dist ${bucket} ${flags} 'public, no-cache, max-age=43200'`,
-          function (err, stdout, stderr) {
-            if (err) {
-              throw new Error('ERROR(S3): problem deploying to AWS S3.');
-              process.exit(1);
-            };
-            console.log(chalkSuccess('SUCCESS: ./dist folder was deployed to AWS S3'));
+          });
+          uploader.on('end', function() {
+            console.log(chalkSuccess('\nSUCCESS: ./dist folder was deployed to AWS S3'));
           });
         }
       });
     }
   });
+} else {
+  console.error(chalkError('Failed, you must select an environment to deploy.'));
+  console.error(chalkInfo('Example: $ ENV=dev yarn deploy'));
 }

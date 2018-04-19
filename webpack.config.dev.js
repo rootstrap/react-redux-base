@@ -53,7 +53,7 @@ export default {
       }
     }),
     new Dotenv({
-      path: path.resolve(__dirname, '.env.dev'),
+      path: path.resolve(__dirname, `.env.${process.env.ENV || 'dev'}`),
       systemvars: true,
     })
   ],
