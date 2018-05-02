@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, object } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-const Input = ({ input,
+const Input = ({
+  input,
   label,
   type,
   placeholder,
-  messages,
   meta: { touched, error }
 }) => (
   <div>
@@ -15,14 +15,15 @@ const Input = ({ input,
       <input {...input} {...{ placeholder, type }} />
       {touched && error &&
         <span>
-          { messages ? <FormattedMessage {...messages[error]} /> : error}
+          <FormattedMessage
+            id={error[0] || error}
+            defaultMessage={error[0] || error}
+          />
         </span>
       }
     </div>
   </div>
 );
-
-const { string, object } = PropTypes;
 
 Input.propTypes = {
   input: object.isRequired,
@@ -30,7 +31,6 @@ Input.propTypes = {
   type: string.isRequired,
   placeholder: string,
   meta: object,
-  messages: object,
 };
 
 export default Input;

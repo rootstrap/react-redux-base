@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func, bool } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import {
   injectIntl,
@@ -7,28 +7,24 @@ import {
   defineMessages,
   FormattedMessage
 } from 'react-intl';
+
+import Loading from '../common/Loading';
 import Input from '../common/Input';
-import * as constraints from '../../utils/constraints';
+import { validations, signUp } from '../../utils/constraints';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
   password: { id: 'login.form.password' },
-  passConfirmation: { id: 'signup.form.passconfirmation' },
-  emailPresence: { id: 'login.form.email.presence' },
-  emailInvalid: { id: 'login.form.email.invalid' },
-  passwordPresence: { id: 'login.form.password.presence' },
-  confirmationPresence: { id: 'signup.form.confirmation.presence' },
-  confirmationEquality: { id: 'signup.form.confirmation.equality' },
+  passConfirmation: { id: 'signup.form.passconfirmation' }
 });
 
-const SignUpForm = ({ handleSubmit, intl }) => (
+const SignUpForm = ({ handleSubmit, submitting, intl }) => (
   <form onSubmit={handleSubmit}>
     <div>
       <Field
         name="email"
         label={intl.formatMessage(messages.email)}
         component={Input}
-        messages={messages}
         type="email"
       />
     </div>
@@ -37,7 +33,6 @@ const SignUpForm = ({ handleSubmit, intl }) => (
         name="password"
         label={intl.formatMessage(messages.password)}
         component={Input}
-        messages={messages}
         type="password"
       />
     </div>
@@ -46,24 +41,23 @@ const SignUpForm = ({ handleSubmit, intl }) => (
         name="passwordConfirmation"
         label={intl.formatMessage(messages.passConfirmation)}
         component={Input}
-        messages={messages}
         type="password"
       />
     </div>
     <button type="submit">
       <FormattedMessage id="login.form.submit" />
     </button>
+    {submitting && <Loading />}
   </form>
 );
 
-const { func } = PropTypes;
-
 SignUpForm.propTypes = {
   handleSubmit: func.isRequired,
+  submitting: bool.isRequired,
   intl: intlShape.isRequired,
 };
 
 export default reduxForm({
   form: 'signUp',
-  validate: constraints.validations(constraints.signUp, { fullMessages: false })
+  validate: validations(signUp, { fullMessages: false })
 })(injectIntl(SignUpForm));

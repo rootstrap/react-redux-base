@@ -8,15 +8,10 @@ body {
 
 .loading-wrapper {
   align-items: center;
-  background-color: $white;
   display: flex;
-  height: 100%;
+  height: 5rem;
   justify-content: center;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 999;
+  width: 5rem;
 
   // These two classes are required by react-loaders
   .loader-hidden { display: none; }
