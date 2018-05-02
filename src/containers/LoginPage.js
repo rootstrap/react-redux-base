@@ -1,16 +1,16 @@
 import React from 'react';
 import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
+import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import LoginForm from '../components/user/LoginForm';
 import { login } from '../actions/sessionActions';
-import { routes } from '../constants/routesPaths';
+import routes from '../constants/routesPaths';
 
 const LoginPage = ({ login, authenticated }) => {
   if (authenticated) {
-    browserHistory.push(routes.index);
+    return <Redirect to={routes.index} />;
   }
 
   return (

@@ -8,6 +8,9 @@ import { Iterable } from 'immutable';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import { createLogger } from 'redux-logger';
 import _ from 'lodash';
+import { routerMiddleware } from 'react-router-redux';
+
+import history from '../utils/history';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
@@ -31,7 +34,8 @@ export default function configureStore(initialState) {
     // thunk middleware can also accept an extra argument to be passed to each thunk action
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunkMiddleware,
-    logger
+    logger,
+    routerMiddleware(history)
   ];
 
   const store = createStore(rootReducer, initialState, compose(
