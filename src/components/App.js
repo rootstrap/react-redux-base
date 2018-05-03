@@ -30,8 +30,8 @@ App.propTypes = {
 };
 
 const mapState = state => ({
-  checked: state.session.checked,
-  authenticated: state.session.authenticated
+  checked: state.getIn(['session', 'checked']),
+  authenticated: state.getIn(['session', 'authenticated'])
 });
 
 export default connect(mapState)(App);

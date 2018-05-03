@@ -3329,7 +3329,7 @@ intl@1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/intl/-/intl-1.2.5.tgz#82244a2190c4e419f8371f5aa34daa3420e2abde"
 
-invariant@^2.0.0, invariant@^2.1.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
+invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -5735,12 +5735,9 @@ redux-form@6.7.0:
     lodash-es "^4.17.3"
     prop-types "^15.5.6"
 
-redux-immutable-state-invariant@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/redux-immutable-state-invariant/-/redux-immutable-state-invariant-2.0.0.tgz#2954debe7a09ceb65cbe398cff785858c8f30404"
-  dependencies:
-    invariant "^2.1.0"
-    json-stringify-safe "^5.0.1"
+redux-immutable@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
 
 redux-logger@3.0.1:
   version "3.0.1"

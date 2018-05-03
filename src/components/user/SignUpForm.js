@@ -1,6 +1,6 @@
 import React from 'react';
 import { func, bool } from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form/immutable';
 import {
   injectIntl,
   intlShape,

@@ -29,12 +29,12 @@ SignUpPage.propTypes = {
   authenticated: bool.isRequired
 };
 
-const mapStateToProps = ({ session: { authenticated } }) => ({
-  authenticated
+const mapState = state => ({
+  authenticated: state.getIn(['session', 'authenticated'])
 });
 
 const mapDispatch = dispatch => ({
-  signUp: user => dispatch(signUp(user))
+  signUp: user => dispatch(signUp(user.toJS()))
 });
 
-export default connect(mapStateToProps, mapDispatch)(SignUpPage);
+export default connect(mapState, mapDispatch)(SignUpPage);
