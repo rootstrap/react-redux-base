@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import nock from 'nock';
-import { Field } from 'redux-form';
+import { Field } from 'redux-form/immutable';
 import { sessionService } from 'redux-react-session';
 
 import configureStore from '../store/configureStore';
@@ -141,7 +141,7 @@ describe('<LoginPage />', () => {
   });
 
   describe('submit with errors from server', () => {
-    beforeEach(() => {
+    beforeEach((done) => {
       const user = {
         email: 'joe@joe.com',
         password: 'invalidPassword'
@@ -156,31 +156,25 @@ describe('<LoginPage />', () => {
       username.simulate('change', { target: { value: 'joe@joe.com' } });
       password.simulate('change', { target: { value: 'invalidPassword' } });
       form.simulate('submit');
-    });
 
-    it('should not be a valid form', (done) => {
-      // wait for changes in the redux store
+      // wait for the failure
       const unsubscribe = store.subscribe(() => {
-        if (store.getState().form.login.submitFailed) {
-          const loginForm = subject.find(LoginForm);
-          expect(loginForm.props().valid).toEqual(false);
+        if (store.getState().getIn(['form', 'login', 'submitFailed'])) {
           unsubscribe();
           done();
         }
       });
     });
 
-    it('should display the server error in the form', (done) => {
-      // wait for changes in the redux store
-      const unsubscribe = store.subscribe(() => {
-        if (store.getState().form.login.submitFailed) {
-          const generalError = subject.find('strong');
-          const error = 'Invalid login credentials. Please try again.';
-          expect(generalError.text()).toEqual(error);
-          unsubscribe();
-          done();
-        }
-      });
+    it('should not be a valid form', () => {
+      const loginForm = subject.find(LoginForm);
+      expect(loginForm.props().valid).toEqual(false);
+    });
+
+    it('should display the server error in the form', () => {
+      const generalError = subject.find('strong');
+      const error = 'Invalid login credentials. Please try again.';
+      expect(generalError.text()).toEqual(error);
     });
   });
 });

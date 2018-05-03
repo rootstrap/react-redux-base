@@ -25,4 +25,4 @@ export const signUp = {
 };
 
 export const validations = (constraints, props = {}) =>
-  data => validate(data, constraints, props) || {};
+  data => validate(data.toJS(), constraints, props) || {};

@@ -2,6 +2,8 @@ import React from 'react';
 import { string, object } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import { parseInputErrors } from '../../utils/helpers';
+
 const Input = ({
   input,
   label,
@@ -16,8 +18,8 @@ const Input = ({
       {touched && error &&
         <span>
           <FormattedMessage
-            id={error[0] || error}
-            defaultMessage={error[0] || error}
+            id={parseInputErrors(error)}
+            defaultMessage={parseInputErrors(error)}
           />
         </span>
       }
