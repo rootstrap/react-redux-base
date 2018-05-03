@@ -43,6 +43,7 @@
     "loaders.css": "0.1.2",
     "lodash": "4.17.4",
     "prop-types": "15.5.10",
+    "query-string": "6.1.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-intl": "2.4.0",
