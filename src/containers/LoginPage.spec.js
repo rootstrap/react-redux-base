@@ -2,13 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import nock from 'nock';
 import { Field } from 'redux-form';
-import { browserHistory } from 'react-router';
 import { sessionService } from 'redux-react-session';
+
 import configureStore from '../store/configureStore';
 import LoginPage from './LoginPage';
 import { LoginForm } from '../components/user/LoginForm';
 import Input from '../components/common/Input';
-import { routes } from '../constants/routesPaths';
 import { withStore } from '../utils/testHelpers';
 
 describe('<LoginPage />', () => {
@@ -28,7 +27,7 @@ describe('<LoginPage />', () => {
 
     sessionService.saveUser = jest.fn(() => Promise.resolve());
     sessionService.saveSession = jest.fn(() => Promise.resolve());
-    sessionService.loadSession = jest.fn(() => Promise.resolve());
+    sessionService.loadSession = jest.fn(() => Promise.reject(new Error('Session not found')));
   });
 
   it('should display an email input', () => {
@@ -63,8 +62,6 @@ describe('<LoginPage />', () => {
       username.simulate('change', { target: { value: 'joe@joe.com' } });
       password.simulate('change', { target: { value: 'password' } });
       form.simulate('submit');
-
-      browserHistory.push = jest.fn(() => Promise.resolve());
     });
 
     it('should call redux-session-service to save the user data', (done) => {
@@ -82,14 +79,6 @@ describe('<LoginPage />', () => {
         expect(sessionService.saveUser).toHaveBeenCalledWith(userResponse.user);
         done();
         return Promise.resolve();
-      });
-    });
-
-    it('should redirect to the home page', (done) => {
-      // wait for the call to redirect
-      browserHistory.push = jest.fn(() => {
-        expect(browserHistory.push).toHaveBeenCalledWith(routes.index);
-        done();
       });
     });
   });

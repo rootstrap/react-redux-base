@@ -5,7 +5,7 @@ import { sessionReducer } from 'redux-react-session';
 
 const rootReducer = combineReducers({
   form: formReducer,
-  routing: routerReducer,
+  router: routerReducer,
   session: sessionReducer
 });
 

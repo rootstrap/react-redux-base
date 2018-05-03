@@ -1,16 +1,16 @@
 import React from 'react';
 import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
+import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import { signUp } from '../actions/userActions';
 import SignUpForm from '../components/user/SignUpForm';
-import { routes } from '../constants/routesPaths';
+import routes from '../constants/routesPaths';
 
 const SignUpPage = ({ signUp, authenticated }) => {
   if (authenticated) {
-    browserHistory.push(routes.index);
+    return <Redirect to={routes.index} />;
   }
 
   return (
