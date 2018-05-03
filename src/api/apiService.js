@@ -17,7 +17,7 @@ const saveSessionHeaders = (headers) => {
 const handleErrors = response =>
   new Promise((resolve, reject) => {
     if (!response) {
-      reject({ message: 'No response returned from fetch' });
+      reject(new Error({ message: 'No response returned from fetch' }));
       return;
     }
 
@@ -39,7 +39,7 @@ const handleErrors = response =>
       .then((json) => {
         const error = json || { message: response.statusText };
         reject(error);
-      }).catch(() => reject({ message: 'Response not JSON' }));
+      }).catch(() => reject(new Error({ message: 'Response not JSON' })));
   });
 
 const getResponseBody = (response) => {
@@ -51,7 +51,6 @@ const getResponseBody = (response) => {
 };
 
 class Api {
-
   performRequest(uri, apiUrl, requestData = {}) {
     const url = `${apiUrl}${uri}`;
     return new Promise((resolve, reject) => {
@@ -65,13 +64,13 @@ class Api {
 
   addTokenHeader(requestData) {
     return sessionService.loadSession()
-    .then((session) => {
-      const { token, client, uid } = session;
-      requestData.headers['access-token'] = token;
-      requestData.headers.client = client;
-      requestData.headers.uid = uid;
-      return requestData;
-    }).catch(() => requestData);
+      .then((session) => {
+        const { token, client, uid } = session;
+        requestData.headers['access-token'] = token;
+        requestData.headers.client = client;
+        requestData.headers.uid = uid;
+        return requestData;
+      }).catch(() => requestData);
   }
 
   get(uri, apiUrl = process.env.API_URL) {
@@ -82,7 +81,7 @@ class Api {
       }
     };
     return this.addTokenHeader(requestData)
-    .then(data => this.performRequest(uri, apiUrl, data));
+      .then(data => this.performRequest(uri, apiUrl, data));
   }
 
   post(uri, data, apiUrl = process.env.API_URL) {
@@ -96,7 +95,7 @@ class Api {
       body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
-    .then(data => this.performRequest(uri, apiUrl, data));
+      .then(data => this.performRequest(uri, apiUrl, data));
   }
 
   delete(uri, data, apiUrl = process.env.API_URL) {
@@ -110,7 +109,7 @@ class Api {
       body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
-    .then(data => this.performRequest(uri, apiUrl, data));
+      .then(data => this.performRequest(uri, apiUrl, data));
   }
 
   put(uri, data, apiUrl = process.env.API_URL) {
@@ -124,7 +123,7 @@ class Api {
       body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
-    .then(data => this.performRequest(uri, apiUrl, data));
+      .then(data => this.performRequest(uri, apiUrl, data));
   }
 
   patch(uri, data, apiUrl = process.env.API_URL) {
@@ -138,7 +137,7 @@ class Api {
       body: JSON.stringify(decamelizeData)
     };
     return this.addTokenHeader(requestData)
-    .then(data => this.performRequest(uri, apiUrl, data));
+      .then(data => this.performRequest(uri, apiUrl, data));
   }
 }
 
