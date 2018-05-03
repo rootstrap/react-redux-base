@@ -1,21 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Link, browserHistory } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import * as signUpActions from '../actions/signUpActions';
+
+import { signUp } from '../actions/userActions';
 import SignUpForm from '../components/user/SignUpForm';
 import { routes } from '../constants/routesPaths';
-import Loading from '../components/common/Loading';
 
-const SignUpPage = ({ actions: { signUp }, authenticated, loading }) => {
+const SignUpPage = ({ signUp, authenticated }) => {
   if (authenticated) {
     browserHistory.push(routes.index);
-  }
-
-  if (loading) {
-    return <Loading />;
   }
 
   return (
@@ -29,21 +24,17 @@ const SignUpPage = ({ actions: { signUp }, authenticated, loading }) => {
   );
 };
 
-const { bool, object } = PropTypes;
-
 SignUpPage.propTypes = {
-  actions: object.isRequired,
-  authenticated: bool.isRequired,
-  loading: bool.isRequired,
+  signUp: func.isRequired,
+  authenticated: bool.isRequired
 };
 
-const mapStateToProps = ({ session: { authenticated }, auth: { loading } }) => ({
-  authenticated,
-  loading,
+const mapStateToProps = ({ session: { authenticated } }) => ({
+  authenticated
 });
 
 const mapDispatch = dispatch => ({
-  actions: bindActionCreators(signUpActions, dispatch)
+  signUp: user => dispatch(signUp(user))
 });
 
 export default connect(mapStateToProps, mapDispatch)(SignUpPage);

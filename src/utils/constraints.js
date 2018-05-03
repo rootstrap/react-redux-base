@@ -2,27 +2,27 @@ import validate from 'validate.js';
 
 export const login = {
   email: {
-    presence: { message: '^emailPresence' },
-    email: { message: '^emailInvalid' },
+    presence: { message: 'email.presence' },
+    email: { message: 'email.invalid' },
   },
   password: {
-    presence: { message: '^passwordPresence' },
+    presence: { message: 'password.presence' },
   }
 };
 
 export const signUp = {
   email: {
-    presence: { message: '^emailPresence' },
-    email: { message: '^emailInvalid' }
+    presence: { message: 'email.presence' },
+    email: { message: 'email.invalid' }
   },
   password: {
-    presence: { message: '^passwordPresence' }
+    presence: { message: 'password.presence' }
   },
   passwordConfirmation: {
-    presence: { message: '^confirmationPresence' },
-    equality: { attribute: 'password', message: '^confirmationEquality' }
+    presence: { message: 'passwordConfirmation.presence' },
+    equality: { attribute: 'password', message: 'passwordConfirmation.equality' }
   }
 };
 
-export const validations = constraints =>
-  data => validate(data, constraints) || {};
+export const validations = (constraints, props = {}) =>
+  data => validate(data, constraints, props) || {};

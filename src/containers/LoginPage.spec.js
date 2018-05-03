@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 import { sessionService } from 'redux-react-session';
 import configureStore from '../store/configureStore';
 import LoginPage from './LoginPage';
-import { LoginForm } from '../components/session/LoginForm';
+import { LoginForm } from '../components/user/LoginForm';
 import Input from '../components/common/Input';
 import { routes } from '../constants/routesPaths';
 import { withStore } from '../utils/testHelpers';

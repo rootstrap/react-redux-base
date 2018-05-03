@@ -1,21 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Link, browserHistory } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import * as sessionActions from '../actions/sessionActions';
-import LoginForm from '../components/session/LoginForm'; // eslint-disable-line import/no-named-as-default
-import Loading from '../components/common/Loading';
+
+import LoginForm from '../components/user/LoginForm';
+import { login } from '../actions/sessionActions';
 import { routes } from '../constants/routesPaths';
 
-const LoginPage = ({ actions: { login }, authenticated, loading }) => {
+const LoginPage = ({ login, authenticated }) => {
   if (authenticated) {
     browserHistory.push(routes.index);
-  }
-
-  if (loading) {
-    return <Loading />;
   }
 
   return (
@@ -29,21 +24,17 @@ const LoginPage = ({ actions: { login }, authenticated, loading }) => {
   );
 };
 
-const { bool, object } = PropTypes;
-
 LoginPage.propTypes = {
-  actions: object.isRequired,
+  login: func.isRequired,
   authenticated: bool.isRequired,
-  loading: bool.isRequired,
 };
 
-const mapStateToProps = ({ session: { authenticated }, auth: { loading } }) => ({
+const mapStateToProps = ({ session: { authenticated } }) => ({
   authenticated,
-  loading,
 });
 
 const mapDispatch = dispatch => ({
-  actions: bindActionCreators(sessionActions, dispatch)
+  login: user => dispatch(login(user))
 });
 
 export default connect(mapStateToProps, mapDispatch)(LoginPage);
