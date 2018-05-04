@@ -11,8 +11,9 @@ export default function configureStore(initialState) {
     routerMiddleware(history)
   ];
 
-  return createStore(rootReducer, initialState, compose(
-    applyMiddleware(...middewares)
-    )
+  return createStore(
+    rootReducer,
+    initialState,
+    compose(applyMiddleware(...middewares))
   );
 }

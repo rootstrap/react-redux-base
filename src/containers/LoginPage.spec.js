@@ -55,8 +55,8 @@ describe('<LoginPage />', () => {
       };
 
       nock(process.env.API_URL)
-      .post('/users/sign_in', { user })
-      .reply(200, userResponse);
+        .post('/users/sign_in', { user })
+        .reply(200, userResponse);
 
       // load valid data to the form
       username.simulate('change', { target: { value: 'joe@joe.com' } });
@@ -149,8 +149,8 @@ describe('<LoginPage />', () => {
       const serverError = { error: 'Invalid login credentials. Please try again.' };
 
       nock(process.env.API_URL)
-      .post('/users/sign_in', { user })
-      .reply(401, serverError);
+        .post('/users/sign_in', { user })
+        .reply(401, serverError);
 
       // load invalid data to the form
       username.simulate('change', { target: { value: 'joe@joe.com' } });
@@ -161,6 +161,7 @@ describe('<LoginPage />', () => {
       const unsubscribe = store.subscribe(() => {
         if (store.getState().getIn(['form', 'login', 'submitFailed'])) {
           unsubscribe();
+          subject.update();
           done();
         }
       });

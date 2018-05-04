@@ -1,6 +1,5 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 
@@ -10,6 +9,7 @@ export default {
   },
   devtool: 'eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     // activate HMR for React
 
@@ -18,7 +18,8 @@ export default {
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
   ],
-  target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
+  target: 'web',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
@@ -32,25 +33,13 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
+    new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',
       minify: {
         removeComments: true,
         collapseWhitespace: true
       },
       inject: true
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: false,
-      debug: true,
-      noInfo: true, // set to false to see a list of every file being bundled.
-      options: {
-        sassLoader: {
-          includePaths: [path.resolve(__dirname, 'src', 'scss')]
-        },
-        context: '/',
-        postcss: () => [autoprefixer],
-      }
     }),
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'dev'}`),
@@ -59,7 +48,8 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/,
+      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -75,7 +65,32 @@ export default {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' },
       { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
-      { test: /(\.css|\.scss)$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] }
+      {
+        test: /(\.css|\.scss)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              sourceMap: true
+            }
+          }
+        ]
+      }
     ]
   }
 };
