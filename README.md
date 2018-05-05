@@ -5,6 +5,7 @@
 2. **Build the app**. `yarn build` or `npm run build`
 3. **Lint the app**. `yarn lint` or `npm run lint`
 4. **Test the app**. `yarn test` or `npm run test`
+5. **Run the app with SSR**. `yarn ssr` or `npm run ssr`
 
 ## Getting Started
 1. Clone the repository
@@ -32,9 +33,22 @@ For example: `ENV=staging yarn build`
 
 **Install [Yarn](https://yarnpkg.com/en/docs/install)** - Fast, reliable, and secure package manager
 
+## Server Side Rendering
+This base is already set up with a Node server for SSR.
+
+The command `yarn ssr` will compile the server and client.
+
+### Fetching data
+The server is prepared to fetch data directly from the backend before rendering the HTML.
+
 ## Deploying to AWS S3
 1. **Add the environment variables for each .env** AWS_BUCKET, AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 2. **Run the command to deploy with an environment** `ENV=your_environment yarn deploy`
+
+## Deploying to Heroku
+1. **Add all the environment variables in .env to Heroku**
+2. **Add the env variable NPM_CONFIG_PRODUCTION=false to Heroku**
+2. **Deploy your branch to Heroku**
 
 ## Technologies
 

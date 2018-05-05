@@ -52,6 +52,7 @@
     "comma-spacing": [1, { "before": false, "after": true }],
     "comma-style": 1,
     "key-spacing": 1,
+    "no-empty": [1, { "allowEmptyCatch": true }],
     "no-multiple-empty-lines": [1, { "max": 1 }],
     "arrow-spacing": 1,
     "no-const-assign": 1,

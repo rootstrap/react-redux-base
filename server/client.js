@@ -1,6 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
+import Immutable from 'immutable';
 import { sessionService } from 'redux-react-session';
 import { AppContainer } from 'react-hot-loader';
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -8,13 +9,13 @@ import includes from 'lodash/includes';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 
-import configureStore from './store/configureStore';
-import App from './components/App';
-import locales from './locales';
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from './constants/constants';
-import './styles/styles.scss';
+import configureStore from '../src/store/configureStore';
+import App from '../src/components/App';
+import locales from '../src/locales';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../src/constants/constants';
+import '../src/styles/styles.scss';
 
-require('./favicon.ico'); // Tell webpack to load favicon.ico
+require('../src/favicon.ico'); // Tell webpack to load favicon.ico
 
 // Fix for browsers that don't implement Intl by default e.g.: Safari)
 if (!window.Intl) {
@@ -35,12 +36,16 @@ const supportedUserLocale = includes(SUPPORTED_LANGUAGES, usersLocale);
 const locale = supportedUserLocale ? usersLocale : DEFAULT_LANGUAGE;
 const messages = locales[locale];
 
-const store = configureStore();
+// Grab the state from a global variable injected into the server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
 
-sessionService.initSessionService(store);
+const store = configureStore(Immutable.fromJS(preloadedState));
+
+sessionService.initSessionService(store, { driver: 'COOKIES' });
 
 const renderApp = (Component) => {
-  render(
+  hydrate(
     <IntlProvider
       locale={locale}
       messages={messages}
@@ -59,7 +64,5 @@ const renderApp = (Component) => {
 renderApp(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    renderApp(App);
-  });
+  module.hot.accept();
 }
