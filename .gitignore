@@ -42,3 +42,6 @@ dist
 .env.dev
 .env.staging
 .env.prod
+
+# Server build
+server/build

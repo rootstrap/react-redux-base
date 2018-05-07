@@ -2,3 +2,4 @@
 node_modules/*
 tools/*
 src/webpack-public-path.js
+server/build

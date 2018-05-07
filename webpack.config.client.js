@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import AssetsPlugin from 'assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import 'babel-polyfill';
@@ -17,44 +16,29 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
+  entry: ['babel-polyfill', path.resolve(__dirname, 'server/client')],
   target: 'web',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'server/build/public'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: 'client.js'
   },
   plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
-
     new webpack.DefinePlugin(GLOBALS),
 
-    // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[md5:contenthash:hex:20].css'),
-
-    // Generate HTML file that contains references to generated bundles.
-    new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      },
-      inject: true
-    }),
+    // Generate an external css file
+    new ExtractTextPlugin('styles.css'),
 
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
+    }),
+
+    // Output our JS and CSS files in a manifest file called assets.json
+    new AssetsPlugin({
+      path: path.resolve(__dirname, 'server/build'),
+      filename: 'assets.json',
     })
   ],
   module: {

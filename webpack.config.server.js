@@ -1,14 +1,14 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import webpackNodeExternals from 'webpack-node-externals';
 import Dotenv from 'dotenv-webpack';
 import 'babel-polyfill';
 
 const GLOBALS = {
+  window: {},
   'process.env.NODE_ENV': JSON.stringify('production'),
-  'process.env.BROWSER': true,
+  'process.env.BROWSER': false,
   __DEV__: false
 };
 
@@ -17,46 +17,27 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
-  target: 'web',
+  entry: ['babel-polyfill', path.resolve(__dirname, 'server')],
+  target: 'node',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'server/build'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: 'server.js'
   },
   plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
-
     new webpack.DefinePlugin(GLOBALS),
 
-    // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[md5:contenthash:hex:20].css'),
-
-    // Generate HTML file that contains references to generated bundles.
-    new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      },
-      inject: true
-    }),
+    new ExtractTextPlugin('styles.css'),
 
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
     })
   ],
+  externals: [webpackNodeExternals({
+    whitelist: ['actioncable']
+  })],
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
