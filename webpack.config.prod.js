@@ -4,6 +4,7 @@ import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
+import CompressionPlugin from 'compression-webpack-plugin';
 import 'babel-polyfill';
 
 const GLOBALS = {
@@ -50,6 +51,14 @@ export default {
         minifyURLs: true
       },
       inject: true
+    }),
+
+    new CompressionPlugin({
+      asset: '[path]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.8
     }),
 
     new Dotenv({
