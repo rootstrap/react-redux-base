@@ -1,11 +1,7 @@
 language: node_js
 cache: yarn
 node_js:
-  - "6"
-  - "5"
-  - "4"
+  - "8"
 script:
-  - yarn run lint
-  - yarn run test:CI
-after_success:
-  - yarn run test:cover:CI
+  - yarn lint
+  - yarn test

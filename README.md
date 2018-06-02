@@ -1,5 +1,10 @@
 # React Redux Base
 
+[![CircleCI](https://circleci.com/gh/rootstrap/react-redux-base.svg?style=shield)](https://circleci.com/gh/rootstrap/react-redux-base)
+[![Dependency Status](https://img.shields.io/david/rootstrap/react-redux-base.svg)](https://david-dm.org/rootstrap/react-redux-base)
+[![License](https://img.shields.io/github/license/rootstrap/react-redux-base.svg)](https://github.com/rootstrap/react-redux-base/blob/master/LICENSE.md)
+
+
 ## Commands
 1. **Run the app**. `yarn start` or `npm start`
 2. **Build the app**. `yarn build` or `npm run build`
@@ -70,3 +75,13 @@ The server is prepared to fetch data directly from the backend before rendering 
 | [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch) |  Is a Promise-based mechanism for programatically making web requests in the browser. |
 | [Immutable.js](https://github.com/facebook/immutable-js/) | Immutable persistent data collections for Javascript which increase efficiency and simplicity. |
 | [React Intl](https://github.com/yahoo/react-intl/) | Localization for language support. |
+
+## License
+
+React Redux Base is available under the MIT license. See the LICENSE file for more info.
+
+## Credits
+
+**React Redux Base** is maintained by [Rootstrap](http://www.rootstrap.com) with the help of our [contributors](https://github.com/rootstrap/react-redux-base/contributors).
+
+[<img src="https://s3-us-west-1.amazonaws.com/rootstrap.com/img/rs.png" width="100"/>](http://www.rootstrap.com)
