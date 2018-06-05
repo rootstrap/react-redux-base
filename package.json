@@ -1,7 +1,7 @@
 {
   "name": "react_redux_base",
   "version": "0.1.0",
-  "description": "",
+  "description": "Rootstrap React Redux Base",
   "engines": {
     "npm": ">4",
     "node": ">6"
@@ -41,7 +41,7 @@
     "intl": "1.2.5",
     "isomorphic-fetch": "2.2.1",
     "loaders.css": "0.1.2",
-    "lodash": "4.17.4",
+    "lodash": "4.17.10",
     "prop-types": "15.6.1",
     "query-string": "6.1.0",
     "react": "16.3.2",
@@ -129,7 +129,15 @@
     },
     "setupTestFrameworkScriptFile": "<rootDir>/tools/testSetup.js"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "redux",
+    "base",
+    "starter",
+    "kit",
+    "rootstrap",
+    "boilerplate"
+  ],
   "repository": {
     "type": "git",
     "url": ""
