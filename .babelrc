@@ -1,12 +1,12 @@
 {
   "presets": [
-    "react",
-    "stage-1",
     [
       "env", {
         "targets": {}
       }
-    ]
+    ],
+    "react",
+    "stage-1"
   ],
   "env": {
     "production": {

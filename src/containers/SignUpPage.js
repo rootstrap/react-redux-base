@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
@@ -8,26 +8,30 @@ import { signUp } from '../actions/userActions';
 import SignUpForm from '../components/user/SignUpForm';
 import routes from '../constants/routesPaths';
 
-const SignUpPage = ({ signUp, authenticated }) => {
-  if (authenticated) {
-    return <Redirect to={routes.index} />;
+class SignUpPage extends PureComponent {
+  static propTypes = {
+    signUp: func.isRequired,
+    authenticated: bool.isRequired
   }
 
-  return (
-    <div>
-      <p><FormattedMessage id="signup.title" /></p>
-      <SignUpForm onSubmit={signUp} />
-      <Link to={routes.login}>
-        <FormattedMessage id="signup.signin" />
-      </Link>
-    </div>
-  );
-};
+  render() {
+    const { signUp, authenticated } = this.props;
 
-SignUpPage.propTypes = {
-  signUp: func.isRequired,
-  authenticated: bool.isRequired
-};
+    if (authenticated) {
+      return <Redirect to={routes.index} />;
+    }
+
+    return (
+      <div>
+        <p><FormattedMessage id="signup.title" /></p>
+        <SignUpForm onSubmit={signUp} />
+        <Link to={routes.login}>
+          <FormattedMessage id="signup.signin" />
+        </Link>
+      </div>
+    );
+  }
+}
 
 const mapState = state => ({
   authenticated: state.getIn(['session', 'authenticated'])
