@@ -1,5 +1,6 @@
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import AssetsPlugin from 'assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
@@ -22,13 +23,21 @@ export default {
   output: {
     path: path.resolve(__dirname, '../server/build/public'),
     publicPath: '/',
-    filename: 'client.js'
+    filename: '[name].[chunkhash].js'
+  },
+  optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
+    ]
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
 
-    // Generate an external css file
-    new ExtractTextPlugin('styles.css'),
+    // Generate an external css file with a hash in the filename
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+    }),
 
     new Dotenv({
       path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
@@ -52,31 +61,30 @@ export default {
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
       {
         test: /(\.css|\.scss)$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-                sourceMap: true
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
-            }, {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, '../src', 'scss')],
-                sourceMap: true
-              }
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              sourceMap: true
             }
-          ]
-        })
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, '../src', 'scss')],
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   }

@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpackNodeExternals from 'webpack-node-externals';
 import Dotenv from 'dotenv-webpack';
@@ -28,7 +28,10 @@ export default {
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
 
-    new ExtractTextPlugin('styles.css'),
+    // Generate an external css file
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
 
     new Dotenv({
       path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
@@ -49,31 +52,30 @@ export default {
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
       {
         test: /(\.css|\.scss)$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-                sourceMap: true
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
-            }, {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, '../src', 'scss')],
-                sourceMap: true
-              }
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              sourceMap: true
             }
-          ]
-        })
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, '../src', 'scss')],
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   }
