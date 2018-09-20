@@ -18,11 +18,11 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
+  entry: ['babel-polyfill', path.resolve(__dirname, '../src/index')],
   target: 'web',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
@@ -57,12 +57,12 @@ export default {
       asset: '[path]',
       algorithm: 'gzip',
       test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8
+      threshold: 0,
+      minRatio: 2,
     }),
 
     new Dotenv({
-      path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
     })
   ],
@@ -96,7 +96,7 @@ export default {
             }, {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, 'src', 'scss')],
+                includePaths: [path.resolve(__dirname, '../src', 'scss')],
                 sourceMap: true
               }
             }

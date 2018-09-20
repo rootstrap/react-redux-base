@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import opn from 'opn';
-import config from '../webpack.config.dev';
+import config from '../webpack/webpack.config.dev';
 import { chalkInfo } from './chalkConfig';
 
 const port = 8000;

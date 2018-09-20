@@ -1,14 +1,13 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import AssetsPlugin from 'assets-webpack-plugin';
 import path from 'path';
-import webpackNodeExternals from 'webpack-node-externals';
 import Dotenv from 'dotenv-webpack';
 import 'babel-polyfill';
 
 const GLOBALS = {
-  window: {},
   'process.env.NODE_ENV': JSON.stringify('production'),
-  'process.env.BROWSER': false,
+  'process.env.BROWSER': true,
   __DEV__: false
 };
 
@@ -17,27 +16,31 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json']
   },
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, 'server')],
-  target: 'node',
+  entry: ['babel-polyfill', path.resolve(__dirname, '../server/client')],
+  target: 'web',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'server/build'),
+    path: path.resolve(__dirname, '../server/build/public'),
     publicPath: '/',
-    filename: 'server.js'
+    filename: 'client.js'
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
 
+    // Generate an external css file
     new ExtractTextPlugin('styles.css'),
 
     new Dotenv({
-      path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
+    }),
+
+    // Output our JS and CSS files in a manifest file called assets.json
+    new AssetsPlugin({
+      path: path.resolve(__dirname, '../server/build'),
+      filename: 'assets.json',
     })
   ],
-  externals: [webpackNodeExternals({
-    whitelist: ['actioncable']
-  })],
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
@@ -68,7 +71,7 @@ export default {
             }, {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, 'src', 'scss')],
+                includePaths: [path.resolve(__dirname, '../src', 'scss')],
                 sourceMap: true
               }
             }
