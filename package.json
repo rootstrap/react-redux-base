@@ -16,7 +16,7 @@
     "heroku-postbuild": "npm run build:client && npm run build:server",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
-    "lint:code": "eslint webpack.config.* src tools server --color",
+    "lint:code": "eslint webpack/webpack.config.* src tools server --color",
     "lint:style": "stylelint \"src/styles/**/*.scss\"",
     "lint": "npm run lint:code && npm run lint:style",
     "clean-dist": "npm run remove-dist && mkdir dist",
