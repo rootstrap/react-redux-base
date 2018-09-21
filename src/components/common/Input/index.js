@@ -2,7 +2,7 @@ import React from 'react';
 import { string, object } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { parseInputErrors } from '../../utils/helpers';
+import { parseInputErrors } from '../../../utils/helpers';
 
 const Input = ({
   input,

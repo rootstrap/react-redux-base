@@ -8,9 +8,9 @@ import {
   FormattedMessage
 } from 'react-intl';
 
-import Loading from '../common/Loading';
-import Input from '../common/Input';
-import { validations, login } from '../../utils/constraints';
+import Loading from '../../common/Loading';
+import Input from '../../common/Input';
+import { validations, login } from '../../../utils/constraints';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },

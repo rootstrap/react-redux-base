@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
-import { logout } from '../../actions/sessionActions';
+import { logout } from '../../../actions/sessionActions';
 
 const LogoutButton = ({ logout }) => (
   <button onClick={logout}>

@@ -4,11 +4,11 @@ import nock from 'nock';
 import { Field } from 'redux-form/immutable';
 import { sessionService } from 'redux-react-session';
 
-import configureStore from '../store/configureStore';
-import LoginPage from './LoginPage';
-import { LoginForm } from '../components/user/LoginForm';
-import Input from '../components/common/Input';
-import { withStore } from '../utils/testHelpers';
+import configureStore from '../../store/configureStore';
+import LoginPage from '../LoginPage';
+import { LoginForm } from '../../components/user/LoginForm';
+import Input from '../../components/common/Input';
+import { withStore } from '../../utils/testHelpers';
 
 describe('<LoginPage />', () => {
   let store;

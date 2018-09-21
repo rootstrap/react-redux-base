@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import LoginForm from '../components/user/LoginForm';
-import { login } from '../actions/sessionActions';
-import routes from '../constants/routesPaths';
+import LoginForm from '../../components/user/LoginForm';
+import { login } from '../../actions/sessionActions';
+import routes from '../../constants/routesPaths';
 
 const LoginPage = ({ login, authenticated }) => {
   if (authenticated) {
