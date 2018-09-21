@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import { sessionService } from 'redux-react-session';
 import humps from 'humps';
-import routes from '../constants/routesPaths';
+
+import routes from 'constants/routesPaths';
 
 const saveSessionHeaders = (headers) => {
   if (headers.get('access-token')) {

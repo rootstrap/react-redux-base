@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Status from '../components/routes/Status';
+import Status from 'components/routes/Status';
 
 const NotFoundPage = () => (
   <Status code={404}>

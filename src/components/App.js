@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import history from '../utils/history';
-import RouteFromPath from './routes/RouteFromPath';
+import history from 'utils/history';
+import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 
 class App extends PureComponent {

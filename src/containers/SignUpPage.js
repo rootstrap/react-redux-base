@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import { signUp } from '../actions/userActions';
-import SignUpForm from '../components/user/SignUpForm';
-import routes from '../constants/routesPaths';
+import { signUp } from 'actions/userActions';
+import SignUpForm from 'components/user/SignUpForm';
+import routes from 'constants/routesPaths';
 
 class SignUpPage extends PureComponent {
   static propTypes = {

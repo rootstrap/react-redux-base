@@ -9,11 +9,11 @@ import includes from 'lodash/includes';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 
-import configureStore from '../src/store/configureStore';
-import App from '../src/components/App';
-import locales from '../src/locales';
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../src/constants/constants';
-import '../src/styles/styles.scss';
+import configureStore from 'store/configureStore';
+import App from 'components/App';
+import locales from 'locales';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
+import 'styles/styles.scss';
 
 require('../src/favicon.ico'); // Tell webpack to load favicon.ico
 

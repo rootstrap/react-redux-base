@@ -3,6 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 
+import resolve from './shared/resolve';
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development'),
   'process.env.BROWSER': true,
@@ -10,9 +12,7 @@ const GLOBALS = {
 };
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
+  resolve,
   devtool: 'eval-source-map',
   entry: [
     'babel-polyfill',

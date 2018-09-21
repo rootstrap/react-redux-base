@@ -10,14 +10,14 @@ import { matchRoutes } from 'react-router-config';
 import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
 
+import locales from 'locales';
+import configureStore from 'store/configureStore.prod';
+import routesPaths from 'constants/routesPaths';
+import { applyQueryParams } from 'utils/helpers';
 import App from './_app';
 import routes from '../src/routes';
 import Doc from './_document';
-import configureStore from '../src/store/configureStore.prod';
-import locales from '../src/locales';
 import { getLanguageFromHeader } from './helpers';
-import { applyQueryParams } from '../src/utils/helpers';
-import routesPaths from '../src/constants/routesPaths';
 
 const assets = require('./build/assets.json'); // eslint-disable-line import/no-unresolved
 

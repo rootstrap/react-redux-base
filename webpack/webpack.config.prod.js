@@ -8,6 +8,8 @@ import Dotenv from 'dotenv-webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
 import 'babel-polyfill';
 
+import resolve from './shared/resolve';
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.BROWSER': true,
@@ -15,9 +17,7 @@ const GLOBALS = {
 };
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
+  resolve,
   devtool: 'source-map',
   entry: ['babel-polyfill', path.resolve(__dirname, '../src/index')],
   target: 'web',
