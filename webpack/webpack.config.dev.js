@@ -3,6 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 
+import resolve from './shared/resolve';
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development'),
   'process.env.BROWSER': true,
@@ -10,21 +12,19 @@ const GLOBALS = {
 };
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
+  resolve,
   devtool: 'eval-source-map',
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'src/index.js')
+    path.resolve(__dirname, '../src/index.js')
   ],
   target: 'web',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -42,7 +42,7 @@ export default {
       inject: true
     }),
     new Dotenv({
-      path: path.resolve(__dirname, `.env.${process.env.ENV || 'dev'}`),
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'dev'}`),
       systemvars: true,
     })
   ],
@@ -85,7 +85,7 @@ export default {
           }, {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              includePaths: [path.resolve(__dirname, '../src', 'scss')],
               sourceMap: true
             }
           }

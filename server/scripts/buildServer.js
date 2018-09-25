@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import webpack from 'webpack';
-import serverConfig from '../../webpack.config.server';
+import serverConfig from '../../webpack/webpack.config.server';
 import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from '../../tools/chalkConfig';
 
 process.env.NODE_ENV = 'production';

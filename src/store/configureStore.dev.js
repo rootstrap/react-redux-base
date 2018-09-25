@@ -9,8 +9,8 @@ import { createLogger } from 'redux-logger';
 import _ from 'lodash';
 import { routerMiddleware } from 'react-router-redux';
 
-import history from '../utils/history';
-import rootReducer from '../reducers';
+import history from 'utils/history';
+import rootReducer from 'reducers';
 
 export default function configureStore(initialState) {
   const logger = createLogger({

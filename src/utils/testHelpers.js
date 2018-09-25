@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
 
-import locales from '../locales';
+import locales from 'locales';
 
 const messages = locales.en;
 
