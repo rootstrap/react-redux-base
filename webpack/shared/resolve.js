@@ -3,15 +3,17 @@ import path from 'path';
 export default {
   extensions: ['*', '.js', '.jsx', '.json'],
   alias: {
-    actions: path.resolve(__dirname, '../../src/actions'),
-    api: path.resolve(__dirname, '../../src/api'),
-    components: path.resolve(__dirname, '../../src/components'),
-    constants: path.resolve(__dirname, '../../src/constants'),
+    api: path.resolve(__dirname, '../../src/common/api'),
+    components: path.resolve(__dirname, '../../src/common/components'),
+    constants: path.resolve(__dirname, '../../src/common/constants'),
     containers: path.resolve(__dirname, '../../src/containers'),
-    locales: path.resolve(__dirname, '../../src/locales'),
-    reducers: path.resolve(__dirname, '../../src/reducers'),
-    store: path.resolve(__dirname, '../../src/store'),
-    styles: path.resolve(__dirname, '../../src/styles'),
-    utils: path.resolve(__dirname, '../../src/utils')
+    locales: path.resolve(__dirname, '../../src/common/locales'),
+    utils: path.resolve(__dirname, '../../src/common/utils'),
+    assets: path.resolve(__dirname, '../../src/common/assets'),
+    routes: path.resolve(__dirname, '../../src/common/routes'),
+    modules: path.resolve(__dirname, '../../src/state/modules'),
+    store: path.resolve(__dirname, '../../src/state/store'),
+    features: path.resolve(__dirname, '../../src/features'),
+    styles: path.resolve(__dirname, '../../src/styles')
   }
 };

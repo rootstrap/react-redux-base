@@ -14,7 +14,7 @@ import locales from 'locales';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
 import 'styles/styles.scss';
 
-require('./favicon.ico'); // Tell webpack to load favicon.ico
+require('assets/favicon.ico'); // Tell webpack to load favicon.ico
 
 // Fix for browsers that don't implement Intl by default e.g.: Safari)
 if (!window.Intl) {
@@ -59,7 +59,7 @@ const renderApp = (Component) => {
 renderApp(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('components/App', () => {
     renderApp(App);
   });
 }

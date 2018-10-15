@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import RouteFromPath from 'components/routes/RouteFromPath';
-import routes from '../src/routes';
+import RouteFromPath from 'routes/components/RouteFromPath';
+import routes from '../src/common/routes';
 
 const App = ({ authenticated, checked }) => (
   <Fragment>

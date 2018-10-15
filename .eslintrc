@@ -103,7 +103,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src", "src/common", "src/state"]
       }
     }
   }
