@@ -4,9 +4,11 @@ import { sessionService } from 'redux-react-session';
 import sessionApi from 'api/sessionApi';
 
 export const signUp = user =>
-  () =>
-    sessionApi.signUp({ user }).then(({ user }) => {
-      sessionService.saveUser(user);
-    }).catch((err) => {
+  async () => {
+    try {
+      const response = await sessionApi.signUp({ user });
+      sessionService.saveUser(response.user);
+    } catch (err) {
       throw new SubmissionError(err.errors);
-    });
+    }
+  };
