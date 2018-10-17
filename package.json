@@ -123,14 +123,18 @@
     "webpack-dev-middleware": "3.1.3",
     "webpack-hot-middleware": "2.22.3",
     "webpack-md5-hash": "0.0.6",
-    "webpack-node-externals": "1.7.2"
+    "webpack-node-externals": "1.7.2",
+    "workbox-webpack-plugin": "3.6.2"
   },
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|ico)$": "<rootDir>/tools/fileMock.js"
     },
-    "moduleDirectories": ["node_modules", "src"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/tools/testSetup.js",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"

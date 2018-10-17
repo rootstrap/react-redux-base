@@ -43,6 +43,9 @@ This base is already set up with a Node server for SSR.
 
 The command `yarn ssr` will compile the server and client.
 
+## Progressive web app
+To enable your progressive web app, set the environment variable `ENABLE_PWA` in your dot environment file.
+
 ### Fetching data
 The server is prepared to fetch data directly from the backend before rendering the HTML.
 

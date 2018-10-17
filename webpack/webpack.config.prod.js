@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
+import { GenerateSW } from 'workbox-webpack-plugin';
 import 'babel-polyfill';
 
 import resolve from './shared/resolve';
@@ -25,7 +26,8 @@ export default {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js'
   },
   optimization: {
     minimizer: [
@@ -62,17 +64,25 @@ export default {
       inject: true
     }),
 
+    new Dotenv({
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
+      systemvars: true,
+    }),
+
+    new GenerateSW({
+      swDest: './main-sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      navigateFallback: '/',
+      globDirectory: '/'
+    }),
+
     new CompressionPlugin({
       asset: '[path]',
       algorithm: 'gzip',
       test: /\.js$|\.css$/,
       threshold: 0,
       minRatio: 2,
-    }),
-
-    new Dotenv({
-      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
-      systemvars: true,
     })
   ],
   module: {

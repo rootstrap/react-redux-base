@@ -28,7 +28,17 @@ const cacheTime = 31536000;
 server
   .disable('x-powered-by')
   .use(compress())
-  .use(express.static('server/build/public', { maxAge: cacheTime }))
+  .use(express.static(
+    'server/build/public',
+    {
+      maxAge: cacheTime,
+      setHeaders: (res, path) => {
+        if (/main-sw.js/.test(path)) {
+          res.setHeader('Cache-Control', 'public, max-age=0');
+        }
+      }
+    },
+  ))
   .get('*', async (req, res) => {
     try {
       const store = configureStore();
