@@ -11,14 +11,14 @@ jobs:
           command: npm install
       - run:
           name: Run web server
-          command: yarn start
+          command: npm start
           background: true
       - run:
           name: Verify Cypress
-          command: yarn cy:verify
+          command: npm cy:verify
       - run:
           name: Run tests
-          command: yarn cypress
+          command: npm cypress
       - run:
           name: Run linter
           command: yarn lint
