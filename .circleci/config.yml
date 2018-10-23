@@ -11,15 +11,14 @@ jobs:
           name: Install dependencies
           command: yarn
       - run:
+          name: Run web server
+          command: yarn start
+      - run:
           name: Run tests
           command: yarn cypress
       - run:
           name: Run linter
           command: yarn lint
-       - run:
-          name: Run web server
-          command: yarn start
-
       - save_cache:
           key: dependency-cache
           paths:
