@@ -2,8 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:9.8-browsers
-
+      - image: cypress/browsers:chrome69
     steps:
       - checkout
       - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
@@ -14,6 +13,9 @@ jobs:
           name: Run web server
           command: yarn start
           background: true
+      - run:
+          name: Verify Cypress
+          command: yarn cy:verify
       - run:
           name: Run tests
           command: yarn cypress

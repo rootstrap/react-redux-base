@@ -29,6 +29,7 @@
     "test": "jest",
     "cypress:open": "cypress open",
     "cypress": "cypress run",
+    "cy:verify": "cypress verify",
     "test:cover": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
     "deploy": "npm run build && babel-node tools/deployS3",
