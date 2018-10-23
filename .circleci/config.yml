@@ -12,11 +12,7 @@ jobs:
           command: yarn
       - run:
           name: Run tests
-<<<<<<< HEAD
-          command: yarn cypress:run
-=======
-          command: yarn test
->>>>>>> 02a7d803ec998e286f0f76fe54a6de05d1da036c
+          command: yarn cypress
       - run:
           name: Run linter
           command: yarn lint
