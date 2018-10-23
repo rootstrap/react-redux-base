@@ -8,7 +8,7 @@ jobs:
       - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Install dependencies
-          command: yarn
+          command: npm ci
       - run:
           name: Run web server
           command: yarn start
