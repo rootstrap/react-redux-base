@@ -15,7 +15,7 @@ jobs:
           key: v1-deps
       - run:
           name: Install Dependencies
-          command: yarn install --ignore-engines --frozen-lockfile 
+          command: yarn install --ignore-flags --frozen-lockfile 
       - save_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
