@@ -28,6 +28,7 @@
     "build:client": "babel-node server/scripts/buildClient.js",
     "test": "jest",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "test:cover": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
     "deploy": "npm run build && babel-node tools/deployS3",
