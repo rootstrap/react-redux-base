@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Run web server
           command: yarn start
+          background: true
       - run:
           name: Run tests
           command: yarn cypress
