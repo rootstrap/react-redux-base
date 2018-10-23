@@ -14,9 +14,6 @@ jobs:
           command: npm start
           background: true
       - run:
-          name: Verify Cypress
-          command: npm cy:verify
-      - run:
           name: Run tests
           command: npm cypress
       - run:
