@@ -27,6 +27,7 @@
     "build:server": "babel-node server/scripts/buildServer.js",
     "build:client": "babel-node server/scripts/buildClient.js",
     "test": "jest",
+    "cypress:open": "cypress open",
     "test:cover": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
     "deploy": "npm run build && babel-node tools/deployS3",
@@ -84,12 +85,14 @@
     "compression-webpack-plugin": "1.1.11",
     "connect-history-api-fallback": "1.5.0",
     "css-loader": "1.0.0",
+    "cypress": "3.1.0",
     "dotenv": "6.0.0",
     "dotenv-webpack": "1.5.7",
     "enzyme": "3.4.1",
     "enzyme-adapter-react-16": "1.5.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-cypress": "2.0.1",
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
@@ -130,7 +133,10 @@
       "\\.(css|scss)$": "identity-obj-proxy",
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|ico)$": "<rootDir>/tools/fileMock.js"
     },
-    "moduleDirectories": ["node_modules", "src"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/tools/testSetup.js",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"

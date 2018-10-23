@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://localhost:8000",
+  "projectId": "vsobyz",
+  "env": {
+    "api_url": "http://rails5-api-base.herokuapp.com/api/v1"
+  }
+}
