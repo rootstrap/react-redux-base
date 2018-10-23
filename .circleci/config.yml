@@ -2,22 +2,22 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cypress/base:10
-        environment:
-          ## this enables colors in the output
-          TERM: xterm
-    working_directory: ~/app
+      - image: circleci/node:9.8-browsers
+
     steps:
       - checkout
-      - restore_cache:
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-          key: v1-deps-{{ .Branch }}
-          key: v1-deps
+      - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
-          name: Install Dependencies
-          command: yarn install --ignore-flags --frozen-lockfile 
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Run tests
+          command: yarn test
+      - run:
+          name: Run linter
+          command: yarn lint
+
       - save_cache:
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          key: dependency-cache
           paths:
-            - ~/.cache  ## cache both yarn and Cypress!
-      - run: $(yarn bin)/cypress run --record --key afa5b5e4-6457-456c-bc91-e5df2bfd4c45
+            - ~/.cache/yarn
