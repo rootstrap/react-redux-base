@@ -6,10 +6,10 @@ describe('Login Page', () => {
     cy.visit('/');
   });
 
-  // after(() => {
-  //   // remove session saved in indexedDB
-  //   window.indexedDB.deleteDatabase('redux-react-session');
-  // });
+  after(() => {
+    // remove session saved in indexedDB
+    window.indexedDB.deleteDatabase('redux-react-session');
+  });
 
   context('Redirections', () => {
     it('successfully redirected when user not logged in', () => {
