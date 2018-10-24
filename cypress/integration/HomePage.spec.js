@@ -17,7 +17,9 @@ describe('Home Page', () => {
     });
 
     it('click in the logout button,should be redirected to the login path', () => {
-      cy.get('button').click().then(() => cy.url().should('match', /login/));
+      cy.get('button').click();
+      cy.wait(2000);
+      cy.url().should('match', /login/);
     });
   });
 });

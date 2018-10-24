@@ -59,7 +59,9 @@ describe('Login Page', () => {
         cy.get('input[name="email"]').type('testwrongmail@rootstrap.com');
         cy.get('input[name=password]').type('1234');
       });
-      cy.get('form').submit().then(() => cy.get('strong').contains('Invalid login credentials. Please try again.'));
+      cy.get('form').submit();
+      cy.wait(2000);
+      cy.get('strong').contains('Invalid login credentials. Please try again.');
     });
 
     it('submit successfull, should be redirected to the homepage', () => {
@@ -68,7 +70,9 @@ describe('Login Page', () => {
           cy.get('input[name="email"]').type(email);
           cy.get('input[name=password]').type(password);
         });
-        cy.get('form').submit().then(() => cy.url().should('eq', `${Cypress.config().baseUrl}/`));
+        cy.get('form').submit();
+        cy.wait(2000);
+        cy.url().should('eq', `${Cypress.config().baseUrl}/`);
       });
     });
   });
