@@ -3,12 +3,8 @@
 
 describe('Login Page', () => {
   beforeEach(() => {
-    cy.visit('/');
-  });
-
-  after(() => {
-    // remove session saved in indexedDB
     window.indexedDB.deleteDatabase('redux-react-session');
+    cy.visit('/');
   });
 
   context('Redirections', () => {
