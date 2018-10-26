@@ -8,33 +8,29 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('loginByForm', (user) => {
-  Cypress.log({
-    name: 'login',
-    message: 'login by form'
-  });
+Cypress.Commands.add('fetchVisit', (url) => {
+  Cypress.log({ name: 'Fetch visit' });
 
-  return cy.request({
-    method: 'POST',
-    url: `${Cypress.env('api_url')}/users/sign_in`,
-    form: false,
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Factory: 'hangar'
-    },
-    body: user
-  }).then(({ allRequestResponses }) => {
-    // Save user data into indexedbd (sessionApi.saveUser functionality)
-    const respHeaders = allRequestResponses[0]['Response Headers'];
-    const { user } = allRequestResponses[0]['Response Body'];
-    const token = respHeaders['access-token'];
-    const { uid, client } = respHeaders;
+  // In order to stub http requests
+  return cy.visit(url, { onBeforeLoad: (win) => { win.fetch = null; } });
+});
 
-    const localforage = require('localforage');
+Cypress.Commands.add('logUser', ({ user }, session) => {
+  Cypress.log({ name: 'Save user data' });
 
-    const storage = localforage.createInstance({ name: 'redux-react-session' });
-    storage.setItem('USER-SESSION', { token, uid, client });
-    storage.setItem('USER_DATA', user);
+  const localforage = require('localforage');
+  const storage = localforage.createInstance({ name: 'redux-react-session' });
+  storage.setItem('USER-SESSION', session);
+  storage.setItem('USER_DATA', user);
+});
+
+Cypress.Commands.add('removeSession', () => {
+  window.indexedDB.deleteDatabase('redux-react-session');
+});
+
+Cypress.Commands.add('mockResponse', (method, url, response, alias) => {
+  cy.server();
+  cy.fixture('respHeader.json').then((headers) => {
+    cy.route({ method, url, response, headers }).as(alias);
   });
 });

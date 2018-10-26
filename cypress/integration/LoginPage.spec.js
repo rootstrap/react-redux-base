@@ -1,11 +1,13 @@
 // # Example:
 // [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
+// Fixture shortcut 'fixture:user': https://docs.cypress.io/api/commands/fixture.html#Accessing-Fixture-Data
 
 describe('Login Page', () => {
   beforeEach(() => {
-    // remove previous session
-    window.indexedDB.deleteDatabase('redux-react-session');
-    cy.visit('/');
+    cy.mockResponse('POST', '**/users/sign_in', 'fixture:userData', 'loginStub');
+
+    cy.removeSession();
+    cy.fetchVisit('/');
   });
 
   context('Redirections', () => {
@@ -31,7 +33,7 @@ describe('Login Page', () => {
     it('displays empty email error', () => {
       cy.get('form').within(() => {
         cy.get('input[name=password]').type('password123{enter}');
-      });
+      });  
 
       cy.get('span').contains('You must enter an email to continue');
     });
@@ -55,21 +57,13 @@ describe('Login Page', () => {
   });
 
   context('Form Submission', () => {
-    it('enter an invalid email or password, should see a global error', () => {
-      cy.get('form').within(() => {
-        cy.get('input[name="email"]').type('testwrongmail@rootstrap.com');
-        cy.get('input[name=password]').type('1234');
-      });
-      cy.get('form').submit().then(() => cy.get('strong').contains('Invalid login credentials. Please try again.'));
-    });
-
     it('submit successfull, should be redirected to the homepage', () => {
-      cy.fixture('user.json').as('user').then(({ user: { email, password } }) => {
-        cy.get('form').within(() => {
-          cy.get('input[name="email"]').type(email);
-          cy.get('input[name=password]').type(password);
-        });
-        cy.get('form').submit().then(() => cy.url().should('eq', `${Cypress.config().baseUrl}/`));
+      cy.fixture('userLogin.json').then(({ email, password }) => {
+        cy.get('input[name="email"]').type(email);
+        cy.get('input[name=password]').type(password);
+        cy.get('form').submit().wait('@loginStub');
+
+        cy.url().should('eq', `${Cypress.config().baseUrl}/`);
       });
     });
   });

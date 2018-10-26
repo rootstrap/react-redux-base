@@ -1,8 +1,11 @@
 describe('Home Page', () => {
-  before(() => {
-    cy.fixture('user.json').as('user').then((user) => {
-      cy.loginByForm(user).then(() => {
-        cy.visit('/');
+  beforeEach(() => {
+    cy.mockResponse('DELETE', '**/users/sign_out', {}, 'logoutStub');
+
+    cy.fixture('userData.json').as('user').then(({ user }) => {
+      cy.fixture('respHeader.json').as('session').then((session) => {
+        cy.logUser(user, session);
+        cy.fetchVisit('/');
       });
     });
   });
