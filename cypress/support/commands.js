@@ -8,6 +8,11 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+// Cypress image snapshot
+addMatchImageSnapshotCommand();
+
 Cypress.Commands.add('fetchVisit', (url) => {
   Cypress.log({ name: 'Fetch visit' });
 
@@ -15,13 +20,17 @@ Cypress.Commands.add('fetchVisit', (url) => {
   return cy.visit(url, { onBeforeLoad: (win) => { win.fetch = null; } });
 });
 
-Cypress.Commands.add('logUser', ({ user }, session) => {
+Cypress.Commands.add('logUser', () => {
   Cypress.log({ name: 'Save user data' });
 
-  const localforage = require('localforage');
-  const storage = localforage.createInstance({ name: 'redux-react-session' });
-  storage.setItem('USER-SESSION', session);
-  storage.setItem('USER_DATA', user);
+  cy.fixture('userData.json').as('user').then(({ user }) => {
+    cy.fixture('respHeader.json').as('session').then((session) => {
+      const localforage = require('localforage');
+      const storage = localforage.createInstance({ name: 'redux-react-session' });
+      storage.setItem('USER-SESSION', session);
+      storage.setItem('USER_DATA', user);
+    });
+  });
 });
 
 Cypress.Commands.add('removeSession', () => {

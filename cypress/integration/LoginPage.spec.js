@@ -1,6 +1,7 @@
 // # Example:
 // [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
-// Fixture shortcut 'fixture:user': https://docs.cypress.io/api/commands/fixture.html#Accessing-Fixture-Data
+// # Fixture shortcut 'fixture:user':
+// [https://docs.cypress.io/api/commands/fixture.html#Accessing-Fixture-Data]
 
 describe('Login Page', () => {
   beforeEach(() => {
@@ -8,6 +9,10 @@ describe('Login Page', () => {
 
     cy.removeSession();
     cy.fetchVisit('/');
+  });
+
+  it('match image snapshot', () => {
+    cy.matchImageSnapshot();
   });
 
   context('Redirections', () => {
@@ -33,7 +38,7 @@ describe('Login Page', () => {
     it('displays empty email error', () => {
       cy.get('form').within(() => {
         cy.get('input[name=password]').type('password123{enter}');
-      });  
+      });
 
       cy.get('span').contains('You must enter an email to continue');
     });

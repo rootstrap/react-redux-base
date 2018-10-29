@@ -1,13 +1,13 @@
 describe('Home Page', () => {
   beforeEach(() => {
     cy.mockResponse('DELETE', '**/users/sign_out', {}, 'logoutStub');
-
-    cy.fixture('userData.json').as('user').then(({ user }) => {
-      cy.fixture('respHeader.json').as('session').then((session) => {
-        cy.logUser(user, session);
-        cy.fetchVisit('/');
-      });
+    cy.logUser().then(() => {
+      cy.fetchVisit('/');
     });
+  });
+
+  it('match image snapshot', () => {
+    cy.matchImageSnapshot();
   });
 
   context('Homepage View', () => {
@@ -20,7 +20,8 @@ describe('Home Page', () => {
     });
 
     it('click in the logout button,should be redirected to the login path', () => {
-      cy.get('button').click().then(() => cy.url().should('match', /login/));
+      cy.get('button').click().wait('@logoutStub');
+      cy.url().should('match', /login/);
     });
   });
 });

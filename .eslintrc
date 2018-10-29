@@ -6,7 +6,8 @@
     "airbnb"
   ],
   "plugins": [
-    "react"
+    "react",
+    "cypress"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -22,7 +23,8 @@
     "browser": true,
     "node": true,
     "jquery": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "rules": {
     "object-curly-newline": 0,
