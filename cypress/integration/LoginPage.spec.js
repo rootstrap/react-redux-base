@@ -13,7 +13,7 @@ describe('Login Page', () => {
 
   context('Visual Regression', () => {
     it('match image snapshot', () => {
-      cy.matchImageSnapshot();
+      cy.reload().then(() => cy.matchImageSnapshot());
     });
   });
 
