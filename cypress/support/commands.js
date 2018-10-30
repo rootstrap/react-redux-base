@@ -12,8 +12,8 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
-  failureThreshold: 200, // threshold for entire image
-  failureThresholdType: 'pixel', // percent of image or number of pixels
+  failureThreshold: '0.02', // threshold for entire image
+  failureThresholdType: 'percent', // percent of image or number of pixels
 });
 
 Cypress.Commands.add('fetchVisit', (url) => {
