@@ -27,7 +27,7 @@
     "build:server": "babel-node server/scripts/buildServer.js",
     "build:client": "babel-node server/scripts/buildClient.js",
     "test": "jest",
-    "cypress": "cypress run --key afa5b5e4-6457-456c-bc91-e5df2bfd4c45",
+    "cypress": "cypress run --record --key afa5b5e4-6457-456c-bc91-e5df2bfd4c45",
     "cypress:open": "cypress open",
     "cypress:chrome": "cypress run --browser chrome",
     "test:cover": "npm run test -- --coverage",
