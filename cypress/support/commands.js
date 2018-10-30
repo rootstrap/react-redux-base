@@ -12,7 +12,7 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
-  customDiffConfig: { threshold: 1.5 }
+  customDiffConfig: { threshold: 0.8 }
 });
 
 Cypress.Commands.add('fetchVisit', (url) => {
