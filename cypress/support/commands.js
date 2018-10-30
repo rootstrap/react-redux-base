@@ -11,7 +11,9 @@
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 // Cypress image snapshot
-addMatchImageSnapshotCommand();
+addMatchImageSnapshotCommand({
+  customDiffConfig: { threshold: 1.5 }
+});
 
 Cypress.Commands.add('fetchVisit', (url) => {
   Cypress.log({ name: 'Fetch visit' });
