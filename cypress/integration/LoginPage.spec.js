@@ -11,8 +11,10 @@ describe('Login Page', () => {
     cy.fetchVisit('/');
   });
 
-  it('match image snapshot', () => {
-    cy.matchImageSnapshot();
+  context('Visual Regression', () => {
+    it('match image snapshot', () => {
+      cy.matchImageSnapshot();
+    });
   });
 
   context('Redirections', () => {
@@ -23,7 +25,7 @@ describe('Login Page', () => {
     it('should see the login page', () => {
       cy.get('p').contains('LOGIN');
     });
-
+  
     it('should see a link to the sign up page', () => {
       cy.get('a').should('have.attr', 'href', '/sign-up').contains('Sign up');
     });

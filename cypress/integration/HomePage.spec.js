@@ -6,8 +6,10 @@ describe('Home Page', () => {
     });
   });
 
-  it('match image snapshot', () => {
-    cy.matchImageSnapshot();
+  context('Visual Regression', () => {
+    it('match image snapshot', () => {
+      cy.matchImageSnapshot();
+    });
   });
 
   context('Homepage View', () => {
