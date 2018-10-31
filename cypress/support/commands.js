@@ -12,7 +12,7 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
-  failureThreshold: '0.02', // threshold for entire image
+  failureThreshold: '0.01', // threshold for entire image
   failureThresholdType: 'percent', // percent of image or number of pixels
 });
 
