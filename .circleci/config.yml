@@ -5,21 +5,24 @@ jobs:
       - image: cypress/base:10
     steps:
       - checkout
-      - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
+      - restore_cache:
+          name: Restore yarn and Cypress cache
+          keys:
+            - dependencies
       - run:
           name: Install dependencies
-          command: npm install
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: dependencies
+          paths:
+            - ~/.cache
       - run:
           name: Run web server
           command: npm start
           background: true
       - run:
           name: Run tests
-          command: npm run cypress
+          command: yarn cypress:record
       - run:
           name: Run linter
           command: yarn lint
-      - save_cache:
-          key: dependency-cache
-          paths:
-            - ~/.cache/yarn

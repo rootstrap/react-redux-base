@@ -42,6 +42,7 @@
     "no-var": 1,
     "semi": [1, "always"],
     "no-trailing-spaces": 1,
+    "spaced-comment": [2, "always", { "markers": ["/"] }],
     "eol-last": 1,
     "no-underscore-dangle": 0,
     "no-alert": 0,

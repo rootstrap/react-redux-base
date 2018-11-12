@@ -1,21 +1,25 @@
 // # Example:
 // [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
-// # Fixture shortcut 'fixture:user':
-// [https://docs.cypress.io/api/commands/fixture.html#Accessing-Fixture-Data]
 
-describe('Login Page', () => {
+import faker from 'faker';
+import fakerUser from '../fixtures/fakers/fakeUser';
+
+const email = faker.internet.email();
+const password = faker.internet.password();
+const fakeUser = fakerUser();
+
+describe('Login Page (Real Response)', () => {
   beforeEach(() => {
-    cy.mockResponse('POST', '**/users/sign_in', 'fixture:userData', 'loginStub');
-
     cy.removeSession();
     cy.fetchVisit('/');
   });
 
-  context('Visual Regression', () => {
-    it('match image snapshot', () => {
-      cy.reload().then(() => cy.matchImageSnapshot());
-    });
-  });
+  //  FOR FUTURE VISUAL REGRESSION TESTS
+  // context('Visual Regression', () => {
+  //   it('match image snapshot', () => {
+  //     cy.reload().then(() => cy.matchImageSnapshot());
+  //   });
+  // });
 
   context('Redirections', () => {
     it('successfully redirected when user not logged in', () => {
@@ -64,14 +68,51 @@ describe('Login Page', () => {
   });
 
   context('Form Submission', () => {
-    it('submit successfull, should be redirected to the homepage', () => {
-      cy.fixture('userLogin.json').then(({ email, password }) => {
+    it('submit failure, should display invalid credentials', () => {
+      cy.get('input[name="email"]').type(email);
+      cy.get('input[name=password]').type(password);
+      cy.get('form').submit();
+      cy.get('strong').contains('Invalid login credentials');
+    });
+
+    it('submit successful, should be redirected to the homepage', () => {
+      cy.fixture('realUserLogin.json').then(({ user: { email, password } }) => {
         cy.get('input[name="email"]').type(email);
         cy.get('input[name=password]').type(password);
-        cy.get('form').submit().wait('@loginStub');
+        cy.get('form').submit();
 
         cy.url().should('eq', `${Cypress.config().baseUrl}/`);
       });
+    });
+  });
+});
+
+describe('Login Page (Mock response)', () => {
+  beforeEach(() => {
+    cy.removeSession();
+    cy.fetchVisit('/');
+  });
+
+  context('Form Submission', () => {
+    it('submit failure, should display invalid credentials', () => {
+      cy.mockResponse('POST', '**/users/sign_in', 'loginStubFailure', 401, false, { error: 'Invalid login credentials. Please try again.' });
+
+      cy.get('input[name="email"]').type(email);
+      cy.get('input[name=password]').type(password);
+      cy.get('form').submit().wait('@loginStubFailure');
+
+      cy.get('strong').contains('Invalid login credentials');
+    });
+
+    it('submit successful, should be redirected to the homepage', () => {
+      cy.mockResponse('POST', '**/users/sign_in', 'loginStub', 200, true, { user: fakeUser });  
+
+      cy.get('input[name="email"]').type(fakeUser.email);
+      cy.get('input[name=password]').type(password);
+      cy.get('form').submit().wait('@loginStub');
+
+      cy.fetchVisit('/login');
+      cy.url().should('eq', `${Cypress.config().baseUrl}/`);
     });
   });
 });

@@ -1,4 +1,0 @@
-{
-  "host": "heroku.app",
-  "api_server": "http://rails5-api-base.herokuapp.com/api/v1"
-}

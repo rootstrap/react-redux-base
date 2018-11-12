@@ -1,7 +1,10 @@
 {
   "baseUrl": "http://localhost:8000",
   "projectId": "vsobyz",
+  "indexUrl": "/",
   "env": {
-    "api_url": "http://rails5-api-base.herokuapp.com/api/v1"
-  }
+    "apiUrl": "http://rails5-api-base.herokuapp.com/api/v1"
+  },
+  "chromeWebSecurity": false,
+  "videoUploadOnPasses": false
 }
