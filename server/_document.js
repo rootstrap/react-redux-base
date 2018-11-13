@@ -1,9 +1,9 @@
 /* eslint-disable react/no-danger */
 
 import React from 'react';
-import { object, string } from 'prop-types';
+import { object, string, node } from 'prop-types';
 
-const Document = ({ helmet, assets, preloadedState }) => {
+const Document = ({ helmet, assets, styleTags, preloadedState }) => {
   const htmlAttrs = helmet.htmlAttributes.toComponent();
   const bodyAttrs = helmet.bodyAttributes.toComponent();
 
@@ -19,6 +19,7 @@ const Document = ({ helmet, assets, preloadedState }) => {
         {assets.main.css && (
           <link rel="stylesheet" href={assets.main.css} />
         )}
+        {styleTags}
       </head>
       <body {...bodyAttrs}>
         <div id="app">SSR_MARKUP</div>
@@ -42,7 +43,8 @@ const Document = ({ helmet, assets, preloadedState }) => {
 Document.propTypes = {
   helmet: object.isRequired,
   assets: object.isRequired,
-  preloadedState: string.isRequired
+  preloadedState: string.isRequired,
+  styleTags: node.isRequired
 };
 
 export default Document;

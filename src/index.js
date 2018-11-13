@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { sessionService } from 'redux-react-session';
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer, setConfig } from 'react-hot-loader';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
 import en from 'react-intl/locale-data/en';
@@ -64,6 +64,8 @@ const renderApp = (Component) => {
 };
 
 renderApp(App);
+
+setConfig({ logLevel: 'no-errors-please' });
 
 if (module.hot) {
   module.hot.accept('./components/App', () => {

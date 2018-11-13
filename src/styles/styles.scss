@@ -1,9 +1,28 @@
 @import '~loaders.css/src/animations/ball-scale-multiple';
 @import 'settings';
 
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-weight: 400;
+  height: 100%;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .loading-wrapper {
