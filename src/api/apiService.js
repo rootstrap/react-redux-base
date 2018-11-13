@@ -78,7 +78,8 @@ class Api {
     const requestData = {
       method: 'get',
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     };
     return this.addTokenHeader(requestData)
