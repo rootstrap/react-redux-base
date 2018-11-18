@@ -16,7 +16,6 @@ export default {
   devtool: 'eval-source-map',
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, '../src/index.js')

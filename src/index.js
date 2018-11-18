@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { sessionService } from 'redux-react-session';
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer, setConfig } from 'react-hot-loader';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
 import en from 'react-intl/locale-data/en';
@@ -15,6 +15,13 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
 import 'styles/styles.scss';
 
 require('assets/favicon.ico'); // Tell webpack to load favicon.ico
+
+// Load service worker
+if (process.env.ENABLE_PWA) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/main-sw.js');
+  });
+}
 
 // Fix for browsers that don't implement Intl by default e.g.: Safari)
 if (!window.Intl) {
@@ -57,6 +64,8 @@ const renderApp = (Component) => {
 };
 
 renderApp(App);
+
+setConfig({ logLevel: 'no-errors-please' });
 
 if (module.hot) {
   module.hot.accept('components/App', () => {

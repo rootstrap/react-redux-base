@@ -9,6 +9,7 @@ import { sessionService } from 'redux-react-session';
 import { matchRoutes } from 'react-router-config';
 import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
+import { ServerStyleSheet } from 'styled-components';
 
 import locales from 'locales';
 import configureStore from 'store/configureStore.prod';
@@ -28,7 +29,17 @@ const cacheTime = 31536000;
 server
   .disable('x-powered-by')
   .use(compress())
-  .use(express.static('server/build/public', { maxAge: cacheTime }))
+  .use(express.static(
+    'server/build/public',
+    {
+      maxAge: cacheTime,
+      setHeaders: (res, path) => {
+        if (/main-sw.js/.test(path)) {
+          res.setHeader('Cache-Control', 'public, max-age=0');
+        }
+      }
+    },
+  ))
   .get('*', async (req, res) => {
     try {
       const store = configureStore();
@@ -68,13 +79,15 @@ server
               </Provider>
             </IntlProvider>
           );
-          const html = ReactDOMServer.renderToString(staticRouter);
+          const sheet = new ServerStyleSheet();
+          const html = ReactDOMServer.renderToString(sheet.collectStyles(staticRouter));
+          const styleTags = sheet.getStyleElement();
           const helmet = Helmet.renderStatic();
           const preloadedState = serialize(store.getState().toJS());
-          return { html, helmet, preloadedState };
+          return { html, helmet, styleTags, preloadedState };
         };
 
-        const { html, helmet, preloadedState } = renderPage();
+        const { html, helmet, styleTags, preloadedState } = renderPage();
 
         // Redirect
         if (context.url) {
@@ -90,7 +103,7 @@ server
           if (context.status) {
             res.status(context.status);
           }
-          const docProps = { helmet, assets, preloadedState };
+          const docProps = { helmet, assets, styleTags, preloadedState };
           const doc = ReactDOMServer.renderToStaticMarkup(<Doc {...docProps} />);
           res.send(`<!doctype html> ${doc.replace('SSR_MARKUP', html)}`);
         }

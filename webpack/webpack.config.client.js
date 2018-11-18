@@ -4,6 +4,8 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import AssetsPlugin from 'assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { GenerateSW } from 'workbox-webpack-plugin';
 import 'babel-polyfill';
 
 import resolve from './shared/resolve';
@@ -23,7 +25,8 @@ export default {
   output: {
     path: path.resolve(__dirname, '../server/build/public'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js'
   },
   optimization: {
     minimizer: [
@@ -39,6 +42,25 @@ export default {
       chunkFilename: '[id].[hash].css',
     }),
 
+    // Generate HTML file that contains references to generated bundles.
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      filename: 'pwa.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      },
+      inject: true
+    }),
+
     new Dotenv({
       path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
@@ -48,6 +70,11 @@ export default {
     new AssetsPlugin({
       path: path.resolve(__dirname, '../server/build'),
       filename: 'assets.json',
+    }),
+
+    new GenerateSW({
+      swDest: '../public/main-sw.js',
+      navigateFallback: 'pwa.html'
     })
   ],
   module: {
