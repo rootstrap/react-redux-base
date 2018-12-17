@@ -1,146 +1,154 @@
 import fetch from 'isomorphic-fetch';
 import { sessionService } from 'redux-react-session';
 import humps from 'humps';
+import merge from 'lodash/merge';
 
 import routes from 'constants/routesPaths';
 
-const saveSessionHeaders = (headers) => {
+function hasSession() {
+  return sessionService.loadSession()
+    .then(() => true)
+    .catch(() => false);
+}
+
+function getResponseBody(response) {
+  const bodyIsEmpty = response.status === 204;
+  return bodyIsEmpty ? Promise.resolve() : response.json();
+}
+
+async function saveSession({ headers }) {
   if (headers.get('access-token')) {
-    const sessionHeaders = {
+    const sessionData = {
       token: headers.get('access-token'),
       uid: headers.get('uid'),
       client: headers.get('client')
     };
-    sessionService.saveSession(sessionHeaders);
+
+    return sessionService.saveSession(sessionData);
   }
-};
+}
 
-const handleErrors = response =>
-  new Promise((resolve, reject) => {
-    if (!response) {
-      reject(new Error({ message: 'No response returned from fetch' }));
-      return;
-    }
-
-    saveSessionHeaders(response.headers);
-    if (response.ok) {
-      resolve(response);
-      return;
-    }
-
-    sessionService.loadSession()
-      .then(() => {
-        if (response.status === 401) {
-          sessionService.deleteSession();
-          window.location = routes.login;
-        }
-      }).catch(() => {});
-
-    response.json()
-      .then((json) => {
-        const error = json || { message: response.statusText };
-        reject(error);
-      }).catch(() => reject(new Error({ message: 'Response not JSON' })));
-  });
-
-const getResponseBody = (response) => {
-  const bodyIsEmpty = response.status === 204;
-  if (bodyIsEmpty) {
-    return Promise.resolve();
+async function handleErrorResponse(response) {
+  if (response.status === 401 && await hasSession()) {
+    await sessionService.deleteSession();
+    window.location = routes.login;
   }
-  return response.json();
-};
+
+  let error;
+
+  try {
+    const json = await response.json();
+    error = json || new Error(response.statusText);
+  } catch (e) {
+    error = new Error('Response not JSON');
+  }
+
+  throw humps.camelizeKeys(error);
+}
+
+async function handleSuccessResponse(response) {
+  await saveSession(response);
+  const body = getResponseBody(response);
+  return humps.camelizeKeys(body);
+}
+
+async function handleResponse(response) {
+  if (!response) {
+    throw new Error('No response returned from fetch');
+  }
+
+  return response.ok ? handleSuccessResponse(response) : handleErrorResponse(response);
+}
+
+async function getTokenHeaders() {
+  let headers;
+
+  try {
+    const { token, client, uid } = await sessionService.loadSession();
+    headers = { 'access-token': token, client, uid };
+  } catch (e) {
+    headers = {};
+  }
+
+  return headers;
+}
 
 class Api {
-  performRequest(uri, apiUrl, requestData = {}) {
-    const url = `${apiUrl}${uri}`;
-    return new Promise((resolve, reject) => {
-      fetch(url, requestData)
-        .then(handleErrors)
-        .then(getResponseBody)
-        .then(response => resolve(humps.camelizeKeys(response)))
-        .catch(error => reject(humps.camelizeKeys(error)));
-    });
+  constructor(defaultRequestConfig = {}) {
+    this.defaultRequestConfig = defaultRequestConfig;
   }
 
-  addTokenHeader(requestData) {
-    return sessionService.loadSession()
-      .then((session) => {
-        const { token, client, uid } = session;
-        requestData.headers['access-token'] = token;
-        requestData.headers.client = client;
-        requestData.headers.uid = uid;
-        return requestData;
-      }).catch(() => requestData);
+  async buildRequestConfig(requestConfig = {}, addTokenHeaders = true) {
+    // Start with default config
+    let config = merge({}, this.defaultRequestConfig);
+
+    // Add Token headers if necessary
+    if (addTokenHeaders) {
+      const headers = await getTokenHeaders();
+      config = merge({}, config, { headers });
+    }
+
+    // Apply request specific config
+    config = merge({}, config, requestConfig);
+
+    // TODO: Check merge mutable nature!!!
+    return config;
+  }
+
+  async performRequest(uri, apiUrl, requestConfig = {}, addTokenHeaders = true) {
+    const url = `${apiUrl}${uri}`;
+    const config = await this.buildRequestConfig(requestConfig, addTokenHeaders);
+    const response = await fetch(url, config);
+    return handleResponse(response);
   }
 
   get(uri, apiUrl = process.env.API_URL) {
     const requestData = {
       method: 'get',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
     };
-    return this.addTokenHeader(requestData)
-      .then(data => this.performRequest(uri, apiUrl, data));
+    return this.performRequest(uri, apiUrl, requestData);
   }
 
   post(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(decamelizeData)
     };
-    return this.addTokenHeader(requestData)
-      .then(data => this.performRequest(uri, apiUrl, data));
+    return this.performRequest(uri, apiUrl, requestData);
   }
 
   delete(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'delete',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(decamelizeData)
     };
-    return this.addTokenHeader(requestData)
-      .then(data => this.performRequest(uri, apiUrl, data));
+    return this.performRequest(uri, apiUrl, requestData);
   }
 
   put(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'put',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(decamelizeData)
     };
-    return this.addTokenHeader(requestData)
-      .then(data => this.performRequest(uri, apiUrl, data));
+    return this.performRequest(uri, apiUrl, requestData);
   }
 
   patch(uri, data, apiUrl = process.env.API_URL) {
     const decamelizeData = humps.decamelizeKeys(data);
     const requestData = {
       method: 'patch',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(decamelizeData)
     };
-    return this.addTokenHeader(requestData)
-      .then(data => this.performRequest(uri, apiUrl, data));
+    return this.performRequest(uri, apiUrl, requestData);
   }
 }
 
-export default new Api();
+export default new Api({
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+});
