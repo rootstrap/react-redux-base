@@ -28,13 +28,13 @@ const handleErrors = response =>
       return;
     }
 
+    if (response.status === 401) {
     sessionService.loadSession()
       .then(() => {
-        if (response.status === 401) {
-          sessionService.deleteSession();
-          window.location = routes.login;
-        }
+        sessionService.deleteSession();
       }).catch(() => {});
+      window.location = routes.login;
+    }
 
     response.json()
       .then((json) => {
