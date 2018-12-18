@@ -34,7 +34,8 @@ To change the set of environment variables for a script it's needed to run ENV=m
 For example: `ENV=staging yarn build`
 
 ## Initial Machine Setup
-**Install [Node 7.0.0 or greater](https://nodejs.org)**
+**Install [Node 7.0.0 or greater, 10.14.2 LTS preferred](https://nodejs.org)**
+Project is currently set to node version `10.14.2 LTS`. Make sure that you are using the node version specified in the `package.json`, if you prefer to use a different one you can change it there.
 
 **Install [Yarn](https://yarnpkg.com/en/docs/install)** - Fast, reliable, and secure package manager
 
