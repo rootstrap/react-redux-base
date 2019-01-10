@@ -1,0 +1,62 @@
+version: "2"
+checks:
+  # Methods or functions defined with a high number of arguments
+  argument-count:
+    config:
+      threshold: 4
+
+  # Boolean logic that may be hard to understand
+  complex-logic:
+    config:
+      threshold: 4
+
+  # Excessive lines of code within a single file
+  file-lines:
+    config:
+      threshold: 500
+
+  # Functions or methods that may be hard to understand
+  method-complexity:
+    config:
+      threshold: 20
+
+  # Classes defined with a high number of functions or methods
+  method-count:
+    config:
+      threshold: 20
+
+  # Excessive lines of code within a single function or method
+  method-lines:
+    config:
+      threshold: 50
+
+  # Deeply nested control structures like if or case
+  nested-control-flow:
+    config:
+      threshold: 4
+
+  # Functions or methods with a high number of return statements
+  return-statements:
+    config:
+      threshold: 4
+
+  # Duplicate code which is not identical but shares the same structure (e.g. variable names may differ)
+  similar-code:
+    config:
+      threshold: 45
+
+  # Duplicate code which is syntactically identical (but may be formatted differently)
+  identical-code:
+    config:
+      threshold: 45
+plugins:
+  eslint:
+    enabled: true
+exclude_patterns:
+  - "dist/"
+  - "server/build/"
+  - "node_modules/"
+  - "/test/**/*"
+  - "**/vendor/"
+  - "**/*.d.ts"
+  - "coverage/**/*"
