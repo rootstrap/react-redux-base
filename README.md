@@ -1,5 +1,7 @@
 # React Redux Base
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e334cf37c246c64bf052/maintainability)](https://codeclimate.com/github/rootstrap/react-redux-base/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e334cf37c246c64bf052/test_coverage)](https://codeclimate.com/github/rootstrap/react-redux-base/test_coverage)
 [![CircleCI](https://circleci.com/gh/rootstrap/react-redux-base.svg?style=shield)](https://circleci.com/gh/rootstrap/react-redux-base)
 [![Dependency Status](https://img.shields.io/david/rootstrap/react-redux-base.svg)](https://david-dm.org/rootstrap/react-redux-base)
 [![License](https://img.shields.io/github/license/rootstrap/react-redux-base.svg)](https://github.com/rootstrap/react-redux-base/blob/master/LICENSE.md)
