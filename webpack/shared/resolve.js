@@ -10,6 +10,7 @@ export default {
     containers: path.resolve(__dirname, '../../src/containers'),
     locales: path.resolve(__dirname, '../../src/locales'),
     reducers: path.resolve(__dirname, '../../src/reducers'),
+    selectors: path.resolve(__dirname, '../../src/selectors'),
     store: path.resolve(__dirname, '../../src/store'),
     styles: path.resolve(__dirname, '../../src/styles'),
     utils: path.resolve(__dirname, '../../src/utils')
