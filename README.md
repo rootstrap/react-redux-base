@@ -35,6 +35,11 @@ To change the set of environment variables for a script it's needed to run ENV=m
 
 For example: `ENV=staging yarn build`
 
+## Configuring Code Climate
+1. After adding the project to CC, go to `Repo Settings`
+2. On the `Test Coverage` tab, copy the `Test Reporter ID`
+3. Replace the current value of `CC_TEST_REPORTER_ID` on the `config.yml file (.circleci/config.yml)` with the one you copied from CC
+
 ## Initial Machine Setup
 **Install [Node 7.0.0 or greater, 10.14.2 LTS preferred](https://nodejs.org)**
 Project is currently set to node version `10.14.2 LTS`. Make sure that you are using the node version specified in the `package.json`, if you prefer to use a different one you can change it there.
