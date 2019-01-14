@@ -8,7 +8,10 @@ jobs:
 
     steps:
       - checkout
-      - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - dependency-cache
       - run:
           name: Install dependencies
           command: yarn
