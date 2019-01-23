@@ -18,7 +18,7 @@ const messages = defineMessages({
   passConfirmation: { id: 'signup.form.passconfirmation' }
 });
 
-class SignUpForm extends PureComponent {
+export class SignUpForm extends PureComponent {
   static propTypes = {
     handleSubmit: func.isRequired,
     submitting: bool.isRequired,
