@@ -1,42 +1,38 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { string, object } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { parseInputErrors } from 'utils/helpers';
 
-export default class Input extends PureComponent {
-  static propTypes = {
-    input: object.isRequired,
-    label: string,
-    type: string.isRequired,
-    placeholder: string,
-    meta: object,
-  };
+const Input = ({
+  input,
+  label,
+  type,
+  placeholder,
+  meta: { touched, error }
+}) => (
+  <div>
+    {label && <label>{label}</label>}
+    <div>
+      <input {...input} {...{ placeholder, type }} />
+      {touched && error &&
+        <span>
+          <FormattedMessage
+            id={parseInputErrors(error)}
+            defaultMessage={parseInputErrors(error)}
+          />
+        </span>
+      }
+    </div>
+  </div>
+);
 
-  render() {
-    const {
-      input,
-      label,
-      type,
-      placeholder,
-      meta: { touched, error }
-    } = this.props;
+Input.propTypes = {
+  input: object.isRequired,
+  label: string,
+  type: string.isRequired,
+  placeholder: string,
+  meta: object,
+};
 
-    return (
-      <div>
-        {label && <label>{label}</label>}
-        <div>
-          <input {...input} {...{ placeholder, type }} />
-          {touched && error &&
-            <span>
-              <FormattedMessage
-                id={parseInputErrors(error)}
-                defaultMessage={parseInputErrors(error)}
-              />
-            </span>
-          }
-        </div>
-      </div>
-    );
-  }
-}
+export default Input;

@@ -15,12 +15,12 @@ describe('<HomePage />', () => {
   let subject;
 
   beforeEach(() => {
-    const username = 'John';
+    const email = 'john@test.com';
 
     store = configureStore(Immutable.fromJS({
       session: {
         user: {
-          username
+          email
         }
       }
     }));
@@ -28,7 +28,7 @@ describe('<HomePage />', () => {
   });
 
   it('should display a welcome message', () => {
-    expect(subject.find(FormattedMessage).get(0).props.values.username).toEqual('John');
+    expect(subject.find(FormattedMessage).get(0).props.values.email).toEqual('john@test.com');
   });
 
   it('should display a logout button', () => {

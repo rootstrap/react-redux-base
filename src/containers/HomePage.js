@@ -8,7 +8,9 @@ import { getUser } from 'selectors/sessionSelectors';
 
 const HomePage = ({ user }) => (
   <div>
-    <p><FormattedMessage id="home.welcome" values={user} /></p>
+    {user && user.email &&
+      <p><FormattedMessage id="home.welcome" values={user} /></p>
+    }
     <LogoutButton />
   </div>
 );

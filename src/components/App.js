@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import { bool } from 'prop-types';
 import { ConnectedRouter } from 'react-router-redux';
 import { connect } from 'react-redux';
@@ -11,39 +11,33 @@ import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import theme from '../constants/theme';
 
-class App extends PureComponent {
-  static propTypes = {
-    authenticated: bool.isRequired,
-    checked: bool.isRequired
-  }
-
-  render() {
-    const { authenticated, checked } = this.props;
-
-    return (
-      <ThemeProvider theme={theme}>
-        <Fragment>
-          <Helmet>
-            <title>RS React Redux Base</title>
-          </Helmet>
-          <ConnectedRouter history={history}>
-            {checked &&
-              <Switch>
-                {routes.map((route, index) =>
-                  <RouteFromPath
-                    key={`route${index}`}
-                    {...route}
-                    authenticated={authenticated}
-                  />)
-                }
-              </Switch>
+const App = ({ authenticated, checked }) => (
+  <ThemeProvider theme={theme}>
+    <Fragment>
+      <Helmet>
+        <title>RS React Redux Base</title>
+      </Helmet>
+      <ConnectedRouter history={history}>
+        {checked &&
+          <Switch>
+            {routes.map((route, index) =>
+              <RouteFromPath
+                key={`route${index}`}
+                {...route}
+                authenticated={authenticated}
+              />)
             }
-          </ConnectedRouter>
-        </Fragment>
-      </ThemeProvider>
-    );
-  }
-}
+          </Switch>
+        }
+      </ConnectedRouter>
+    </Fragment>
+  </ThemeProvider>
+);
+
+App.propTypes = {
+  authenticated: bool.isRequired,
+  checked: bool.isRequired
+};
 
 const mapState = state => ({
   checked: state.getIn(['session', 'checked']),
