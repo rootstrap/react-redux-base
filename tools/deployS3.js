@@ -36,6 +36,8 @@ if (environment) {
           client.clearBucket().then(() => {
             client.syncDir('../dist').then(() => {
               console.log(chalkSuccess('\nSUCCESS: ./dist folder was deployed to AWS S3'));
+            }).catch((err) => {
+              console.log(chalkError('\nERROR: ./dist folder was not fully deployed to AWS S3'));
             });
           }).catch(err => {
             throw new Error(err);
