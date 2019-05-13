@@ -15,8 +15,6 @@ LogoutButton.propTypes = {
   logout: func.isRequired
 };
 
-const mapDispatch = dispatch => ({
-  logout: () => dispatch(logout())
-});
+const mapDispatch = ({ logout });
 
 export default connect(null, mapDispatch)(LogoutButton);

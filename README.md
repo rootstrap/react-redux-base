@@ -1,5 +1,7 @@
 # React Redux Base
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e334cf37c246c64bf052/maintainability)](https://codeclimate.com/github/rootstrap/react-redux-base/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e334cf37c246c64bf052/test_coverage)](https://codeclimate.com/github/rootstrap/react-redux-base/test_coverage)
 [![CircleCI](https://circleci.com/gh/rootstrap/react-redux-base.svg?style=shield)](https://circleci.com/gh/rootstrap/react-redux-base)
 [![Dependency Status](https://img.shields.io/david/rootstrap/react-redux-base.svg)](https://david-dm.org/rootstrap/react-redux-base)
 [![License](https://img.shields.io/github/license/rootstrap/react-redux-base.svg)](https://github.com/rootstrap/react-redux-base/blob/master/LICENSE.md)
@@ -33,8 +35,14 @@ To change the set of environment variables for a script it's needed to run ENV=m
 
 For example: `ENV=staging yarn build`
 
+## Configuring Code Climate
+1. After adding the project to CC, go to `Repo Settings`
+2. On the `Test Coverage` tab, copy the `Test Reporter ID`
+3. Replace the current value of `CC_TEST_REPORTER_ID` on the `config.yml file (.circleci/config.yml)` with the one you copied from CC
+
 ## Initial Machine Setup
-**Install [Node 7.0.0 or greater](https://nodejs.org)**
+**Install [Node 7.0.0 or greater, 10.14.2 LTS preferred](https://nodejs.org)**
+Project is currently set to node version `10.14.2 LTS`. Make sure that you are using the node version specified in the `package.json`, if you prefer to use a different one you can change it there.
 
 **Install [Yarn](https://yarnpkg.com/en/docs/install)** - Fast, reliable, and secure package manager
 

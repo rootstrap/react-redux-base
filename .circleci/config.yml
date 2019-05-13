@@ -1,18 +1,23 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
     docker:
-      - image: circleci/node:9.8-browsers
+      - image: circleci/node:10.14.2-browsers
 
     steps:
       - checkout
-      - run: echo 'export PATH=${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:$PATH' >> $BASH_ENV
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - dependency-cache
       - run:
           name: Install dependencies
           command: yarn
       - run:
           name: Run tests
-          command: yarn test
+          command: yarn test:cover
       - run:
           name: Run linter
           command: yarn lint
@@ -21,3 +26,11 @@ jobs:
           key: dependency-cache
           paths:
             - ~/.cache/yarn
+
+      - run:
+          name: Setup Code Climate test reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+            ./cc-test-reporter after-build
