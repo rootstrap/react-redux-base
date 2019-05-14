@@ -12,6 +12,10 @@ class Session {
   static signUp(user) {
     return api.post('/users', user);
   }
+
+  static getProfile() {
+    return api.get('/user/profile');
+  }
 }
 
 export default Session;

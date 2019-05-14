@@ -49,7 +49,7 @@ delete window.__PRELOADED_STATE__;
 
 const store = configureStore(Immutable.fromJS(preloadedState));
 
-sessionService.initSessionService(store, { driver: 'COOKIES' });
+sessionService.initSessionService(store, { driver: 'COOKIES', refreshOnCheckAuth: true });
 
 const renderApp = (Component) => {
   hydrate(

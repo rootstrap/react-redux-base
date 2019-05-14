@@ -1,12 +1,14 @@
 import React from 'react';
 import { object, bool, string, func } from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
+import { sessionService } from 'redux-react-session';
 
 import routes from 'constants/routesPaths';
 
 const PrivateRoute = ({ component, exact = false, path, authenticated }) => (
   <Route
     exact={exact}
+    onEnter={sessionService.checkAuth}
     path={path}
     render={props => (
       authenticated ?
