@@ -11,28 +11,31 @@ import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import theme from '../constants/theme';
 
-const App = ({ authenticated, checked }) => (
-  <ThemeProvider theme={theme}>
-    <Fragment>
-      <Helmet>
-        <title>RS React Redux Base</title>
-      </Helmet>
-      <ConnectedRouter history={history}>
-        {checked &&
-          <Switch>
-            {routes.map((route, index) =>
-              <RouteFromPath
-                key={`route${index}`}
-                {...route}
-                authenticated={authenticated}
-              />)
-            }
-          </Switch>
-        }
-      </ConnectedRouter>
-    </Fragment>
-  </ThemeProvider>
-);
+const App = ({ authenticated, checked }) => {
+  window.history = history;
+  return (
+    <ThemeProvider theme={theme}>
+      <Fragment>
+        <Helmet>
+          <title>RS React Redux Base</title>
+        </Helmet>
+        <ConnectedRouter history={history}>
+          {checked &&
+            <Switch>
+              {routes.map((route, index) =>
+                <RouteFromPath
+                  key={`route${index}`}
+                  {...route}
+                  authenticated={authenticated}
+                />)
+              }
+            </Switch>
+          }
+        </ConnectedRouter>
+      </Fragment>
+    </ThemeProvider>
+  );
+};
 
 App.propTypes = {
   authenticated: bool.isRequired,

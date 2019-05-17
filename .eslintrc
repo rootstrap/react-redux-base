@@ -7,7 +7,8 @@
   ],
   "plugins": [
     "react",
-    "react-hooks"
+    "react-hooks",
+    "cypress"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -23,7 +24,8 @@
     "browser": true,
     "node": true,
     "jquery": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "rules": {
     "object-curly-newline": 0,

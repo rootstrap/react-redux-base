@@ -1,0 +1,58 @@
+// ***********************************************
+// This example commands.js shows you how to
+// create various custom commands and overwrite
+// existing commands.
+//
+// For more comprehensive examples of custom
+// commands please read more here:
+// https://on.cypress.io/custom-commands
+// ***********************************************
+
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+import headers from 'fixtures/headers';
+
+// Cypress image snapshot
+addMatchImageSnapshotCommand({
+  failureThreshold: '0.01', // threshold for entire image
+  failureThresholdType: 'percent' // percent of image or number of pixels
+});
+
+// Cypress.Commands.add('fetchVisit', (url) => {
+//   Cypress.log({ name: 'Fetch visit' });
+
+//   // In order to:
+//   // - stub http requests
+//   // - cy.visit support
+//   const { indexUrl } = Cypress.config();
+
+//   // return cy.request(url);
+//   return cy.visit(indexUrl, { onBeforeLoad: (win) => { win.fetch = null; } })
+//   // return cy.visit(url);
+//     .then((win) => {
+//       if (url !== indexUrl) {
+//         win.location = url;
+//         win.fetch = null;
+//       }
+//     });
+// });
+Cypress.Commands.add('goToRoute', (route = '') => cy.window().its('history').invoke('push', route));
+
+Cypress.Commands.add('mockResponse', (method, url, alias, status, response = null, withHeaders = true) => {
+  const mockOptions = { method, url, status };
+
+  if (withHeaders) {
+    mockOptions.headers = headers();
+    cy.mockCallToServer(mockOptions, response, alias);
+  } else {
+    cy.mockCallToServer(mockOptions, response, alias);
+  }
+});
+
+Cypress.Commands.add('mockCallToServer', (mockOptions, response, alias) => {
+  if (response) {
+    mockOptions.response = response;
+  }
+  cy.server();
+  cy.route(mockOptions).as(alias);
+});
