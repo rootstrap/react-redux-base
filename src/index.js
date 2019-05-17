@@ -44,7 +44,7 @@ const messages = locales[locale];
 
 const store = configureStore();
 
-sessionService.initSessionService(store, { refreshOnCheckAuth: true });
+sessionService.initSessionService(store);
 
 const renderApp = (Component) => {
   render(

@@ -12,14 +12,3 @@ export const signUp = user =>
       throw new SubmissionError(err.errors);
     }
   };
-
-export const getProfile = () =>
-  async () => {
-    try {
-      const { user } = await sessionApi.getProfile();
-      console.log(user);
-      // sessionService.saveUser(user);
-    } catch (err) {
-      throw new SubmissionError(err.errors);
-    }
-  };
