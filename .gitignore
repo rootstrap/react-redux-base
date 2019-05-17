@@ -45,3 +45,9 @@ dist
 
 # Server build
 server/build
+
+# Cypress
+cypress.env.json
+cypress/screenshots
+cypress/snapshots
+cypress/videos
