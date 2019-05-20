@@ -2,8 +2,6 @@ import fetch from 'isomorphic-fetch';
 import { sessionService } from 'redux-react-session';
 import humps from 'humps';
 
-import routes from 'constants/routesPaths';
-
 const saveSessionHeaders = (headers) => {
   if (headers.get('access-token')) {
     const sessionHeaders = {
@@ -27,14 +25,12 @@ const handleErrors = response =>
       resolve(response);
       return;
     }
-
-    sessionService.loadSession()
-      .then(() => {
-        if (response.status === 401) {
-          sessionService.deleteSession();
-          window.location = routes.login;
-        }
+    if (response.status === 401) {
+      sessionService.loadSession().then(() => {
+        sessionService.deleteSession();
+        sessionService.deleteUser();
       }).catch(() => {});
+    }
 
     response.json()
       .then((json) => {
@@ -64,14 +60,15 @@ class Api {
   }
 
   addTokenHeader(requestData) {
-    return sessionService.loadSession()
-      .then((session) => {
-        const { token, client, uid } = session;
-        requestData.headers['access-token'] = token;
-        requestData.headers.client = client;
-        requestData.headers.uid = uid;
-        return requestData;
-      }).catch(() => requestData);
+    return sessionService.refreshFromLocalStorage().then(() =>
+      sessionService.loadSession()
+        .then((session) => {
+          const { token, client, uid } = session;
+          requestData.headers['access-token'] = token;
+          requestData.headers.client = client;
+          requestData.headers.uid = uid;
+          return requestData;
+        })).catch(() => requestData);
   }
 
   get(uri, apiUrl = process.env.API_URL) {
