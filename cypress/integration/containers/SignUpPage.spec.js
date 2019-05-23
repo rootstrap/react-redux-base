@@ -2,7 +2,10 @@
 // [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
 
 import faker from 'faker';
+
 import fakerUser from 'fixtures/fakeUser';
+import { signUpStub } from 'stubs/sessionStubs';
+import { FAIL_CASE } from 'cypressConstants';
 
 const email = faker.internet.email();
 const password = faker.internet.password();
@@ -11,9 +14,7 @@ const fakeUser = fakerUser();
 describe('Sign Up Page', () => {
   beforeEach(() => {
     cy.removeSession();
-    cy.fetchVisit('/sign-up');
-    // cy.fetchVisit('/');
-    // cy.get('a').should('have.attr', 'href', '/sign-up').click();
+    cy.visit('/sign-up');
   });
 
   //  FOR FUTURE VISUAL REGRESSION TESTS
@@ -88,26 +89,26 @@ describe('Sign Up Page', () => {
   });
 
   context('Form Submission', () => {
-    it.only('submit failure, should display has already been taken', () => {
-      cy.stubSignUp(true);
+    it('submit failure, should display has already been taken', () => {
+      cy.stubRequest(signUpStub(), FAIL_CASE);
 
       cy.get('input[name="email"]').type(email);
       cy.get('input[name=password]').type(password);
       cy.get('input[name=passwordConfirmation]').type(password);
-      cy.get('form').submit().wait('@signUpStubFailure');
+      cy.get('form').submit().wait('@signUpStub');
 
       cy.contains('has already been taken');
     });
 
     it('submit successful, should be redirected to the homepage', () => {
-      cy.stubSignUp();
+      cy.stubRequest(signUpStub());
 
       cy.get('input[name="email"]').type(fakeUser.email);
       cy.get('input[name=password]').type(password);
       cy.get('input[name=passwordConfirmation]').type(password);
       cy.get('form').submit().wait('@signUpStub');
 
-      cy.fetchVisit('/login');
+      cy.visit('/login');
       cy.url().should('eq', `${Cypress.config().baseUrl}/`);
     });
   });

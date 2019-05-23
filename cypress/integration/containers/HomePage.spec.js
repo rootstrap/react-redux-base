@@ -1,9 +1,10 @@
 // / <reference types="Cypress" />
+import { logoutStub } from 'stubs/sessionStubs';
 
 describe('Home Page', () => {
   beforeEach(() => {
     cy.logUser();
-    cy.fetchVisit('/');
+    cy.visit('/');
   });
 
   context('Homepage View', () => {
@@ -16,7 +17,7 @@ describe('Home Page', () => {
     });
 
     it('click in the logout button,should be redirected to the login path', () => {
-      cy.stubLogout();
+      cy.stubRequest(logoutStub());
 
       cy.get('button').click().wait('@logoutStub');
       cy.url().should('match', /login/);

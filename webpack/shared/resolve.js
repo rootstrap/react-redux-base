@@ -15,6 +15,8 @@ module.exports = {
     styles: path.resolve(__dirname, '../../src/styles'),
     utils: path.resolve(__dirname, '../../src/utils'),
     fixtures: path.resolve(__dirname, '../../cypress/fixtures'),
+    stubs: path.resolve(__dirname, '../../cypress/support/stubs'),
+    cypressConstants: path.resolve(__dirname, '../../cypress/support/constants'),
     fieldDefinitions: path.resolve(__dirname, '../../cypress/support/fieldDefinitions')
   }
 };

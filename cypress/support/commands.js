@@ -9,7 +9,13 @@
 // ***********************************************
 
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import localForage from 'localforage';
+
 import headers from 'fixtures/headers';
+import user from 'fixtures/fakeUser';
+import { SUCCESS_CASE } from 'cypressConstants';
+
+const storage = localForage.createInstance({ name: 'redux-react-session' });
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
@@ -17,31 +23,28 @@ addMatchImageSnapshotCommand({
   failureThresholdType: 'percent' // percent of image or number of pixels
 });
 
-Cypress.Commands.add('fetchVisit', (url) => {
-  Cypress.log({ name: 'Fetch visit' });
-
-  return cy.visit(url);
-});
-
 Cypress.on('window:before:load', (win) => {
   delete win.fetch;
 });
 
-Cypress.Commands.add('mockResponse', (method, url, alias, status, response = null, withHeaders = true) => {
-  const mockOptions = { method, url, status };
+Cypress.Commands.add('stubRequest', (options, caseId = SUCCESS_CASE) => {
+  const { name, cases, ...baseOptions } = options;
+  const { withHeaders = true, ...caseOptions } = cases[caseId];
+  const stubOptions = { ...baseOptions, ...caseOptions };
 
-  if (withHeaders) {
-    mockOptions.headers = headers();
-    cy.mockCallToServer(mockOptions, response, alias);
-  } else {
-    cy.mockCallToServer(mockOptions, response, alias);
-  }
+  if (withHeaders) stubOptions.headers = headers();
+  stubOptions.url = `**${stubOptions.url}`;
+  cy.server();
+  cy.route(stubOptions).as(name);
 });
 
-Cypress.Commands.add('mockCallToServer', (mockOptions, response, alias) => {
-  if (response) {
-    mockOptions.response = response;
-  }
-  cy.server();
-  cy.route(mockOptions).as(alias);
+Cypress.Commands.add('logUser', () => {
+  Cypress.log({ name: 'Save user data' });
+
+  storage.setItem('USER-SESSION', headers({ mockingServer: false }));
+  storage.setItem('USER_DATA', user());
+});
+
+Cypress.Commands.add('removeSession', () => {
+  window.indexedDB.deleteDatabase('redux-react-session');
 });
