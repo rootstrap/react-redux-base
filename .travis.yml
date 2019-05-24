@@ -4,4 +4,4 @@ node_js:
   - "10.14.2"
 script:
   - yarn lint
-  - yarn test
+  - yarn test:launch
