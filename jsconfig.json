@@ -15,7 +15,10 @@
       "store/*": ["src/store/*"],
       "styles/*": ["src/styles/*"],
       "fixtures": ["../cypress/fixtures"],
-      "fieldDefinitions": ["../cypress/support/fieldDefinitions"]
+      "stubs": ["../cypress/support/stubs"],
+      "cypressConstants": ["../cypress/support/constants"],
+      "fieldDefinitions": ["../cypress/support/fieldDefinitions"],
+      "reusableTests": ["../cypress/support/reusableTests"],
     }
   },
   "exclude": ["node_modules", "dist"]

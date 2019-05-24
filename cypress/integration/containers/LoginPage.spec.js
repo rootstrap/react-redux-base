@@ -5,6 +5,8 @@ import faker from 'faker';
 import fakerUser from 'fixtures/fakeUser';
 import { loginStub } from 'stubs/sessionStubs';
 import { FAIL_CASE } from 'cypressConstants';
+import fields from 'fieldDefinitions/loginFields';
+import { testFields } from 'reusableTests';
 
 const email = faker.internet.email();
 const password = faker.internet.password();
@@ -42,31 +44,8 @@ describe('Login Page (Real Response)', () => {
     });
   });
 
-  context('Form Errors', () => {
-    it('displays empty email error', () => {
-      cy.get('form').within(() => {
-        cy.get('input[name=password]').type('password123{enter}');
-      });
-
-      cy.get('span').contains('You must enter an email to continue');
-    });
-
-    it('displays empty password error', () => {
-      cy.get('form').within(() => {
-        cy.get('input[name="email"]').type('janelae@test.com{enter}');
-      });
-
-      cy.get('span').contains('You must enter a password to continue');
-    });
-
-    it('displays invalid email error', () => {
-      cy.get('form').within(() => {
-        cy.get('input[name="email"]').type('janelae');
-        cy.get('input[name=password]').type('password123');
-      });
-
-      cy.get('span').contains('You must enter a valid email');
-    });
+  context('Form Validations', () => {
+    testFields(fields);
   });
 
   context('Form Submission', () => {
