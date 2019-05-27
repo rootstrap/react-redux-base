@@ -14,12 +14,8 @@ jobs:
           name: Install dependencies
           command: yarn --frozen-lockfile
       - run:
-          name: Run web server
-          command: ENV=cypress yarn start
-          background: true
-      - run:
           name: Run tests
-          command: yarn cypress:circleCi
+          command: yarn test:launch
       - run:
           name: Run linter
           command: yarn lint

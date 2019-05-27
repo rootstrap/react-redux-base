@@ -30,6 +30,7 @@ const middleware = webpackMiddleware(compiler, {
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 app.get('*', function response(req, res) {
+  res.set('Content-Type', 'text/html');
   res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '../dist/index.html')));
   res.end();
 });

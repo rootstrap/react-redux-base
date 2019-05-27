@@ -1,41 +1,73 @@
-// BASE
-Cypress.Commands.add('testBase', (messageClassName, title, name, value, defaultMessage, type = 'input', customError) => {
+import capitalize from 'lodash/capitalize';
+
+import { validationTypes } from 'cypressConstants';
+import { inputTypes } from './constants';
+
+// Validation cases
+const getDefaults = (testType, title, options = {}) => {
+  const name = title.toLowerCase();
+  switch (testType) {
+    case validationTypes.PRESENCE:
+      return { value: '', defaultMessage: `${capitalize(name)} can't be blank` };
+    case validationTypes.EMAIL:
+      return { value: 'a@b', defaultMessage: `You must enter a valid ${name}` };
+    case validationTypes.EQUALITY:
+      return {
+        value: 'different value',
+        defaultMessage: `Your ${name} must be equal to the ${options.otherInput}`
+      };
+    default:
+      return {};
+  }
+};
+
+// Base
+Cypress.Commands.add('testInput', ({
+  title,
+  name,
+  validationType,
+  // Optionals:
+  inputType = inputTypes.INPUT,
+  options: {
+    logTitle = true,
+    customValue,
+    customMessage,
+    setup,
+    ...options
+  } = {}
+}) => {
+  const { value, defaultMessage } = getDefaults(validationType, title, options);
+  if (logTitle) {
+    Cypress.log({ name: `Test ${validationType}` });
+  }
+  setup && setup();
   cy.get('form').within(() => {
-    if (value || value === 0) {
-      cy.get(`${type}[name="${name}"]`).clear().type(value).blur();
-    } else {
-      cy.get(`${type}[name="${name}"]`).clear().blur();
-    }
+    cy.get(`${inputType}[name="${name}"]`).as('currentInput');
+
+    cy.get('@currentInput').clear();
+    const finalValue = customValue || customValue === 0 ? customValue : value;
+    if (finalValue || finalValue === 0) cy.get('@currentInput').type(finalValue);
+    cy.get('@currentInput').blur();
   });
-  cy.get(messageClassName).contains(customError || `${title} ${defaultMessage}`);
+  cy.contains(customMessage || defaultMessage);
 });
 
-// PRESENCE
-Cypress.Commands.add('testPresence', ({ messageName, className }, title, name, type = 'input', customError) => {
-  Cypress.log({ name: `Test presence ${messageName}` });
-  cy.testBase(className, title, name, '', 'can\'t be blank', type, customError);
-});
-
-// FORMAT
-Cypress.Commands.add('testFormat', ({ messageName, className }, title, name, wrongValue, type = 'input', customError) => {
-  Cypress.log({ name: `Test Format ${messageName}` });
-  cy.testBase(className, title, name, wrongValue, 'is invalid', type, customError);
-});
-
-// NUMERICALITY
-Cypress.Commands.add('testNumericality', ({ messageName, className }, title, name, type = 'input', customError) => {
-  Cypress.log({ name: `Test Numericality ${messageName}` });
-  cy.testBase(className, title, name, 'a', 'is not a number', type, customError);
-});
-
-// GREATER THAN
-Cypress.Commands.add('testGreaterThan', ({ messageName, className }, title, name, limit, type = 'input', customError) => {
-  Cypress.log({ name: `Test Greater Than ${messageName}` });
-  cy.testBase(className, title, name, limit, `must be greater than ${limit}`, type, customError);
-});
-
-// GREATER THAN OR EQUAL TO
-Cypress.Commands.add('testGreaterThanOrEqualTo', ({ messageName, className }, title, name, limit, type = 'input', customError) => {
-  Cypress.log({ name: `Test Greater Than Or Equal To ${messageName}` });
-  cy.testBase(className, title, name, limit - 1, `must be greater than or equal to ${limit}`, type, customError);
-});
+export const testFields = fields => (
+  fields.forEach((field) => {
+    const { title, errors, warnings, ...basics } = field;
+    context(`${title} field`, () => {
+      ['errors', 'warnings'].forEach((validationKey) => {
+        const validations = field[validationKey];
+        if (validations) {
+          context(validationKey, () => {
+            validations.forEach(({ validationType, options }) => {
+              it(`Displays ${title.toLowerCase()} ${validationType} error`, () => {
+                cy.testInput({ title, ...basics, validationType, options });
+              });
+            });
+          });
+        }
+      });
+    });
+  })
+);

@@ -9,8 +9,13 @@
 // ***********************************************
 
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import localForage from 'localforage';
 
 import headers from 'fixtures/headers';
+import user from 'fixtures/fakeUser';
+import { SUCCESS_CASE } from 'cypressConstants';
+
+const storage = localForage.createInstance({ name: 'redux-react-session' });
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
@@ -18,41 +23,28 @@ addMatchImageSnapshotCommand({
   failureThresholdType: 'percent' // percent of image or number of pixels
 });
 
-// Cypress.Commands.add('fetchVisit', (url) => {
-//   Cypress.log({ name: 'Fetch visit' });
-
-//   // In order to:
-//   // - stub http requests
-//   // - cy.visit support
-//   const { indexUrl } = Cypress.config();
-
-//   // return cy.request(url);
-//   return cy.visit(indexUrl, { onBeforeLoad: (win) => { win.fetch = null; } })
-//   // return cy.visit(url);
-//     .then((win) => {
-//       if (url !== indexUrl) {
-//         win.location = url;
-//         win.fetch = null;
-//       }
-//     });
-// });
-Cypress.Commands.add('goToRoute', (route = '') => cy.window().its('history').invoke('push', route));
-
-Cypress.Commands.add('mockResponse', (method, url, alias, status, response = null, withHeaders = true) => {
-  const mockOptions = { method, url, status };
-
-  if (withHeaders) {
-    mockOptions.headers = headers();
-    cy.mockCallToServer(mockOptions, response, alias);
-  } else {
-    cy.mockCallToServer(mockOptions, response, alias);
-  }
+Cypress.on('window:before:load', (win) => {
+  delete win.fetch;
 });
 
-Cypress.Commands.add('mockCallToServer', (mockOptions, response, alias) => {
-  if (response) {
-    mockOptions.response = response;
-  }
+Cypress.Commands.add('stubRequest', (options, caseId = SUCCESS_CASE) => {
+  const { name, cases, ...baseOptions } = options;
+  const { withHeaders = true, ...caseOptions } = cases[caseId];
+  const stubOptions = { ...baseOptions, ...caseOptions };
+
+  if (withHeaders) stubOptions.headers = headers();
+  stubOptions.url = `**${stubOptions.url}`;
   cy.server();
-  cy.route(mockOptions).as(alias);
+  cy.route(stubOptions).as(name);
+});
+
+Cypress.Commands.add('logUser', () => {
+  Cypress.log({ name: 'Save user data' });
+
+  storage.setItem('USER-SESSION', headers({ mockingServer: false }));
+  storage.setItem('USER_DATA', user());
+});
+
+Cypress.Commands.add('removeSession', () => {
+  window.indexedDB.deleteDatabase('redux-react-session');
 });

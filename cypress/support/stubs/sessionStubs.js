@@ -1,56 +1,52 @@
 
 import user from 'fixtures/fakeUser';
-import headers from 'fixtures/headers';
-
-const localForage = require('localforage');
-
-const storage = localForage.createInstance({ name: 'redux-react-session' });
-
-// HELPERS
-Cypress.Commands.add('logUser', () => {
-  Cypress.log({ name: 'Save user data' });
-
-  storage.setItem('USER-SESSION', headers({ mockingServer: false }));
-  storage.setItem('USER_DATA', user());
-});
-
-Cypress.Commands.add('removeSession', () => {
-  window.indexedDB.deleteDatabase('redux-react-session');
-});
-
-Cypress.Commands.add('mockResponseLoginHeaders', (method, url, response, alias) => {
-  cy.server();
-  cy.route({ method, url, response, headers: headers() }).as(alias);
-});
+import { POST, DELETE, SUCCESS_CODE, UNAUTHORIZED_CODE, UNPROCESSABLE_ENTITY_CODE } from 'cypressConstants';
 
 // STUBS
-Cypress.Commands.add('stubSignUp', (fail = false) => {
-  if (fail) {
-    cy.mockResponse(
-      'POST',
-      '**/users',
-      'signUpStubFailure',
-      422,
-      { errors: { email: ['has already been taken'] } },
-      false
-    );
-  } else {
-    cy.mockResponseLoginHeaders('POST', '**/users', { user: user({ complete: false }) }, 'signUpStub');
+
+export const loginStub = customUser => ({
+  name: 'loginStub',
+  method: POST,
+  url: '/users/sign_in',
+  cases: {
+    success: {
+      status: SUCCESS_CODE,
+      response: { user: customUser || user() }
+    },
+    fail: {
+      status: UNAUTHORIZED_CODE,
+      response: { error: 'Invalid login credentials. Please try again.' },
+      withHeaders: false
+    }
   }
 });
 
-Cypress.Commands.add('stubLogin', (fail = false) => {
-  if (fail) {
-    cy.mockResponse('POST', '**/users/sign_in', 'loginStubFailure', 401, { errors: 'Invalid login credentials. Please try again.' }, false);
-  } else {
-    cy.mockResponseLoginHeaders('POST', '**/users/sign_in', { user: user() }, 'loginStub');
+export const signUpStub = customUser => ({
+  name: 'signUpStub',
+  method: POST,
+  url: '/users',
+  cases: {
+    success: {
+      status: SUCCESS_CODE,
+      response: { user: customUser || user({ complete: false }) },
+    },
+    fail: {
+      status: UNPROCESSABLE_ENTITY_CODE,
+      response: { errors: { email: ['has already been taken'] } },
+      withHeaders: false
+    }
   }
 });
 
-Cypress.Commands.add('stubProfile', (customUser) => {
-  cy.mockResponse('GET', '**/user/profile', 'profileStub', 200, { user: customUser || user() });
-});
-
-Cypress.Commands.add('stubLogout', () => {
-  cy.mockResponse('DELETE', '**/users/sign_out', 'logoutStub', 200, { status: 'ok' });
+export const logoutStub = () => ({
+  name: 'logoutStub',
+  method: DELETE,
+  url: '/users/sign_out',
+  cases: {
+    success: {
+      status: SUCCESS_CODE,
+      response: { status: 'ok' },
+      withHeaders: false
+    }
+  }
 });
