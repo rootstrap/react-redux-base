@@ -1,9 +1,4 @@
-// # Example:
-// [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
-
 import faker from 'faker';
-
-import fakerUser from 'fixtures/fakeUser';
 import { signUpStub } from 'stubs/sessionStubs';
 import { FAIL_CASE } from 'cypressConstants';
 import routes from 'constants/routespaths';
@@ -12,7 +7,6 @@ import { testFields } from 'reusableTests';
 
 const email = faker.internet.email();
 const password = faker.internet.password();
-const fakeUser = fakerUser();
 
 describe('Sign Up Page', () => {
   beforeEach(() => {
@@ -33,11 +27,15 @@ describe('Sign Up Page', () => {
     });
 
     it('Should see a link to the login page', () => {
-      cy.get('a').should('have.attr', 'href', routes.login).contains('Sign in');
+      cy.get('a')
+        .should('have.attr', 'href', routes.login)
+        .contains('Sign in');
     });
 
     it('Click in the sign up link, should be redirected to the login page', () => {
-      cy.get('a').should('have.attr', 'href', routes.login).click();
+      cy.get('a')
+        .should('have.attr', 'href', routes.login)
+        .click();
       cy.url().should('match', /login/);
     });
   });
@@ -53,7 +51,9 @@ describe('Sign Up Page', () => {
       cy.get('input[name="email"]').type(email);
       cy.get('input[name=password]').type(password);
       cy.get('input[name=passwordConfirmation]').type(password);
-      cy.get('form').submit().wait('@signUpStub');
+      cy.get('form')
+        .submit()
+        .wait('@signUpStub');
 
       cy.contains('has already been taken');
     });
@@ -61,10 +61,12 @@ describe('Sign Up Page', () => {
     it('Submit successful, should be redirected to the homepage', () => {
       cy.stubRequest(signUpStub());
 
-      cy.get('input[name="email"]').type(fakeUser.email);
+      cy.get('input[name="email"]').type(email);
       cy.get('input[name=password]').type(password);
       cy.get('input[name=passwordConfirmation]').type(password);
-      cy.get('form').submit().wait('@signUpStub');
+      cy.get('form')
+        .submit()
+        .wait('@signUpStub');
 
       cy.visit(routes.login);
       cy.url().should('eq', `${Cypress.config().baseUrl}/`);
