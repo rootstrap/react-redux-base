@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore yarn and Cypress cache
           keys:
-            - dependency-cache
+            - dependency-cache-with-cypress
       - run:
           name: Install dependencies
           command: yarn --frozen-lockfile
@@ -25,6 +25,6 @@ jobs:
           command: yarn lint
 
       - save_cache:
-          key: dependency-cache
+          key: dependency-cache-with-cypress
           paths:
             - ~/.cache
