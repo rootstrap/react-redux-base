@@ -2,12 +2,11 @@
 // [https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/logging-in__html-web-forms/cypress/integration/logging-in-html-web-form-spec.js]
 
 import faker from 'faker';
-import fakeUser from 'fixtures/fakeUser';
 import { loginStub } from 'stubs/sessionStubs';
 import { FAIL_CASE } from 'cypressConstants';
-import fields from 'fieldDefinitions/loginFields';
 import { testFields } from 'reusableTests';
-import routes from 'constants/routespaths';
+import routes from 'constants/routesPaths';
+import fields from '../../fields/loginPageFields';
 
 const email = faker.internet.email();
 const password = faker.internet.password();

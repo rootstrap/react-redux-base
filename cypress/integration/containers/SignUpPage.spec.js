@@ -1,9 +1,9 @@
 import faker from 'faker';
 import { signUpStub } from 'stubs/sessionStubs';
 import { FAIL_CASE } from 'cypressConstants';
-import routes from 'constants/routespaths';
-import fields from 'fieldDefinitions/signUpFields';
 import { testFields } from 'reusableTests';
+import routes from 'constants/routesPaths';
+import fields from '../../fields/signUpPageFields';
 
 const email = faker.internet.email();
 const password = faker.internet.password();

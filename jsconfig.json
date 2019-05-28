@@ -15,9 +15,8 @@
       "store/*": ["src/store/*"],
       "styles/*": ["src/styles/*"],
       "fixtures": ["../cypress/fixtures"],
-      "stubs": ["../cypress/support/stubs"],
+      "stubs": ["../cypress/stubs"],
       "cypressConstants": ["../cypress/support/constants"],
-      "fieldDefinitions": ["../cypress/support/fieldDefinitions"],
       "reusableTests": ["../cypress/support/reusableTests"],
     }
   },

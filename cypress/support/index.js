@@ -14,7 +14,6 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './stubs/sessionStubs';
 import './commands';
 import './reusableTests';
 
