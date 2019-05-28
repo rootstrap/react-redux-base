@@ -28,7 +28,7 @@
     "build:client": "babel-node server/scripts/buildClient.js",
     "test": "cypress run",
     "test:open": "cypress open",
-    "test:launch": "start-server-and-test start http://localhost:8000 test:ci",
+    "test:launch": "ENV=cypress start-server-and-test start http://localhost:8000 test:ci",
     "test:ci": "cypress run --key e83e86fd-9c47-4b2b-980d-517c9aff5974",
     "test:spec": "cypress run --spec",
     "test:chrome": "cypress run --browser chrome",

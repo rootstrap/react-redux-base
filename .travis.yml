@@ -4,4 +4,5 @@ node_js:
   - "10.15.3"
 script:
   - yarn lint
-  - yarn test:launch
+  - ENV=cypress yarn start &
+  - yarn test:ci
