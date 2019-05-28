@@ -11,7 +11,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - dependency-cache
+            - dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: yarn
@@ -23,7 +23,7 @@ jobs:
           command: yarn lint
 
       - save_cache:
-          key: dependency-cache
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
