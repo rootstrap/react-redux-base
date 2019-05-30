@@ -3,10 +3,12 @@
 
 import faker from 'faker';
 import { loginStub } from 'stubs/sessionStubs';
-import { FAIL_CASE } from 'cypressConstants';
+import { FAIL_CASE, inputTypes, validationTypes } from 'cypressConstants';
 import { testFields } from 'reusableTests';
 import routes from 'constants/routesPaths';
-import fields from '../../fields/loginPageFields';
+
+const { INPUT } = inputTypes;
+const { PRESENCE, EMAIL } = validationTypes;
 
 const email = faker.internet.email();
 const password = faker.internet.password();
@@ -48,6 +50,34 @@ describe('Login Page (Real Response)', () => {
   });
 
   context('Form Validations', () => {
+    const fields = [
+      {
+        title: 'Email',
+        name: 'email',
+        inputType: INPUT,
+        errors: [
+          {
+            validationType: PRESENCE,
+            options: { customMessage: 'You must enter an email to continue' }
+          },
+          {
+            validationType: EMAIL,
+            options: { customMessage: 'You must enter a valid email' }
+          }
+        ]
+      },
+      {
+        title: 'Password',
+        name: 'password',
+        inputType: INPUT,
+        errors: [
+          {
+            validationType: PRESENCE,
+            options: { customMessage: 'You must enter a password to continue' }
+          }
+        ]
+      },
+    ];
     testFields(fields);
   });
 

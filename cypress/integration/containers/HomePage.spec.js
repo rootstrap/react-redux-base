@@ -3,7 +3,7 @@ import { logoutStub } from 'stubs/sessionStubs';
 
 describe('Home Page', () => {
   beforeEach(() => {
-    cy.logUser();
+    cy.loginUser();
     cy.visit('/');
   });
 

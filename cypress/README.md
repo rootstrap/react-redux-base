@@ -1,5 +1,7 @@
 # Cypress testing in react-redux-base
 
+// TODO: table of contents
+
 ## Setup
 Cypress comes almost ready for you to use in this branch. There are a few configurations that you need to change in order to get the most out of it.
 
@@ -11,7 +13,30 @@ Cypress comes almost ready for you to use in this branch. There are a few config
 
 -----
 
-## General structure
+## Running tests
+Running tests it's very easy, and we have already included some for you. To get a taste of how cypress works start your server with `ENV=cypress yarn start` and then run `yarn test:open`. The Test Runner will open and a list of tests to run will appear. Choose one of them and voilá, you will see screenshots of the test running in real time.
+
+Something fails? Hover over that step in the left sidebar and you will see a screenshot of that exact moment. You can usually find useful information in said sidebar as well.
+
+#### Test selection
+![Test Runner List](https://i.imgur.com/m7ApbOo.png)
+
+#### Test running
+![test running in Test Runner](http://g.recordit.co/vGBmlfJDte.gif)
+
+
+-------
+## Writing tests
+
+Now that you have seen how to run tests with Cypress is time to dive into writing tests and getting to know the structure the base has in place to make testing even faster and easier.
+
+If this is your first time using Cypress you might want to take a look at Cypress [documentation](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) first. It is very well written and very extensive.
+
+[Here](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file) is how to write your first test.
+
+
+
+### General structure
 ```
 cypress
 ├───fields/               # Field definitions for test suites
@@ -34,75 +59,35 @@ cypress
 -----
 
 ### Integrations
-Default folder for test suites. Cypress recommends to keep all your suites in this folder.
+As you might have seen in the Cypress documentation, here is where all your test specs should go. Cypress recommends to keep all your suites in this folder.
+
 To keep a similar structure to `src`, all container test suites are in `containers` folder.
 
-### Fields
-Test your forms with ease, define the fields you want to test and the respective `errors` and `warnings` to check and the method `testFields` will do all the rest of the work for you.
+Out of the box the `react-redux-base` comes with three tests, one for each container (`LoginPage`, `SignUpPage`, `HomePage`).
 
-#### How do I define fields to test?
-For each test suite we recommend creating an associated fields file. This will keep your test suite clean.
+### What type of tests do you want to write?
+* **Integration or unit tests:**
 
-Let's take as an example `signUpPageFields.js`:
-```
-const fields = [
-  ...,
-  {
-    title: 'Password Confirmation',
-    name: 'passwordConfirmation',
-    inputType: INPUT, // Default value INPUT so here it shouldn't be necessary
-    errors: [
-      {
-        validationType: PRESENCE,
-        options: { customMessage: 'You must enter a password confirmation to continue' }
-      },
-      {
-        validationType: EQUALITY,
-        options: {
-          otherInput: 'password',
-          setup: () => {
-            cy.get('input[name=password]').type('password123');
-          }
-        }
-      }
-    ]
-  },
-...
-]
-```
-##### Basic attributes:
-* `title`: this is mainly used to display a description of what is happening.
-* `name`: way to identify the field.
-* inputType: default value is `INPUT`so in most cases this is not needed. You can add any other input types to the
+  When doing this kind of tests one thing you have do to is make sure that all requests done to the backend are stubbed. This way you make sure you always get the response you want from the api calls.
 
-Out of the box the validationTypes provided are: `PRESENCE`, `EMAIL` and `EQUALITY` but you can easily expand this as explained in [Support/reusableTests](#Support/reusableTests).
+  This is especially important if you are testing an app that needs authentication. If you forget to stub a request, when you send the backend your fake authentication headers it will kick you out and the tests will fail.
 
-Each validation has default value that should make the validation fail and a default message as well. If those don't fit your needs you can always provide your own in options by setting `customValue` and `customMessage`.
+* **E2E:**
 
-In the case that the field validation requires some setup like filling another field first, a `setup` function can be provided as in the example that will be run before the validations.
+  If E2E is the way yo want to go, you won't need to do stubs to the backend. That being said, you will need to have a proper env setup in the backend for testing and use `cy.realLoginUser` instead of `cy.loginUser` to make sure that the user is authenticated from the backend's perspective.
 
+### Stubbing requests
+To stub any request you can use the custom command `cy.stubRequest` (defined in `support/commands`).
 
------
-### Fixtures
-Fixtures are what Cypress likes to call mock models. They are useful if you are doing integration tests or unit testing and want to stop the requests made to the backend and mock the response.
+You can see examples of how it's used in all of the provided specs.
 
-You can take `fakeUser.js` as a reference on how to define fixtures and how to use them.
+For each stub you want to do, you will need to define certain parameters you want to pass to it.
 
-`faker` library is already integrated so it's easier to create fake data.
+To keep stubs organized, there is a folder call `stubs` that should be the equivalent to `api` folder in source.
 
-### Stubs
-As mentioned before, if you don't want to do e2e testing then you will probably need to mock the calls done to your api. That's where stubs come to aid you.
+For each `[model]Api.js` you should create a `[model]Stubs.js` inside `stubs` folder.
 
-For each `[model]api.js` file in the `api` folder you should create a stubs file in this folder.
-
-We already provide you with `sessionStubs.js` that help you stub `login`, `signUp` and `logout` api calls.
-
-As you will see stubs have a defined structure, this helps to reduce the amount of code repetition and it works well with the command `stubRequest`.
-
-#### Here is an example of a stub definition:
-As with field definitions, there is some basic params that you need to set like the name, method and url.
-
-After that you have the different cases you want to stub, in most cases `success` and `fail`. All cases should have `status` and `response`. If the request shouldn't return auth headers you can also set `withHeaders` to `false`.
+Here is an example of one of the `sessionStubs`:
 ```
 export const signUpStub = customUser => ({
   name: 'signUpStub',
@@ -122,38 +107,136 @@ export const signUpStub = customUser => ({
 });
 ```
 
-#### Here is an example of how those stubs can be used:
-At the top of the test we tell Cypress to stub the request we want, this way when the request is actually made, Cypress will know what to do.
+When calling `cy.stubRequest`, first parameter is always this stub config object. Second parameter is the case you want to stub. By default the case to be stubbed is `SUCCESS_CASE`.
 
-After we submit the form we tell Cypress to wait for the stub `@sub_name` to happen before continuing to the assertion.
+#### Basic attributes
+
+| Parameter | Description | Values / Type
+| --- | --- | --- |
+| name | this will be the stub identifier | **string** |
+| method | Show file differences that haven't been staged | **HTTP METHODS** defined in constants |
+| url | url you want to mock, `stubRequest` will pre-append `'**'` for you so any urls ending with the one you provide match | **string** |
+| cases | A request to the backend not always responds with the same values. For each case you need to stub here is the place to define them | **object** |
+
+#### Cases
+Usual cases are `'success'` (`SUCCESS_CASE`) and `'fail'` (`FAIL_CASE`), because of that, those are already defined in the constants file so you can reuse them. If there are any other common cases that you find yourself using you might want to define them there as well.
+
+| Parameter | Description | Values / Type | Required
+| --- | --- | --- | --- |
+| status | This is the status code of the case, usually something like 200 or 400.  | **HTTP CODES** defined in constants| **true** |
+| response | This is the response object as the backend would send it, usually contains a fixture or error messages. | object, no default value | **false** but usually necessary |
+| withHeaders | This determines if the stub response contains auth headers.You usually would want it in true but if you are stubbing an error that should kick the user out or the user is not logged in after that response. | bool, default value: `true` | **false**
+
+#### When to stub and how to stub?
+All that explanation is nice but, how do you actually use it?
+
+If we continue with the `SignUpPage` spec example you will see that in the `Form submission` section the `cy.stubRequest` is being called.
+
+The important thing about using a stub is that you define the stub before the call to the backend is made and you wait for it to happen before making any assertions.
+
+For example, in the case of `Submit failure, should display has already been taken`:
+
 ```
-it('Submit failure, should display has already been taken', () => {
-  cy.stubRequest(signUpStub(), FAIL_CASE);
+cy.stubRequest(signUpStub(), FAIL_CASE);     // define stub
 
-  ... // set all the field values
+...                                          // set form values
 
-  cy.get('form').submit().wait('@signUpStub');
+cy.get('form').submit().wait('@signUpStub'); // submit form and wait for stub
 
-  ... // assertion
+cy.contains('has already been taken');       // assert
+
+
+```
+
+### Fixtures
+Fixtures are what Cypress likes to call mock models. As previously mentioned, they are useful if you are doing integration tests or unit testing and want to stop the requests made to the backend and mock the response. It's what you will use in the response attribute of stubs.
+
+You can take `fakeUser.js` as a reference on how to define fixtures and how to use them.
+
+`faker` library is already integrated so it's easier to create fake data.
+
+-----
+
+### Assert form validations
+
+Asserting that a form is being validated correctly is something that you will often find yourself having to do. It is also quite a repetitive task that can be somewhat automated to make it faster to write and have less code repetition.
+
+When testing that a field shows a certain validation error you would usually write something like:
+
+```
+it('Display email is invalid error', () => {
+  cy.get('form').within(() => {
+    cy.get('input[name="email"]').clear().type('this is not an email').blur();
+  });
+  cy.contains('Email is invalid');
+});
+```
+And you would have to write that bit of code for each field for each of it's validations.
+#### Test it the react-redux-base way
+This base comes with a solution where you can simply define the fields of a form and the errors and warnings that you want to check and just call the following code to test form validation:
+```
+context('Form Validations', () => {
+  const fields = [
+    ... // Field definitions
+  ]
+  testFields(fields);
 });
 ```
 
------
-### Support/commands
-This file contains some command additions to Cypress. For example `cy.stubRequest` to stub backend request, `cy.logUser` to fake user authentication and `cy.removeSession` to log the user out.
+#### Defining fields
 
-If you ever need to add a new command this is the place to do so.
-If it's getting a bit crowded you can always create more files and import them in `support/index.js`.
+Let's take as an example `signUpPage.spec.js`:
+```
+...
+const fields = [
+  ...,
+  {
+    title: 'Password Confirmation',
+    name: 'passwordConfirmation',
+    inputType: INPUT,
+    errors: [
+      {
+        validationType: PRESENCE,
+        options: { customMessage: 'You must enter a password confirmation to continue' }
+      },
+      {
+        validationType: EQUALITY,
+        options: {
+          otherInput: 'password',
+          setup: () => {
+            cy.get('input[name=password]').type('password123');
+          }
+        }
+      }
+    ]
+  },
+...
+]
+...
+```
+##### Basic attributes
+| Parameter | Description | Values / Type | Required
+| --- | --- | --- | --- |
+| title | This is to show in the test case definition and to define default validation messages.  | **string** | **true** |
+| name | Input name | **string** | **true** |
+| inputType | Input type, used to identify element. By default the defined `inputTypes` are `INPUT` and `TEXTAREA`, you can expand that to fit your needs. | **string**, default value: `INPUT` from `inputTypes` | **false**
+| errors | Define errors to check. | **array of object**, objects inside follow **validation structure** | **false**
+| warnings | Define warnings to check. | **array of object**, objects inside follow **validation structure** | **false**
 
-### Support/reusableTests
-In order to reduce code repetition we added some generic testing functions that will allow you to write tests faster.
+Inside errors and warnings arrays you can define validations with this attributes:
 
-At the moment all reusable tests are focused on testing forms. Generic method to test a field and a method to test all fields.
+##### Validation structure
+| Parameter | Description | Values / Type | Required
+| --- | --- | --- | --- |
+| validationType | Select which validation you want to run. Choose from and extend `validationTypes` in constants. | **string** | **true** |
+| options | Any extra configurations that you need to set | **object** | **false** |
 
-As previously mentioned there are some validationTypes that come already defined.
-As your project grows and you need to use different validation types we recommend adding them to the `getDefaults` switch in this file with a default value and message so they can be reused.
+Said options are described below
 
------
-## Test Runner
-
-## CI integration
+##### Validation options
+| Parameter | Description | Values / Type | Required
+| --- | --- | --- | --- |
+| customValue | For each validation a default value is already provided, if for some reason you need to change it just set this parameter. | **string** | **false** |
+| customMessage | As with the value, a default message is provided but you sometimes need a custom one. | **string** | **false**
+| setup | function where you can define any steps to be run before the validation | **func** | **false**
+| [custom] | You can define any custom option | **any** | **false**

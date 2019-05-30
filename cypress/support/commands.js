@@ -38,7 +38,7 @@ Cypress.Commands.add('stubRequest', (options, caseId = SUCCESS_CASE) => {
   cy.route(stubOptions).as(name);
 });
 
-Cypress.Commands.add('logUser', () => {
+Cypress.Commands.add('loginUser', () => {
   Cypress.log({ name: 'Save user data' });
 
   storage.setItem('USER-SESSION', headers({ mockingServer: false }));
@@ -48,3 +48,5 @@ Cypress.Commands.add('logUser', () => {
 Cypress.Commands.add('removeSession', () => {
   window.indexedDB.deleteDatabase('redux-react-session');
 });
+
+// TODO: add real login command for E2E
