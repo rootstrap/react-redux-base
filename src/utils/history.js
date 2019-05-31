@@ -8,9 +8,6 @@ class History {
     if (!instance) {
       instance = process.env.BROWSER ? createBrowserHistory() : createMemoryHistory();
     }
-    // if (window.Cypress) {
-    window.cypressHistory = instance;
-    // }
     return instance;
   }
 }
