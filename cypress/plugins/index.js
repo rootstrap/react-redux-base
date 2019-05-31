@@ -12,6 +12,8 @@
 // the project's config changing)
 
 const webpack = require('@cypress/webpack-preprocessor');
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
+const env = require('dotenv').config({ path: `.env.${process.env.ENV || 'test_integration'}` });
 
 module.exports = (on, config) => {
   const options = {
@@ -21,6 +23,7 @@ module.exports = (on, config) => {
     watchOptions: {}
   };
   on('file:preprocessor', webpack(options));
-  config.env = process.env;
+  config.env = { API_URL: env.parsed.API_URL };
+  addMatchImageSnapshotPlugin(on);
   return config;
 };

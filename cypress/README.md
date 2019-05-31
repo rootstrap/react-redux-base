@@ -7,6 +7,7 @@
     - [Test running](#test-running)
 * [Writing tests](#writing-tests)
   + [General structure](#general-structure)
+  + [Testing commands](#testing-commands)
   + [Integrations](#integrations)
   + [What type of tests do you want to write?](#what-type-of-tests-do-you-want-to-write-)
   + [Stubbing requests](#stubbing-requests)
@@ -31,7 +32,7 @@ Cypress comes almost ready for you to use in this branch. There are a few config
 
   It's very easy to get it configured, here is a [link](https://docs.cypress.io/guides/core-concepts/dashboard-service.html#Setup) to the official documentation with the steps you need to follow.
 
-* **Set `API_URL`:** Replace default values for `API_URL` in `.env.cypress` with your backend url.
+* **Set `API_URL`:** Set values for `API_URL` in `.env.test_integration` and `.env.test_e2e` with the backend url you are going to use in each. If you are not going to test in one of those modes there is no need to fill it.
 
 -----
 
@@ -76,6 +77,28 @@ cypress
 ├───videos/               # Home for failing test videos
 └───README.md
 ```
+
+-----
+
+### Testing commands
+* Run all tests in console:
+```bash
+$ yarn test
+```
+* Open test runner
+```bash
+$ yarn test:open
+```
+* Run a specific spec in console
+```bash
+$ yarn test:spec "cypress/integration/containers/NameOfSpec.spec.js"
+```
+* Command used for CI configuration
+```bash
+$ yarn test:ci
+```
+
+By default all test commands use `.env.test_integration` as their env. If you want to run a different env just add `ENV=test_e2e` for example.
 
 -----
 

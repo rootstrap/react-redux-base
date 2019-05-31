@@ -28,10 +28,8 @@
     "build:client": "babel-node server/scripts/buildClient.js",
     "test": "cypress run",
     "test:open": "cypress open",
-    "test:launch": "ENV=cypress start-server-and-test start http://localhost:8000 test:ci",
     "test:ci": "cypress run --key e83e86fd-9c47-4b2b-980d-517c9aff5974",
     "test:spec": "cypress run --spec",
-    "test:chrome": "cypress run --browser chrome",
     "deploy": "npm run build && babel-node tools/deployS3",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
@@ -126,7 +124,6 @@
     "rimraf": "2.6.2",
     "sass-loader": "7.1.0",
     "serialize-javascript": "1.5.0",
-    "start-server-and-test": "1.9.1",
     "style-loader": "0.22.1",
     "stylelint": "8.4.0",
     "stylelint-config-standard": "18.2.0",
