@@ -13,7 +13,7 @@
 
 const webpack = require('@cypress/webpack-preprocessor');
 
-module.exports = (on) => {
+module.exports = (on, config) => {
   const options = {
     // send in the options from your webpack.config.js, so it works the same
     // as your app's code
@@ -21,4 +21,6 @@ module.exports = (on) => {
     watchOptions: {}
   };
   on('file:preprocessor', webpack(options));
+  config.env = process.env;
+  return config;
 };

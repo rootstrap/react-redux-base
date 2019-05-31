@@ -9,7 +9,7 @@ Cypress comes almost ready for you to use in this branch. There are a few config
 
   It's very easy to get it configured, here is a [link](https://docs.cypress.io/guides/core-concepts/dashboard-service.html#Setup) to the official documentation with the steps you need to follow.
 
-* **Set `API_URL`:** Replace default values for `API_URL` in `cypress.json` and `.env.cypress` with your backend url.
+* **Set `API_URL`:** Replace default values for `API_URL` in `.env.cypress` with your backend url.
 
 -----
 
