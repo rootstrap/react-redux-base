@@ -1,4 +1,4 @@
-import { SubmissionError } from 'redux-form/immutable';
+import { SubmissionError } from 'redux-form';
 import { sessionService } from 'redux-react-session';
 
 import sessionApi from 'api/sessionApi';

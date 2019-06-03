@@ -1,7 +1,6 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
-import Immutable from 'immutable';
 import { sessionService } from 'redux-react-session';
 import { AppContainer } from 'react-hot-loader';
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -47,7 +46,7 @@ const messages = locales[locale];
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 
-const store = configureStore(Immutable.fromJS(preloadedState));
+const store = configureStore(preloadedState);
 
 sessionService.initSessionService(store, { driver: 'COOKIES' });
 

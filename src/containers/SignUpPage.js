@@ -30,11 +30,11 @@ SignUpPage.propTypes = {
 };
 
 const mapState = state => ({
-  authenticated: state.getIn(['session', 'authenticated'])
+  authenticated: state.session.authenticated
 });
 
 const mapDispatch = dispatch => ({
-  signUp: user => dispatch(signUp(user.toJS()))
+  signUp: user => dispatch(signUp(user))
 });
 
 export default connect(mapState, mapDispatch)(memo(SignUpPage));

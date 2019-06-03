@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import nock from 'nock';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'redux-form';
 import { sessionService } from 'redux-react-session';
 
 import configureStore from 'store/configureStore';
@@ -159,7 +159,7 @@ describe('<LoginPage />', () => {
 
       // wait for the failure
       const unsubscribe = store.subscribe(() => {
-        if (store.getState().getIn(['form', 'login', 'submitFailed'])) {
+        if (store.getState().form.login.submitFailed) {
           unsubscribe();
           subject.update();
           done();
