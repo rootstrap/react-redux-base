@@ -1,16 +1,14 @@
 import { fromJS } from 'immutable';
+import createReducer from './createReducer';
 
 export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
 const initialState = fromJS({
-  location: null
+  location: null,
 });
 
-const routerReducer = (state = initialState, { type, payload } = {}) => {
-  if (type === LOCATION_CHANGE) {
-    return state.set('location', fromJS(payload));
-  }
-  return state;
+const actionHandlers = {
+  [LOCATION_CHANGE]: (state, action) => state.set('location', fromJS(action.payload)),
 };
 
-export default routerReducer;
+export default createReducer(initialState, actionHandlers);
