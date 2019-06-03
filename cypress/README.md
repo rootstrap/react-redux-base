@@ -161,7 +161,7 @@ As you can see the function is receiving a parameter called `customUser`. This c
  Parameter | Description | Values / Type
  --------- | ----------- | -------------
  name | this will be the stub identifier | **string**
- method | Show file differences that haven't been staged | **HTTP METHODS** defined in constants
+ method | Select the http method the request you want to stub has. | **HTTP METHODS** defined in constants
  url | url you want to mock, `stubRequest` will pre-append `'**'` for you so any urls ending with the one you provide match | **string**
  cases | A request to the backend not always responds with the same values. For each case you need to stub here is the place to define them | **object**
 
