@@ -26,7 +26,7 @@
 ----
 
 ## Setup
-Cypress comes almost ready for you to use in this branch. There are a few configurations that you need to change in order to get the most out of it.
+Congratulations, you are almost set. There are a few configurations you need to do to get your testing environment up and running.
 
 * **Set record key:** Cypress has a handy feature called Cypress dashboard, there you can see video recordings of failed tests run in the CI of your choice.
 
@@ -37,7 +37,7 @@ Cypress comes almost ready for you to use in this branch. There are a few config
 -----
 
 ## Running tests
-Running tests  is very easy, and we have already included some for you. To get a taste of how cypress works start your server with `ENV=cypress yarn start` and then run `yarn test:open`. The Test Runner will open and a list of tests to run will appear. Choose one of them and voilá, you will see screenshots of the test running in real time.
+Running tests is very easy, and we have already included some for you. To get a taste of how cypress works start your server with `ENV=cypress yarn start` and then run `yarn test:open`. The Test Runner will open and a list of tests to run will appear. Choose one of them and voilá, you will see screenshots of the test running in real time.
 
 Something fails? Hover over that step in the left sidebar and you will see a screenshot of that exact moment. You can usually find useful information in said sidebar as well.
 
@@ -127,7 +127,7 @@ You can see examples of how it's used in all of the provided specs.
 
 For each stub you want to do, you will need to define certain parameters you want to pass to it.
 
-To keep stubs organized, there is a folder call `stubs` that should be the equivalent to `api` folder in `src`.
+To keep stubs organized, there is a folder called `stubs` that should be the equivalent to `api` folder in `src`.
 
 For each `[model]Api.js` you should create a `[model]Stubs.js` inside `stubs` folder.
 
@@ -274,7 +274,7 @@ const fields = [
  errors | Define errors to check. | **array of object**, objects inside follow **validation structure** | **false**
  warnings | Define warnings to check. | **array of object**, objects inside follow **validation structure** | **false**
 
-Inside errors and warnings arrays you can define validations with this attributes:
+Inside errors and warnings arrays you can define validations with these attributes:
 
 ##### Validation structure
  Parameter | Description | Type | Required

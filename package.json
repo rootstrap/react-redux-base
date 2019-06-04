@@ -94,7 +94,6 @@
     "css-loader": "1.0.0",
     "cypress": "3.3.0",
     "cypress-image-snapshot": "3.0.2",
-    "cypress-react-unit-test": "2.4.1",
     "dotenv": "6.0.0",
     "dotenv-webpack": "1.5.7",
     "enzyme": "3.4.1",
@@ -153,7 +152,9 @@
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
-    "modulePathIgnorePatterns": ["<rootDir>/cypress"]
+    "modulePathIgnorePatterns": [
+      "<rootDir>/cypress"
+    ]
   },
   "keywords": [
     "react",
