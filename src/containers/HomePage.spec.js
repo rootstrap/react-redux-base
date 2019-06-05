@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import nock from 'nock';
 import { sessionService } from 'redux-react-session';
-import Immutable from 'immutable';
 
 import configureStore from 'store/configureStore';
 import HomePage from 'containers/HomePage';
@@ -17,13 +16,13 @@ describe('<HomePage />', () => {
   beforeEach(() => {
     const email = 'john@test.com';
 
-    store = configureStore(Immutable.fromJS({
+    store = configureStore({
       session: {
         user: {
           email
         }
       }
-    }));
+    });
     subject = mount(withStore(<HomePage />, store));
   });
 

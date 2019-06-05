@@ -30,11 +30,11 @@ LoginPage.propTypes = {
 };
 
 const mapState = state => ({
-  authenticated: state.getIn(['session', 'authenticated'])
+  authenticated: state.session.authenticated
 });
 
 const mapDispatch = dispatch => ({
-  login: user => dispatch(login(user.toJS()))
+  login: user => dispatch(login(user))
 });
 
 export default connect(mapState, mapDispatch)(memo(LoginPage));
