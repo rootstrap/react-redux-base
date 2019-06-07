@@ -4,7 +4,6 @@ import { object } from 'prop-types';
 import { connect } from 'react-redux';
 
 import LogoutButton from 'components/user/LogoutButton';
-import { getUser } from 'selectors/sessionSelectors';
 
 const HomePage = ({ user }) => (
   <div>
@@ -20,7 +19,7 @@ HomePage.propTypes = {
 };
 
 const mapState = state => ({
-  user: getUser(state)
+  user: state.session.user
 });
 
 export default connect(mapState)(HomePage);

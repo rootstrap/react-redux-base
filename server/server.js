@@ -83,7 +83,7 @@ server
           const html = ReactDOMServer.renderToString(sheet.collectStyles(staticRouter));
           const styleTags = sheet.getStyleElement();
           const helmet = Helmet.renderStatic();
-          const preloadedState = serialize(store.getState().toJS());
+          const preloadedState = serialize(store.getState());
           return { html, helmet, styleTags, preloadedState };
         };
 
