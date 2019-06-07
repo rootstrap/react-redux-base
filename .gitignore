@@ -42,6 +42,7 @@ dist
 .env.dev
 .env.staging
 .env.prod
+.env.test_e2e
 
 # Server build
 server/build

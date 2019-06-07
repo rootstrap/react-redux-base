@@ -32,7 +32,7 @@ Congratulations, you are almost set. There are a few configurations you need to 
 
   It's very easy to get it configured, here is a [link](https://docs.cypress.io/guides/core-concepts/dashboard-service.html#Setup) to the official documentation with the steps you need to follow.
 
-* **Set `API_URL`:** Set values for `API_URL` in `.env.test_integration` and `.env.test_e2e` with the backend url you are going to use in each. If you are not going to test in one of those modes there is no need to fill it.
+* **Set `API_URL`:** If you are planning to use E2E testing remove `.example` from `.env.test_e2e.example` and substitute `API_URL` with the backend url you are going to use. If that is not the case `.env.test` comes already set with a fake `API_URL` that you don't need to change since calls won't be reaching the backend.
 
 -----
 
@@ -98,7 +98,7 @@ $ yarn test:spec "cypress/integration/containers/NameOfSpec.spec.js"
 $ yarn test:ci
 ```
 
-By default all test commands use `.env.test_integration` as their env. If you want to run a different env just add `ENV=test_e2e` for example.
+By default all test commands use `.env.test` as their env. If you want to run a different env just add `ENV=test_e2e` for example.
 
 -----
 
