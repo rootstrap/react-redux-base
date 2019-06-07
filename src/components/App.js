@@ -19,15 +19,15 @@ const App = ({ authenticated, checked }) => (
       </Helmet>
       <ConnectedRouter history={history}>
         {checked &&
-          <Switch>
-            {routes.map((route, index) =>
-              <RouteFromPath
-                key={`route${index}`}
-                {...route}
-                authenticated={authenticated}
-              />)
-            }
-          </Switch>
+        <Switch>
+          {routes.map((route, index) =>
+            <RouteFromPath
+              key={`route${index}`}
+              {...route}
+              authenticated={authenticated}
+            />)
+          }
+        </Switch>
         }
       </ConnectedRouter>
     </Fragment>

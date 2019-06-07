@@ -42,6 +42,13 @@ dist
 .env.dev
 .env.staging
 .env.prod
+.env.test_e2e
 
 # Server build
 server/build
+
+# Cypress
+cypress.env.json
+cypress/screenshots
+cypress/snapshots
+cypress/videos

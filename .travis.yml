@@ -1,7 +1,8 @@
 language: node_js
 cache: yarn
 node_js:
-  - "10.14.2"
+  - "10.15.3"
 script:
   - yarn lint
-  - yarn test
+  - ENV=cypress yarn start &
+  - yarn test:ci

@@ -11,7 +11,7 @@
 1. **Run the app**. `yarn start` or `npm start`
 2. **Build the app**. `yarn build` or `npm run build`
 3. **Lint the app**. `yarn lint` or `npm run lint`
-4. **Test the app**. `yarn test` or `npm run test`
+4. **Test the app**. `yarn cypress` or `npm run cypress`, for UI option `yarn cypress:open` or `npm run cypress:open`,
 5. **Run the app with SSR**. `yarn ssr` or `npm run ssr`
 
 ## Getting Started
