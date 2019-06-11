@@ -22,7 +22,10 @@ module.exports = (on, config) => {
     webpackOptions: require('../../webpack/webpack.config.cypress'),
     watchOptions: {}
   };
+
+  on('task', require('@cypress/code-coverage/task'));
   on('file:preprocessor', webpack(options));
+  on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'));
   config.env = { API_URL: env.parsed.API_URL };
   addMatchImageSnapshotPlugin(on);
   return config;

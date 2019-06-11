@@ -17,6 +17,9 @@
           "ssr": true
         }]
       ]
+    },
+    "test": {
+      "plugins": ["istanbul"]
     }
   }
 }
