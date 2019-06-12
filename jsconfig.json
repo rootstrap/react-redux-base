@@ -8,6 +8,7 @@
       "components/*": ["src/components/*"],
       "constants/*": ["src/constants/*"],
       "containers/*": ["src/containers/*"],
+      "hooks/*": ["src/hooks/*"],
       "locales/*": ["src/locales/*"],
       "utils/*": ["src/utils/*"],
       "reducers/*": ["src/reducers/*"],
