@@ -37,7 +37,7 @@ Congratulations, you are almost set. There are a few configurations you need to 
 -----
 
 ## Running tests
-Running tests is very easy, and we have already included some for you. To get a taste of how cypress works start your server with `ENV=cypress yarn start` and then run `yarn test:open`. The Test Runner will open and a list of tests to run will appear. Choose one of them and voilá, you will see screenshots of the test running in real time.
+Running tests is very easy, and we have already included some for you. To get a taste of how cypress works start your server with `ENV=test yarn start` and then run `yarn test:open`. The Test Runner will open and a list of tests to run will appear. Choose one of them and voilá, you will see screenshots of the test running in real time.
 
 Something fails? Hover over that step in the left sidebar and you will see a screenshot of that exact moment. You can usually find useful information in said sidebar as well.
 
