@@ -11,7 +11,7 @@
 1. **Run the app**. `yarn start` or `npm start`
 2. **Build the app**. `yarn build` or `npm run build`
 3. **Lint the app**. `yarn lint` or `npm run lint`
-4. **Test the app**. `yarn cypress` or `npm run cypress`, for UI option `yarn cypress:open` or `npm run cypress:open`,
+4. **Test the app**. `yarn test` or `npm run test`, for UI option `yarn test:open` or `npm run test:open`,
 5. **Run the app with SSR**. `yarn ssr` or `npm run ssr`
 
 ## Getting Started
@@ -76,6 +76,7 @@ The server is prepared to fetch data directly from the backend before rendering 
 |  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.|
 | [Webpack 4](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [React Hot Loader](https://github.com/gaearon/react-hot-loader). |
 | [Express](https://github.com/expressjs/express) | Fast, unopinionated, minimalist web framework for node. |
+| [Cypress](https://cypress.io/) | Automated integration tests. Default way of testing. |
 | [Jest](https://facebook.github.io/jest/) | Automated tests with built-in expect assertions and  [Enzyme](https://github.com/airbnb/enzyme) for DOM testing without a browser using Node. |
 | [ESLint](http://eslint.org/)| Lint JS. Reports syntax and style issues. Using [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb) for the airbnb style guides. |
 | [SASS](http://sass-lang.com/) | Compiled CSS styles with variables, functions, and more.
