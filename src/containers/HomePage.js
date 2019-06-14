@@ -1,25 +1,20 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { object } from 'prop-types';
-import { connect } from 'react-redux';
+import useSession from 'hooks/useSession';
 
 import LogoutButton from 'components/user/LogoutButton';
 
-const HomePage = ({ user }) => (
-  <div>
-    {user && user.email &&
-      <p><FormattedMessage id="home.welcome" values={user} /></p>
-    }
-    <LogoutButton />
-  </div>
-);
+const HomePage = () => {
+  const { user } = useSession();
 
-HomePage.propTypes = {
-  user: object
+  return (
+    <div>
+      {user && user.email &&
+        <p><FormattedMessage id="home.welcome" values={user} /></p>
+      }
+      <LogoutButton />
+    </div>
+  );
 };
 
-const mapState = state => ({
-  user: state.session.user
-});
-
-export default connect(mapState)(HomePage);
+export default HomePage;

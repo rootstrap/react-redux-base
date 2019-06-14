@@ -1,47 +1,40 @@
 import React, { Fragment } from 'react';
-import { bool } from 'prop-types';
-import { ConnectedRouter } from 'react-router-redux';
-import { connect } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
 
+import useSession from 'hooks/useSession';
 import history from 'utils/history';
 import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import theme from '../constants/theme';
 
-const App = ({ authenticated, checked }) => (
-  <ThemeProvider theme={theme}>
-    <Fragment>
-      <Helmet>
-        <title>RS React Redux Base</title>
-      </Helmet>
-      <ConnectedRouter history={history}>
-        {checked &&
-        <Switch>
-          {routes.map((route, index) =>
-            <RouteFromPath
-              key={`route${index}`}
-              {...route}
-              authenticated={authenticated}
-            />)
-          }
-        </Switch>
-        }
-      </ConnectedRouter>
-    </Fragment>
-  </ThemeProvider>
-);
+const App = () => {
+  const { authenticated, checked } = useSession();
 
-App.propTypes = {
-  authenticated: bool.isRequired,
-  checked: bool.isRequired
+  return (
+    <ThemeProvider theme={theme}>
+      <Fragment>
+        <Helmet>
+          <title>RS React Redux Base</title>
+        </Helmet>
+        <ConnectedRouter history={history}>
+          {checked &&
+            <Switch>
+              {routes.map((route, index) =>
+                <RouteFromPath
+                  key={`route${index}`}
+                  {...route}
+                  authenticated={authenticated}
+                />)
+              }
+            </Switch>
+          }
+        </ConnectedRouter>
+      </Fragment>
+    </ThemeProvider>
+  );
 };
 
-const mapState = state => ({
-  checked: state.session.checked,
-  authenticated: state.session.authenticated,
-});
-
-export default connect(mapState)(App);
+export default App;

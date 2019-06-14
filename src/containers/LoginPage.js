@@ -1,14 +1,21 @@
-import React, { memo } from 'react';
-import { bool, func } from 'prop-types';
-import { connect } from 'react-redux';
+import React, { memo, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
+import useSession from 'hooks/useSession';
 import LoginForm from 'components/user/LoginForm';
 import { login } from 'actions/sessionActions';
 import routes from 'constants/routesPaths';
 
-const LoginPage = ({ login, authenticated }) => {
+const LoginPage = () => {
+  const { authenticated } = useSession();
+  const dispatch = useDispatch();
+  const loginRequest = useCallback(
+    user => dispatch(login(user)),
+    [dispatch]
+  );
+
   if (authenticated) {
     return <Redirect to={routes.index} />;
   }
@@ -16,7 +23,7 @@ const LoginPage = ({ login, authenticated }) => {
   return (
     <div>
       <p><FormattedMessage id="login.title" /></p>
-      <LoginForm onSubmit={login} />
+      <LoginForm onSubmit={loginRequest} />
       <Link to={routes.signUp}>
         <FormattedMessage id="login.signup" />
       </Link>
@@ -24,17 +31,4 @@ const LoginPage = ({ login, authenticated }) => {
   );
 };
 
-LoginPage.propTypes = {
-  login: func.isRequired,
-  authenticated: bool.isRequired,
-};
-
-const mapState = state => ({
-  authenticated: state.session.authenticated
-});
-
-const mapDispatch = dispatch => ({
-  login: user => dispatch(login(user))
-});
-
-export default connect(mapState, mapDispatch)(memo(LoginPage));
+export default memo(LoginPage);
