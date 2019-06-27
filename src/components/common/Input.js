@@ -5,21 +5,21 @@ import { FormattedMessage } from 'react-intl';
 import { parseInputErrors } from 'utils/helpers';
 
 const Input = ({
-  input,
+  field,
   label,
   type,
   placeholder,
-  meta: { touched, error }
+  form: { touched, errors }
 }) => (
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input {...input} {...{ placeholder, type }} />
-      {touched && error &&
+      <input {...field} {...{ placeholder, type }} />
+      {touched[field.name] && errors && errors[field.name] &&
         <span>
           <FormattedMessage
-            id={parseInputErrors(error)}
-            defaultMessage={parseInputErrors(error)}
+            id={parseInputErrors(errors[field.name])}
+            defaultMessage={parseInputErrors(errors[field.name])}
           />
         </span>
       }
@@ -28,11 +28,11 @@ const Input = ({
 );
 
 Input.propTypes = {
-  input: object.isRequired,
+  field: object.isRequired,
   label: string,
   type: string.isRequired,
   placeholder: string,
-  meta: object,
+  form: object,
 };
 
 export default Input;

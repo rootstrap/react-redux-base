@@ -12,7 +12,8 @@ const LoginPage = () => {
   const { authenticated } = useSession();
   const dispatch = useDispatch();
   const loginRequest = useCallback(
-    user => dispatch(login(user)),
+    (user, setError, setSubmitting) =>
+      dispatch(login(user, setError, setSubmitting)),
     [dispatch]
   );
 
@@ -23,7 +24,7 @@ const LoginPage = () => {
   return (
     <div>
       <p><FormattedMessage id="login.title" /></p>
-      <LoginForm onSubmit={loginRequest} />
+      <LoginForm handleSubmit={loginRequest} />
       <Link to={routes.signUp}>
         <FormattedMessage id="login.signup" />
       </Link>

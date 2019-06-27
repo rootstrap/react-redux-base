@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { func, string, bool } from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { bool } from 'prop-types';
+import { withFormik, Field, Form } from 'formik';
 import {
   injectIntl,
   intlShape,
@@ -10,16 +10,15 @@ import {
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
-import { validations, login } from 'utils/constraints';
+import { loginSchema } from 'utils/constraints';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
   password: { id: 'login.form.password' }
 });
 
-export const LoginForm = ({ handleSubmit, error, submitting, intl }) => (
-  <form onSubmit={handleSubmit}>
-    {error && <strong>{error}</strong>}
+export const LoginForm = ({ isSubmitting, intl }) => (
+  <Form>
     <div>
       <Field
         name="email"
@@ -39,18 +38,23 @@ export const LoginForm = ({ handleSubmit, error, submitting, intl }) => (
     <button type="submit">
       <FormattedMessage id="login.form.submit" />
     </button>
-    {submitting && <Loading />}
-  </form>
+    {isSubmitting && <Loading />}
+  </Form>
 );
 
 LoginForm.propTypes = {
-  handleSubmit: func.isRequired,
   intl: intlShape.isRequired,
-  submitting: bool.isRequired,
-  error: string
+  isSubmitting: bool,
 };
 
-export default reduxForm({
-  form: 'login',
-  validate: validations(login, { fullMessages: false })
-})(injectIntl(memo(LoginForm)));
+export default injectIntl(memo(withFormik({
+  mapPropsToValues: () => ({ email: '', password: '' }),
+  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
+    props.handleSubmit(values, setErrors, setSubmitting);
+  },
+  validationSchema: loginSchema,
+  initialValues: {
+    email: '',
+    password: ''
+  }
+})(LoginForm)));

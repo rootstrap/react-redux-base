@@ -15,7 +15,7 @@ export const loginStub = customUser => ({
     },
     fail: {
       status: UNAUTHORIZED_CODE,
-      response: { error: 'Invalid login credentials. Please try again.' },
+      response: { errors: { email: 'Invalid login credentials. Please try again.' } },
       withHeaders: false
     }
   }

@@ -1,28 +1,13 @@
-import validate from 'validate.js';
+import * as Yup from 'yup';
 
-export const login = {
-  email: {
-    presence: { message: 'email.presence' },
-    email: { message: 'email.invalid' },
-  },
-  password: {
-    presence: { message: 'password.presence' },
-  }
-};
+export const loginSchema = Yup.object().shape({
+  email: Yup.string().required('email.presence').email('email.invalid'),
+  password: Yup.string().required('password.presence')
+});
 
-export const signUp = {
-  email: {
-    presence: { message: 'email.presence' },
-    email: { message: 'email.invalid' }
-  },
-  password: {
-    presence: { message: 'password.presence' }
-  },
-  passwordConfirmation: {
-    presence: { message: 'passwordConfirmation.presence' },
-    equality: { attribute: 'password', message: 'passwordConfirmation.equality' }
-  }
-};
-
-export const validations = (constraints, props = {}) =>
-  data => validate(data, constraints, props) || {};
+export const signUpSchema = Yup.object().shape({
+  email: Yup.string().required('email.presence').email('email.invalid'),
+  password: Yup.string().required('password.presence'),
+  passwordConfirmation: Yup.string().required('passwordConfirmation.presence')
+    .oneOf([Yup.ref('password'), null], 'passwordConfirmation.equality'),
+});

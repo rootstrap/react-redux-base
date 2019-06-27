@@ -13,7 +13,8 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
 
   const signUpRequest = useCallback(
-    user => dispatch(signUp(user)),
+    (user, setError, setSubmitting) =>
+      dispatch(signUp(user, setError, setSubmitting)),
     [dispatch]
   );
 
@@ -24,7 +25,7 @@ const SignUpPage = () => {
   return (
     <div>
       <p><FormattedMessage id="signup.title" /></p>
-      <SignUpForm onSubmit={signUpRequest} />
+      <SignUpForm handleSubmit={signUpRequest} />
       <Link to={routes.login}>
         <FormattedMessage id="signup.signin" />
       </Link>

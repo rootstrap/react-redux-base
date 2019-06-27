@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import isEmpty from 'lodash/isEmpty';
 
 export const parseInputErrors = (error) => {
-  if (!error) {
+  if (!error || isEmpty(error)) {
     return;
   }
   if (Array.isArray(error)) {
