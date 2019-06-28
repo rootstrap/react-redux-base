@@ -9,7 +9,7 @@ const Input = ({
   label,
   type,
   placeholder,
-  form: { touched, status }
+  form: { touched, errors, status }
 }) => (
   <div>
     {label && <label>{label}</label>}
@@ -20,6 +20,14 @@ const Input = ({
           <FormattedMessage
             id={parseInputErrors(status[field.name])}
             defaultMessage={parseInputErrors(status[field.name])}
+          />
+        </span>
+      }
+      {touched[field.name] && errors && errors[field.name] &&
+        <span>
+          <FormattedMessage
+            id={parseInputErrors(errors[field.name])}
+            defaultMessage={parseInputErrors(errors[field.name])}
           />
         </span>
       }
