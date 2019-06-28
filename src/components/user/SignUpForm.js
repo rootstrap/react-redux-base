@@ -62,8 +62,7 @@ export const SignUpForm = ({ handleSubmit, intl }) => (
 
 SignUpForm.propTypes = {
   handleSubmit: func.isRequired,
-  intl: intlShape.isRequired,
-  isSubmitting: bool
+  intl: intlShape.isRequired
 };
 
 export default injectIntl(memo(SignUpForm));
