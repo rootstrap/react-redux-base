@@ -84,6 +84,7 @@ The server is prepared to fetch data directly from the backend before rendering 
 | [Stylelint](https://github.com/stylelint/stylelint) | Modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets. |
 | [Redux React Session](https://github.com/bernabe9/redux-react-session) | Keep your session sync with localStorage and Redux |
 | [Formik](https://github.com/jaredpalmer/formik) | Build forms easily without depending on Redux |
+| [Yup](https://github.com/jquense/yup) | Yup is a JavaScript object schema validator and object parser |
 | [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch) |  Is a Promise-based mechanism for programatically making web requests in the browser. |
 | [Immer](https://github.com/immerjs/immer) | Allows you to work with immutable state in a more convenient way. |
 | [React Intl](https://github.com/yahoo/react-intl/) | Localization for language support. |
