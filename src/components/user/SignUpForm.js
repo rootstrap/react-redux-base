@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { bool, func } from 'prop-types';
+import { func } from 'prop-types';
 import { Formik, Field, Form } from 'formik';
 import {
   injectIntl,
