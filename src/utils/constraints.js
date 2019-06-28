@@ -1,13 +1,13 @@
-import * as Yup from 'yup';
+import { object, string, ref } from 'yup';
 
-export const loginSchema = Yup.object().shape({
-  email: Yup.string().required('email.presence').email('email.invalid'),
-  password: Yup.string().required('password.presence')
+export const loginSchema = object().shape({
+  email: string().required('email.presence').email('email.invalid'),
+  password: string().required('password.presence')
 });
 
-export const signUpSchema = Yup.object().shape({
-  email: Yup.string().required('email.presence').email('email.invalid'),
-  password: Yup.string().required('password.presence'),
-  passwordConfirmation: Yup.string().required('passwordConfirmation.presence')
-    .oneOf([Yup.ref('password'), null], 'passwordConfirmation.equality'),
+export const signUpSchema = object().shape({
+  email: string().required('email.presence').email('email.invalid'),
+  password: string().required('password.presence'),
+  passwordConfirmation: string().required('passwordConfirmation.presence')
+    .oneOf([ref('password'), null], 'passwordConfirmation.equality'),
 });

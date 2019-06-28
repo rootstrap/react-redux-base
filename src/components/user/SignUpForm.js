@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { bool } from 'prop-types';
-import { withFormik, Field, Form } from 'formik';
+import { bool, func } from 'prop-types';
+import { Formik, Field, Form } from 'formik';
 import {
   injectIntl,
   intlShape,
@@ -18,52 +18,52 @@ const messages = defineMessages({
   passConfirmation: { id: 'signup.form.passconfirmation' }
 });
 
-export const SignUpForm = ({ intl, isSubmitting }) => (
-  <Form>
-    <div>
-      <Field
-        name="email"
-        label={intl.formatMessage(messages.email)}
-        component={Input}
-        type="email"
-      />
-    </div>
-    <div>
-      <Field
-        name="password"
-        label={intl.formatMessage(messages.password)}
-        component={Input}
-        type="password"
-      />
-    </div>
-    <div>
-      <Field
-        name="passwordConfirmation"
-        label={intl.formatMessage(messages.passConfirmation)}
-        component={Input}
-        type="password"
-      />
-    </div>
-    <button type="submit">
-      <FormattedMessage id="login.form.submit" />
-    </button>
-    {isSubmitting && <Loading />}
-  </Form>
+export const SignUpForm = ({ handleSubmit, intl }) => (
+  <Formik
+    onSubmit={(values, { setSubmitting, setStatus }) =>
+      handleSubmit(values, setStatus, setSubmitting)}
+    validationSchema={signUpSchema}
+    initialValues={{ email: '', password: '', passwordConfirmation: '' }}
+  >
+    {({ isSubmitting }) => (
+      <Form>
+        <div>
+          <Field
+            name="email"
+            label={intl.formatMessage(messages.email)}
+            component={Input}
+            type="email"
+          />
+        </div>
+        <div>
+          <Field
+            name="password"
+            label={intl.formatMessage(messages.password)}
+            component={Input}
+            type="password"
+          />
+        </div>
+        <div>
+          <Field
+            name="passwordConfirmation"
+            label={intl.formatMessage(messages.passConfirmation)}
+            component={Input}
+            type="password"
+          />
+        </div>
+        <button type="submit">
+          <FormattedMessage id="login.form.submit" />
+        </button>
+        {isSubmitting && <Loading />}
+      </Form>
+    )}
+  </Formik>
 );
 
 SignUpForm.propTypes = {
+  handleSubmit: func.isRequired,
   intl: intlShape.isRequired,
   isSubmitting: bool
 };
 
-export default injectIntl(memo(withFormik({
-  mapPropsToValues: () => ({ email: '', password: '', passwordConfirmation: '' }),
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    props.handleSubmit(values, setErrors, setSubmitting);
-  },
-  validationSchema: signUpSchema,
-  initialValues: {
-    email: '',
-    password: ''
-  }
-})(SignUpForm)));
+export default injectIntl(memo(SignUpForm));

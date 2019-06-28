@@ -91,7 +91,7 @@ describe('Login Page (Real Response)', () => {
         .submit()
         .wait('@loginStub');
 
-      cy.contains('Invalid login credentials. Please try again.');
+      cy.get('strong').contains('Invalid login credentials. Please try again.');
     });
 
     it('submit successful, should be redirected to the homepage', () => {
