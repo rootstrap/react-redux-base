@@ -12,8 +12,8 @@ const LoginPage = () => {
   const { authenticated } = useSession();
   const dispatch = useDispatch();
   const loginRequest = useCallback(
-    (user, setStatus, setSubmitting) =>
-      dispatch(login(user, setStatus, setSubmitting)),
+    (user, setErrors, setSubmitting) =>
+      dispatch(login(user, setErrors, setSubmitting)),
     [dispatch]
   );
 

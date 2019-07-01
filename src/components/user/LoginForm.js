@@ -20,15 +20,15 @@ const messages = defineMessages({
 export const LoginForm = ({ handleSubmit, intl }) => (
   <Formik
     onSubmit={
-      (values, { setSubmitting, setStatus }) =>
-        handleSubmit(values, setStatus, setSubmitting)
+      (values, { setSubmitting, setErrors }) =>
+        handleSubmit(values, setErrors, setSubmitting)
     }
     validationSchema={loginSchema}
     initialValues={{ email: '', password: '' }}
   >
-    {({ isSubmitting, status }) => (
+    {({ isSubmitting, errors }) => (
       <Form>
-        { status && <strong>{status}</strong> }
+        { errors.length && <strong>{errors}</strong> }
         <div>
           <Field
             name="email"

@@ -2,13 +2,13 @@ import { sessionService } from 'redux-react-session';
 
 import sessionApi from 'api/sessionApi';
 
-export const login = (user, setStatus, setSubmitting) =>
+export const login = (user, setErrors, setSubmitting) =>
   async () => {
     try {
       const response = await sessionApi.login({ user });
       sessionService.saveUser(response.user);
     } catch (err) {
-      setStatus(err.error);
+      setErrors(err.error);
     } finally {
       setSubmitting(false);
     }
