@@ -21,8 +21,8 @@ const messages = defineMessages({
 export const SignUpForm = ({ handleSubmit, intl }) => (
   <Formik
     onSubmit={
-      (values, { setSubmitting, setErrors }) =>
-        handleSubmit(values, setErrors, setSubmitting)
+      (values, { setSubmitting, setStatus }) =>
+        handleSubmit(values, setStatus, setSubmitting)
     }
     validationSchema={signUpSchema}
     initialValues={{ email: '', password: '', passwordConfirmation: '' }}

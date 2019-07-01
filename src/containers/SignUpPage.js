@@ -13,8 +13,8 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
 
   const signUpRequest = useCallback(
-    (user, setErrors, setSubmitting) =>
-      dispatch(signUp(user, setErrors, setSubmitting)),
+    (user, setStatus, setSubmitting) =>
+      dispatch(signUp(user, setStatus, setSubmitting)),
     [dispatch]
   );
 
