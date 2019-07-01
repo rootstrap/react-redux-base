@@ -29,22 +29,18 @@ export const LoginForm = ({ handleSubmit, intl }) => (
     {({ isSubmitting, status }) => (
       <Form>
         { status && <strong>{status}</strong> }
-        <div>
-          <Field
-            name="email"
-            label={intl.formatMessage(messages.email)}
-            component={Input}
-            type="email"
-          />
-        </div>
-        <div>
-          <Field
-            name="password"
-            label={intl.formatMessage(messages.password)}
-            component={Input}
-            type="password"
-          />
-        </div>
+        <Field
+          name="email"
+          label={intl.formatMessage(messages.email)}
+          component={Input}
+          type="email"
+        />
+        <Field
+          name="password"
+          label={intl.formatMessage(messages.password)}
+          component={Input}
+          type="password"
+        />
         <button type="submit">
           <FormattedMessage id="login.form.submit" />
         </button>
