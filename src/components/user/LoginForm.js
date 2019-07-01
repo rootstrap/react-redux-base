@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { func } from 'prop-types';
+import { bool, string } from 'prop-types';
 import { Field, Form } from 'formik';
 import {
   injectIntl,
@@ -39,7 +39,8 @@ export const LoginForm = ({ isSubmitting, status, intl }) => (
 );
 
 LoginForm.propTypes = {
-  handleSubmit: func.isRequired,
+  isSubmitting: bool,
+  status: string,
   intl: intlShape.isRequired
 };
 
