@@ -5,7 +5,11 @@ import { FormattedMessage } from 'react-intl';
 
 import useSession from 'hooks/useSession';
 import { signUp } from 'actions/userActions';
+
 import SignUpForm from 'components/user/SignUpForm';
+import CustomFormik from 'components/common/CustomFormik';
+import { signUpSchema } from 'utils/constraints';
+
 import routes from 'constants/routesPaths';
 
 const SignUpPage = () => {
@@ -25,7 +29,16 @@ const SignUpPage = () => {
   return (
     <div>
       <p><FormattedMessage id="signup.title" /></p>
-      <SignUpForm handleSubmit={signUpRequest} />
+      <CustomFormik
+        component={SignUpForm}
+        handleSubmit={signUpRequest}
+        validationSchema={signUpSchema}
+        initialValues={{
+          email: '',
+          password: '',
+          passwordConfirmation: ''
+        }}
+      />
       <Link to={routes.login}>
         <FormattedMessage id="signup.signin" />
       </Link>

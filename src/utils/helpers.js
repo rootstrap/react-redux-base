@@ -6,7 +6,7 @@ export const parseInputErrors = (error) => {
     return;
   }
   if (Array.isArray(error)) {
-    return error[0];
+    return error;
   }
   return error;
 };

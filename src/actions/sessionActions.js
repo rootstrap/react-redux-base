@@ -2,25 +2,15 @@ import { sessionService } from 'redux-react-session';
 
 import sessionApi from 'api/sessionApi';
 
-export const login = (user, setStatus, setSubmitting) =>
+export const login = user =>
   async () => {
-    try {
-      const response = await sessionApi.login({ user });
-      sessionService.saveUser(response.user);
-    } catch (err) {
-      setStatus(err.error);
-    } finally {
-      setSubmitting(false);
-    }
+    const response = await sessionApi.login({ user });
+    sessionService.saveUser(response.user);
   };
 
 export const logout = () =>
   async () => {
-    try {
-      await sessionApi.logout();
-      sessionService.deleteSession();
-      sessionService.deleteUser();
-    } catch (err) {
-      throw (err);
-    }
+    await sessionApi.logout();
+    sessionService.deleteSession();
+    sessionService.deleteUser();
   };
