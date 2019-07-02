@@ -27,6 +27,11 @@ const CustomFormik = ({ component, handleSubmit, initialValues, ...props }) => {
 CustomFormik.propTypes = {
   component: func.isRequired,
   handleSubmit: func.isRequired,
-  initialValues: object.isRequired
+  initialValues: object
 };
+
+CustomFormik.defaultProps = {
+  initialValues: {}
+};
+
 export default CustomFormik;
