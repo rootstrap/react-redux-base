@@ -29,17 +29,16 @@ const cacheTime = 31536000;
 server
   .disable('x-powered-by')
   .use(compress())
-  .use(express.static(
-    'server/build/public',
-    {
+  .use(
+    express.static('server/build/public', {
       maxAge: cacheTime,
       setHeaders: (res, path) => {
         if (/main-sw.js/.test(path)) {
           res.setHeader('Cache-Control', 'public, max-age=0');
         }
       }
-    },
-  ))
+    })
+  )
   .get('*', async (req, res) => {
     try {
       const store = configureStore();
@@ -52,9 +51,9 @@ server
       // Fetch data promises
       const promises = matchRoutes(routes, req.path)
         .map(({ route }) => (route.component.loadData ? route.component.loadData(store) : null))
-        .map((promise) => {
+        .map(promise => {
           if (promise) {
-            return new Promise((resolve) => {
+            return new Promise(resolve => {
               promise.then(resolve).catch(resolve);
             });
           }
@@ -67,11 +66,7 @@ server
       Promise.all(promises).then(async () => {
         const renderPage = () => {
           const staticRouter = (
-            <IntlProvider
-              locale={userLocale}
-              messages={messages}
-              defaultLocale="en"
-            >
+            <IntlProvider locale={userLocale} messages={messages} defaultLocale="en">
               <Provider store={store}>
                 <StaticRouter location={req.url} context={context}>
                   <App routes={routes} />

@@ -6,14 +6,7 @@ import rootReducer from 'reducers';
 import history from 'utils/history';
 
 export default function configureStore(initialState) {
-  const middewares = [
-    thunkMiddleware,
-    routerMiddleware(history)
-  ];
+  const middewares = [thunkMiddleware, routerMiddleware(history)];
 
-  return createStore(
-    rootReducer(history),
-    initialState,
-    compose(applyMiddleware(...middewares))
-  );
+  return createStore(rootReducer(history), initialState, compose(applyMiddleware(...middewares)));
 }

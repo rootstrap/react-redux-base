@@ -25,15 +25,14 @@ if (process.env.ENABLE_PWA) {
 
 // Fix for browsers that don't implement Intl by default e.g.: Safari)
 if (!window.Intl) {
-  require.ensure([
-    'intl',
-    'intl/locale-data/jsonp/en.js',
-    'intl/locale-data/jsonp/es.js',
-  ], (require) => {
-    require('intl');
-    require('intl/locale-data/jsonp/en.js');
-    require('intl/locale-data/jsonp/es.js');
-  });
+  require.ensure(
+    ['intl', 'intl/locale-data/jsonp/en.js', 'intl/locale-data/jsonp/es.js'],
+    require => {
+      require('intl');
+      require('intl/locale-data/jsonp/en.js');
+      require('intl/locale-data/jsonp/es.js');
+    }
+  );
 }
 
 addLocaleData([...en, ...es]);
@@ -46,13 +45,9 @@ const store = configureStore();
 
 sessionService.initSessionService(store);
 
-const renderApp = (Component) => {
+const renderApp = Component => {
   render(
-    <IntlProvider
-      locale={locale}
-      messages={messages}
-      defaultLocale="en"
-    >
+    <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       <Provider store={store}>
         <AppContainer>
           <Component />

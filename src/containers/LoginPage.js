@@ -11,10 +11,7 @@ import routes from 'constants/routesPaths';
 const LoginPage = () => {
   const { authenticated } = useSession();
   const dispatch = useDispatch();
-  const loginRequest = useCallback(
-    user => dispatch(login(user)),
-    [dispatch]
-  );
+  const loginRequest = useCallback(user => dispatch(login(user)), [dispatch]);
 
   if (authenticated) {
     return <Redirect to={routes.index} />;
@@ -22,7 +19,9 @@ const LoginPage = () => {
 
   return (
     <div>
-      <p><FormattedMessage id="login.title" /></p>
+      <p>
+        <FormattedMessage id="login.title" />
+      </p>
       <LoginForm onSubmit={loginRequest} />
       <Link to={routes.signUp}>
         <FormattedMessage id="login.signup" />

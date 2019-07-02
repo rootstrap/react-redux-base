@@ -9,9 +9,11 @@ const HomePage = () => {
 
   return (
     <div>
-      {user && user.email &&
-        <p><FormattedMessage id="home.welcome" values={user} /></p>
-      }
+      {user && user.email && (
+        <p>
+          <FormattedMessage id="home.welcome" values={user} />
+        </p>
+      )}
       <LogoutButton />
     </div>
   );

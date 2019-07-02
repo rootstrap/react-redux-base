@@ -3,10 +3,10 @@ import validate from 'validate.js';
 export const login = {
   email: {
     presence: { message: 'email.presence' },
-    email: { message: 'email.invalid' },
+    email: { message: 'email.invalid' }
   },
   password: {
-    presence: { message: 'password.presence' },
+    presence: { message: 'password.presence' }
   }
 };
 
@@ -24,5 +24,5 @@ export const signUp = {
   }
 };
 
-export const validations = (constraints, props = {}) =>
-  data => validate(data, constraints, props) || {};
+export const validations = (constraints, props = {}) => data =>
+  validate(data, constraints, props) || {};

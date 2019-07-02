@@ -16,9 +16,7 @@ const Document = ({ helmet, assets, styleTags, preloadedState }) => {
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
-        {assets.main.css && (
-          <link rel="stylesheet" href={assets.main.css} />
-        )}
+        {assets.main.css && <link rel="stylesheet" href={assets.main.css} />}
         {styleTags}
       </head>
       <body {...bodyAttrs}>
@@ -26,15 +24,10 @@ const Document = ({ helmet, assets, styleTags, preloadedState }) => {
         <script
           id="redux-state"
           dangerouslySetInnerHTML={{
-            __html: `window.__PRELOADED_STATE__=${preloadedState}`,
+            __html: `window.__PRELOADED_STATE__=${preloadedState}`
           }}
         />
-        <script
-          type="text/javascript"
-          src={assets.main.js}
-          defer
-          crossOrigin="anonymous"
-        />
+        <script type="text/javascript" src={assets.main.js} defer crossOrigin="anonymous" />
       </body>
     </html>
   );

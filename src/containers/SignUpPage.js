@@ -12,10 +12,7 @@ const SignUpPage = () => {
   const { authenticated } = useSession();
   const dispatch = useDispatch();
 
-  const signUpRequest = useCallback(
-    user => dispatch(signUp(user)),
-    [dispatch]
-  );
+  const signUpRequest = useCallback(user => dispatch(signUp(user)), [dispatch]);
 
   if (authenticated) {
     return <Redirect to={routes.index} />;
@@ -23,7 +20,9 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <p><FormattedMessage id="signup.title" /></p>
+      <p>
+        <FormattedMessage id="signup.title" />
+      </p>
       <SignUpForm onSubmit={signUpRequest} />
       <Link to={routes.login}>
         <FormattedMessage id="signup.signin" />

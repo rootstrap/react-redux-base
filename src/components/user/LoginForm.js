@@ -1,12 +1,7 @@
 import React, { memo } from 'react';
 import { func, string, bool } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import {
-  injectIntl,
-  intlShape,
-  defineMessages,
-  FormattedMessage
-} from 'react-intl';
+import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';

@@ -17,17 +17,13 @@ const App = () => {
         <Helmet>
           <title>RS React Redux Base</title>
         </Helmet>
-        {checked &&
+        {checked && (
           <Switch>
-            {routes.map((route, index) =>
-              <RouteFromPath
-                key={`route${index}`}
-                {...route}
-                authenticated={authenticated}
-              />)
-            }
+            {routes.map((route, index) => (
+              <RouteFromPath key={`route${index}`} {...route} authenticated={authenticated} />
+            ))}
           </Switch>
-        }
+        )}
       </Fragment>
     </ThemeProvider>
   );

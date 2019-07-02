@@ -13,9 +13,7 @@ export const withStore = (WrappedComponent, store) => (
   <MemoryRouter>
     <ThemeProvider theme={theme}>
       <IntlProvider locale="en" messages={messages}>
-        <Provider store={store}>
-          {WrappedComponent}
-        </Provider>
+        <Provider store={store}>{WrappedComponent}</Provider>
       </IntlProvider>
     </ThemeProvider>
   </MemoryRouter>
