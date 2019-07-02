@@ -21,6 +21,9 @@ jobs:
           name: Run tests
           command: yarn test:ci
       - run:
+          name: Run Jest tests
+          command: yarn jest src
+      - run:
           name: Run linter
           command: yarn lint
 

@@ -1,4 +1,4 @@
-import api from 'api/apiService';
+import api from 'api';
 
 class Session {
   static login(user) {
