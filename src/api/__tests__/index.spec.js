@@ -8,7 +8,11 @@ global.fetch = fetch;
 describe('ApiService', () => {
   beforeEach(() => {
     sessionService.loadSession = jest.fn(() =>
-      Promise.resolve({ token: 'test-token', client: 'test-client', uid: 'test-uid' })
+      Promise.resolve({
+        token: 'test-token',
+        client: 'test-client',
+        uid: 'test-uid'
+      })
     );
     sessionService.refreshFromLocalStorage = jest.fn(() => Promise.resolve);
   });

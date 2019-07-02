@@ -20,7 +20,10 @@ export const signUp = {
   },
   passwordConfirmation: {
     presence: { message: 'passwordConfirmation.presence' },
-    equality: { attribute: 'password', message: 'passwordConfirmation.equality' }
+    equality: {
+      attribute: 'password',
+      message: 'passwordConfirmation.equality'
+    }
   }
 };
 
