@@ -1,21 +1,15 @@
-import React, { memo, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { memo } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import useSession from 'hooks/useSession';
+import { useSession, useDispatch } from 'hooks';
 import { signUp } from 'actions/userActions';
 import SignUpForm from 'components/user/SignUpForm';
 import routes from 'constants/routesPaths';
 
 const SignUpPage = () => {
   const { authenticated } = useSession();
-  const dispatch = useDispatch();
-
-  const signUpRequest = useCallback(
-    user => dispatch(signUp(user)),
-    [dispatch]
-  );
+  const signUpRequest = useDispatch(signUp);
 
   if (authenticated) {
     return <Redirect to={routes.index} />;
