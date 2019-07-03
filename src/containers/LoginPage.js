@@ -1,9 +1,8 @@
-import React, { memo, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { memo } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import useSession from 'hooks/useSession';
+import { useSession, useDispatch } from 'hooks';
 import LoginForm from 'components/user/LoginForm';
 import CustomFormik from 'components/common/CustomFormik';
 import { login } from 'actions/sessionActions';
@@ -12,12 +11,7 @@ import routes from 'constants/routesPaths';
 
 const LoginPage = () => {
   const { authenticated } = useSession();
-  const dispatch = useDispatch();
-  const loginRequest = useCallback(
-    (user, setStatus, setSubmitting) =>
-      dispatch(login(user, setStatus, setSubmitting)),
-    [dispatch]
-  );
+  const loginRequest = useDispatch(login);
 
   if (authenticated) {
     return <Redirect to={routes.index} />;
