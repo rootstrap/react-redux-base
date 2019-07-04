@@ -45,7 +45,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
+      "prettier --write",
+      "yarn lint:fix --quiet",
       "git add"
     ]
   },
