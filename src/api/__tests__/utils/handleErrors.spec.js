@@ -14,7 +14,9 @@ describe('handleErrors', () => {
 
   describe('with no response', () => {
     it('raises an error', async () => {
-      await expect(handleErrors()).rejects.toThrow(new Error({ message: 'No response returned from fetch' }));
+      await expect(handleErrors()).rejects.toThrow(
+        new Error({ message: 'No response returned from fetch' })
+      );
     });
   });
 
@@ -22,14 +24,16 @@ describe('handleErrors', () => {
     const response = {
       ok: true,
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     };
 
     it('calls saveSessionHeaders', async () => {
       await handleErrors(response);
 
-      expect(saveSessionHeaders.default).toHaveBeenCalledWith({ 'Content-Type': 'application/json' });
+      expect(saveSessionHeaders.default).toHaveBeenCalledWith({
+        'Content-Type': 'application/json'
+      });
     });
 
     it('returns the response', async () => {
@@ -41,9 +45,9 @@ describe('handleErrors', () => {
     const response = {
       ok: false,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      status: 401,
+      status: 401
     };
 
     it('calls loadSession on sessionService', async () => {

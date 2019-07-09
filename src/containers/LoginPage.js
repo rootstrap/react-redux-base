@@ -17,7 +17,9 @@ const LoginPage = () => {
 
   return (
     <div>
-      <p><FormattedMessage id="login.title" /></p>
+      <p>
+        <FormattedMessage id="login.title" />
+      </p>
       <LoginForm onSubmit={loginRequest} />
       <Link to={routes.signUp}>
         <FormattedMessage id="login.signup" />

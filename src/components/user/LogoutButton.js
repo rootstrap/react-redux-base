@@ -6,10 +6,7 @@ import { logout } from 'actions/sessionActions';
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
-  const logoutRequest = useCallback(
-    () => dispatch(logout()),
-    [dispatch]
-  );
+  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
 
   return (
     <button onClick={logoutRequest}>

@@ -5,7 +5,7 @@ describe('parseError', () => {
     describe('with an non empty body', () => {
       it('returns the json response', async () => {
         const response = {
-          json: () => Promise.resolve({ data: 'Test data' }),
+          json: () => Promise.resolve({ data: 'Test data' })
         };
 
         const error = await parseError(response);
@@ -18,7 +18,7 @@ describe('parseError', () => {
       it('returns the statusText', async () => {
         const response = {
           json: () => Promise.resolve(),
-          statusText: 'Test message',
+          statusText: 'Test message'
         };
 
         const error = await parseError(response);
@@ -31,7 +31,7 @@ describe('parseError', () => {
   describe('when response is not a valid json', () => {
     it('returns an error message', async () => {
       const response = {
-        json: () => Promise.reject(),
+        json: () => Promise.reject()
       };
 
       const error = await parseError(response);

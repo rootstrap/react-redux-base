@@ -14,7 +14,7 @@ describe('saveSessionHeaders', () => {
         },
         'access-token': 'test-token',
         uid: 'test-uid',
-        client: 'test-client',
+        client: 'test-client'
       };
 
       await saveSessionHeaders(headers);
@@ -22,17 +22,17 @@ describe('saveSessionHeaders', () => {
       expect(sessionService.saveSession).toHaveBeenCalledWith({
         token: 'test-token',
         uid: 'test-uid',
-        client: 'test-client',
+        client: 'test-client'
       });
     });
   });
 
   describe('with no ACCESS_TOKEN on the headers', () => {
-    it('doesn\'t call saveSession on sessionService', async () => {
+    it("doesn't call saveSession on sessionService", async () => {
       const headers = {
         get(key) {
           return this[key];
-        },
+        }
       };
 
       await saveSessionHeaders(headers);

@@ -20,17 +20,13 @@ const App = () => {
           <title>RS React Redux Base</title>
         </Helmet>
         <ConnectedRouter history={history}>
-          {checked &&
+          {checked && (
             <Switch>
-              {routes.map((route, index) =>
-                <RouteFromPath
-                  key={`route${index}`}
-                  {...route}
-                  authenticated={authenticated}
-                />)
-              }
+              {routes.map((route, index) => (
+                <RouteFromPath key={`route${index}`} {...route} authenticated={authenticated} />
+              ))}
             </Switch>
-          }
+          )}
         </ConnectedRouter>
       </Fragment>
     </ThemeProvider>

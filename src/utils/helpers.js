@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import isEmpty from 'lodash/isEmpty';
 
-export const parseInputErrors = (error) => {
+export const parseInputErrors = error => {
   if (!error) {
     return;
   }

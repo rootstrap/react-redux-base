@@ -20,7 +20,7 @@ describe('getResponseBody', () => {
   describe('when response is a valid json', () => {
     it('returns the valid json', async () => {
       const response = await getResponseBody({
-        json: () => Promise.resolve({ data: 'test' }),
+        json: () => Promise.resolve({ data: 'test' })
       });
 
       expect(response).toEqual({ data: 'test' });

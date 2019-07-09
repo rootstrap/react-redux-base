@@ -15,7 +15,8 @@ export default {
   'signup.signin': 'Iniciar Sesión',
   'signup.form.passconfirmation': 'Confirmación de Contraseña',
   'signup.form.confirmation.presence': 'Debe confirmar su contraseña para continuar',
-  'signup.form.confirmation.equality': 'Su confirmación de contraseña debe ser igual a la contraseña',
+  'signup.form.confirmation.equality':
+    'Su confirmación de contraseña debe ser igual a la contraseña',
 
   'logout.button': 'LOGOUT',
 

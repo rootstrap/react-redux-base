@@ -17,7 +17,9 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <p><FormattedMessage id="signup.title" /></p>
+      <p>
+        <FormattedMessage id="signup.title" />
+      </p>
       <SignUpForm onSubmit={signUpRequest} />
       <Link to={routes.login}>
         <FormattedMessage id="signup.signin" />

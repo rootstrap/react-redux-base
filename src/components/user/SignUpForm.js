@@ -1,12 +1,7 @@
 import React, { memo } from 'react';
 import { func, bool } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import {
-  injectIntl,
-  intlShape,
-  defineMessages,
-  FormattedMessage
-} from 'react-intl';
+import { injectIntl, intlShape, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
@@ -54,7 +49,7 @@ export const SignUpForm = ({ handleSubmit, submitting, intl }) => (
 SignUpForm.propTypes = {
   handleSubmit: func.isRequired,
   submitting: bool.isRequired,
-  intl: intlShape.isRequired,
+  intl: intlShape.isRequired
 };
 
 export default reduxForm({

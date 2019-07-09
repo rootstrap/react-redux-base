@@ -8,7 +8,8 @@ process.env.NODE_ENV = 'production';
 console.log(chalkProcessing('Compiling server...'));
 
 webpack(serverConfig).run((error, stats) => {
-  if (error) { // so a fatal error occurred. Stop here.
+  if (error) {
+    // so a fatal error occurred. Stop here.
     console.log(chalkError(error));
     return 1;
   }

@@ -2,7 +2,7 @@ import { sessionService } from 'redux-react-session';
 import parseError from './parseError';
 import saveSessionHeaders from './saveSessionHeaders';
 
-export default async (response) => {
+export default async response => {
   if (!response) {
     throw new Error({ message: 'No response returned from fetch' });
   }
@@ -18,8 +18,7 @@ export default async (response) => {
       await sessionService.loadSession();
       sessionService.deleteSession();
       sessionService.deleteUser();
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   throw await parseError(response);

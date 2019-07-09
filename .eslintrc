@@ -3,12 +3,15 @@
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "airbnb"
+    "airbnb",
+    "prettier",
+    "prettier/react"
   ],
   "plugins": [
     "react",
     "react-hooks",
-    "cypress"
+    "cypress",
+    "prettier"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -28,6 +31,7 @@
     "cypress/globals": true
   },
   "rules": {
+    "prettier/prettier": ["error"],
     "object-curly-newline": 0,
     "no-class-assign": 0,
     "no-param-reassign": 0,
@@ -102,7 +106,8 @@
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0,
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "arrow-parens": 0
   },
   "settings": {
     "import/resolver": {

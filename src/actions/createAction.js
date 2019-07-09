@@ -1,7 +1,7 @@
-export default (type) => {
+export default type => {
   const action = payload => ({
     type,
-    payload,
+    payload
   });
   action.toString = () => type;
   return action;

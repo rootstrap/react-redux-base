@@ -14,19 +14,20 @@ import rootReducer from 'reducers';
 export default function configureStore(initialState) {
   const logger = createLogger({
     collapsed: true,
-    predicate: (getState, { type }) => !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form'),
+    predicate: (getState, { type }) =>
+      !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form')
   });
 
-  const middewares = [
-    thunkMiddleware,
-    logger,
-    routerMiddleware(history)
-  ];
+  const middewares = [thunkMiddleware, logger, routerMiddleware(history)];
 
-  const store = createStore(rootReducer(history), initialState, compose(
-    applyMiddleware(...middewares),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.window.__REDUX_DEVTOOLS_EXTENSION__() : f => f // add support for Redux dev tools
-  ));
+  const store = createStore(
+    rootReducer(history),
+    initialState,
+    compose(
+      applyMiddleware(...middewares),
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.window.__REDUX_DEVTOOLS_EXTENSION__() : f => f // add support for Redux dev tools
+    )
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
