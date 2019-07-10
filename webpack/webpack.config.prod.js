@@ -7,7 +7,7 @@ import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import resolve from './shared/resolve';
 
@@ -20,7 +20,7 @@ const GLOBALS = {
 export default {
   resolve,
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, '../src/index')],
+  entry: ['@babel/polyfill', path.resolve(__dirname, '../src/index')],
   target: 'web',
   mode: 'production',
   output: {

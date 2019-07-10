@@ -15,7 +15,7 @@ export default {
   resolve,
   devtool: 'eval-source-map',
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, '../src/index.js')
@@ -53,8 +53,6 @@ export default {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
-          babelrc: false,
-          presets: [['env', { modules: false }], 'react', 'stage-1'],
           plugins: ['react-hot-loader/babel']
         }
       },

@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpackNodeExternals from 'webpack-node-externals';
 import Dotenv from 'dotenv-webpack';
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import resolve from './shared/resolve';
 
@@ -17,7 +17,7 @@ const GLOBALS = {
 export default {
   resolve,
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, '../server')],
+  entry: ['@babel/polyfill', path.resolve(__dirname, '../server')],
   target: 'node',
   mode: 'production',
   output: {

@@ -6,7 +6,7 @@ import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import resolve from './shared/resolve';
 
@@ -19,7 +19,7 @@ const GLOBALS = {
 export default {
   resolve,
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, '../server/client')],
+  entry: ['@babel/polyfill', path.resolve(__dirname, '../server/client')],
   target: 'web',
   mode: 'production',
   output: {

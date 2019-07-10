@@ -15,7 +15,7 @@ module.exports = {
   resolve,
   devtool: 'eval-source-map',
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
@@ -54,8 +54,6 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
-          babelrc: false,
-          presets: [['env', { modules: false }], 'react', 'stage-1'],
           plugins: ['react-hot-loader/babel']
         }
       },
