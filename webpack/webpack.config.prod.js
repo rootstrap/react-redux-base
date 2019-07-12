@@ -7,7 +7,8 @@ import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 import resolve from './shared/resolve';
 

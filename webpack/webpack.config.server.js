@@ -3,7 +3,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpackNodeExternals from 'webpack-node-externals';
 import Dotenv from 'dotenv-webpack';
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 import resolve from './shared/resolve';
 
