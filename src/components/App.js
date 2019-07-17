@@ -9,6 +9,7 @@ import history from 'utils/history';
 import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import theme from '../constants/theme';
+import Header from './common/Header';
 
 const App = () => {
   const { authenticated, checked } = useSession();
@@ -19,6 +20,7 @@ const App = () => {
         <Helmet>
           <title>RS React Redux Base</title>
         </Helmet>
+        <Header />
         <ConnectedRouter history={history}>
           {checked && (
             <Switch>
