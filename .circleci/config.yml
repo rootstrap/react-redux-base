@@ -29,9 +29,6 @@ jobs:
       - run:
           name: Run linter
           command: yarn lint
-      - run:
-          name: See Files
-          command: ls
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
