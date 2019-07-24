@@ -21,14 +21,11 @@ jobs:
       - run:
           name: Run tests
           command: yarn test:ci
-      # - run:
-      #     name: Run check coverage
-      #     command: yarn check:coverage
       - store_artifacts:
           path: coverage
-      # - run:
-      #     name: Run Jest tests
-      #     command: yarn jest src
+      - run:
+          name: Run Jest tests
+          command: yarn jest src
       - run:
           name: Run linter
           command: yarn lint
