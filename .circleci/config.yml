@@ -21,12 +21,15 @@ jobs:
       - run:
           name: Run tests
           command: yarn test:ci
-      - run:
-          name: Run Jest tests
-          command: yarn jest src
+      # - run:
+      #     name: Run Jest tests
+      #     command: yarn jest src
       - run:
           name: Run linter
           command: yarn lint
+      - run:
+          name: See Files
+          command: ls
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
@@ -37,4 +40,4 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
-            ./cc-test-reporter format-coverage -t clover ./coverage/clover.xml
+            ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
