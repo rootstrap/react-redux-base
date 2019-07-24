@@ -24,7 +24,7 @@ describe('Sign Up Page', () => {
   // });
 
   context('General', () => {
-    it('Should see the sign up page', () => {
+    it.only('Should see the sign up page', () => {
       cy.get('p').contains('SIGN UP');
     });
 
@@ -89,7 +89,7 @@ describe('Sign Up Page', () => {
             }
           }
         ]
-      },
+      }
     ];
     testFields(fields);
   });

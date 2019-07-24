@@ -8,7 +8,7 @@ describe('Home Page', () => {
   });
 
   context('Homepage View', () => {
-    it('displays a welcome message', () => {
+    it.only('displays a welcome message', () => {
       cy.get('p').contains('Welcome to React Redux Base');
     });
 
@@ -19,7 +19,9 @@ describe('Home Page', () => {
     it('click in the logout button,should be redirected to the login path', () => {
       cy.stubRequest(logoutStub());
 
-      cy.get('button').click().wait('@logoutStub');
+      cy.get('button')
+        .click()
+        .wait('@logoutStub');
       cy.url().should('match', /login/);
     });
   });

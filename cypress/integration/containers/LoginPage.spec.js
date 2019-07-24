@@ -27,7 +27,7 @@ describe('Login Page (Real Response)', () => {
   // });
 
   context('Redirections', () => {
-    it('Successfully redirected when user not logged in', () => {
+    it.only('Successfully redirected when user not logged in', () => {
       cy.url().should('match', /login/);
     });
 
@@ -76,7 +76,7 @@ describe('Login Page (Real Response)', () => {
             options: { customMessage: 'You must enter a password to continue' }
           }
         ]
-      },
+      }
     ];
     testFields(fields);
   });
