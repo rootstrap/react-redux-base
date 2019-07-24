@@ -1,0 +1,6672 @@
+{
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/webpack-public-path.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/webpack-public-path.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 87
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 22
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "f5a5035b45a5e7997434fd3dfa47ace434419b06"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/store/configureStore.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/store/configureStore.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 52
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 4,
+          "column": 51
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          },
+          {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          }
+        ],
+        "line": 1
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 0,
+      "2": 22
+    },
+    "f": {},
+    "b": {
+      "0": [
+        0,
+        22
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "da10256269b7e7599d37ae70b0907d34328fdb2f"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/history.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/history.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 10,
+          "column": 5
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 6
+        },
+        "end": {
+          "line": 9,
+          "column": 86
+        }
+      },
+      "2": {
+        "start": {
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "line": 11,
+          "column": 20
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 16
+          },
+          "end": {
+            "line": 12,
+            "column": 3
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 4
+          },
+          "end": {
+            "line": 10,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 5
+            }
+          },
+          {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 5
+            }
+          }
+        ],
+        "line": 8
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 17
+          },
+          "end": {
+            "line": 9,
+            "column": 85
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 9,
+              "column": 39
+            },
+            "end": {
+              "line": 9,
+              "column": 61
+            }
+          },
+          {
+            "start": {
+              "line": 9,
+              "column": 64
+            },
+            "end": {
+              "line": 9,
+              "column": 85
+            }
+          }
+        ],
+        "line": 9
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 22
+    },
+    "f": {
+      "0": 22
+    },
+    "b": {
+      "0": [
+        22,
+        0
+      ],
+      "1": [
+        22,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "ed3af489bfdd7a2f5b43dcf0f1ae96a5a5f926b4"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/reducers/index.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/reducers/index.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 20
+        },
+        "end": {
+          "line": 11,
+          "column": 4
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 20
+          },
+          "end": {
+            "line": 6,
+            "column": 21
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 11,
+            "column": 4
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 22
+    },
+    "f": {
+      "0": 22
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "dfda9c962ab6e22b754fe365e7446b095458ffdb"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/store/configureStore.dev.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/store/configureStore.dev.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 15,
+          "column": 17
+        },
+        "end": {
+          "line": 19,
+          "column": 4
+        }
+      },
+      "1": {
+        "start": {
+          "line": 18,
+          "column": 6
+        },
+        "end": {
+          "line": 18,
+          "column": 76
+        }
+      },
+      "2": {
+        "start": {
+          "line": 21,
+          "column": 21
+        },
+        "end": {
+          "line": 21,
+          "column": 73
+        }
+      },
+      "3": {
+        "start": {
+          "line": 23,
+          "column": 16
+        },
+        "end": {
+          "line": 30,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 28,
+          "column": 96
+        },
+        "end": {
+          "line": 28,
+          "column": 97
+        }
+      },
+      "5": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 3
+        }
+      },
+      "6": {
+        "start": {
+          "line": 34,
+          "column": 4
+        },
+        "end": {
+          "line": 37,
+          "column": 7
+        }
+      },
+      "7": {
+        "start": {
+          "line": 35,
+          "column": 26
+        },
+        "end": {
+          "line": 35,
+          "column": 56
+        }
+      },
+      "8": {
+        "start": {
+          "line": 36,
+          "column": 6
+        },
+        "end": {
+          "line": 36,
+          "column": 40
+        }
+      },
+      "9": {
+        "start": {
+          "line": 40,
+          "column": 2
+        },
+        "end": {
+          "line": 40,
+          "column": 15
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "configureStore",
+        "decl": {
+          "start": {
+            "line": 14,
+            "column": 24
+          },
+          "end": {
+            "line": 14,
+            "column": 38
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 53
+          },
+          "end": {
+            "line": 41,
+            "column": 1
+          }
+        },
+        "line": 14
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 17,
+            "column": 15
+          },
+          "end": {
+            "line": 17,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 6
+          },
+          "end": {
+            "line": 18,
+            "column": 76
+          }
+        },
+        "line": 18
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 28,
+            "column": 91
+          },
+          "end": {
+            "line": 28,
+            "column": 92
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 96
+          },
+          "end": {
+            "line": 28,
+            "column": 97
+          }
+        },
+        "line": 28
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 34,
+            "column": 37
+          },
+          "end": {
+            "line": 34,
+            "column": 38
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 34,
+            "column": 43
+          },
+          "end": {
+            "line": 37,
+            "column": 5
+          }
+        },
+        "line": 34
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 6
+          },
+          "end": {
+            "line": 18,
+            "column": 76
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 18,
+              "column": 6
+            },
+            "end": {
+              "line": 18,
+              "column": 37
+            }
+          },
+          {
+            "start": {
+              "line": 18,
+              "column": 41
+            },
+            "end": {
+              "line": 18,
+              "column": 76
+            }
+          }
+        ],
+        "line": 18
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 6
+          },
+          "end": {
+            "line": 28,
+            "column": 97
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 28,
+              "column": 44
+            },
+            "end": {
+              "line": 28,
+              "column": 88
+            }
+          },
+          {
+            "start": {
+              "line": 28,
+              "column": 91
+            },
+            "end": {
+              "line": 28,
+              "column": 97
+            }
+          }
+        ],
+        "line": 28
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 32,
+            "column": 2
+          },
+          "end": {
+            "line": 38,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 32,
+              "column": 2
+            },
+            "end": {
+              "line": 38,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 32,
+              "column": 2
+            },
+            "end": {
+              "line": 38,
+              "column": 3
+            }
+          }
+        ],
+        "line": 32
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 324,
+      "2": 22,
+      "3": 22,
+      "4": 22,
+      "5": 22,
+      "6": 22,
+      "7": 0,
+      "8": 0,
+      "9": 22
+    },
+    "f": {
+      "0": 22,
+      "1": 324,
+      "2": 22,
+      "3": 0
+    },
+    "b": {
+      "0": [
+        324,
+        289
+      ],
+      "1": [
+        0,
+        22
+      ],
+      "2": [
+        22,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "4f5caab1502548f6ce936369b6ef102d44a7a5c9"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/useSession.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/useSession.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 19
+        },
+        "end": {
+          "line": 8,
+          "column": 5
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 5
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 32
+        },
+        "end": {
+          "line": 8,
+          "column": 3
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 19
+          },
+          "end": {
+            "line": 3,
+            "column": 20
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 5
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 14
+          },
+          "end": {
+            "line": 4,
+            "column": 15
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 32
+          },
+          "end": {
+            "line": 8,
+            "column": 3
+          }
+        },
+        "line": 4
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 496,
+      "2": 1026
+    },
+    "f": {
+      "0": 496,
+      "1": 1026
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "7482fbf25437d575f15dbfb6f510cb667b7f7df7"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/routesPaths.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/routesPaths.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 15
+        },
+        "end": {
+          "line": 5,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 24
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "5f897603c3724f03f185dcd0e8bb9dbb5b5abead"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/PrivateRoute.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/PrivateRoute.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 21
+        },
+        "end": {
+          "line": 24,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 4
+        }
+      },
+      "2": {
+        "start": {
+          "line": 12,
+          "column": 6
+        },
+        "end": {
+          "line": 21,
+          "column": 7
+        }
+      },
+      "3": {
+        "start": {
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 23,
+            "column": 4
+          }
+        },
+        "line": 8
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 11,
+            "column": 12
+          },
+          "end": {
+            "line": 11,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 6
+          },
+          "end": {
+            "line": 21,
+            "column": 7
+          }
+        },
+        "line": 12
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 35
+          },
+          "end": {
+            "line": 7,
+            "column": 48
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 7,
+              "column": 43
+            },
+            "end": {
+              "line": 7,
+              "column": 48
+            }
+          }
+        ],
+        "line": 7
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 6
+          },
+          "end": {
+            "line": 21,
+            "column": 7
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 13,
+              "column": 8
+            },
+            "end": {
+              "line": 13,
+              "column": 45
+            }
+          },
+          {
+            "start": {
+              "line": 15,
+              "column": 8
+            },
+            "end": {
+              "line": 20,
+              "column": 10
+            }
+          }
+        ],
+        "line": 12
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 19,
+      "2": 19,
+      "3": 22
+    },
+    "f": {
+      "0": 19,
+      "1": 19
+    },
+    "b": {
+      "0": [
+        0
+      ],
+      "1": [
+        10,
+        9
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "5abe0ebc0b48fff38fa702b72329450b1597b2e5"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/RouteFromPath.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/RouteFromPath.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 22
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 22
+          },
+          "end": {
+            "line": 6,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 11,
+            "column": 3
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 11,
+            "column": 3
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 8,
+              "column": 67
+            }
+          },
+          {
+            "start": {
+              "line": 10,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 24
+            }
+          }
+        ],
+        "line": 7
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 228
+    },
+    "f": {
+      "0": 228
+    },
+    "b": {
+      "0": [
+        19,
+        209
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "7e09a4c93e7c8521a84aa70893378055517dd133"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/parseError.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/parseError.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      },
+      "1": {
+        "start": {
+          "line": 3,
+          "column": 17
+        },
+        "end": {
+          "line": 3,
+          "column": 38
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 4
+        },
+        "end": {
+          "line": 4,
+          "column": 52
+        }
+      },
+      "3": {
+        "start": {
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "line": 6,
+          "column": 44
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 15
+          },
+          "end": {
+            "line": 1,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 33
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 11
+          },
+          "end": {
+            "line": 4,
+            "column": 51
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 4,
+              "column": 11
+            },
+            "end": {
+              "line": 4,
+              "column": 15
+            }
+          },
+          {
+            "start": {
+              "line": 4,
+              "column": 19
+            },
+            "end": {
+              "line": 4,
+              "column": 51
+            }
+          }
+        ],
+        "line": 4
+      }
+    },
+    "s": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 0
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {
+      "0": [
+        2,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "fbce11d1f29890a830dffbc442fdac555890b949"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/saveSessionHeaders.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/saveSessionHeaders.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 21
+        },
+        "end": {
+          "line": 3,
+          "column": 35
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 12
+        },
+        "end": {
+          "line": 4,
+          "column": 17
+        }
+      },
+      "2": {
+        "start": {
+          "line": 5,
+          "column": 15
+        },
+        "end": {
+          "line": 5,
+          "column": 23
+        }
+      },
+      "3": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 9,
+          "column": 27
+        },
+        "end": {
+          "line": 13,
+          "column": 5
+        }
+      },
+      "5": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 54
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 15
+          },
+          "end": {
+            "line": 7,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 26
+          },
+          "end": {
+            "line": 17,
+            "column": 1
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          }
+        ],
+        "line": 8
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 22,
+      "3": 3,
+      "4": 0,
+      "5": 0
+    },
+    "f": {
+      "0": 3
+    },
+    "b": {
+      "0": [
+        0,
+        3
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "96d01b9f93132bd136c448ae080a1c7dd0dd0e08"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/handleErrors.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/handleErrors.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 3
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "line": 7,
+          "column": 68
+        }
+      },
+      "2": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 45
+        }
+      },
+      "3": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 20
+        }
+      },
+      "5": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 22,
+          "column": 3
+        }
+      },
+      "6": {
+        "start": {
+          "line": 17,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 18
+        }
+      },
+      "7": {
+        "start": {
+          "line": 18,
+          "column": 6
+        },
+        "end": {
+          "line": 18,
+          "column": 41
+        }
+      },
+      "8": {
+        "start": {
+          "line": 19,
+          "column": 6
+        },
+        "end": {
+          "line": 19,
+          "column": 37
+        }
+      },
+      "9": {
+        "start": {
+          "line": 20,
+          "column": 6
+        },
+        "end": {
+          "line": 20,
+          "column": 34
+        }
+      },
+      "10": {
+        "start": {
+          "line": 24,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 35
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 15
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 33
+          },
+          "end": {
+            "line": 25,
+            "column": 1
+          }
+        },
+        "line": 5
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 8,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 8,
+              "column": 3
+            }
+          }
+        ],
+        "line": 6
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 2
+          },
+          "end": {
+            "line": 14,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 12,
+              "column": 2
+            },
+            "end": {
+              "line": 14,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 12,
+              "column": 2
+            },
+            "end": {
+              "line": 14,
+              "column": 3
+            }
+          }
+        ],
+        "line": 12
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 2
+          },
+          "end": {
+            "line": 22,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 16,
+              "column": 2
+            },
+            "end": {
+              "line": 22,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 16,
+              "column": 2
+            },
+            "end": {
+              "line": 22,
+              "column": 3
+            }
+          }
+        ],
+        "line": 16
+      }
+    },
+    "s": {
+      "0": 3,
+      "1": 0,
+      "2": 3,
+      "3": 3,
+      "4": 1,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 0,
+      "9": 0,
+      "10": 2
+    },
+    "f": {
+      "0": 3
+    },
+    "b": {
+      "0": [
+        0,
+        3
+      ],
+      "1": [
+        1,
+        2
+      ],
+      "2": [
+        1,
+        1
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "15070da4914e4c48777329133c7e4b02a879b3c4"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/getResponseBody.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/utils/getResponseBody.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 2,
+          "column": 22
+        },
+        "end": {
+          "line": 2,
+          "column": 58
+        }
+      },
+      "1": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 3,
+          "column": 43
+        }
+      },
+      "2": {
+        "start": {
+          "line": 3,
+          "column": 20
+        },
+        "end": {
+          "line": 3,
+          "column": 43
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 15
+          },
+          "end": {
+            "line": 1,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 33
+          },
+          "end": {
+            "line": 4,
+            "column": 1
+          }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 22
+          },
+          "end": {
+            "line": 2,
+            "column": 58
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 2,
+              "column": 22
+            },
+            "end": {
+              "line": 2,
+              "column": 31
+            }
+          },
+          {
+            "start": {
+              "line": 2,
+              "column": 35
+            },
+            "end": {
+              "line": 2,
+              "column": 58
+            }
+          }
+        ],
+        "line": 2
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 2
+          },
+          "end": {
+            "line": 3,
+            "column": 43
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 3,
+              "column": 2
+            },
+            "end": {
+              "line": 3,
+              "column": 43
+            }
+          },
+          {
+            "start": {
+              "line": 3,
+              "column": 2
+            },
+            "end": {
+              "line": 3,
+              "column": 43
+            }
+          }
+        ],
+        "line": 3
+      }
+    },
+    "s": {
+      "0": 1,
+      "1": 1,
+      "2": 1
+    },
+    "f": {
+      "0": 1
+    },
+    "b": {
+      "0": [
+        1,
+        1
+      ],
+      "1": [
+        1,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "09f216c131529483f2d9af431c173b9accacaf0d"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/index.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/index.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 8,
+          "column": 21
+        },
+        "end": {
+          "line": 8,
+          "column": 35
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 25
+        },
+        "end": {
+          "line": 9,
+          "column": 43
+        }
+      },
+      "2": {
+        "start": {
+          "line": 10,
+          "column": 21
+        },
+        "end": {
+          "line": 10,
+          "column": 35
+        }
+      },
+      "3": {
+        "start": {
+          "line": 12,
+          "column": 18
+        },
+        "end": {
+          "line": 18,
+          "column": 1
+        }
+      },
+      "4": {
+        "start": {
+          "line": 22,
+          "column": 24
+        },
+        "end": {
+          "line": 22,
+          "column": 55
+        }
+      },
+      "5": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 70
+        }
+      },
+      "6": {
+        "start": {
+          "line": 27,
+          "column": 24
+        },
+        "end": {
+          "line": 27,
+          "column": 62
+        }
+      },
+      "7": {
+        "start": {
+          "line": 28,
+          "column": 4
+        },
+        "end": {
+          "line": 28,
+          "column": 70
+        }
+      },
+      "8": {
+        "start": {
+          "line": 32,
+          "column": 24
+        },
+        "end": {
+          "line": 32,
+          "column": 64
+        }
+      },
+      "9": {
+        "start": {
+          "line": 33,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 70
+        }
+      },
+      "10": {
+        "start": {
+          "line": 37,
+          "column": 24
+        },
+        "end": {
+          "line": 37,
+          "column": 61
+        }
+      },
+      "11": {
+        "start": {
+          "line": 38,
+          "column": 4
+        },
+        "end": {
+          "line": 38,
+          "column": 70
+        }
+      },
+      "12": {
+        "start": {
+          "line": 42,
+          "column": 24
+        },
+        "end": {
+          "line": 42,
+          "column": 63
+        }
+      },
+      "13": {
+        "start": {
+          "line": 43,
+          "column": 4
+        },
+        "end": {
+          "line": 43,
+          "column": 70
+        }
+      },
+      "14": {
+        "start": {
+          "line": 47,
+          "column": 4
+        },
+        "end": {
+          "line": 54,
+          "column": 6
+        }
+      },
+      "15": {
+        "start": {
+          "line": 58,
+          "column": 24
+        },
+        "end": {
+          "line": 58,
+          "column": 35
+        }
+      },
+      "16": {
+        "start": {
+          "line": 59,
+          "column": 4
+        },
+        "end": {
+          "line": 66,
+          "column": 5
+        }
+      },
+      "17": {
+        "start": {
+          "line": 60,
+          "column": 6
+        },
+        "end": {
+          "line": 60,
+          "column": 53
+        }
+      },
+      "18": {
+        "start": {
+          "line": 61,
+          "column": 22
+        },
+        "end": {
+          "line": 61,
+          "column": 48
+        }
+      },
+      "19": {
+        "start": {
+          "line": 62,
+          "column": 6
+        },
+        "end": {
+          "line": 62,
+          "column": 67
+        }
+      },
+      "20": {
+        "start": {
+          "line": 63,
+          "column": 6
+        },
+        "end": {
+          "line": 63,
+          "column": 58
+        }
+      },
+      "21": {
+        "start": {
+          "line": 65,
+          "column": 6
+        },
+        "end": {
+          "line": 65,
+          "column": 58
+        }
+      },
+      "22": {
+        "start": {
+          "line": 70,
+          "column": 35
+        },
+        "end": {
+          "line": 70,
+          "column": 69
+        }
+      },
+      "23": {
+        "start": {
+          "line": 71,
+          "column": 4
+        },
+        "end": {
+          "line": 71,
+          "column": 50
+        }
+      },
+      "24": {
+        "start": {
+          "line": 75,
+          "column": 16
+        },
+        "end": {
+          "line": 75,
+          "column": 33
+        }
+      },
+      "25": {
+        "start": {
+          "line": 77,
+          "column": 4
+        },
+        "end": {
+          "line": 84,
+          "column": 5
+        }
+      },
+      "26": {
+        "start": {
+          "line": 78,
+          "column": 23
+        },
+        "end": {
+          "line": 78,
+          "column": 52
+        }
+      },
+      "27": {
+        "start": {
+          "line": 79,
+          "column": 32
+        },
+        "end": {
+          "line": 79,
+          "column": 60
+        }
+      },
+      "28": {
+        "start": {
+          "line": 80,
+          "column": 19
+        },
+        "end": {
+          "line": 80,
+          "column": 59
+        }
+      },
+      "29": {
+        "start": {
+          "line": 81,
+          "column": 6
+        },
+        "end": {
+          "line": 81,
+          "column": 38
+        }
+      },
+      "30": {
+        "start": {
+          "line": 83,
+          "column": 6
+        },
+        "end": {
+          "line": 83,
+          "column": 38
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 21,
+            "column": 2
+          },
+          "end": {
+            "line": 21,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 54
+          },
+          "end": {
+            "line": 24,
+            "column": 3
+          }
+        },
+        "line": 21
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 26,
+            "column": 2
+          },
+          "end": {
+            "line": 26,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 61
+          },
+          "end": {
+            "line": 29,
+            "column": 3
+          }
+        },
+        "line": 26
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 31,
+            "column": 2
+          },
+          "end": {
+            "line": 31,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 63
+          },
+          "end": {
+            "line": 34,
+            "column": 3
+          }
+        },
+        "line": 31
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 36,
+            "column": 2
+          },
+          "end": {
+            "line": 36,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 36,
+            "column": 60
+          },
+          "end": {
+            "line": 39,
+            "column": 3
+          }
+        },
+        "line": 36
+      },
+      "4": {
+        "name": "(anonymous_4)",
+        "decl": {
+          "start": {
+            "line": 41,
+            "column": 2
+          },
+          "end": {
+            "line": 41,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 62
+          },
+          "end": {
+            "line": 44,
+            "column": 3
+          }
+        },
+        "line": 41
+      },
+      "5": {
+        "name": "(anonymous_5)",
+        "decl": {
+          "start": {
+            "line": 46,
+            "column": 2
+          },
+          "end": {
+            "line": 46,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 46,
+            "column": 38
+          },
+          "end": {
+            "line": 55,
+            "column": 3
+          }
+        },
+        "line": 46
+      },
+      "6": {
+        "name": "(anonymous_6)",
+        "decl": {
+          "start": {
+            "line": 57,
+            "column": 2
+          },
+          "end": {
+            "line": 57,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 57,
+            "column": 63
+          },
+          "end": {
+            "line": 67,
+            "column": 3
+          }
+        },
+        "line": 57
+      },
+      "7": {
+        "name": "(anonymous_7)",
+        "decl": {
+          "start": {
+            "line": 69,
+            "column": 2
+          },
+          "end": {
+            "line": 69,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 69,
+            "column": 32
+          },
+          "end": {
+            "line": 72,
+            "column": 3
+          }
+        },
+        "line": 69
+      },
+      "8": {
+        "name": "(anonymous_8)",
+        "decl": {
+          "start": {
+            "line": 74,
+            "column": 2
+          },
+          "end": {
+            "line": 74,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 74,
+            "column": 61
+          },
+          "end": {
+            "line": 85,
+            "column": 3
+          }
+        },
+        "line": 74
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 24
+          },
+          "end": {
+            "line": 21,
+            "column": 52
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 21,
+              "column": 33
+            },
+            "end": {
+              "line": 21,
+              "column": 52
+            }
+          }
+        ],
+        "line": 21
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 31
+          },
+          "end": {
+            "line": 26,
+            "column": 59
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 26,
+              "column": 40
+            },
+            "end": {
+              "line": 26,
+              "column": 59
+            }
+          }
+        ],
+        "line": 26
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 33
+          },
+          "end": {
+            "line": 31,
+            "column": 61
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 31,
+              "column": 42
+            },
+            "end": {
+              "line": 31,
+              "column": 61
+            }
+          }
+        ],
+        "line": 31
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 36,
+            "column": 30
+          },
+          "end": {
+            "line": 36,
+            "column": 58
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 36,
+              "column": 39
+            },
+            "end": {
+              "line": 36,
+              "column": 58
+            }
+          }
+        ],
+        "line": 36
+      },
+      "4": {
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 32
+          },
+          "end": {
+            "line": 41,
+            "column": 60
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 41,
+              "column": 41
+            },
+            "end": {
+              "line": 41,
+              "column": 60
+            }
+          }
+        ],
+        "line": 41
+      },
+      "5": {
+        "loc": {
+          "start": {
+            "line": 53,
+            "column": 10
+          },
+          "end": {
+            "line": 53,
+            "column": 70
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 53,
+              "column": 10
+            },
+            "end": {
+              "line": 53,
+              "column": 14
+            }
+          },
+          {
+            "start": {
+              "line": 53,
+              "column": 18
+            },
+            "end": {
+              "line": 53,
+              "column": 70
+            }
+          }
+        ],
+        "line": 53
+      },
+      "6": {
+        "loc": {
+          "start": {
+            "line": 74,
+            "column": 43
+          },
+          "end": {
+            "line": 74,
+            "column": 59
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 74,
+              "column": 57
+            },
+            "end": {
+              "line": 74,
+              "column": 59
+            }
+          }
+        ],
+        "line": 74
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 22,
+      "3": 22,
+      "4": 0,
+      "5": 0,
+      "6": 2,
+      "7": 2,
+      "8": 1,
+      "9": 1,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 3,
+      "18": 3,
+      "19": 1,
+      "20": 1,
+      "21": 2,
+      "22": 3,
+      "23": 1,
+      "24": 3,
+      "25": 3,
+      "26": 3,
+      "27": 3,
+      "28": 1,
+      "29": 1,
+      "30": 2
+    },
+    "f": {
+      "0": 0,
+      "1": 2,
+      "2": 1,
+      "3": 0,
+      "4": 0,
+      "5": 3,
+      "6": 3,
+      "7": 3,
+      "8": 3
+    },
+    "b": {
+      "0": [
+        0
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        1
+      ],
+      "3": [
+        0
+      ],
+      "4": [
+        0
+      ],
+      "5": [
+        3,
+        2
+      ],
+      "6": [
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "ae5e9dc66d6906c4bce7d97ae8e4a3e781e0c485"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/api/sessionApi.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/api/sessionApi.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 4
+        },
+        "end": {
+          "line": 5,
+          "column": 44
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 41
+        }
+      },
+      "2": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 36
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 4,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 6,
+            "column": 3
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 18
+          },
+          "end": {
+            "line": 10,
+            "column": 3
+          }
+        },
+        "line": 8
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 12,
+            "column": 2
+          },
+          "end": {
+            "line": 12,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 22
+          },
+          "end": {
+            "line": 14,
+            "column": 3
+          }
+        },
+        "line": 12
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 1,
+      "2": 1
+    },
+    "f": {
+      "0": 1,
+      "1": 1,
+      "2": 1
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "dcc1a29c0cce6f1e24fab2136109f255e9519787"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/actions/sessionActions.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/actions/sessionActions.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 21
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 29
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 3
+        }
+      },
+      "3": {
+        "start": {
+          "line": 8,
+          "column": 21
+        },
+        "end": {
+          "line": 8,
+          "column": 53
+        }
+      },
+      "4": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 43
+        }
+      },
+      "5": {
+        "start": {
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 7
+        }
+      },
+      "6": {
+        "start": {
+          "line": 17,
+          "column": 22
+        },
+        "end": {
+          "line": 25,
+          "column": 1
+        }
+      },
+      "7": {
+        "start": {
+          "line": 17,
+          "column": 28
+        },
+        "end": {
+          "line": 25,
+          "column": 1
+        }
+      },
+      "8": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 3
+        }
+      },
+      "9": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 30
+        }
+      },
+      "10": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 35
+        }
+      },
+      "11": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 32
+        }
+      },
+      "12": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 14
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 21
+          },
+          "end": {
+            "line": 6,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 29
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 29
+          },
+          "end": {
+            "line": 6,
+            "column": 30
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 41
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "line": 6
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 17,
+            "column": 22
+          },
+          "end": {
+            "line": 17,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 28
+          },
+          "end": {
+            "line": 25,
+            "column": 1
+          }
+        },
+        "line": 17
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 17,
+            "column": 28
+          },
+          "end": {
+            "line": 17,
+            "column": 29
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 40
+          },
+          "end": {
+            "line": 25,
+            "column": 1
+          }
+        },
+        "line": 17
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 0,
+      "5": 1,
+      "6": 22,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 0
+    },
+    "f": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "75acc2cef1e887926be5a6a10ac93ce39f22bcb1"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/LogoutButton.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/LogoutButton.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 21
+        },
+        "end": {
+          "line": 16,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 8,
+          "column": 19
+        },
+        "end": {
+          "line": 8,
+          "column": 32
+        }
+      },
+      "2": {
+        "start": {
+          "line": 9,
+          "column": 24
+        },
+        "end": {
+          "line": 9,
+          "column": 73
+        }
+      },
+      "3": {
+        "start": {
+          "line": 9,
+          "column": 42
+        },
+        "end": {
+          "line": 9,
+          "column": 60
+        }
+      },
+      "4": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 21
+          },
+          "end": {
+            "line": 7,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 27
+          },
+          "end": {
+            "line": 16,
+            "column": 1
+          }
+        },
+        "line": 7
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 9,
+            "column": 36
+          },
+          "end": {
+            "line": 9,
+            "column": 37
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 42
+          },
+          "end": {
+            "line": 9,
+            "column": 60
+          }
+        },
+        "line": 9
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 15,
+      "2": 15,
+      "3": 1,
+      "4": 15
+    },
+    "f": {
+      "0": 15,
+      "1": 1
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "f3b80a1e260e3365cf901a17d1eebacbc3b6ebd6"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/HomePage.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/HomePage.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 17
+        },
+        "end": {
+          "line": 20,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 8,
+          "column": 19
+        },
+        "end": {
+          "line": 8,
+          "column": 31
+        }
+      },
+      "2": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 19,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 17
+          },
+          "end": {
+            "line": 7,
+            "column": 18
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 23
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 7
+          },
+          "end": {
+            "line": 16,
+            "column": 7
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 12,
+              "column": 7
+            },
+            "end": {
+              "line": 12,
+              "column": 11
+            }
+          },
+          {
+            "start": {
+              "line": 12,
+              "column": 15
+            },
+            "end": {
+              "line": 12,
+              "column": 25
+            }
+          },
+          {
+            "start": {
+              "line": 13,
+              "column": 8
+            },
+            "end": {
+              "line": 15,
+              "column": 12
+            }
+          }
+        ],
+        "line": 12
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 15,
+      "2": 15
+    },
+    "f": {
+      "0": 15
+    },
+    "b": {
+      "0": [
+        15,
+        15,
+        5
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "7d0c98dec18212e968a213e9d595f389df812a56"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/useDispatch.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/useDispatch.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 19
+        },
+        "end": {
+          "line": 5,
+          "column": 32
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 6,
+          "column": 88
+        }
+      },
+      "2": {
+        "start": {
+          "line": 6,
+          "column": 32
+        },
+        "end": {
+          "line": 6,
+          "column": 57
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 15
+          },
+          "end": {
+            "line": 4,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 44
+          },
+          "end": {
+            "line": 7,
+            "column": 1
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 21
+          },
+          "end": {
+            "line": 6,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 32
+          },
+          "end": {
+            "line": 6,
+            "column": 57
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 209,
+      "1": 209,
+      "2": 2
+    },
+    "f": {
+      "0": 209,
+      "1": 2
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "d99205baa289b80de687e8c369c5b4755b0704bb"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/index.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/hooks/index.js",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "b8526abb8f043694885164ba52298f1d7221b692"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/common/Loading.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/common/Loading.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 16
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 8
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 16
+          },
+          "end": {
+            "line": 4,
+            "column": 17
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 8
+          }
+        },
+        "line": 5
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 2
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "703d813863893ce56f1ee1ad583d73221918d8ac"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/helpers.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/helpers.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 32
+        },
+        "end": {
+          "line": 12,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      },
+      "2": {
+        "start": {
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "line": 6,
+          "column": 11
+        }
+      },
+      "3": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 20
+        }
+      },
+      "5": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 15
+        }
+      },
+      "6": {
+        "start": {
+          "line": 14,
+          "column": 32
+        },
+        "end": {
+          "line": 20,
+          "column": 1
+        }
+      },
+      "7": {
+        "start": {
+          "line": 15,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 3
+        }
+      },
+      "8": {
+        "start": {
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "line": 16,
+          "column": 15
+        }
+      },
+      "9": {
+        "start": {
+          "line": 18,
+          "column": 22
+        },
+        "end": {
+          "line": 18,
+          "column": 51
+        }
+      },
+      "10": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 19,
+          "column": 33
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 32
+          },
+          "end": {
+            "line": 4,
+            "column": 33
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 41
+          },
+          "end": {
+            "line": 12,
+            "column": 1
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 14,
+            "column": 32
+          },
+          "end": {
+            "line": 14,
+            "column": 33
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 54
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "line": 14
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 7,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 7,
+              "column": 3
+            }
+          }
+        ],
+        "line": 5
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 10,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          }
+        ],
+        "line": 8
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 38
+          },
+          "end": {
+            "line": 14,
+            "column": 49
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 14,
+              "column": 47
+            },
+            "end": {
+              "line": 14,
+              "column": 49
+            }
+          }
+        ],
+        "line": 14
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 2
+          },
+          "end": {
+            "line": 17,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 15,
+              "column": 2
+            },
+            "end": {
+              "line": 17,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 15,
+              "column": 2
+            },
+            "end": {
+              "line": 17,
+              "column": 3
+            }
+          }
+        ],
+        "line": 15
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 18,
+      "2": 0,
+      "3": 18,
+      "4": 18,
+      "5": 0,
+      "6": 22,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "f": {
+      "0": 18,
+      "1": 0
+    },
+    "b": {
+      "0": [
+        0,
+        18
+      ],
+      "1": [
+        18,
+        0
+      ],
+      "2": [
+        0
+      ],
+      "3": [
+        0,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "076fe5ac1ff1cf503a577a8d735d2ef104274aa6"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/common/Input.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/common/Input.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 14
+        },
+        "end": {
+          "line": 19,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 8
+        }
+      },
+      "2": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 14
+          },
+          "end": {
+            "line": 7,
+            "column": 15
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 18,
+            "column": 8
+          }
+        },
+        "line": 8
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 5
+          },
+          "end": {
+            "line": 9,
+            "column": 36
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 9,
+              "column": 5
+            },
+            "end": {
+              "line": 9,
+              "column": 10
+            }
+          },
+          {
+            "start": {
+              "line": 9,
+              "column": 14
+            },
+            "end": {
+              "line": 9,
+              "column": 36
+            }
+          }
+        ],
+        "line": 9
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 7
+          },
+          "end": {
+            "line": 16,
+            "column": 7
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 12,
+              "column": 7
+            },
+            "end": {
+              "line": 12,
+              "column": 14
+            }
+          },
+          {
+            "start": {
+              "line": 12,
+              "column": 18
+            },
+            "end": {
+              "line": 12,
+              "column": 23
+            }
+          },
+          {
+            "start": {
+              "line": 13,
+              "column": 8
+            },
+            "end": {
+              "line": 15,
+              "column": 15
+            }
+          }
+        ],
+        "line": 12
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 207,
+      "2": 22
+    },
+    "f": {
+      "0": 207
+    },
+    "b": {
+      "0": [
+        207,
+        207
+      ],
+      "1": [
+        207,
+        22,
+        9
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "ccdcdc39d18a807098604c3be58c46f4d71cf74a"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/constraints.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/utils/constraints.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 21
+        },
+        "end": {
+          "line": 11,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 13,
+          "column": 22
+        },
+        "end": {
+          "line": 28,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 30,
+          "column": 27
+        },
+        "end": {
+          "line": 31,
+          "column": 42
+        }
+      },
+      "3": {
+        "start": {
+          "line": 30,
+          "column": 56
+        },
+        "end": {
+          "line": 31,
+          "column": 42
+        }
+      },
+      "4": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 42
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 30,
+            "column": 27
+          },
+          "end": {
+            "line": 30,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 30,
+            "column": 56
+          },
+          "end": {
+            "line": 31,
+            "column": 42
+          }
+        },
+        "line": 30
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 30,
+            "column": 56
+          },
+          "end": {
+            "line": 30,
+            "column": 57
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 2
+          },
+          "end": {
+            "line": 31,
+            "column": 42
+          }
+        },
+        "line": 31
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 30,
+            "column": 41
+          },
+          "end": {
+            "line": 30,
+            "column": 51
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 30,
+              "column": 49
+            },
+            "end": {
+              "line": 30,
+              "column": 51
+            }
+          }
+        ],
+        "line": 30
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 2
+          },
+          "end": {
+            "line": 31,
+            "column": 42
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 31,
+              "column": 2
+            },
+            "end": {
+              "line": 31,
+              "column": 36
+            }
+          },
+          {
+            "start": {
+              "line": 31,
+              "column": 40
+            },
+            "end": {
+              "line": 31,
+              "column": 42
+            }
+          }
+        ],
+        "line": 31
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 22,
+      "3": 44,
+      "4": 161
+    },
+    "f": {
+      "0": 44,
+      "1": 161
+    },
+    "b": {
+      "0": [
+        0
+      ],
+      "1": [
+        161,
+        16
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "075537de00d8d04086a735a609042ab7f329715e"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/LoginForm.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/LoginForm.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 17
+        },
+        "end": {
+          "line": 13,
+          "column": 2
+        }
+      },
+      "1": {
+        "start": {
+          "line": 15,
+          "column": 25
+        },
+        "end": {
+          "line": 39,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 9
+        }
+      },
+      "3": {
+        "start": {
+          "line": 41,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 15,
+            "column": 25
+          },
+          "end": {
+            "line": 15,
+            "column": 26
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 2
+          },
+          "end": {
+            "line": 38,
+            "column": 9
+          }
+        },
+        "line": 16
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 5
+          },
+          "end": {
+            "line": 17,
+            "column": 38
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 17,
+              "column": 5
+            },
+            "end": {
+              "line": 17,
+              "column": 10
+            }
+          },
+          {
+            "start": {
+              "line": 17,
+              "column": 14
+            },
+            "end": {
+              "line": 17,
+              "column": 38
+            }
+          }
+        ],
+        "line": 17
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 37,
+            "column": 5
+          },
+          "end": {
+            "line": 37,
+            "column": 30
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 37,
+              "column": 5
+            },
+            "end": {
+              "line": 37,
+              "column": 15
+            }
+          },
+          {
+            "start": {
+              "line": 37,
+              "column": 19
+            },
+            "end": {
+              "line": 37,
+              "column": 30
+            }
+          }
+        ],
+        "line": 37
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 29,
+      "3": 22
+    },
+    "f": {
+      "0": 29
+    },
+    "b": {
+      "0": [
+        29,
+        1
+      ],
+      "1": [
+        29,
+        1
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "e2e34dcfcc8c82711ddc102eb9df2671a683814f"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/LoginPage.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/LoginPage.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 18
+        },
+        "end": {
+          "line": 29,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 11,
+          "column": 28
+        },
+        "end": {
+          "line": 11,
+          "column": 40
+        }
+      },
+      "2": {
+        "start": {
+          "line": 12,
+          "column": 23
+        },
+        "end": {
+          "line": 12,
+          "column": 41
+        }
+      },
+      "3": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 42
+        }
+      },
+      "5": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 28,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 10,
+            "column": 18
+          },
+          "end": {
+            "line": 10,
+            "column": 19
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 24
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "line": 10
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          }
+        ],
+        "line": 14
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 83,
+      "2": 83,
+      "3": 83,
+      "4": 2,
+      "5": 81
+    },
+    "f": {
+      "0": 83
+    },
+    "b": {
+      "0": [
+        2,
+        81
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "54d436f4c491005ff997744b15b4ff63d964420d"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/actions/userActions.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/actions/userActions.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 22
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 30
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 3
+        }
+      },
+      "3": {
+        "start": {
+          "line": 8,
+          "column": 21
+        },
+        "end": {
+          "line": 8,
+          "column": 54
+        }
+      },
+      "4": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 43
+        }
+      },
+      "5": {
+        "start": {
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "line": 11,
+          "column": 42
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 22
+          },
+          "end": {
+            "line": 6,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 30
+          },
+          "end": {
+            "line": 13,
+            "column": 1
+          }
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 30
+          },
+          "end": {
+            "line": 6,
+            "column": 31
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 42
+          },
+          "end": {
+            "line": 13,
+            "column": 1
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 0,
+      "5": 1
+    },
+    "f": {
+      "0": 1,
+      "1": 1
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "11d81cf3f0ae6c3b2391f7b097837d576c433c3b"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/SignUpForm.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/user/SignUpForm.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 17
+        },
+        "end": {
+          "line": 14,
+          "column": 2
+        }
+      },
+      "1": {
+        "start": {
+          "line": 16,
+          "column": 26
+        },
+        "end": {
+          "line": 47,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 46,
+          "column": 9
+        }
+      },
+      "3": {
+        "start": {
+          "line": 49,
+          "column": 0
+        },
+        "end": {
+          "line": 53,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 16,
+            "column": 26
+          },
+          "end": {
+            "line": 16,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 2
+          },
+          "end": {
+            "line": 46,
+            "column": 9
+          }
+        },
+        "line": 17
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 45,
+            "column": 5
+          },
+          "end": {
+            "line": 45,
+            "column": 30
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 45,
+              "column": 5
+            },
+            "end": {
+              "line": 45,
+              "column": 15
+            }
+          },
+          {
+            "start": {
+              "line": 45,
+              "column": 19
+            },
+            "end": {
+              "line": 45,
+              "column": 30
+            }
+          }
+        ],
+        "line": 45
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 32,
+      "3": 22
+    },
+    "f": {
+      "0": 32
+    },
+    "b": {
+      "0": [
+        32,
+        1
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "f77e5b1940c85e4a1a0f50994ff8a0b2d573255e"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/SignUpPage.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/SignUpPage.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 19
+        },
+        "end": {
+          "line": 29,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 11,
+          "column": 28
+        },
+        "end": {
+          "line": 11,
+          "column": 40
+        }
+      },
+      "2": {
+        "start": {
+          "line": 12,
+          "column": 24
+        },
+        "end": {
+          "line": 12,
+          "column": 43
+        }
+      },
+      "3": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      },
+      "4": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 42
+        }
+      },
+      "5": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 28,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 10,
+            "column": 19
+          },
+          "end": {
+            "line": 10,
+            "column": 20
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 25
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "line": 10
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 16,
+              "column": 3
+            }
+          }
+        ],
+        "line": 14
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 126,
+      "2": 126,
+      "3": 126,
+      "4": 0,
+      "5": 126
+    },
+    "f": {
+      "0": 126
+    },
+    "b": {
+      "0": [
+        0,
+        126
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "bac5e3a0f4ea32e0f6c5ae1389eaab81b4f6d05b"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/Status.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/routes/Status.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 15
+        },
+        "end": {
+          "line": 14,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 13,
+          "column": 4
+        }
+      },
+      "2": {
+        "start": {
+          "line": 8,
+          "column": 6
+        },
+        "end": {
+          "line": 10,
+          "column": 7
+        }
+      },
+      "3": {
+        "start": {
+          "line": 9,
+          "column": 8
+        },
+        "end": {
+          "line": 9,
+          "column": 36
+        }
+      },
+      "4": {
+        "start": {
+          "line": 11,
+          "column": 6
+        },
+        "end": {
+          "line": 11,
+          "column": 22
+        }
+      },
+      "5": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 15
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 2
+          },
+          "end": {
+            "line": 13,
+            "column": 4
+          }
+        },
+        "line": 6
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 12
+          },
+          "end": {
+            "line": 7,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 35
+          },
+          "end": {
+            "line": 12,
+            "column": 5
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 6
+          },
+          "end": {
+            "line": 10,
+            "column": 7
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 6
+            },
+            "end": {
+              "line": 10,
+              "column": 7
+            }
+          },
+          {
+            "start": {
+              "line": 8,
+              "column": 6
+            },
+            "end": {
+              "line": 10,
+              "column": 7
+            }
+          }
+        ],
+        "line": 8
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 22
+    },
+    "f": {
+      "0": 0,
+      "1": 0
+    },
+    "b": {
+      "0": [
+        0,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "fdaae9cc5b5196187517d9b073f1b8736d194543"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/NotFoundPage.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/containers/NotFoundPage.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 21
+        },
+        "end": {
+          "line": 11,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 11
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 21
+          },
+          "end": {
+            "line": 5,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 2
+          },
+          "end": {
+            "line": 10,
+            "column": 11
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "a81c6bd303ade3b1ebe149affd54b4e67fa05d5e"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/routes.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/routes.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 15
+        },
+        "end": {
+          "line": 25,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 22
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "2839067fd586e2fefdc3408997c62a0e08f54d4b"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/theme.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/theme.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 14
+        },
+        "end": {
+          "line": 12,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 22
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "7c2a6160b0435257fdddc7c68db6b3d74a61f639"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/components/App.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/components/App.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 13,
+          "column": 12
+        },
+        "end": {
+          "line": 34,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 14,
+          "column": 37
+        },
+        "end": {
+          "line": 14,
+          "column": 49
+        }
+      },
+      "2": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 33,
+          "column": 4
+        }
+      },
+      "3": {
+        "start": {
+          "line": 26,
+          "column": 16
+        },
+        "end": {
+          "line": 26,
+          "column": 96
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 13,
+            "column": 12
+          },
+          "end": {
+            "line": 13,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 18
+          },
+          "end": {
+            "line": 34,
+            "column": 1
+          }
+        },
+        "line": 13
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 25,
+            "column": 26
+          },
+          "end": {
+            "line": 25,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 16
+          },
+          "end": {
+            "line": 26,
+            "column": 96
+          }
+        },
+        "line": 26
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 11
+          },
+          "end": {
+            "line": 29,
+            "column": 11
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 23,
+              "column": 11
+            },
+            "end": {
+              "line": 23,
+              "column": 18
+            }
+          },
+          {
+            "start": {
+              "line": 24,
+              "column": 12
+            },
+            "end": {
+              "line": 28,
+              "column": 21
+            }
+          }
+        ],
+        "line": 23
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 272,
+      "2": 272,
+      "3": 912
+    },
+    "f": {
+      "0": 272,
+      "1": 912
+    },
+    "b": {
+      "0": [
+        272,
+        228
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "d2b61c7bebeafcc0d3704ee9a965e129a183cf71"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/es.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/es.js",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "29c2d372baa90da884f89a785d3834472549fa4a"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/en.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/en.js",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "1a640f142cb8c65ec81b8c300de0cf16c6ca1eb4"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/index.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/locales/index.js",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "161d4d3cff5215e816842ddfbdc980e0f453e54c"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/constants.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/constants/constants.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 35
+        },
+        "end": {
+          "line": 3,
+          "column": 47
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 32
+        },
+        "end": {
+          "line": 4,
+          "column": 36
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 22,
+      "1": 22
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "be7a93e71809e2461b1d7c75763f96eef2e3a787"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/src/index.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/src/index.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 25
+        }
+      },
+      "1": {
+        "start": {
+          "line": 20,
+          "column": 0
+        },
+        "end": {
+          "line": 24,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 21,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 5
+        }
+      },
+      "3": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 52
+        }
+      },
+      "4": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 36,
+          "column": 1
+        }
+      },
+      "5": {
+        "start": {
+          "line": 28,
+          "column": 2
+        },
+        "end": {
+          "line": 35,
+          "column": 4
+        }
+      },
+      "6": {
+        "start": {
+          "line": 31,
+          "column": 6
+        },
+        "end": {
+          "line": 31,
+          "column": 22
+        }
+      },
+      "7": {
+        "start": {
+          "line": 32,
+          "column": 6
+        },
+        "end": {
+          "line": 32,
+          "column": 46
+        }
+      },
+      "8": {
+        "start": {
+          "line": 33,
+          "column": 6
+        },
+        "end": {
+          "line": 33,
+          "column": 46
+        }
+      },
+      "9": {
+        "start": {
+          "line": 38,
+          "column": 0
+        },
+        "end": {
+          "line": 38,
+          "column": 30
+        }
+      },
+      "10": {
+        "start": {
+          "line": 39,
+          "column": 20
+        },
+        "end": {
+          "line": 39,
+          "column": 52
+        }
+      },
+      "11": {
+        "start": {
+          "line": 40,
+          "column": 28
+        },
+        "end": {
+          "line": 40,
+          "column": 70
+        }
+      },
+      "12": {
+        "start": {
+          "line": 41,
+          "column": 15
+        },
+        "end": {
+          "line": 41,
+          "column": 67
+        }
+      },
+      "13": {
+        "start": {
+          "line": 42,
+          "column": 17
+        },
+        "end": {
+          "line": 42,
+          "column": 32
+        }
+      },
+      "14": {
+        "start": {
+          "line": 44,
+          "column": 14
+        },
+        "end": {
+          "line": 44,
+          "column": 30
+        }
+      },
+      "15": {
+        "start": {
+          "line": 46,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 41
+        }
+      },
+      "16": {
+        "start": {
+          "line": 48,
+          "column": 18
+        },
+        "end": {
+          "line": 59,
+          "column": 1
+        }
+      },
+      "17": {
+        "start": {
+          "line": 49,
+          "column": 2
+        },
+        "end": {
+          "line": 58,
+          "column": 4
+        }
+      },
+      "18": {
+        "start": {
+          "line": 61,
+          "column": 0
+        },
+        "end": {
+          "line": 61,
+          "column": 15
+        }
+      },
+      "19": {
+        "start": {
+          "line": 63,
+          "column": 0
+        },
+        "end": {
+          "line": 63,
+          "column": 44
+        }
+      },
+      "20": {
+        "start": {
+          "line": 65,
+          "column": 0
+        },
+        "end": {
+          "line": 69,
+          "column": 1
+        }
+      },
+      "21": {
+        "start": {
+          "line": 66,
+          "column": 2
+        },
+        "end": {
+          "line": 68,
+          "column": 5
+        }
+      },
+      "22": {
+        "start": {
+          "line": 67,
+          "column": 4
+        },
+        "end": {
+          "line": 67,
+          "column": 19
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 21,
+            "column": 34
+          },
+          "end": {
+            "line": 21,
+            "column": 35
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 40
+          },
+          "end": {
+            "line": 23,
+            "column": 3
+          }
+        },
+        "line": 21
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 30,
+            "column": 4
+          },
+          "end": {
+            "line": 30,
+            "column": 5
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 30,
+            "column": 15
+          },
+          "end": {
+            "line": 34,
+            "column": 5
+          }
+        },
+        "line": 30
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 48,
+            "column": 18
+          },
+          "end": {
+            "line": 48,
+            "column": 19
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 48,
+            "column": 31
+          },
+          "end": {
+            "line": 59,
+            "column": 1
+          }
+        },
+        "line": 48
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 66,
+            "column": 40
+          },
+          "end": {
+            "line": 66,
+            "column": 41
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 66,
+            "column": 46
+          },
+          "end": {
+            "line": 68,
+            "column": 3
+          }
+        },
+        "line": 66
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 0
+          },
+          "end": {
+            "line": 24,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 24,
+              "column": 1
+            }
+          },
+          {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 24,
+              "column": 1
+            }
+          }
+        ],
+        "line": 20
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 27,
+            "column": 0
+          },
+          "end": {
+            "line": 36,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 27,
+              "column": 0
+            },
+            "end": {
+              "line": 36,
+              "column": 1
+            }
+          },
+          {
+            "start": {
+              "line": 27,
+              "column": 0
+            },
+            "end": {
+              "line": 36,
+              "column": 1
+            }
+          }
+        ],
+        "line": 27
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 15
+          },
+          "end": {
+            "line": 41,
+            "column": 67
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 41,
+              "column": 37
+            },
+            "end": {
+              "line": 41,
+              "column": 48
+            }
+          },
+          {
+            "start": {
+              "line": 41,
+              "column": 51
+            },
+            "end": {
+              "line": 41,
+              "column": 67
+            }
+          }
+        ],
+        "line": 41
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 65,
+            "column": 0
+          },
+          "end": {
+            "line": 69,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 65,
+              "column": 0
+            },
+            "end": {
+              "line": 69,
+              "column": 1
+            }
+          },
+          {
+            "start": {
+              "line": 65,
+              "column": 0
+            },
+            "end": {
+              "line": 69,
+              "column": 1
+            }
+          }
+        ],
+        "line": 65
+      }
+    },
+    "s": {
+      "0": 22,
+      "1": 22,
+      "2": 0,
+      "3": 0,
+      "4": 22,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 22,
+      "10": 22,
+      "11": 22,
+      "12": 22,
+      "13": 22,
+      "14": 22,
+      "15": 22,
+      "16": 22,
+      "17": 22,
+      "18": 22,
+      "19": 22,
+      "20": 22,
+      "21": 22,
+      "22": 0
+    },
+    "f": {
+      "0": 0,
+      "1": 0,
+      "2": 22,
+      "3": 0
+    },
+    "b": {
+      "0": [
+        0,
+        22
+      ],
+      "1": [
+        0,
+        22
+      ],
+      "2": [
+        22,
+        0
+      ],
+      "3": [
+        22,
+        0
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "7c6d85f38e882f5c26186495f1044efc0b4b93d2"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/headers.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/headers.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 16
+        },
+        "end": {
+          "line": 10,
+          "column": 2
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 12
+        },
+        "end": {
+          "line": 10,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 16
+          },
+          "end": {
+            "line": 1,
+            "column": 17
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 12
+          },
+          "end": {
+            "line": 10,
+            "column": 1
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 17
+          },
+          "end": {
+            "line": 6,
+            "column": 6
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 6,
+              "column": 4
+            },
+            "end": {
+              "line": 6,
+              "column": 6
+            }
+          }
+        ],
+        "line": 1
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 2
+          },
+          "end": {
+            "line": 2,
+            "column": 22
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 2,
+              "column": 18
+            },
+            "end": {
+              "line": 2,
+              "column": 22
+            }
+          }
+        ],
+        "line": 2
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 2
+          },
+          "end": {
+            "line": 3,
+            "column": 34
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 3,
+              "column": 10
+            },
+            "end": {
+              "line": 3,
+              "column": 34
+            }
+          }
+        ],
+        "line": 3
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 4,
+            "column": 28
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 4,
+              "column": 8
+            },
+            "end": {
+              "line": 4,
+              "column": 28
+            }
+          }
+        ],
+        "line": 4
+      },
+      "4": {
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 5,
+            "column": 35
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 5,
+              "column": 11
+            },
+            "end": {
+              "line": 5,
+              "column": 35
+            }
+          }
+        ],
+        "line": 5
+      },
+      "5": {
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 3
+          },
+          "end": {
+            "line": 7,
+            "column": 43
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 7,
+              "column": 19
+            },
+            "end": {
+              "line": 7,
+              "column": 33
+            }
+          },
+          {
+            "start": {
+              "line": 7,
+              "column": 36
+            },
+            "end": {
+              "line": 7,
+              "column": 43
+            }
+          }
+        ],
+        "line": 7
+      }
+    },
+    "s": {
+      "0": 3,
+      "1": 5
+    },
+    "f": {
+      "0": 5
+    },
+    "b": {
+      "0": [
+        2
+      ],
+      "1": [
+        2
+      ],
+      "2": [
+        5
+      ],
+      "3": [
+        5
+      ],
+      "4": [
+        5
+      ],
+      "5": [
+        2,
+        3
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "adc7b0b43fba0154b9d8dc12580240021945c584"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/fakeUser.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/fakeUser.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 17
+        },
+        "end": {
+          "line": 22,
+          "column": 2
+        }
+      },
+      "1": {
+        "start": {
+          "line": 12,
+          "column": 12
+        },
+        "end": {
+          "line": 22,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 17
+          },
+          "end": {
+            "line": 3,
+            "column": 18
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 12
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "line": 12
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 18
+          },
+          "end": {
+            "line": 12,
+            "column": 6
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 12,
+              "column": 4
+            },
+            "end": {
+              "line": 12,
+              "column": 6
+            }
+          }
+        ],
+        "line": 3
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 2
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 4,
+              "column": 10
+            },
+            "end": {
+              "line": 4,
+              "column": 32
+            }
+          }
+        ],
+        "line": 4
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 2
+          },
+          "end": {
+            "line": 5,
+            "column": 31
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 5,
+              "column": 14
+            },
+            "end": {
+              "line": 5,
+              "column": 31
+            }
+          }
+        ],
+        "line": 5
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 2
+          },
+          "end": {
+            "line": 6,
+            "column": 36
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 6,
+              "column": 14
+            },
+            "end": {
+              "line": 6,
+              "column": 36
+            }
+          }
+        ],
+        "line": 6
+      },
+      "4": {
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 34
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 7,
+              "column": 13
+            },
+            "end": {
+              "line": 7,
+              "column": 34
+            }
+          }
+        ],
+        "line": 7
+      },
+      "5": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 2
+          },
+          "end": {
+            "line": 8,
+            "column": 38
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 13
+            },
+            "end": {
+              "line": 8,
+              "column": 38
+            }
+          }
+        ],
+        "line": 8
+      },
+      "6": {
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 2
+          },
+          "end": {
+            "line": 9,
+            "column": 20
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 9,
+              "column": 13
+            },
+            "end": {
+              "line": 9,
+              "column": 20
+            }
+          }
+        ],
+        "line": 9
+      },
+      "7": {
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 2
+          },
+          "end": {
+            "line": 10,
+            "column": 31
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 10,
+              "column": 14
+            },
+            "end": {
+              "line": 10,
+              "column": 31
+            }
+          }
+        ],
+        "line": 10
+      },
+      "8": {
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 2
+          },
+          "end": {
+            "line": 11,
+            "column": 28
+          }
+        },
+        "type": "default-arg",
+        "locations": [
+          {
+            "start": {
+              "line": 11,
+              "column": 7
+            },
+            "end": {
+              "line": 11,
+              "column": 28
+            }
+          }
+        ],
+        "line": 11
+      }
+    },
+    "s": {
+      "0": 6,
+      "1": 7
+    },
+    "f": {
+      "0": 7
+    },
+    "b": {
+      "0": [
+        5
+      ],
+      "1": [
+        7
+      ],
+      "2": [
+        7
+      ],
+      "3": [
+        7
+      ],
+      "4": [
+        7
+      ],
+      "5": [
+        7
+      ],
+      "6": [
+        7
+      ],
+      "7": [
+        7
+      ],
+      "8": [
+        7
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "436fd4e51653f5e2815b11ad9c1afc31683287d7"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/realUser.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/cypress/fixtures/realUser.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 17
+        },
+        "end": {
+          "line": 4,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 3
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "521837870ab22475420b5cd67aa55da5c11047aa"
+  },
+  "/Users/agustinachaer/Documents/react/react-redux-base/cypress/stubs/sessionStubs.js": {
+    "path": "/Users/agustinachaer/Documents/react/react-redux-base/cypress/stubs/sessionStubs.js",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 25
+        },
+        "end": {
+          "line": 22,
+          "column": 2
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 40
+        },
+        "end": {
+          "line": 22,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 24,
+          "column": 26
+        },
+        "end": {
+          "line": 39,
+          "column": 2
+        }
+      },
+      "3": {
+        "start": {
+          "line": 24,
+          "column": 41
+        },
+        "end": {
+          "line": 39,
+          "column": 1
+        }
+      },
+      "4": {
+        "start": {
+          "line": 41,
+          "column": 26
+        },
+        "end": {
+          "line": 52,
+          "column": 2
+        }
+      },
+      "5": {
+        "start": {
+          "line": 41,
+          "column": 33
+        },
+        "end": {
+          "line": 52,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 25
+          },
+          "end": {
+            "line": 7,
+            "column": 26
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 40
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "line": 7
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 24,
+            "column": 26
+          },
+          "end": {
+            "line": 24,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 41
+          },
+          "end": {
+            "line": 39,
+            "column": 1
+          }
+        },
+        "line": 24
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 41,
+            "column": 26
+          },
+          "end": {
+            "line": 41,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 33
+          },
+          "end": {
+            "line": 52,
+            "column": 1
+          }
+        },
+        "line": 41
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 24
+          },
+          "end": {
+            "line": 14,
+            "column": 44
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 14,
+              "column": 24
+            },
+            "end": {
+              "line": 14,
+              "column": 34
+            }
+          },
+          {
+            "start": {
+              "line": 14,
+              "column": 38
+            },
+            "end": {
+              "line": 14,
+              "column": 44
+            }
+          }
+        ],
+        "line": 14
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 24
+          },
+          "end": {
+            "line": 31,
+            "column": 63
+          }
+        },
+        "type": "binary-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 31,
+              "column": 24
+            },
+            "end": {
+              "line": 31,
+              "column": 34
+            }
+          },
+          {
+            "start": {
+              "line": 31,
+              "column": 38
+            },
+            "end": {
+              "line": 31,
+              "column": 63
+            }
+          }
+        ],
+        "line": 31
+      }
+    },
+    "s": {
+      "0": 3,
+      "1": 2,
+      "2": 3,
+      "3": 2,
+      "4": 3,
+      "5": 1
+    },
+    "f": {
+      "0": 2,
+      "1": 2,
+      "2": 1
+    },
+    "b": {
+      "0": [
+        2,
+        2
+      ],
+      "1": [
+        2,
+        2
+      ]
+    },
+    "_coverageSchema": "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    "hash": "99a553cd00721c5e17ba33231b564d44f67e8068"
+  }
+}

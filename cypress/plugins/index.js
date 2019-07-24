@@ -22,6 +22,7 @@ module.exports = (on, config) => {
     webpackOptions: require('../../webpack/webpack.config.cypress'),
     watchOptions: {}
   };
+  // on('task', require('cypress-istanbul/task'));
   on('file:preprocessor', webpack(options));
   on('task', require('@cypress/code-coverage/task'));
   config.env = { API_URL: env.parsed.API_URL };
