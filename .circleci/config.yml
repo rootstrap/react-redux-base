@@ -14,13 +14,18 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn --frozen-lockfile
-      # - run:
-      #     name: Run server
-      #     command: ENV=cypress yarn start
-      #     background: true
+      - run:
+          name: Run server
+          command: ENV=cypress yarn start
+          background: true
       - run:
           name: Run tests
-          command: yarn test
+          command: yarn test:ci
+      - run:
+          name: Run check coverage
+          command: yarn check:coverage
+      - store_artifacts:
+          path: coverage
       # - run:
       #     name: Run Jest tests
       #     command: yarn jest src
