@@ -26,7 +26,8 @@ jobs:
       - run:
           name: Run linter
           command: yarn lint
-
+      - store_artifacts:
+          path: coverage
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
