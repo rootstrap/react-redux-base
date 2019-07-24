@@ -21,9 +21,9 @@ jobs:
       - run:
           name: Run tests
           command: yarn test:ci
-      - run:
-          name: Run check coverage
-          command: yarn check:coverage
+      # - run:
+      #     name: Run check coverage
+      #     command: yarn check:coverage
       - store_artifacts:
           path: coverage
       # - run:
@@ -45,4 +45,4 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
-            ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+            ./cc-test-reporter after-build -t lcov ./coverage/lcov.info

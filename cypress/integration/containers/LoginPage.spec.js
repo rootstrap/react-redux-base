@@ -27,7 +27,7 @@ describe('Login Page (Real Response)', () => {
   // });
 
   context('Redirections', () => {
-    it.only('Successfully redirected when user not logged in', () => {
+    it('Successfully redirected when user not logged in', () => {
       cy.url().should('match', /login/);
     });
 

@@ -24,7 +24,7 @@ describe('Sign Up Page', () => {
   // });
 
   context('General', () => {
-    it.only('Should see the sign up page', () => {
+    it('Should see the sign up page', () => {
       cy.get('p').contains('SIGN UP');
     });
 

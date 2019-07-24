@@ -8,7 +8,7 @@ describe('Home Page', () => {
   });
 
   context('Homepage View', () => {
-    it.only('displays a welcome message', () => {
+    it('displays a welcome message', () => {
       cy.get('p').contains('Welcome to React Redux Base');
     });
 
