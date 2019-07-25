@@ -1,26 +1,29 @@
 # Cypress testing in react-redux-base
 
 ## Table of contents
-* [Setup](#setup)
-* [Running tests](#running-tests)
-    - [Test selection](#test-selection)
-    - [Test running](#test-running)
-* [Writing tests](#writing-tests)
-  + [General structure](#general-structure)
-  + [Testing commands](#testing-commands)
-  + [Integrations](#integrations)
-  + [What type of tests do you want to write?](#what-type-of-tests-do-you-want-to-write-)
-  + [Stubbing requests](#stubbing-requests)
-    - [Basic attributes](#basic-attributes)
-    - [Cases](#cases)
-    - [When to stub and how to stub?](#when-to-stub-and-how-to-stub-)
-  + [Fixtures](#fixtures)
-  + [Assert form validations](#assert-form-validations)
-    - [Test it the react-redux-base way](#test-it-the-react-redux-base-way)
-    - [Defining fields](#defining-fields)
-      * [Basic attributes](#basic-attributes-1)
-      * [Validation structure](#validation-structure)
-      * [Validation options](#validation-options)
+- [Cypress testing in react-redux-base](#cypress-testing-in-react-redux-base)
+  - [Table of contents](#table-of-contents)
+  - [Setup](#setup)
+  - [Running tests](#running-tests)
+      - [Test selection](#test-selection)
+      - [Test running](#test-running)
+  - [Writing tests](#writing-tests)
+    - [General structure](#general-structure)
+    - [Testing commands](#testing-commands)
+    - [Integrations](#integrations)
+    - [What type of tests do you want to write?](#what-type-of-tests-do-you-want-to-write)
+    - [Stubbing requests](#stubbing-requests)
+      - [Basic attributes](#basic-attributes)
+      - [Cases](#cases)
+      - [When to stub and how to stub?](#when-to-stub-and-how-to-stub)
+    - [Fixtures](#fixtures)
+    - [Assert form validations](#assert-form-validations)
+      - [Test it the react-redux-base way](#test-it-the-react-redux-base-way)
+      - [Defining fields](#defining-fields)
+        - [Basic attributes](#basic-attributes-1)
+        - [Validation structure](#validation-structure)
+        - [Validation options](#validation-options)
+  - [Code Coverage](#code-coverage)
 
 
 ----
@@ -158,21 +161,21 @@ As you can see the function is receiving a parameter called `customUser`. This c
 #### Basic attributes
 
 
- Parameter | Description | Values / Type
- --------- | ----------- | -------------
- name | this will be the stub identifier | **string**
- method | Select the http method the request you want to stub has. | **HTTP METHODS** defined in constants
- url | url you want to mock, `stubRequest` will pre-append `'**'` for you so any urls ending with the one you provide match | **string**
- cases | A request to the backend not always responds with the same values. For each case you need to stub here is the place to define them | **object**
+ | Parameter | Description                                                                                                                        | Values / Type                         |
+ | --------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+ | name      | this will be the stub identifier                                                                                                   | **string**                            |
+ | method    | Select the http method the request you want to stub has.                                                                           | **HTTP METHODS** defined in constants |
+ | url       | url you want to mock, `stubRequest` will pre-append `'**'` for you so any urls ending with the one you provide match               | **string**                            |
+ | cases     | A request to the backend not always responds with the same values. For each case you need to stub here is the place to define them | **object**                            |
 
 #### Cases
 Usual cases are `'success'` (`SUCCESS_CASE`) and `'fail'` (`FAIL_CASE`), because of that, those are already defined in the constants file so you can reuse them. If there are any other common cases that you find yourself using you might want to define them there as well.
 
- Parameter | Description | Values / Type | Required
- --------- | ----------- | ------------- | --------
- status | This is the status code of the case, usually something like 200 or 400.  | **HTTP CODES** defined in constants| **true**
- response | This is the response object as the backend would send it, usually contains a fixture or error messages. | **object**, no default value | **false** but usually necessary
- withHeaders | Add authentication headers to response? Set it to false if user should not be logged in after response. | **bool**, default value: `true` | **false**
+ | Parameter   | Description                                                                                             | Values / Type                       | Required                        |
+ | ----------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------- |
+ | status      | This is the status code of the case, usually something like 200 or 400.                                 | **HTTP CODES** defined in constants | **true**                        |
+ | response    | This is the response object as the backend would send it, usually contains a fixture or error messages. | **object**, no default value        | **false** but usually necessary |
+ | withHeaders | Add authentication headers to response? Set it to false if user should not be logged in after response. | **bool**, default value: `true`     | **false**                       |
 
 #### When to stub and how to stub?
 Now that you have the tools, how do you actually implement a stub?
@@ -266,31 +269,31 @@ const fields = [
 ...
 ```
 ##### Basic attributes
- Parameter | Description | Values / Type | Required
- --------- | ----------- | ------------- | --------
- title | This is to show in the test case definition and to define default validation messages.  | **string** | **true**
- name | Input name | **string** | **true**
- inputType | Input type, used to identify element. By default the defined `inputTypes` are `INPUT` and `TEXTAREA`, you can expand that to fit your needs. | **string**, default value: `INPUT` from `inputTypes` | **false**
- errors | Define errors to check. | **array of object**, objects inside follow **validation structure** | **false**
- warnings | Define warnings to check. | **array of object**, objects inside follow **validation structure** | **false**
+ | Parameter | Description                                                                                                                                  | Values / Type                                                       | Required  |
+ | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | --------- |
+ | title     | This is to show in the test case definition and to define default validation messages.                                                       | **string**                                                          | **true**  |
+ | name      | Input name                                                                                                                                   | **string**                                                          | **true**  |
+ | inputType | Input type, used to identify element. By default the defined `inputTypes` are `INPUT` and `TEXTAREA`, you can expand that to fit your needs. | **string**, default value: `INPUT` from `inputTypes`                | **false** |
+ | errors    | Define errors to check.                                                                                                                      | **array of object**, objects inside follow **validation structure** | **false** |
+ | warnings  | Define warnings to check.                                                                                                                    | **array of object**, objects inside follow **validation structure** | **false** |
 
 Inside errors and warnings arrays you can define validations with these attributes:
 
 ##### Validation structure
- Parameter | Description | Type | Required
- --------- | ----------- | ------------- | --------
- validationType | Select which validation you want to run. Choose from and extend `validationTypes` in constants. | **string** | **true**
- options | Any extra configurations that you need to set | **object** | **false**
+ | Parameter      | Description                                                                                     | Type       | Required  |
+ | -------------- | ----------------------------------------------------------------------------------------------- | ---------- | --------- |
+ | validationType | Select which validation you want to run. Choose from and extend `validationTypes` in constants. | **string** | **true**  |
+ | options        | Any extra configurations that you need to set                                                   | **object** | **false** |
 
 Said options are described below
 
 ##### Validation options
- Parameter | Description | Type | Required
- --------- | ----------- | ------------- | --------
- customValue | For each validation a default value is already provided, if for some reason you need to change it just set this parameter. | **string** | **false**
- customMessage | As with the value, a default message is provided but you sometimes need a custom one. | **string** | **false**
- setup | function where you can define any steps to be run before the validation | **func** | **false**
- [custom] | You can define any custom option | **any** | **false**
+ | Parameter     | Description                                                                                                                | Type       | Required  |
+ | ------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+ | customValue   | For each validation a default value is already provided, if for some reason you need to change it just set this parameter. | **string** | **false** |
+ | customMessage | As with the value, a default message is provided but you sometimes need a custom one.                                      | **string** | **false** |
+ | setup         | function where you can define any steps to be run before the validation                                                    | **func**   | **false** |
+ | [custom]      | You can define any custom option                                                                                           | **any**    | **false** |
 
 
 Certain validations might need special options. For example, `EQUALITY` needs to know the name of the input to compare with, that is called `otherInput`.
@@ -298,3 +301,10 @@ Certain validations might need special options. For example, `EQUALITY` needs to
 Aside from that, if you ever need to expand validations you can always add other custom options to use in those specific cases.
 
 As validation definitions can get long you might want to consider storing them in a separate folder with an associated file for each spec.
+
+
+------
+
+## Code Coverage
+
+To set up code coverage you need to set in circleCi the environment variable `NODE_ENV` to `test` so the code coverage is run in the CI. This is because [Istanbul](https://istanbul.js.org/) (the package use for calculating the coverage) is set as a test plugin in `.babelrc`.
