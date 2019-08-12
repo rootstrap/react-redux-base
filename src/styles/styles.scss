@@ -17,7 +17,7 @@ body {
   height: 100%;
   margin: 0;
   text-rendering: optimizeLegibility;
-  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -33,6 +33,19 @@ body {
   width: 5rem;
 
   // These two classes are required by react-loaders
-  .loader-hidden { display: none; }
-  .loader-active { display: block; }
+  .loader-hidden {
+    display: none;
+  }
+  .loader-active {
+    display: block;
+  }
+}
+
+.header {
+  padding: 1rem;
+  text-align: center;
+
+  &__logo {
+    width: 150px;
+  }
 }
