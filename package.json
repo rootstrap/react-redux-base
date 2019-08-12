@@ -47,7 +47,10 @@
     }
   },
   "nyc": {
-    "lines": 70
+    "lines": 70,
+    "exclude": [
+      "cypress"
+    ]
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
