@@ -89,7 +89,7 @@ describe('Sign Up Page', () => {
             }
           }
         ]
-      },
+      }
     ];
     testFields(fields);
   });

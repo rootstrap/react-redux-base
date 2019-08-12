@@ -19,7 +19,9 @@ describe('Home Page', () => {
     it('click in the logout button,should be redirected to the login path', () => {
       cy.stubRequest(logoutStub());
 
-      cy.get('button').click().wait('@logoutStub');
+      cy.get('button')
+        .click()
+        .wait('@logoutStub');
       cy.url().should('match', /login/);
     });
   });

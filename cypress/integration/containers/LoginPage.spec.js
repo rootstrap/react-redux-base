@@ -76,7 +76,7 @@ describe('Login Page (Real Response)', () => {
             options: { customMessage: 'You must enter a password to continue' }
           }
         ]
-      },
+      }
     ];
     testFields(fields);
   });

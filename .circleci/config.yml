@@ -3,7 +3,8 @@ jobs:
   build:
     docker:
       - image: cypress/base:10.16.0
-
+    environment:
+      CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
     steps:
       - checkout
       - restore_cache:
@@ -26,8 +27,14 @@ jobs:
       - run:
           name: Run linter
           command: yarn lint
-
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache
+      - run:
+          name: Setup Code Climate test reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+            ./cc-test-reporter after-build -t lcov ./coverage/lcov.info
