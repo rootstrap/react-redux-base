@@ -27,5 +27,7 @@ export const signUp = {
   }
 };
 
+validate.validators.presence.options = { allowEmpty: false };
+
 export const validations = (constraints, props = {}) => data =>
   validate(data, constraints, props) || {};

@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const resolve = require('./shared/resolve');
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('test'),
+  'process.env.NODE_ENV': JSON.stringify('test_cypress'),
   'process.env.BROWSER': true,
   __DEV__: true
 };
