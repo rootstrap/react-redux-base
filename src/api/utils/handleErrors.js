@@ -1,4 +1,4 @@
-import { sessionService } from 'redux-react-session';
+import { getSession, removeSession } from 'react-session-persist';
 import parseError from './parseError';
 import saveSessionHeaders from './saveSessionHeaders';
 
@@ -15,9 +15,8 @@ export default async response => {
 
   if (response.status === 401) {
     try {
-      await sessionService.loadSession();
-      sessionService.deleteSession();
-      sessionService.deleteUser();
+      await getSession();
+      await removeSession();
     } catch (e) {}
   }
 

@@ -1,9 +1,9 @@
-import { sessionService } from 'redux-react-session';
+import session from 'react-session-persist';
 import saveSessionHeaders from 'api/utils/saveSessionHeaders';
 
 describe('saveSessionHeaders', () => {
   beforeEach(() => {
-    sessionService.saveSession = jest.fn(() => Promise.resolve());
+    session.saveSession = jest.fn(() => Promise.resolve());
   });
 
   describe('with an ACCESS_TOKEN on the headers', () => {
@@ -19,7 +19,7 @@ describe('saveSessionHeaders', () => {
 
       await saveSessionHeaders(headers);
 
-      expect(sessionService.saveSession).toHaveBeenCalledWith({
+      expect(session.saveSession).toHaveBeenCalledWith({
         token: 'test-token',
         uid: 'test-uid',
         client: 'test-client'
@@ -37,7 +37,7 @@ describe('saveSessionHeaders', () => {
 
       await saveSessionHeaders(headers);
 
-      expect(sessionService.saveSession).not.toHaveBeenCalled();
+      expect(session.saveSession).not.toHaveBeenCalled();
     });
   });
 });

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { sessionService } from 'redux-react-session';
+import { getSession } from 'react-session-persist';
 import humps from 'humps';
 
 import handleErrors from 'api/utils/handleErrors';
@@ -57,7 +57,6 @@ class Api {
   static async loadHeadersAndPerformRequest(uri, apiUrl, data) {
     const requestData = { ...data };
     try {
-      await sessionService.refreshFromLocalStorage();
       const headers = await Api.getTokenHeader();
       requestData.headers = { ...requestData.headers, ...headers };
       return Api.performRequest(uri, apiUrl, requestData);
@@ -67,7 +66,7 @@ class Api {
   }
 
   static async getTokenHeader() {
-    const { token, client, uid } = await sessionService.loadSession();
+    const { token, client, uid } = await getSession();
     return { [ACCESS_TOKEN]: token, client, uid };
   }
 

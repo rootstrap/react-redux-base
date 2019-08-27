@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { useSession } from 'react-session-persist';
 
-import { useSession, useDispatch } from 'hooks';
+import { useDispatch } from 'hooks';
 import LoginForm from 'components/user/LoginForm';
 import { login } from 'actions/sessionActions';
 import routes from 'constants/routesPaths';

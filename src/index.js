@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { sessionService } from 'redux-react-session';
 import { AppContainer, setConfig } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
+import Session from 'react-session-persist';
 
 import configureStore from 'store/configureStore';
 import App from 'components/App';
@@ -46,15 +46,15 @@ const messages = locales[locale];
 
 const store = configureStore();
 
-sessionService.initSessionService(store);
-
 const renderApp = Component => {
   render(
     <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       <Provider store={store}>
-        <AppContainer>
-          <Component />
-        </AppContainer>
+        <Session>
+          <AppContainer>
+            <Component />
+          </AppContainer>
+        </Session>
       </Provider>
     </IntlProvider>,
     document.getElementById('app')

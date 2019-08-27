@@ -1,4 +1,4 @@
-import { sessionService } from 'redux-react-session';
+import { saveSession } from 'react-session-persist';
 
 const ACCESS_TOKEN = 'access-token';
 const UID = 'uid';
@@ -12,6 +12,6 @@ export default headers => {
       client: headers.get(CLIENT)
     };
 
-    return sessionService.saveSession(sessionHeaders);
+    return saveSession(sessionHeaders);
   }
 };

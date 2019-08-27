@@ -12,7 +12,7 @@
     "prestart": "npm-run-all --parallel start-message remove-dist",
     "start": "npm-run-all --parallel open:src lint",
     "start:server": "node server/build/server.js",
-    "ssr": "npm-run-all clean-ssr build:* start:server",
+    "ssr": "npm run clean-ssr && npm run build:client && npm run build:server && npm run start:server",
     "heroku-postbuild": "npm-run-all build:*",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
@@ -84,10 +84,10 @@
     "react-redux": "7.1.0",
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "5.0.1",
+    "react-session-persist": "0.0.1",
     "redux": "4.0.0",
     "redux-form": "8.2.3",
     "redux-logger": "3.0.6",
-    "redux-react-session": "2.5.0",
     "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
     "styled-components": "4.0.2",
@@ -197,7 +197,9 @@
       "node_modules",
       "src"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/tools/testSetup.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tools/testSetup.js"
+    ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },

@@ -5,11 +5,12 @@ import Helmet from 'react-helmet';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { sessionService } from 'redux-react-session';
+import DummyStorage from 'react-session-persist/lib/storage/CookiesStorage';
 import { matchRoutes } from 'react-router-config';
 import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
 import { ServerStyleSheet } from 'styled-components';
+import Session from 'react-session-persist';
 
 import locales from 'locales';
 import configureStore from 'store/configureStore.prod';
@@ -18,7 +19,7 @@ import { applyQueryParams } from 'utils/helpers';
 import App from './_app';
 import routes from '../src/routes';
 import Doc from './_document';
-import { getLanguageFromHeader } from './helpers';
+import { getLanguageFromHeader, getSessionData } from './helpers';
 
 const assets = require('./build/assets.json'); // eslint-disable-line import/no-unresolved
 
@@ -44,9 +45,8 @@ server
       const store = configureStore();
       const context = {};
 
-      try {
-        await sessionService.initServerSession(store, req);
-      } catch (err) {}
+      const sessionData = getSessionData(req);
+      const initialSessionData = sessionData || { session: undefined, user: undefined };
 
       // Fetch data promises
       const promises = matchRoutes(routes, req.path)
@@ -68,9 +68,11 @@ server
           const staticRouter = (
             <IntlProvider locale={userLocale} messages={messages} defaultLocale="en">
               <Provider store={store}>
-                <StaticRouter location={req.url} context={context}>
-                  <App routes={routes} />
-                </StaticRouter>
+                <Session storage={new DummyStorage()} initialData={initialSessionData}>
+                  <StaticRouter location={req.url} context={context}>
+                    <App routes={routes} />
+                  </StaticRouter>
+                </Session>
               </Provider>
             </IntlProvider>
           );

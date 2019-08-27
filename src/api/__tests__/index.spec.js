@@ -1,5 +1,5 @@
 import nock from 'nock';
-import { sessionService } from 'redux-react-session';
+import session from 'react-session-persist';
 import ApiService from 'api';
 import fetch from 'isomorphic-fetch';
 
@@ -7,14 +7,13 @@ global.fetch = fetch;
 
 describe('ApiService', () => {
   beforeEach(() => {
-    sessionService.loadSession = jest.fn(() =>
+    session.getSession = jest.fn(() =>
       Promise.resolve({
         token: 'test-token',
         client: 'test-client',
         uid: 'test-uid'
       })
     );
-    sessionService.refreshFromLocalStorage = jest.fn(() => Promise.resolve);
   });
 
   describe('buildRequest', () => {

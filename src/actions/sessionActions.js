@@ -1,12 +1,12 @@
 import { SubmissionError } from 'redux-form';
-import { sessionService } from 'redux-react-session';
+import { saveUser, removeSession } from 'react-session-persist';
 
 import sessionApi from 'api/sessionApi';
 
 export const login = user => async () => {
   try {
     const response = await sessionApi.login({ user });
-    sessionService.saveUser(response.user);
+    await saveUser(response.user);
   } catch (err) {
     throw new SubmissionError({
       _error: err.error
@@ -17,8 +17,7 @@ export const login = user => async () => {
 export const logout = () => async () => {
   try {
     await sessionApi.logout();
-    sessionService.deleteSession();
-    sessionService.deleteUser();
+    await removeSession();
   } catch (err) {
     throw err;
   }

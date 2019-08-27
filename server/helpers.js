@@ -15,3 +15,14 @@ export const getLanguageFromHeader = header => {
 
   return 'es';
 };
+
+export const getSessionData = req => {
+  const rc = req.get('cookie');
+  rc &&
+    rc.split(';').forEach(cookie => {
+      const parts = cookie.split('=');
+      if (parts[0].trim() === 'SESSION_STORAGE') {
+        return JSON.parse(decodeURIComponent(parts[1]));
+      }
+    });
+};

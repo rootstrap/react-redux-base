@@ -1,4 +1,4 @@
-import { sessionService } from 'redux-react-session';
+import session from 'react-session-persist';
 
 import handleErrors from 'api/utils/handleErrors';
 import * as parseError from 'api/utils/parseError';
@@ -6,8 +6,8 @@ import * as saveSessionHeaders from 'api/utils/saveSessionHeaders';
 
 describe('handleErrors', () => {
   beforeEach(() => {
-    sessionService.deleteSession = jest.fn(() => Promise.resolve());
-    sessionService.loadSession = jest.fn(() => Promise.resolve());
+    session.removeSession = jest.fn(() => Promise.resolve());
+    session.getSession = jest.fn(() => Promise.resolve());
     saveSessionHeaders.default = jest.fn(() => Promise.resolve());
     parseError.default = jest.fn(() => Promise.resolve());
   });
@@ -54,7 +54,7 @@ describe('handleErrors', () => {
       try {
         await handleErrors(response);
       } catch (error) {
-        expect(sessionService.loadSession).toHaveBeenCalled();
+        expect(session.getSession).toHaveBeenCalled();
       }
     });
 
@@ -62,7 +62,7 @@ describe('handleErrors', () => {
       try {
         await handleErrors(response);
       } catch (error) {
-        expect(sessionService.deleteSession).toHaveBeenCalled();
+        expect(session.removeSession).toHaveBeenCalled();
       }
     });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import useSession from 'hooks/useSession';
+import { useSession } from 'react-session-persist';
 
 import LogoutButton from 'components/user/LogoutButton';
 
