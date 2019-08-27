@@ -1,7 +1,7 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
-import Session from 'react-session-persist';
+import Session, { loadDataFromStorage } from 'react-session-persist';
 import { AppContainer } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
@@ -49,11 +49,13 @@ delete window.__PRELOADED_STATE__;
 
 const store = configureStore(preloadedState);
 
-const renderApp = Component => {
+const renderApp = async Component => {
+  const session = await loadDataFromStorage();
+
   hydrate(
     <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       <Provider store={store}>
-        <Session>
+        <Session initialData={session}>
           <AppContainer>
             <Component />
           </AppContainer>
