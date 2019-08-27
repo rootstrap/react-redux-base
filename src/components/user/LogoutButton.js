@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
-import { logout } from 'actions/sessionActions';
+import { logout } from 'actions/userActions';
 
 const LogoutButton = () => {
   const dispatch = useDispatch();

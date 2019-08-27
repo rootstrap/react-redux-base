@@ -17,7 +17,7 @@ body {
   height: 100%;
   margin: 0;
   text-rendering: optimizeLegibility;
-  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -36,6 +36,7 @@ body {
   .loader-hidden {
     display: none;
   }
+
   .loader-active {
     display: block;
   }

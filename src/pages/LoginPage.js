@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useSession, useDispatch } from 'hooks';
 import LoginForm from 'components/user/LoginForm';
-import { login } from 'actions/sessionActions';
+import { login } from 'actions/userActions';
 import routes from 'constants/routesPaths';
 
 const LoginPage = () => {
