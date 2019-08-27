@@ -107,6 +107,7 @@
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0,
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "arrow-parens": 0
   },
   "settings": {
