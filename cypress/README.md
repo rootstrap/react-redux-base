@@ -67,7 +67,7 @@ If this is your first time using Cypress you might want to take a look at Cypres
 cypress
 ├───fixtures/             # Model fakers
 ├───integration/          # Here is where the test suites go
-│   └───containers/       # Designated place for container test suites
+│   └───pages/            # Designated place for pages test suites
 ├───plugins/
 ├───screenshots/          # Home for failing test screenshots
 ├───snapshots/            # Home for test snapshots if you have that set up
@@ -94,7 +94,7 @@ $ yarn test:open
 ```
 * Run a specific spec in console
 ```bash
-$ yarn test:spec "cypress/integration/containers/NameOfSpec.spec.js"
+$ yarn test:spec "cypress/integration/pages/NameOfSpec.spec.js"
 ```
 * Command used for CI configuration
 ```bash
@@ -108,9 +108,9 @@ By default all test commands use `.env.test` as their env. If you want to run a 
 ### Integrations
 As you might have seen in the Cypress documentation, here is where all your test specs should go. Cypress recommends to keep all your suites in this folder.
 
-To keep a similar structure to `src`, all container test suites are in `containers` folder.
+To keep a similar structure to `src`, all page test suites are in `pages` folder.
 
-Out of the box the `react-redux-base` comes with three tests, one for each container (`LoginPage`, `SignUpPage`, `HomePage`).
+Out of the box the `react-redux-base` comes with three tests, one for each page (`LoginPage`, `SignUpPage`, `HomePage`).
 
 ### What type of tests do you want to write?
 * **Integration or unit tests:**

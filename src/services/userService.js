@@ -1,6 +1,6 @@
 import api from 'api';
 
-class Session {
+class UserService {
   static login(user) {
     return api.post('/users/sign_in', user);
   }
@@ -14,4 +14,4 @@ class Session {
   }
 }
 
-export default Session;
+export default UserService;
