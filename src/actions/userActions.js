@@ -5,11 +5,11 @@ import userService from 'services/userService';
 
 export const login = user => async () => {
   try {
-    const response = await userService.login({ user });
-    sessionService.saveUser(response.user);
+    const { data } = await userService.login({ user });
+    sessionService.saveUser(data.user);
   } catch (err) {
     throw new SubmissionError({
-      _error: err.error
+      _error: err.data.error
     });
   }
 };
@@ -20,15 +20,15 @@ export const logout = () => async () => {
     sessionService.deleteSession();
     sessionService.deleteUser();
   } catch (err) {
-    throw err;
+    throw err.data.error;
   }
 };
 
 export const signUp = user => async () => {
   try {
-    const response = await userService.signUp({ user });
-    sessionService.saveUser(response.user);
+    const { data } = await userService.signUp({ user });
+    sessionService.saveUser(data.user);
   } catch (err) {
-    throw new SubmissionError(err.errors);
+    throw new SubmissionError(err.data.errors);
   }
 };

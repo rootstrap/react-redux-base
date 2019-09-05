@@ -1,6 +1,11 @@
-
 import user from 'fixtures/fakeUser';
-import { POST, DELETE, SUCCESS_CODE, UNAUTHORIZED_CODE, UNPROCESSABLE_ENTITY_CODE } from 'cypressConstants';
+import {
+  POST,
+  DELETE,
+  SUCCESS_CODE,
+  UNAUTHORIZED_CODE,
+  UNPROCESSABLE_ENTITY_CODE
+} from 'cypressConstants';
 
 // STUBS
 
@@ -28,7 +33,7 @@ export const signUpStub = customUser => ({
   cases: {
     success: {
       status: SUCCESS_CODE,
-      response: { user: customUser || user({ complete: false }) },
+      response: { user: customUser || user({ complete: false }) }
     },
     fail: {
       status: UNPROCESSABLE_ENTITY_CODE,

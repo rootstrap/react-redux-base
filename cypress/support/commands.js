@@ -24,7 +24,7 @@ addMatchImageSnapshotCommand({
   failureThresholdType: 'percent' // percent of image or number of pixels
 });
 
-Cypress.on('window:before:load', (win) => {
+Cypress.on('window:before:load', win => {
   delete win.fetch;
 });
 
@@ -60,13 +60,18 @@ Cypress.Commands.add('loginUser', () => {
 Cypress.Commands.add('realLoginUser', () => {
   Cypress.log({ name: 'Real login user' });
 
-  cy.request('POST', `${Cypress.env('API_URL')}/users/sign_in`, { user: realUser }).then((response) => {
-    const { headers, body: { user } } = response;
-    const { uid, client, 'access-token': token } = headers;
-    if (token) {
-      const session = { token, uid, client };
-      storage.setItem('USER-SESSION', session);
-      storage.setItem('USER_DATA', user);
+  cy.request('POST', `${Cypress.env('API_URL')}/users/sign_in`, { user: realUser }).then(
+    response => {
+      const {
+        headers,
+        body: { user }
+      } = response;
+      const { uid, client, 'access-token': token } = headers;
+      if (token) {
+        const session = { token, uid, client };
+        storage.setItem('USER-SESSION', session);
+        storage.setItem('USER_DATA', user);
+      }
     }
-  });
+  );
 });

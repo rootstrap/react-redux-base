@@ -4,12 +4,16 @@ import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
 
+import api from 'api';
+import applyDefaultInterceptors from 'api/utils/applyDefaultInterceptors';
 import useSession from 'hooks/useSession';
 import history from 'utils/history';
 import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import theme from '../constants/theme';
 import Header from './common/Header';
+
+applyDefaultInterceptors(api);
 
 const App = () => {
   const { authenticated, checked } = useSession();
