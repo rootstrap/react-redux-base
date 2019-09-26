@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import { useSession, useDispatch } from 'hooks';
 import { signUp } from 'actions/userActions';
 import SignUpForm from 'components/user/SignUpForm';
+import PreloadLink from 'components/routes/PreloadLink';
 import routes from 'constants/routesPaths';
 
 const SignUpPage = () => {
@@ -21,9 +22,9 @@ const SignUpPage = () => {
         <FormattedMessage id="signup.title" />
       </p>
       <SignUpForm onSubmit={signUpRequest} />
-      <Link to={routes.login}>
+      <PreloadLink to={routes.login}>
         <FormattedMessage id="signup.signin" />
-      </Link>
+      </PreloadLink>
     </div>
   );
 };

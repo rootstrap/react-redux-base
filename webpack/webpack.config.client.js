@@ -57,7 +57,8 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true
+      inject: true,
+      chunksSortMode: 'none'
     }),
 
     new Dotenv({

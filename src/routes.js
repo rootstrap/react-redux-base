@@ -1,28 +1,30 @@
-import React from 'react';
+import { lazy } from 'react';
 
 import routesPaths from 'constants/routesPaths';
-import HomePage from 'pages/HomePage';
-import LoginPage from 'pages/LoginPage';
-import SignUpPage from 'pages/SignUpPage';
-import NotFoundPage from 'pages/NotFoundPage';
+
+const ReactLazyPreload = importStatement => {
+  const Component = lazy(importStatement);
+  Component.preload = importStatement;
+  return Component;
+};
 
 const routes = [
   {
     path: routesPaths.index,
-    component: <HomePage />,
+    component: ReactLazyPreload(() => import('pages/HomePage')),
     exact: true,
     private: true
   },
   {
     path: routesPaths.login,
-    component: <LoginPage />
+    component: ReactLazyPreload(() => import('pages/LoginPage'))
   },
   {
     path: routesPaths.signUp,
-    component: <SignUpPage />
+    component: ReactLazyPreload(() => import('pages/SignUpPage'))
   },
   {
-    component: <NotFoundPage />
+    component: ReactLazyPreload(() => import('pages/NotFoundPage'))
   }
 ];
 

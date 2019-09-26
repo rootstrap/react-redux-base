@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -27,11 +27,13 @@ const App = () => {
         <Header />
         <ConnectedRouter history={history}>
           {checked && (
-            <Switch>
-              {routes.map((route, index) => (
-                <RouteFromPath key={`route${index}`} {...route} authenticated={authenticated} />
-              ))}
-            </Switch>
+            <Suspense fallback="Loading">
+              <Switch>
+                {routes.map((route, index) => (
+                  <RouteFromPath key={`route${index}`} {...route} authenticated={authenticated} />
+                ))}
+              </Switch>
+            </Suspense>
           )}
         </ConnectedRouter>
       </Fragment>

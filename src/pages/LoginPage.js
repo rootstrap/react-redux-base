@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import { useSession, useDispatch } from 'hooks';
 import LoginForm from 'components/user/LoginForm';
+import PreloadLink from 'components/routes/PreloadLink';
 import { login } from 'actions/userActions';
 import routes from 'constants/routesPaths';
 
@@ -21,9 +22,9 @@ const LoginPage = () => {
         <FormattedMessage id="login.title" />
       </p>
       <LoginForm onSubmit={loginRequest} />
-      <Link to={routes.signUp}>
+      <PreloadLink to={routes.signUp}>
         <FormattedMessage id="login.signup" />
-      </Link>
+      </PreloadLink>
     </div>
   );
 };

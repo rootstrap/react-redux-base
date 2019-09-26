@@ -39,7 +39,8 @@ module.exports = {
         removeComments: true,
         collapseWhitespace: true
       },
-      inject: true
+      inject: true,
+      chunksSortMode: 'none'
     }),
     new Dotenv({
       path: path.resolve(__dirname, `../.env.${process.env.ENV || 'dev'}`),
