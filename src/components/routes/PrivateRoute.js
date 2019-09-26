@@ -1,34 +1,31 @@
 import React from 'react';
-import { object, bool, string, func } from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { bool, string, node } from 'prop-types';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 
 import routes from 'constants/routesPaths';
 
-const PrivateRoute = ({ component, exact = false, path, authenticated }) => (
-  <Route
-    exact={exact}
-    path={path}
-    render={props =>
-      authenticated ? (
-        React.createElement(component, props)
-      ) : (
-        <Redirect
-          to={{
-            pathname: routes.login,
-            state: { from: props.location }
-          }}
-        />
-      )
-    }
-  />
-);
+const PrivateRoute = ({ children, exact = false, path, authenticated }) => {
+  const location = useLocation();
+
+  return authenticated ? (
+    <Route exact={exact} path={path}>
+      {children}
+    </Route>
+  ) : (
+    <Redirect
+      to={{
+        pathname: routes.login,
+        state: { from: location }
+      }}
+    />
+  );
+};
 
 PrivateRoute.propTypes = {
-  component: func.isRequired,
+  children: node.isRequired,
   path: string.isRequired,
   authenticated: bool.isRequired,
-  exact: bool,
-  location: object
+  exact: bool
 };
 
 export default PrivateRoute;
