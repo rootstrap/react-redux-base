@@ -72,7 +72,7 @@ The server is prepared to fetch data directly from the backend before rendering 
 |----------|-------
 |  [React](https://facebook.github.io/react/)  |   Fast, composable client-side components.|
 |  [Redux](http://redux.js.org) |  Enforces unidirectional data flows and immutable, hot reloadable store. Supports time-travel debugging.|
-|  [React Router 4](https://github.com/reactjs/react-router) | A complete routing library for React |
+|  [React Router 5](https://github.com/reactjs/react-router) | A complete routing library for React |
 |  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.|
 | [Webpack 4](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [React Hot Loader](https://github.com/gaearon/react-hot-loader). |
 | [Express](https://github.com/expressjs/express) | Fast, unopinionated, minimalist web framework for node. |
