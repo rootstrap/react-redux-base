@@ -1,12 +1,11 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import useDispatch from 'hooks/useDispatch';
 import { logout } from 'actions/userActions';
 
 const LogoutButton = () => {
-  const dispatch = useDispatch();
-  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
+  const logoutRequest = useDispatch(logout);
 
   return (
     <button onClick={logoutRequest}>
