@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Fragment>
+      <>
         <Helmet>
           <title>RS React Redux Base</title>
         </Helmet>
@@ -24,7 +24,7 @@ const App = () => {
             ))}
           </Switch>
         )}
-      </Fragment>
+      </>
     </ThemeProvider>
   );
 };

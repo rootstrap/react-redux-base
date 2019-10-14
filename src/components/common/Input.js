@@ -6,7 +6,7 @@ import { parseInputErrors } from 'utils/helpers';
 
 const Input = ({ input, label, type, placeholder, meta: { touched, error } }) => (
   <div>
-    {label && <label>{label}</label>}
+    {label && <label htmlFor={input.name}>{label}</label>}
     <div>
       <input {...input} {...{ placeholder, type }} />
       {touched && error && (
