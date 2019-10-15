@@ -73,7 +73,7 @@
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "react/display-name": [ 1, { "ignoreTranspilerName": false }],
-    "react/forbid-prop-types": [1, { "forbid": ["any"] }],
+    "react/forbid-prop-types": [1, { "forbid": ["any", "array"] }],
     "react/jsx-curly-spacing": 1,
     "react/jsx-filename-extension": 0,
     "react/jsx-indent-props": 0,
@@ -106,6 +106,7 @@
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0,
+    "react/jsx-props-no-spreading": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "arrow-parens": 0
