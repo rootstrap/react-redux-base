@@ -1,14 +1,7 @@
 import nock from 'nock';
-import { sessionService } from 'redux-react-session';
 import ApiService from 'api';
 
 describe('ApiService', () => {
-  beforeEach(() => {
-    sessionService.loadSession = jest.fn(() =>
-      Promise.resolve({ token: 'test-token', client: 'test-client', uid: 'test-uid' })
-    );
-  });
-
   describe('buildRequestData', () => {
     describe('with no body', () => {
       it('returns httpVerb and headers', () => {

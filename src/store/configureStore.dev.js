@@ -5,6 +5,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import { persistStore } from 'redux-persist';
 import _ from 'lodash';
 import { routerMiddleware } from 'connected-react-router';
 
@@ -37,5 +38,7 @@ export default function configureStore(initialState) {
     });
   }
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 }

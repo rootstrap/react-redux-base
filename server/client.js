@@ -1,14 +1,16 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
-import { sessionService } from 'redux-react-session';
 import { AppContainer } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import configureStore from 'store/configureStore';
 import App from 'components/App';
 import locales from 'locales';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
+import api from 'api';
+import applyDefaultInterceptors from 'api/utils/applyDefaultInterceptors';
 import 'styles/styles.scss';
 
 require('../src/favicon.ico'); // Tell webpack to load favicon.ico
@@ -47,23 +49,24 @@ const messages = locales[locale];
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 
-const store = configureStore(preloadedState);
-
-sessionService.initSessionService(store, { driver: 'COOKIES' });
+const { persistor, store } = configureStore(preloadedState);
 
 const renderApp = Component => {
   hydrate(
     <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       <Provider store={store}>
-        <AppContainer>
-          <Component />
-        </AppContainer>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppContainer>
+            <Component />
+          </AppContainer>
+        </PersistGate>
       </Provider>
     </IntlProvider>,
     document.getElementById('app')
   );
 };
 
+applyDefaultInterceptors(store, api);
 renderApp(App);
 
 if (module.hot) {

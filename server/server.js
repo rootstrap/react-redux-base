@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { sessionService } from 'redux-react-session';
 import { matchRoutes } from 'react-router-config';
 import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
@@ -41,12 +40,8 @@ server
   )
   .get('*', async (req, res) => {
     try {
-      const store = configureStore();
+      const { store } = configureStore(undefined, true);
       const context = {};
-
-      try {
-        await sessionService.initServerSession(store, req);
-      } catch (err) {}
 
       // Fetch data promises
       const promises = matchRoutes(routes, req.path)

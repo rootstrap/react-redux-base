@@ -9,14 +9,13 @@
 // ***********************************************
 
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
-import localForage from 'localforage';
 
 import headers from 'fixtures/headers';
 import user from 'fixtures/fakeUser';
+import session from 'fixtures/headers';
 import realUser from 'fixtures/realUser';
 import { SUCCESS_CASE } from 'cypressConstants';
-
-const storage = localForage.createInstance({ name: 'redux-react-session' });
+import { saveSession, saveUser } from 'actions/userActions';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
@@ -39,22 +38,19 @@ Cypress.Commands.add('stubRequest', (options, caseId = SUCCESS_CASE) => {
   cy.route(stubOptions).as(name);
 });
 
-Cypress.Commands.add('loginUser', () => {
-  Cypress.log({ name: 'Fake login user' });
-
-  storage.setItem('USER-SESSION', headers({ mockingServer: false }));
-  storage.setItem('USER_DATA', user());
-});
-
 Cypress.Commands.add('removeSession', () => {
-  window.indexedDB.deleteDatabase('redux-react-session');
+  Cypress.log({ name: 'removeSession' });
+
+  window.indexedDB.deleteDatabase('localforage');
 });
 
 Cypress.Commands.add('loginUser', () => {
-  Cypress.log({ name: 'Save user data' });
+  Cypress.log({ name: 'Save user and session data' });
 
-  storage.setItem('USER-SESSION', headers({ mockingServer: false }));
-  storage.setItem('USER_DATA', user());
+  cy.window().its('store').then(store => {
+    store.dispatch(saveSession(session()));
+    store.dispatch(saveUser(user()));
+  });
 });
 
 Cypress.Commands.add('realLoginUser', () => {
@@ -69,8 +65,10 @@ Cypress.Commands.add('realLoginUser', () => {
       const { uid, client, 'access-token': token } = headers;
       if (token) {
         const session = { token, uid, client };
-        storage.setItem('USER-SESSION', session);
-        storage.setItem('USER_DATA', user);
+        cy.window().its('store').then(store => {
+          store.dispatch(saveSession(session));
+          store.dispatch(saveUser(user));
+        });
       }
     }
   );

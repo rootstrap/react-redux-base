@@ -3,8 +3,9 @@ import { logoutStub } from 'stubs/sessionStubs';
 
 describe('Home Page', () => {
   beforeEach(() => {
-    cy.loginUser();
     cy.visit('/');
+    cy.removeSession();
+    cy.loginUser();
   });
 
   context('Homepage View', () => {
