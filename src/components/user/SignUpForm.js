@@ -1,11 +1,13 @@
 import React, { memo } from 'react';
-import { func, bool } from 'prop-types';
+import { func } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
 import { validations, signUp } from 'utils/constraints';
+import { useLoading } from 'hooks';
+import { SIGNUP } from 'actions/actionTypes';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
@@ -13,8 +15,10 @@ const messages = defineMessages({
   passConfirmation: { id: 'signup.form.passconfirmation' }
 });
 
-export const SignUpForm = ({ handleSubmit, submitting }) => {
+export const SignUpForm = ({ handleSubmit }) => {
   const intl = useIntl();
+  const loading = useLoading(SIGNUP);
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -44,14 +48,13 @@ export const SignUpForm = ({ handleSubmit, submitting }) => {
       <button type="submit">
         <FormattedMessage id="login.form.submit" />
       </button>
-      {submitting && <Loading />}
+      {loading && <Loading />}
     </form>
   );
 };
 
 SignUpForm.propTypes = {
-  handleSubmit: func.isRequired,
-  submitting: bool.isRequired
+  handleSubmit: func.isRequired
 };
 
 export default reduxForm({

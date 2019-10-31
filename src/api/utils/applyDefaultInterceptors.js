@@ -1,4 +1,4 @@
-import { saveSession, logout } from 'actions/userActions';
+import { updateSession, logout } from 'actions/userActions';
 
 const ACCESS_TOKEN = 'access-token';
 const UID = 'uid';
@@ -37,7 +37,7 @@ const defaultResponseInterceptors = store => [
           uid: headers.get(UID),
           client: headers.get(CLIENT)
         };
-        store.dispatch(saveSession(session));
+        store.dispatch(updateSession(session));
       }
     }
     if (response.status === UNAUTHORIZED) {

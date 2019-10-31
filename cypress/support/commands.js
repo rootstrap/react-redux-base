@@ -15,7 +15,7 @@ import user from 'fixtures/fakeUser';
 import session from 'fixtures/headers';
 import realUser from 'fixtures/realUser';
 import { SUCCESS_CASE } from 'cypressConstants';
-import { saveSession, saveUser } from 'actions/userActions';
+import { loginSuccess, updateSession } from 'actions/userActions';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
@@ -48,8 +48,8 @@ Cypress.Commands.add('loginUser', () => {
   Cypress.log({ name: 'Save user and session data' });
 
   cy.window().its('store').then(store => {
-    store.dispatch(saveSession(session()));
-    store.dispatch(saveUser(user()));
+    store.dispatch(updateSession(session()));
+    store.dispatch(loginSuccess(user()));
   });
 });
 
@@ -66,8 +66,8 @@ Cypress.Commands.add('realLoginUser', () => {
       if (token) {
         const session = { token, uid, client };
         cy.window().its('store').then(store => {
-          store.dispatch(saveSession(session));
-          store.dispatch(saveUser(user));
+          store.dispatch(updateSession(session));
+          store.dispatch(loginSuccess(user));
         });
       }
     }

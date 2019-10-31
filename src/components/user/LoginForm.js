@@ -1,22 +1,27 @@
 import React, { memo } from 'react';
-import { func, string, bool } from 'prop-types';
+import { func } from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
 import { validations, login } from 'utils/constraints';
+import { LOADING, ERROR } from 'constants/status';
+import { useStatus } from 'hooks';
+import { LOGIN } from 'actions/actionTypes';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
   password: { id: 'login.form.password' }
 });
 
-export const LoginForm = ({ handleSubmit, error, submitting }) => {
+export const LoginForm = ({ handleSubmit }) => {
   const intl = useIntl();
+  const { status, error } = useStatus(LOGIN);
+
   return (
     <form onSubmit={handleSubmit}>
-      {error && <strong>{error}</strong>}
+      {status === ERROR && <strong>{error}</strong>}
       <div>
         <Field
           name="email"
@@ -36,15 +41,13 @@ export const LoginForm = ({ handleSubmit, error, submitting }) => {
       <button type="submit">
         <FormattedMessage id="login.form.submit" />
       </button>
-      {submitting && <Loading />}
+      {status === LOADING && <Loading />}
     </form>
   );
 };
 
 LoginForm.propTypes = {
-  handleSubmit: func.isRequired,
-  submitting: bool.isRequired,
-  error: string
+  handleSubmit: func.isRequired
 };
 
 export default reduxForm({

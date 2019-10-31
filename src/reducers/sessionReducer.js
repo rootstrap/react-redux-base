@@ -8,16 +8,17 @@ const initialState = {
 };
 
 const actionHandlers = {
-  [types.SAVE_SESSION]: (state, { payload }) => {
+  [types.LOGIN_SUCCESS]: (state, { payload }) => {
+    state.user = payload;
+  },
+  [types.SIGNUP_SUCCESS]: (state, { payload }) => {
+    state.user = payload;
+  },
+  [types.UPDATE_SESSION]: (state, { payload }) => {
     state.info = payload;
     state.authenticated = true;
   },
-
-  [types.SAVE_USER]: (state, { payload }) => {
-    state.user = payload;
-  },
-
-  [types.REMOVE_DATA]: () => initialState
+  [types.LOGOUT_SUCCESS]: () => initialState
 };
 
 export default createReducer(initialState, actionHandlers);
