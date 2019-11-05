@@ -15,8 +15,7 @@ import rootReducer from 'reducers';
 export default function configureStore(initialState) {
   const logger = createLogger({
     collapsed: true,
-    predicate: (getState, { type }) =>
-      !_.startsWith(type, '@@router') && !_.startsWith(type, '@@redux-form')
+    predicate: (getState, { type }) => !_.startsWith(type, '@@router')
   });
 
   const middewares = [thunkMiddleware, logger, routerMiddleware(history)];

@@ -1,29 +1,32 @@
 import React from 'react';
-import { string, object } from 'prop-types';
+import { string, arrayOf } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { parseInputErrors } from 'utils/helpers';
 
-const Input = ({ input, label, type, placeholder, meta: { touched, error } }) => (
-  <div>
-    {label && <label htmlFor={input.name}>{label}</label>}
+const Input = ({ label, name, errors, ...props }) => {
+  return (
     <div>
-      <input {...input} {...{ placeholder, type }} />
-      {touched && error && (
-        <span>
-          <FormattedMessage id={parseInputErrors(error)} defaultMessage={parseInputErrors(error)} />
-        </span>
-      )}
+      {label && <label htmlFor={name}>{label}</label>}
+      <div>
+        <input name={name} {...props} />
+        {errors && (
+          <span>
+            <FormattedMessage
+              id={parseInputErrors(errors)}
+              defaultMessage={parseInputErrors(errors)}
+            />
+          </span>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Input.propTypes = {
-  input: object.isRequired,
+  name: string.isRequired,
   label: string,
-  type: string.isRequired,
-  placeholder: string,
-  meta: object
+  errors: arrayOf(string)
 };
 
 export default Input;

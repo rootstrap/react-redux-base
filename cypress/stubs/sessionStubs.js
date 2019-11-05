@@ -37,7 +37,7 @@ export const signUpStub = customUser => ({
     },
     fail: {
       status: UNPROCESSABLE_ENTITY_CODE,
-      response: { errors: { email: ['has already been taken'] } },
+      response: { error: 'Email has already been taken' },
       withHeaders: false
     }
   }

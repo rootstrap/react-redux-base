@@ -1,5 +1,3 @@
-import { SubmissionError } from 'redux-form';
-
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -57,7 +55,6 @@ export const signUp = user => async dispatch => {
     } = await userService.signUp({ user });
     dispatch(signupSuccess(createdUser));
   } catch (err) {
-    dispatch(signupError());
-    throw new SubmissionError(err.data.errors);
+    dispatch(signupError(err.data.error));
   }
 };
