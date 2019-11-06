@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import { func } from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
-import { validations, signUp } from 'utils/constraints';
-import { useLoading } from 'hooks';
+import { signUp } from 'utils/constraints';
+import { LOADING, ERROR } from 'constants/status';
+import { useStatus, useForm, useValidation, useTextInputProps } from 'hooks';
 import { SIGNUP } from 'actions/actionTypes';
 
 const messages = defineMessages({
@@ -15,49 +15,65 @@ const messages = defineMessages({
   passConfirmation: { id: 'signup.form.passconfirmation' }
 });
 
-export const SignUpForm = ({ handleSubmit }) => {
+const fields = {
+  email: 'email',
+  password: 'password',
+  passwordConfirmation: 'passwordConfirmation'
+};
+
+export const SignUpForm = ({ onSubmit }) => {
   const intl = useIntl();
-  const loading = useLoading(SIGNUP);
+  const { status, error } = useStatus(SIGNUP);
+
+  const validator = useValidation(signUp);
+  const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
+    {
+      onSubmit,
+      validator,
+      validateOnBlur: true
+    },
+    [onSubmit]
+  );
+
+  const inputProps = useTextInputProps({ handleValueChange, handleBlur, values, errors });
 
   return (
     <form onSubmit={handleSubmit}>
+      {status === ERROR && <strong>{error}</strong>}
       <div>
-        <Field
+        <Input
           name="email"
           label={intl.formatMessage(messages.email)}
-          component={Input}
           type="email"
+          {...inputProps(fields.email)}
         />
       </div>
       <div>
-        <Field
+        <Input
           name="password"
           label={intl.formatMessage(messages.password)}
-          component={Input}
           type="password"
+          {...inputProps(fields.password)}
         />
       </div>
       <div>
-        <Field
+        <Input
           name="passwordConfirmation"
           label={intl.formatMessage(messages.passConfirmation)}
-          component={Input}
           type="password"
+          {...inputProps(fields.passwordConfirmation)}
         />
       </div>
       <button type="submit">
         <FormattedMessage id="login.form.submit" />
       </button>
-      {loading && <Loading />}
+      {status === LOADING && <Loading />}
     </form>
   );
 };
 
 SignUpForm.propTypes = {
-  handleSubmit: func.isRequired
+  onSubmit: func.isRequired
 };
 
-export default reduxForm({
-  form: 'signUp',
-  validate: validations(signUp, { fullMessages: false })
-})(memo(SignUpForm));
+export default memo(SignUpForm);

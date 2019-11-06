@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
 import { connectRouter } from 'connected-react-router';
 import localForage from 'localforage';
 import { persistReducer } from 'redux-persist';
@@ -17,7 +16,6 @@ const sessionPersistConfig = {
 
 const rootReducer = history =>
   combineReducers({
-    form,
     session: persistReducer(sessionPersistConfig, session),
     router: connectRouter(history),
     actionStatus

@@ -1,5 +1,5 @@
 {
-  "name": "react_redux_base",
+  "name": "react-redux-base",
   "version": "0.1.0",
   "description": "Rootstrap React Redux Base",
   "engines": {
@@ -55,7 +55,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "prettier --write",
-      "yarn lint:fix --quiet",
+      "eslint --fix webpack/webpack.config.* src",
       "git add"
     ]
   },
@@ -86,7 +86,6 @@
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "5.1.0",
     "redux": "4.0.0",
-    "redux-form": "8.2.3",
     "redux-logger": "3.0.6",
     "redux-persist": "5.10.0",
     "redux-thunk": "2.3.0",
