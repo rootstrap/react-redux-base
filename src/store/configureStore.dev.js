@@ -9,6 +9,7 @@ import { persistStore } from 'redux-persist';
 import _ from 'lodash';
 import { routerMiddleware } from 'connected-react-router';
 
+import resourcesMiddleware from 'middleware/resources';
 import history from 'utils/history';
 import rootReducer from 'reducers';
 
@@ -18,7 +19,7 @@ export default function configureStore(initialState) {
     predicate: (getState, { type }) => !_.startsWith(type, '@@router')
   });
 
-  const middewares = [thunkMiddleware, logger, routerMiddleware(history)];
+  const middewares = [resourcesMiddleware, thunkMiddleware, logger, routerMiddleware(history)];
 
   const store = createStore(
     rootReducer(history),

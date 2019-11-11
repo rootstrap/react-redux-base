@@ -1,20 +1,27 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useSession } from 'hooks';
+import React, { Suspense, useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-import LogoutButton from 'components/user/LogoutButton';
+import { userResource } from 'actions/testActions';
+import UserName from 'components/user/UserName';
 
 const HomePage = () => {
-  const { user } = useSession();
+  const [userVisibility, setUserVisibility] = useState();
+  const dispatch = useDispatch();
+  const showUser = useCallback(() => {
+    dispatch(userResource);
+    setUserVisibility(true);
+  }, [dispatch]);
 
   return (
     <div>
-      {user && user.email && (
-        <p>
-          <FormattedMessage id="home.welcome" values={user} />
-        </p>
+      <button type="button" onClick={showUser}>
+        fetch user
+      </button>
+      {userVisibility && (
+        <Suspense fallback={<h3>Loading...</h3>}>
+          <UserName />
+        </Suspense>
       )}
-      <LogoutButton />
     </div>
   );
 };

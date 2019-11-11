@@ -11,9 +11,11 @@ const handleAction = (state, action) => {
 
   let status = NOT_STARTED;
   let key = null;
+  let promise;
 
   if (matchesStart) {
     const [, requestName] = matchesStart;
+    promise = action.payload;
     key = requestName;
     status = LOADING;
   } else if (matchesReset) {
@@ -30,7 +32,7 @@ const handleAction = (state, action) => {
     status = SUCCESS;
   }
 
-  if (key) state[key] = { status, error: payload };
+  if (key) state[key] = { status, error: payload, promise };
 
   return state;
 };

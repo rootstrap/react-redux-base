@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import actionStatus from 'reducers/statusReducer';
+import user from 'reducers/userReducer';
 import session from './sessionReducer';
 
 const sessionPersistConfig = {
@@ -18,6 +19,7 @@ const rootReducer = history =>
   combineReducers({
     session: persistReducer(sessionPersistConfig, session),
     router: connectRouter(history),
+    user,
     actionStatus
   });
 

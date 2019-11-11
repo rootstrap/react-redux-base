@@ -4,6 +4,7 @@ module.exports = {
   extensions: ['*', '.js', '.jsx', '.json'],
   alias: {
     actions: path.resolve(__dirname, '../../src/actions'),
+    middleware: path.resolve(__dirname, '../../src/middleware'),
     api: path.resolve(__dirname, '../../src/api'),
     assets: path.resolve(__dirname, '../../src/assets'),
     components: path.resolve(__dirname, '../../src/components'),
