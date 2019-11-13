@@ -4,10 +4,10 @@ import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
-import { login } from 'utils/constraints';
+import { login as loginValidations } from 'utils/constraints';
 import { LOADING, ERROR } from 'constants/status';
 import { useStatus, useForm, useValidation, useTextInputProps } from 'hooks';
-import { LOGIN } from 'actions/actionTypes';
+import { login } from 'actions/userActions';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
@@ -21,8 +21,8 @@ const fields = {
 
 export const LoginForm = ({ onSubmit }) => {
   const intl = useIntl();
-  const { status, error } = useStatus(LOGIN);
-  const validator = useValidation(login);
+  const { status, error } = useStatus(login);
+  const validator = useValidation(loginValidations);
   const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
     {
       onSubmit,

@@ -1,4 +1,5 @@
-import * as types from 'actions/actionTypes';
+import { loginSuccess, signUpSuccess, logoutSuccess, updateSession } from 'actions/userActions';
+
 import createReducer from './createReducer';
 
 const initialState = {
@@ -8,17 +9,17 @@ const initialState = {
 };
 
 const actionHandlers = {
-  [types.LOGIN_SUCCESS]: (state, { payload }) => {
+  [loginSuccess]: (state, { payload }) => {
     state.user = payload;
   },
-  [types.SIGNUP_SUCCESS]: (state, { payload }) => {
+  [signUpSuccess]: (state, { payload }) => {
     state.user = payload;
   },
-  [types.UPDATE_SESSION]: (state, { payload }) => {
+  [updateSession]: (state, { payload }) => {
     state.info = payload;
     state.authenticated = true;
   },
-  [types.LOGOUT_SUCCESS]: () => initialState
+  [logoutSuccess]: () => initialState
 };
 
 export default createReducer(initialState, actionHandlers);

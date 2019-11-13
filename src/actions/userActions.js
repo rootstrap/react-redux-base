@@ -1,60 +1,40 @@
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGOUT_REQUEST,
-  LOGOUT_SUCCESS,
-  SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_ERROR,
-  UPDATE_SESSION
-} from 'actions/actionTypes';
 import createAction from 'actions/createAction';
 import userService from 'services/userService';
 
-export const loginRequest = createAction(LOGIN_REQUEST);
-export const loginSuccess = createAction(LOGIN_SUCCESS);
-export const loginError = createAction(LOGIN_ERROR);
+import createActionWithThunk from './createThunk';
 
-export const signupRequest = createAction(SIGNUP_REQUEST);
-export const signupSuccess = createAction(SIGNUP_SUCCESS);
-export const signupError = createAction(SIGNUP_ERROR);
-
-export const logoutRequest = createAction(LOGOUT_REQUEST);
-export const logoutSuccess = createAction(LOGOUT_SUCCESS);
-
-export const updateSession = createAction(UPDATE_SESSION);
-
-export const login = user => async dispatch => {
+export const login = createActionWithThunk('LOGIN', async user => {
   try {
-    dispatch(loginRequest());
     const {
       data: { user: createdUser }
     } = await userService.login({ user });
-    dispatch(loginSuccess(createdUser));
-  } catch (err) {
-    dispatch(loginError(err.data.error));
-  }
-};
-
-export const logout = () => async dispatch => {
-  try {
-    dispatch(logoutRequest());
-    await userService.logout();
-    dispatch(logoutSuccess());
+    return createdUser;
   } catch (err) {
     throw err.data.error;
   }
-};
+});
 
-export const signUp = user => async dispatch => {
+export const logout = createActionWithThunk('LOGOUT', async () => {
   try {
-    dispatch(signupRequest());
+    await userService.logout();
+  } catch (err) {
+    throw err.data.error;
+  }
+});
+
+export const signUp = createActionWithThunk('SIGNUP', async user => {
+  try {
     const {
       data: { user: createdUser }
     } = await userService.signUp({ user });
-    dispatch(signupSuccess(createdUser));
+    return createdUser;
   } catch (err) {
-    dispatch(signupError(err.data.error));
+    throw err.data.error;
   }
-};
+});
+
+export const updateSession = createAction('UPDATE_SESSION');
+
+export const { success: loginSuccess } = login;
+export const { success: signUpSuccess } = signUp;
+export const { success: logoutSuccess } = logout;

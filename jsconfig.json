@@ -6,6 +6,7 @@
       "actions/*": ["src/actions/*"],
       "api/*": ["src/api/*"],
       "components/*": ["src/components/*"],
+      "middleware/*": ["src/middleware/*"],
       "constants/*": ["src/constants/*"],
       "cypressConstants": ["../cypress/support/constants"],
       "fixtures": ["../cypress/fixtures"],
