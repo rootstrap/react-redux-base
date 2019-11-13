@@ -46,6 +46,13 @@ Project is currently set to node version `10.14.2 LTS`. Make sure that you are u
 
 **Install [Yarn](https://yarnpkg.com/en/docs/install)** - Fast, reliable, and secure package manager
 
+## Redux setup
+
+The base comes with a status reducer and a custom thunk middleware.
+This makes working with, and managing the status of async side effect easier.
+Learn more about this in the [redux docs section](docs/redux.md)
+
+
 ## Server Side Rendering
 This base is already set up with a Node server for SSR.
 
