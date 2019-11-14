@@ -4,7 +4,7 @@ import localForage from 'localforage';
 import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
-import actionStatus from 'reducers/statusReducer';
+import { statusReducer } from '@rootstrap/redux-tools';
 import session from './sessionReducer';
 
 const sessionPersistConfig = {
@@ -18,7 +18,7 @@ const rootReducer = history =>
   combineReducers({
     session: persistReducer(sessionPersistConfig, session),
     router: connectRouter(history),
-    actionStatus
+    actionStatus: statusReducer
   });
 
 export default rootReducer;

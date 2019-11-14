@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import { func } from 'prop-types';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
+import { useStatus, ERROR, LOADING } from '@rootstrap/redux-tools';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
 import { signUp as signUpValidations } from 'utils/constraints';
-import { LOADING, ERROR } from 'constants/status';
-import { useStatus, useForm, useValidation, useTextInputProps } from 'hooks';
+import { useForm, useValidation, useTextInputProps } from 'hooks';
 import { signUp } from 'actions/userActions';
 
 const messages = defineMessages({

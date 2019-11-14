@@ -7,7 +7,7 @@ import { createLogger } from 'redux-logger';
 import { persistStore } from 'redux-persist';
 import _ from 'lodash';
 import { routerMiddleware } from 'connected-react-router';
-import actionThunksMiddleware from 'middleware/actionThunks';
+import { thunkMiddleware } from '@rootstrap/redux-tools';
 
 import history from 'utils/history';
 import rootReducer from 'reducers';
@@ -18,13 +18,13 @@ export default function configureStore(initialState) {
     predicate: (getState, { type }) => !_.startsWith(type, '@@router')
   });
 
-  const middewares = [actionThunksMiddleware, logger, routerMiddleware(history)];
+  const middlewares = [thunkMiddleware, logger, routerMiddleware(history)];
 
   const store = createStore(
     rootReducer(history),
     initialState,
     compose(
-      applyMiddleware(...middewares),
+      applyMiddleware(...middlewares),
       window.__REDUX_DEVTOOLS_EXTENSION__ ? window.window.__REDUX_DEVTOOLS_EXTENSION__() : f => f // add support for Redux dev tools
     )
   );

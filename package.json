@@ -63,6 +63,7 @@
   "license": "MIT",
   "dependencies": {
     "@formatjs/intl-relativetimeformat": "2.6.3",
+    "@rootstrap/redux-tools": "0.2.0",
     "classnames": "2.2.6",
     "connected-react-router": "6.5.2",
     "eslint-plugin-prettier": "3.1.0",

@@ -1446,6 +1446,13 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@rootstrap/redux-tools@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.2.0.tgz#d94d90697898df6040598cf427808eb2ec1f355c"
+  integrity sha512-+55aQMjpp/MagRor1qgocLEBdRuK+HjeJ+9IHTHgxiC7942zelp05ajCFjMbsqfVOPINjNgDUhe7nsijwk4HKg==
+  dependencies:
+    immer "^5.0.0"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -6173,7 +6180,7 @@ immediate@~3.0.5:
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
   integrity sha1-nbHb0Pr43m++D13V5Wu2BigN5ps=
 
-immer@5.0.0:
+immer@5.0.0, immer@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/immer/-/immer-5.0.0.tgz#07f462b7d95f7e86c214a861ecacd766d42b8c0a"
   integrity sha512-G7gRqKbi9NE025XVyqyTV98dxUOtdKvu/P1QRaVZfA55aEcXgjbxPdm+TlWdcSMNPKijlaHNz61DGPyelouRlA==
