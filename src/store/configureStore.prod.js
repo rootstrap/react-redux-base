@@ -1,13 +1,13 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import { routerMiddleware } from 'connected-react-router';
 import { persistStore } from 'redux-persist';
+import actionThunksMiddleware from 'middleware/actionThunks';
 
 import rootReducer from 'reducers';
 import history from 'utils/history';
 
 export default function configureStore(initialState, isServerSide = false) {
-  const middlewares = [thunkMiddleware, routerMiddleware(history)];
+  const middlewares = [actionThunksMiddleware, routerMiddleware(history)];
 
   const store = createStore(
     rootReducer(history),

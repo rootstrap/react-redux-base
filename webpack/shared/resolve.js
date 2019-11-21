@@ -8,6 +8,7 @@ module.exports = {
     assets: path.resolve(__dirname, '../../src/assets'),
     components: path.resolve(__dirname, '../../src/components'),
     constants: path.resolve(__dirname, '../../src/constants'),
+    middleware: path.resolve(__dirname, '../../src/middleware'),
     pages: path.resolve(__dirname, '../../src/pages'),
     services: path.resolve(__dirname, '../../src/services'),
     hooks: path.resolve(__dirname, '../../src/hooks'),
