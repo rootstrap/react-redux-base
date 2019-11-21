@@ -48,9 +48,9 @@ Project is currently set to node version `10.14.2 LTS`. Make sure that you are u
 
 ## Redux setup
 
-The base comes with a status reducer and a custom thunk middleware.
-This makes working with, and managing the status of async side effect easier.
-Learn more about this in the [redux docs section](docs/redux.md)
+The base makes use of our [redux-tools](http://github.com/rootstrap/redux-tools) package.
+This makes working with, and tracking the status of async side effect easier.
+Learn more about this in the redux-tools [readme](https://github.com/rootstrap/redux-tools/blob/master/README.md).
 
 
 ## Server Side Rendering
