@@ -54,6 +54,10 @@ plugins:
     enabled: true
     config:
       config: ~/.eslintrc
+  nodesecurity:
+    enabled: true
+  stylelint:
+    enabled: true 
 exclude_patterns:
   - "dist/"
   - "server/build/"
