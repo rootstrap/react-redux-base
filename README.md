@@ -22,7 +22,6 @@
   `.env.example` example:
   ```
     API_URL=http://your-api-url.com
-    CABLE_URL=wss://your-api-url.com/cable
     AWS_BUCKET=bucket
     AWS_REGION=region
     AWS_ACCESS_KEY_ID=key_id

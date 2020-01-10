@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { updateSession, logout } from 'actions/userActions';
 
 const ACCESS_TOKEN = 'access-token';
@@ -26,33 +27,36 @@ const defaultRequestInterceptors = store => [
   }
 ];
 
-const defaultResponseInterceptors = store => [
-  async response => {
-    if (response.ok) {
-      const { headers } = response;
-      const token = headers.get(ACCESS_TOKEN);
-      if (token) {
-        const session = {
-          token,
-          uid: headers.get(UID),
-          client: headers.get(CLIENT)
-        };
-        store.dispatch(updateSession(session));
-      }
+const defaultFulfillResponseInterceptor = store => async response => {
+  if (response.ok) {
+    const { headers } = response;
+    const token = headers.get(ACCESS_TOKEN);
+    if (token) {
+      const session = {
+        token,
+        uid: headers.get(UID),
+        client: headers.get(CLIENT)
+      };
+      store.dispatch(updateSession(session));
     }
-    if (response.status === UNAUTHORIZED) {
-      store.dispatch(logout());
-    }
-    return response;
   }
-];
+  return response;
+};
+
+const defaultFailureResponseInterceptor = store => async response => {
+  if (response.status === UNAUTHORIZED) {
+    store.dispatch(logout());
+  }
+  return response;
+};
 
 export default (store, apiService) => {
   defaultRequestInterceptors(store).forEach(interceptor =>
     apiService.requestInterceptors.use(interceptor)
   );
 
-  defaultResponseInterceptors(store).forEach(interceptor =>
-    apiService.responseInterceptors.use(interceptor)
+  apiService.responseInterceptors.use(
+    defaultFulfillResponseInterceptor(store),
+    defaultFailureResponseInterceptor(store)
   );
 };
