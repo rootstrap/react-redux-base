@@ -2,9 +2,11 @@ import S3 from 'aws-sdk/clients/s3';
 import fs from 'fs';
 import path from 'path';
 import mime from 'mime';
+import { consoleQuestion } from './helpers';
 
 class s3 {
-  constructor() {
+  constructor(distFolder) {
+    this.distPath = path.join(__dirname, distFolder);
     this.client = new S3({
       signatureVersion: 'v4',
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -14,76 +16,72 @@ class s3 {
     this.bucket = process.env.AWS_BUCKET;
   }
 
-  clearBucket() {
-    return new Promise((resolve, reject) => {
-      this.client.listObjects({ Bucket: this.bucket }, (err, data) => {
-        if (err) {
-          reject(`error listing bucket objects ${err}`);
-          return;
-        }
-        
-        const items = data.Contents;
-
-        if (items.length === 0) {
-          resolve();
-        }
-
-        items.forEach((item, index) => {
-          const deleteParams = { Bucket: this.bucket, Key: item.Key };
-          this.client.deleteObject(deleteParams, (err, data) => {
-            if (err) {
-              reject(`delete err ${deleteParams.Key}`);
-            }
-            if (index === items.length - 1) {
-              resolve();
-            }
-          })
-        })
-      })
-    })
+  async getBucketObjects() {
+    try {
+      const bucketData = await this.client.listObjects({ Bucket: this.bucket }).promise();
+      return bucketData.Contents;
+    } catch (err) {
+      throw new Error(`error listing bucket objects ${err}`);
+    }
   }
 
-  syncDir(distPath) {
-    return new Promise((resolve, reject) => {
-      const folderPath = path.join(__dirname, distPath);
+  async getBucketWebsite() {
+    try {
+      const bucketWebsiteData = await this.client.getBucketWebsite({ Bucket: this.bucket }).promise();
+      return `http://${this.bucket}.s3-website.${process.env.AWS_REGION}.amazonaws.com`;
+    } catch (err) {
+      return '';
+    }
+  }
 
-      fs.readdir(folderPath, (err, files) => {
-        if(!files || files.length === 0) {
-          reject(`provided folder '${distPath}' is empty or does not exist.`);
-          return;
-        }
+  async clearBucket(bucketObjects) {
+    try {  
+      const promises = bucketObjects.map(({ Key }) =>
+        this.client.deleteObject({ Bucket: this.bucket, Key }).promise()
+      );
+      await Promise.all(promises);
+    } catch (err) {
+      throw new Error(`error deleting bucket objects ${err}`);
+    }
+  }
 
-        files.forEach((fileName, index) => {
-          const filePath = path.join(folderPath, fileName);
+  sendFile (filePath, mimeType, promises) {
+    try {
+      const key = filePath.substring(this.distPath.length + 1);
+      const params = {
+        Bucket: this.bucket,
+        ACL: 'public-read',
+        Key: key,
+        Body: fs.readFileSync(filePath),
+        ContentType: mimeType
+      };
+      promises.push(this.client.putObject(params).promise());
+    } catch (err) {
+      throw new Error(`error uploading bucket objects ${err}`);
+    }
+  }
 
-          fs.readFile(filePath, (error, fileContent) => {
-            if (error) { reject(error); }
+  walkSync (currentDirPath, promises) {
+    const directoryList = fs.readdirSync(currentDirPath);
+    directoryList.forEach(
+      (directoryItem) => this.walkFileOrDir(currentDirPath, directoryItem, promises)
+    );
+  }
 
-            const s3Params = {
-              Bucket: this.bucket,
-              Key: fileName,
-              Body: fileContent,
-              ACL: 'public-read',
-              ContentType: mime.getType(fileName)
-            };
-            if (/\.js$|\.css$/.test(fileName)) {
-              s3Params.ContentEncoding = 'gzip';
-            }
+  walkFileOrDir(currentDirPath, name, promises) {
+    const entryPath = path.join(currentDirPath, name);
+    const stat = fs.statSync(entryPath);
+    if (stat.isFile()) {
+      this.sendFile(entryPath, mime.getType(name), promises);
+    } else if (stat.isDirectory()) {
+      this.walkSync(entryPath, promises);
+    }
+  }
 
-            // upload file to S3
-            this.client.putObject(s3Params, (err) => {
-              if (err) {
-                reject(err)
-              } else {
-                if (index === files.length - 1) {
-                  resolve();
-                }
-              }
-            });
-          });
-        });
-      });
-    })
+  async syncBucket() {
+    const promises = [];
+    this.walkSync(this.distPath, promises);
+    await Promise.all(promises)
   }
 }
 

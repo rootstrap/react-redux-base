@@ -4,13 +4,16 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import Dotenv from 'dotenv-webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
+import dotenv from 'dotenv';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import resolve from './shared/resolve';
+
+const envPath = path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`);
+dotenv.config({ path: envPath });
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -63,11 +66,6 @@ export default {
       inject: true
     }),
 
-    new Dotenv({
-      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
-      systemvars: true
-    }),
-
     new GenerateSW({
       swDest: './main-sw.js',
       clientsClaim: true,
@@ -76,14 +74,15 @@ export default {
       globDirectory: '/'
     }),
 
-    new CompressionPlugin({
-      asset: '[path]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$/,
-      threshold: 0,
-      minRatio: 2
-    })
-  ],
+    process.env.GZIP_ENABLED === 'true' &&
+      new CompressionPlugin({
+        asset: '[path]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$/,
+        threshold: 0,
+        minRatio: 2
+      })
+  ].filter(Boolean),
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
