@@ -33,7 +33,7 @@ checks:
   # Functions or methods with a high number of return statements
   return-statements:
     config:
-      threshold: 4
+      threshold: 5
 
   # Excessive lines of code within a single function or method
   # Disabled because the render function will exceed this threshold many times
