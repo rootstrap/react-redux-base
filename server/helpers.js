@@ -1,4 +1,4 @@
-export const getLanguageFromHeader = header => {
+export const getLanguageFromHeader = (header = 'en-US') => {
   const supportedLangages = ['en', 'es'];
   const languages = header.split(';');
 
