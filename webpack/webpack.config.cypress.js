@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-
 const resolve = require('./shared/resolve');
 
 const GLOBALS = {
@@ -15,7 +14,6 @@ module.exports = {
   resolve,
   devtool: 'eval-source-map',
   entry: [
-    '@babel/polyfill',
     'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',

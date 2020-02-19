@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
-
 import resolve from './shared/resolve';
 
 const GLOBALS = {
@@ -15,7 +14,6 @@ export default {
   resolve,
   devtool: 'eval-source-map',
   entry: [
-    '@babel/polyfill',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, '../src/index.js')
