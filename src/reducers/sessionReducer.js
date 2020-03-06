@@ -1,5 +1,5 @@
 import { createReducer } from '@rootstrap/redux-tools';
-import { loginSuccess, signUpSuccess, logoutSuccess, updateSession } from 'actions/userActions';
+import { login, signUp, logout, updateSession } from 'actions/userActions';
 
 const initialState = {
   authenticated: false,
@@ -8,17 +8,17 @@ const initialState = {
 };
 
 const actionHandlers = {
-  [loginSuccess]: (state, { payload }) => {
+  [login.success]: (state, { payload }) => {
     state.user = payload;
   },
-  [signUpSuccess]: (state, { payload }) => {
+  [signUp.success]: (state, { payload }) => {
     state.user = payload;
   },
   [updateSession]: (state, { payload }) => {
     state.info = payload;
     state.authenticated = true;
   },
-  [logoutSuccess]: () => initialState
+  [logout.success]: () => initialState
 };
 
 export default createReducer(initialState, actionHandlers);

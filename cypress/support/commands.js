@@ -15,7 +15,7 @@ import user from 'fixtures/fakeUser';
 import session from 'fixtures/headers';
 import realUser from 'fixtures/realUser';
 import { SUCCESS_CASE } from 'cypressConstants';
-import { loginSuccess, updateSession } from 'actions/userActions';
+import { login, updateSession } from 'actions/userActions';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({
@@ -47,10 +47,12 @@ Cypress.Commands.add('removeSession', () => {
 Cypress.Commands.add('loginUser', () => {
   Cypress.log({ name: 'Save user and session data' });
 
-  cy.window().its('store').then(store => {
-    store.dispatch(updateSession(session()));
-    store.dispatch(loginSuccess(user()));
-  });
+  cy.window()
+    .its('store')
+    .then(store => {
+      store.dispatch(updateSession(session()));
+      store.dispatch(login.success(user()));
+    });
 });
 
 Cypress.Commands.add('realLoginUser', () => {
@@ -65,10 +67,12 @@ Cypress.Commands.add('realLoginUser', () => {
       const { uid, client, 'access-token': token } = headers;
       if (token) {
         const session = { token, uid, client };
-        cy.window().its('store').then(store => {
-          store.dispatch(updateSession(session));
-          store.dispatch(loginSuccess(user));
-        });
+        cy.window()
+          .its('store')
+          .then(store => {
+            store.dispatch(updateSession(session));
+            store.dispatch(login.success(user));
+          });
       }
     }
   );

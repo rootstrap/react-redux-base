@@ -32,7 +32,3 @@ export const signUp = createThunk('SIGNUP', async user => {
 });
 
 export const updateSession = createAction('UPDATE_SESSION');
-
-export const { success: loginSuccess } = login;
-export const { success: signUpSuccess } = signUp;
-export const { success: logoutSuccess } = logout;
