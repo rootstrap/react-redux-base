@@ -2,7 +2,7 @@ import S3 from 'aws-sdk/clients/s3';
 import fs from 'fs';
 import path from 'path';
 import mime from 'mime';
-import { consoleQuestion } from './helpers';
+import { consoleQuestion, JS_OR_CSS_REGEX } from './helpers';
 
 class s3 {
   constructor(distFolder) {
@@ -53,8 +53,11 @@ class s3 {
         ACL: 'public-read',
         Key: key,
         Body: fs.readFileSync(filePath),
-        ContentType: mimeType
+        ContentType: mimeType,
       };
+      if (JSON.parse(process.env.GZIP_ENABLED) && JS_OR_CSS_REGEX.test(key)) {
+        params.ContentEncoding = 'gzip';
+      }
       promises.push(this.client.putObject(params).promise());
     } catch (err) {
       throw new Error(`error uploading bucket objects ${err}`);

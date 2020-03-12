@@ -1,5 +1,7 @@
 import { chalkWarning } from './chalkConfig';
 
+export const JS_OR_CSS_REGEX = /\.js$|\.css$/;
+
 export const consoleQuestion = (question) => {
   return new Promise((resolve) => {
     const readline = require('readline');
