@@ -3,7 +3,7 @@ import { routerMiddleware } from 'connected-react-router';
 import { persistStore } from 'redux-persist';
 import { thunkMiddleware } from '@rootstrap/redux-tools';
 
-import rootReducer from 'reducers';
+import rootReducer from 'state/reducers';
 import history from 'utils/history';
 
 export default function configureStore(initialState, isServerSide = false) {

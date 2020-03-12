@@ -1,5 +1,5 @@
 import humps from 'humps';
-import { updateSession, logout } from 'actions/userActions';
+import { updateSession, logout } from 'state/actions/userActions';
 
 const ACCESS_TOKEN = 'access-token';
 const UID = 'uid';

@@ -10,7 +10,7 @@ import { routerMiddleware } from 'connected-react-router';
 import { thunkMiddleware } from '@rootstrap/redux-tools';
 
 import history from 'utils/history';
-import rootReducer from 'reducers';
+import rootReducer from 'state/reducers';
 
 export default function configureStore(initialState) {
   const logger = createLogger({

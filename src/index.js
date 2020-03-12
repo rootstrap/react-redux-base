@@ -9,7 +9,7 @@ import includes from 'lodash/includes';
 
 import httpClient from 'httpClient';
 import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
-import configureStore from 'store/configureStore';
+import configureStore from 'state/store/configureStore';
 import App from 'components/App';
 import locales from 'locales';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';

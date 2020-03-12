@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import { useSession, useDispatch } from 'hooks';
-import { signUp } from 'actions/userActions';
+import { signUp } from 'state/actions/userActions';
 import SignUpForm from 'components/user/SignUpForm';
 import routes from 'constants/routesPaths';
 

@@ -1,5 +1,5 @@
 import { createReducer } from '@rootstrap/redux-tools';
-import { login, signUp, logout, updateSession } from 'actions/userActions';
+import { login, signUp, logout, updateSession } from 'state/actions/userActions';
 
 const initialState = {
   authenticated: false,

@@ -72,7 +72,8 @@ export default {
       globDirectory: '/'
     }),
 
-    JSON.parse(process.env.GZIP_ENABLED) &&
+    process.env.GZIP_ENABLED &&
+      JSON.parse(process.env.GZIP_ENABLED) &&
       new CompressionPlugin({
         asset: '[path]',
         algorithm: 'gzip',

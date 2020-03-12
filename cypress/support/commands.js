@@ -15,7 +15,7 @@ import user from 'fixtures/fakeUser';
 import session from 'fixtures/headers';
 import realUser from 'fixtures/realUser';
 import { SUCCESS_CASE } from 'cypressConstants';
-import { login, updateSession } from 'actions/userActions';
+import { login, updateSession } from 'state/actions/userActions';
 
 // Cypress image snapshot
 addMatchImageSnapshotCommand({

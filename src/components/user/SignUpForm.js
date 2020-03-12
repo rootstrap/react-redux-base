@@ -7,7 +7,7 @@ import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
 import { signUp as signUpValidations } from 'utils/constraints';
 import { useForm, useValidation, useTextInputProps } from 'hooks';
-import { signUp } from 'actions/userActions';
+import { signUp } from 'state/actions/userActions';
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },

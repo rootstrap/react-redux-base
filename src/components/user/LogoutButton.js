@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import useDispatch from 'hooks/useDispatch';
-import { logout } from 'actions/userActions';
+import { logout } from 'state/actions/userActions';
 
 const LogoutButton = () => {
   const logoutRequest = useDispatch(logout);

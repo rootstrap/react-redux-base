@@ -11,7 +11,7 @@ import serialize from 'serialize-javascript';
 import { ServerStyleSheet } from 'styled-components';
 
 import locales from 'locales';
-import configureStore from 'store/configureStore.prod';
+import configureStore from 'state/store/configureStore.prod';
 import routesPaths from 'constants/routesPaths';
 import { applyQueryParams } from 'utils/helpers';
 import App from './_app';
