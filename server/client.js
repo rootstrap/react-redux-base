@@ -9,8 +9,8 @@ import configureStore from 'store/configureStore';
 import App from 'components/App';
 import locales from 'locales';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
-import api from 'api';
-import applyDefaultInterceptors from 'api/utils/applyDefaultInterceptors';
+import httpClient from 'httpClient';
+import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
 import 'styles/styles.scss';
 
 require('../src/favicon.ico'); // Tell webpack to load favicon.ico
@@ -66,7 +66,7 @@ const renderApp = Component => {
   );
 };
 
-applyDefaultInterceptors(store, api);
+applyDefaultInterceptors(store, httpClient);
 renderApp(App);
 
 if (module.hot) {

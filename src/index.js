@@ -7,8 +7,8 @@ import { AppContainer, setConfig } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
 
-import api from 'api';
-import applyDefaultInterceptors from 'api/utils/applyDefaultInterceptors';
+import httpClient from 'httpClient';
+import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
 import configureStore from 'store/configureStore';
 import App from 'components/App';
 import locales from 'locales';
@@ -71,7 +71,7 @@ const renderApp = Component => {
   );
 };
 
-applyDefaultInterceptors(store, api);
+applyDefaultInterceptors(store, httpClient);
 renderApp(App);
 
 setConfig({ logLevel: 'no-errors-please' });

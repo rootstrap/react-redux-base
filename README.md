@@ -89,7 +89,6 @@ The server is prepared to fetch data directly from the backend before rendering 
 | [PostCSS](https://github.com/postcss/postcss) | Transform styles with JS plugins. Used to autoprefix CSS |
 | [Stylelint](https://github.com/stylelint/stylelint) | Modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets. |
 | [Redux Persist](https://github.com/rt2zz/redux-persist) | Persist and rehydrate your redux store |
-| [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch) |  Is a Promise-based mechanism for programatically making web requests in the browser. |
 | [Immer](https://github.com/immerjs/immer) | Allows you to work with immutable state in a more convenient way. |
 | [React Intl](https://github.com/yahoo/react-intl/) | Localization for language support. |
 

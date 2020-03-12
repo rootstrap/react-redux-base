@@ -1,16 +1,16 @@
-import api from 'api';
+import httpClient from 'httpClient';
 
 class UserService {
   static login(user) {
-    return api.post('/users/sign_in', user);
+    return httpClient.post('/users/sign_in', user);
   }
 
   static logout() {
-    return api.delete('/users/sign_out');
+    return httpClient.delete('/users/sign_out', { data: {} });
   }
 
   static signUp(user) {
-    return api.post('/users', user);
+    return httpClient.post('/users', user);
   }
 }
 
