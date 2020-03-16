@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
@@ -79,7 +80,9 @@ export default {
         test: /\.js$|\.css$/,
         threshold: 0,
         minRatio: 2
-      })
+      }),
+
+    new Dotenv({ path: envPath })
   ].filter(Boolean),
   module: {
     rules: [
