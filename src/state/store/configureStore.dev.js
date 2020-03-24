@@ -18,7 +18,7 @@ export default function configureStore(initialState) {
     predicate: (getState, { type }) => !_.startsWith(type, '@@router')
   });
 
-  const middlewares = [thunkMiddleware, logger, routerMiddleware(history)];
+  const middlewares = [thunkMiddleware(), logger, routerMiddleware(history)];
 
   const store = createStore(
     rootReducer(history),

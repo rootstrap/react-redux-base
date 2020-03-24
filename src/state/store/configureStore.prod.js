@@ -7,7 +7,7 @@ import rootReducer from 'state/reducers';
 import history from 'utils/history';
 
 export default function configureStore(initialState, isServerSide = false) {
-  const middlewares = [thunkMiddleware, routerMiddleware(history)];
+  const middlewares = [thunkMiddleware(), routerMiddleware(history)];
 
   const store = createStore(
     rootReducer(history),

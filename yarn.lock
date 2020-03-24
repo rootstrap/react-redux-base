@@ -1460,10 +1460,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@rootstrap/redux-tools@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.2.0.tgz#d94d90697898df6040598cf427808eb2ec1f355c"
-  integrity sha512-+55aQMjpp/MagRor1qgocLEBdRuK+HjeJ+9IHTHgxiC7942zelp05ajCFjMbsqfVOPINjNgDUhe7nsijwk4HKg==
+"@rootstrap/redux-tools@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.5.0.tgz#342f24c79348d2b10bf30df1e5c032ae1f8668d2"
+  integrity sha512-gSiPulBgIM2JKOGjZ9VmHjltcVn2fs5h0/geEDU2wQCW/atvPAti/XOMTQVOry2wAi7f05K+ALyCf7IY0bUmHA==
   dependencies:
     immer "^5.0.0"
 
