@@ -4,7 +4,7 @@
   "description": "Rootstrap React Redux Base",
   "engines": {
     "npm": ">4",
-    "node": "10.16.0"
+    "node": "12.16.1"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
