@@ -40,7 +40,7 @@ export default (store, client) => {
       return response;
     },
     error => {
-      if (error.response && error.response.status === UNAUTHORIZED) {
+      if (error.response?.status === UNAUTHORIZED) {
         store.dispatch(logout());
       }
 

@@ -9,7 +9,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {user && user.email && (
+      {user?.email && (
         <p>
           <FormattedMessage id="home.welcome" values={user} />
         </p>
