@@ -38,69 +38,65 @@ server
       }
     })
   )
-  .get('*', async (req, res) => {
-    try {
-      const { store } = configureStore(undefined, true);
-      const context = {};
+  .get('*', (req, res) => {
+    const { store } = configureStore(undefined, true);
+    const context = {};
 
-      // Fetch data promises
-      const promises = matchRoutes(routes, req.path)
-        .map(({ route }) => (route.component.loadData ? route.component.loadData(store) : null))
-        .map(promise => {
-          if (promise) {
-            return new Promise(resolve => {
-              promise.then(resolve).catch(resolve);
-            });
-          }
-        });
-
-      // Set INTL locale and messages
-      const userLocale = getLanguageFromHeader(req.get('Accept-Language'));
-      const messages = locales[userLocale];
-
-      Promise.all(promises).then(async () => {
-        const renderPage = () => {
-          const staticRouter = (
-            <IntlProvider locale={userLocale} messages={messages} defaultLocale="en">
-              <Provider store={store}>
-                <StaticRouter location={req.url} context={context}>
-                  <App routes={routes} />
-                </StaticRouter>
-              </Provider>
-            </IntlProvider>
-          );
-          const sheet = new ServerStyleSheet();
-          const html = ReactDOMServer.renderToString(sheet.collectStyles(staticRouter));
-          const styleTags = sheet.getStyleElement();
-          const helmet = Helmet.renderStatic();
-          const preloadedState = serialize(store.getState());
-          return { html, helmet, styleTags, preloadedState };
-        };
-
-        const { html, helmet, styleTags, preloadedState } = renderPage();
-
-        // Redirect
-        if (context.url) {
-          let queryRedirect;
-          if (req.url !== routesPaths.index) {
-            queryRedirect = { from: req.url };
-          }
-          res.writeHead(302, {
-            Location: applyQueryParams(context.url, queryRedirect)
+    // Fetch data promises
+    const promises = matchRoutes(routes, req.path)
+      .map(({ route }) => (route.component.loadData ? route.component.loadData(store) : null))
+      .map(promise => {
+        if (promise) {
+          return new Promise(resolve => {
+            promise.then(resolve).catch(resolve);
           });
-          res.end();
-        } else {
-          if (context.status) {
-            res.status(context.status);
-          }
-          const docProps = { helmet, assets, styleTags, preloadedState };
-          const doc = ReactDOMServer.renderToStaticMarkup(<Doc {...docProps} />);
-          res.send(`<!doctype html> ${doc.replace('SSR_MARKUP', html)}`);
         }
       });
-    } catch (error) {
-      res.json(error);
-    }
+
+    // Set INTL locale and messages
+    const userLocale = getLanguageFromHeader(req.get('Accept-Language'));
+    const messages = locales[userLocale];
+
+    Promise.all(promises).then(() => {
+      const renderPage = () => {
+        const staticRouter = (
+          <IntlProvider locale={userLocale} messages={messages} defaultLocale="en">
+            <Provider store={store}>
+              <StaticRouter location={req.url} context={context}>
+                <App routes={routes} />
+              </StaticRouter>
+            </Provider>
+          </IntlProvider>
+        );
+        const sheet = new ServerStyleSheet();
+        const html = ReactDOMServer.renderToString(sheet.collectStyles(staticRouter));
+        const styleTags = sheet.getStyleElement();
+        const helmet = Helmet.renderStatic();
+        const preloadedState = serialize(store.getState());
+        return { html, helmet, styleTags, preloadedState };
+      };
+
+      const { html, helmet, styleTags, preloadedState } = renderPage();
+
+      // Redirect
+      if (context.url) {
+        let queryRedirect;
+        if (req.url !== routesPaths.index) {
+          queryRedirect = { from: req.url };
+        }
+        res.writeHead(302, {
+          Location: applyQueryParams(context.url, queryRedirect)
+        });
+        res.end();
+      } else {
+        if (context.status) {
+          res.status(context.status);
+        }
+        const docProps = { helmet, assets, styleTags, preloadedState };
+        const doc = ReactDOMServer.renderToStaticMarkup(<Doc {...docProps} />);
+        res.send(`<!doctype html> ${doc.replace('SSR_MARKUP', html)}`);
+      }
+    }).catch (error => res.json(error));
   });
 
 export default server;
