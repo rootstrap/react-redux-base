@@ -6,10 +6,8 @@ const CONTENT_TYPE = 'Content-Type';
 const client = axios.create({
   baseURL: process.env.API_URL,
   headers: {
-    common: {
-      Accept: APPLICATION_JSON,
-      [CONTENT_TYPE]: APPLICATION_JSON
-    }
+    Accept: APPLICATION_JSON,
+    [CONTENT_TYPE]: APPLICATION_JSON
   }
 });
 
