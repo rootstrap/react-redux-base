@@ -20,7 +20,7 @@ export default (store, client) => {
         uid
       };
     }
-    config.data = humps.decamelizeKeys(data);
+    config.data = data ? humps.decamelizeKeys(data) : {};
     return config;
   });
 
