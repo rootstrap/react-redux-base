@@ -6,7 +6,6 @@ import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import CompressionPlugin from 'compression-webpack-plugin';
-import { GenerateSW } from 'workbox-webpack-plugin';
 import dotenv from 'dotenv';
 
 import resolve from './shared/resolve';
@@ -63,14 +62,6 @@ export default {
         minifyURLs: true
       },
       inject: true
-    }),
-
-    new GenerateSW({
-      swDest: './main-sw.js',
-      clientsClaim: true,
-      skipWaiting: true,
-      navigateFallback: '/',
-      globDirectory: '/'
     }),
 
     process.env.GZIP_ENABLED &&

@@ -29,12 +29,7 @@ server
   .use(compress())
   .use(
     express.static('server/build/public', {
-      maxAge: cacheTime,
-      setHeaders: (res, path) => {
-        if (/main-sw.js/.test(path)) {
-          res.setHeader('Cache-Control', 'public, max-age=0');
-        }
-      }
+      maxAge: cacheTime
     })
   )
   .get('*', (req, res) => {
