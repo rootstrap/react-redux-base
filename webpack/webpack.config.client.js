@@ -5,7 +5,6 @@ import AssetsPlugin from 'assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { GenerateSW } from 'workbox-webpack-plugin';
 
 import resolve from './shared/resolve';
 
@@ -42,7 +41,7 @@ export default {
     // Generate HTML file that contains references to generated bundles.
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
-      filename: 'pwa.html',
+      filename: 'index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -67,11 +66,6 @@ export default {
     new AssetsPlugin({
       path: path.resolve(__dirname, '../server/build'),
       filename: 'assets.json'
-    }),
-
-    new GenerateSW({
-      swDest: '../public/main-sw.js',
-      navigateFallback: 'pwa.html'
     })
   ],
   module: {

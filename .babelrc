@@ -15,12 +15,6 @@
       "plugins": [
         "@babel/plugin-transform-react-constant-elements",
         "transform-react-remove-prop-types",
-        [
-          "babel-plugin-styled-components",
-          {
-            "ssr": true
-          }
-        ]
       ]
     },
     "test_cypress": {
