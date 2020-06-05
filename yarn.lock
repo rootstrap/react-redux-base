@@ -5699,14 +5699,6 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-foundation-sites@6.4.4-rc1:
-  version "6.4.4-rc1"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.4.4-rc1.tgz#8b645679d6f8e59717b22abea14accc4e32eefea"
-  integrity sha512-26cL66QFNqMVwM7bmIEqq4jiW+6CkIeW719ci1pchdJ4UK0Om+3Jl7MhkX/lzdzRHB75f2m1IK9lxk3JGOwApA==
-  dependencies:
-    jquery ">=3.0.0"
-    what-input "^4.1.3"
-
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -7536,11 +7528,6 @@ jmespath@0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"
   integrity sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=
-
-jquery@>=3.0.0:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
-  integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.5.2"
@@ -11104,6 +11091,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rootstrap-ui@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/rootstrap-ui/-/rootstrap-ui-0.0.2.tgz#b83c7d3d22bc98fcd3bc4e46225f205ac4528afc"
+  integrity sha512-opnu9nIxAg+dp5fSDuwOELdPF3RdQ1JelGJNhs5YgN7xRgYiUmH985VN+cItD/t+kIdAdStyeyOgPo9IHvCLWA==
+
 rst-selector-parser@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"
@@ -13063,11 +13055,6 @@ webpack@4.19.1:
     uglifyjs-webpack-plugin "^1.2.4"
     watchpack "^1.5.0"
     webpack-sources "^1.2.0"
-
-what-input@^4.1.3:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/what-input/-/what-input-4.3.1.tgz#b8ea7554ba1d9171887c4c6addf28185fec3d31d"
-  integrity sha512-7KD71RWNRWI9M08shZ8+n/2UjO5amwsG9PMSXWz0iIlH8H2DVbHE8Z2tW1RqQa0kIwdeqdUIffFz7crDfkcbAw==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3:
   version "1.0.5"

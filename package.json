@@ -59,7 +59,7 @@
       "git add"
     ]
   },
-  "author": "Bernabe Gonzalez",
+  "author": "Rootstrap",
   "license": "MIT",
   "dependencies": {
     "@formatjs/intl-relativetimeformat": "2.6.3",
@@ -68,7 +68,6 @@
     "classnames": "2.2.6",
     "connected-react-router": "6.5.2",
     "eslint-plugin-prettier": "3.1.0",
-    "foundation-sites": "6.4.4-rc1",
     "history": "4.10.1",
     "humps": "2.0.1",
     "immer": "5.0.0",
@@ -90,6 +89,7 @@
     "redux-logger": "3.0.6",
     "redux-persist": "6.0.0",
     "reselect": "4.0.0",
+    "rootstrap-ui": "0.0.2",
     "validate.js": "0.12.0"
   },
   "devDependencies": {
