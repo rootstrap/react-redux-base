@@ -22,13 +22,6 @@ jobs:
       run: yarn test:ci
     - name: Run Jest tests
       run: yarn jest src
-    - name: Run test coverage and publish to Code Climate
-      uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
-      with:
-        coverageCommand: yarn check:coverage
-        coverageLocations: coverage/lcov.info.lcov
 
   # This runs a Sonarqube code scan and fails when the default Quality Gate is not met
   scan:
