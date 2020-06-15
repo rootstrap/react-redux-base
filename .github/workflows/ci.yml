@@ -14,10 +14,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Cache dependencies
+    - name: Install and cache dependencies
       uses: bahmutov/npm-install@v1
-    - name: Install dependencies
-      run: yarn --frozen-lockfile
     - name: Run server
       run: ENV=cypress yarn start &
     - name: Run tests
