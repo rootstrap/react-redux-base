@@ -14,11 +14,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Restore yarn and Cypress cache
-      uses: actions/cache@v2
-      with:
-        key: dependency-cache-${{ hashFiles('yarn.lock') }}
-        path: ~/.cache
+    - name: Cache dependencies
+      uses: bahmutov/npm-install@v1
     - name: Install dependencies
       run: yarn --frozen-lockfile
     - name: Run server
@@ -27,11 +24,6 @@ jobs:
       run: yarn test:ci
     - name: Run Jest tests
       run: yarn jest src
-    - name: Save cache
-      uses: actions/cache@v2
-      with:
-        key: dependency-cache-${{ hashFiles('yarn.lock') }}
-        path: ~/.cache
     - name: Run test coverage and publish to Code Climate
       uses: paambaati/codeclimate-action@v2.6.0
       env:
