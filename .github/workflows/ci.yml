@@ -53,6 +53,6 @@ jobs:
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@master
       with:
-        host: ${{ SONAR_HOST }}
-        login: ${{ SONAR_LOGIN }}
+        host: ${{ env.SONAR_HOST }}
+        login: ${{ env.SONAR_LOGIN }}
         password: " "
