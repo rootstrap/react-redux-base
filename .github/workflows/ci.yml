@@ -17,7 +17,7 @@ jobs:
     - name: Restore yarn and Cypress cache
       uses: actions/cache@v2
       with:
-        key: dependency-cache-${{ hasFiles('yarn.lock') }}
+        key: dependency-cache-${{ hashFiles('yarn.lock') }}
         path: ~/.cache
     - name: Install dependencies
       run: yarn --frozen-lockfile
@@ -30,7 +30,7 @@ jobs:
     - name: Save cache
       uses: actions/cache@v2
       with:
-        key: dependency-cache-${{ hasFiles('yarn.lock') }}
+        key: dependency-cache-${{ hashFiles('yarn.lock') }}
         path: ~/.cache
     - name: Run test coverage and publish to Code Climate
       uses: paambaati/codeclimate-action@v2.6.0
