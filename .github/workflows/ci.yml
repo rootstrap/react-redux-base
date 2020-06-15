@@ -1,0 +1,63 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+env:
+  SONAR_HOST: https://sonarqube.rs-sandbox.net
+  SONAR_LOGIN: d9d1ba7f6d7f34a65c33962f331480848c956d19
+  CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
+
+jobs:
+
+  # This emulates existing workflow with CircleCI which run tests with Cypress, saves cache then sets up Code Climate Test report
+  test:
+    runs-on: ubuntu-latest
+    container: 
+      image: cypress/base:12.16.1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Restore yarn and Cypress cache
+      uses: actions/cache@v2
+      with:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
+        path: ~/.cache
+    - name: setup Node env
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '10.16.0'
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    - name: Run server
+      run: ENV=cypress yarn start &
+    - name: Run tests
+      run: yarn test:ci
+    - name: Run Jest tests
+      run: yarn jest src
+    - name: Save cache
+      uses: actions/cache@v2
+      with:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
+        path: ~/.cache
+    - name: Setup Code Climate test reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+        ./cc-test-reporter after-build -t lcov ./coverage/lcov.info
+
+  # This runs a Sonarqube code scan and fails when the default Quality Gate is not met
+  scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${env:SONAR_HOST}
+        login: ${env:SONAR_LOGIN}
+        password: " "
