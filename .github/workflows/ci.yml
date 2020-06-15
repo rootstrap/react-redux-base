@@ -1,13 +1,8 @@
-name: Test
+name: CI
 
 on:
   push:
   pull_request:
-
-env:
-  SONAR_HOST: https://sonarqube.rs-sandbox.net
-  SONAR_LOGIN: d9d1ba7f6d7f34a65c33962f331480848c956d19
-  CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
 
 jobs:
 
@@ -16,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: cypress/base:12.16.1
+    env:
+      CC_TEST_REPORTER_ID: ca4447b67e8c7cbd304c6a31bd36137e5bc24d5355f51a96281434f9ae479fb9
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -24,10 +21,6 @@ jobs:
       with:
         key: dependency-cache-{{ checksum "yarn.lock" }}
         path: ~/.cache
-    - name: setup Node env
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: '10.16.0'
     - name: Install dependencies
       run: yarn --frozen-lockfile
     - name: Run server
@@ -51,7 +44,9 @@ jobs:
   # This runs a Sonarqube code scan and fails when the default Quality Gate is not met
   scan:
     runs-on: ubuntu-latest
-    
+    env:
+      SONAR_HOST: https://sonarqube.rs-sandbox.net
+      SONAR_LOGIN: d9d1ba7f6d7f34a65c33962f331480848c956d19
     steps:
     - name: Checkout
       uses: actions/checkout@v2
