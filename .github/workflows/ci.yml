@@ -18,7 +18,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.cache
-        key: yarn-dependencies-${{ hashFiles('**/package-lock.json') }}
+        key: yarn-dependencies-${{ hashFiles('**/yarn.lock') }}
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
     - name: Run server
       run: ENV=cypress yarn start &
     - name: Run tests
