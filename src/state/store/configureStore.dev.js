@@ -6,10 +6,8 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { persistStore } from 'redux-persist';
 import _ from 'lodash';
-import { routerMiddleware } from 'connected-react-router';
 import { thunkMiddleware } from '@rootstrap/redux-tools';
 
-import history from 'utils/history';
 import rootReducer from 'state/reducers';
 
 export default function configureStore(initialState) {
@@ -18,10 +16,10 @@ export default function configureStore(initialState) {
     predicate: (getState, { type }) => !_.startsWith(type, '@@router')
   });
 
-  const middlewares = [thunkMiddleware, logger, routerMiddleware(history)];
+  const middlewares = [thunkMiddleware, logger];
 
   const store = createStore(
-    rootReducer(history),
+    rootReducer(),
     initialState,
     compose(
       applyMiddleware(...middlewares),

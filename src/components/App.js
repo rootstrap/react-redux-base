@@ -1,10 +1,8 @@
 import React from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch } from 'react-router-dom';
+import { Switch, BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import { useSession } from 'hooks';
-import history from 'utils/history';
 import RouteFromPath from 'components/routes/RouteFromPath';
 import routes from '../routes';
 import Header from './common/Header';
@@ -18,13 +16,13 @@ const App = () => {
         <title>RS React Redux Base</title>
       </Helmet>
       <Header />
-      <ConnectedRouter history={history}>
+      <BrowserRouter>
         <Switch>
           {routes.map((route, index) => (
             <RouteFromPath key={`route${index}`} {...route} authenticated={authenticated} />
           ))}
         </Switch>
-      </ConnectedRouter>
+      </BrowserRouter>
     </>
   );
 };
