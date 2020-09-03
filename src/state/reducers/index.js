@@ -16,7 +16,7 @@ const sessionPersistConfig = {
 const rootReducer = () =>
   combineReducers({
     session: persistReducer(sessionPersistConfig, session),
-    actionStatus: statusReducer
+    statusReducer
   });
 
 export default rootReducer;

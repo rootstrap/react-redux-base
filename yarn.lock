@@ -1620,10 +1620,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@rootstrap/redux-tools@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.2.0.tgz#d94d90697898df6040598cf427808eb2ec1f355c"
-  integrity sha512-+55aQMjpp/MagRor1qgocLEBdRuK+HjeJ+9IHTHgxiC7942zelp05ajCFjMbsqfVOPINjNgDUhe7nsijwk4HKg==
+"@rootstrap/redux-tools@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-1.0.0.tgz#327c1bd1edbfe72946155f6de3d5b009f8b542ac"
+  integrity sha512-p+qK+oBwxIwfU4OYnGwf+tReS2otaNoAuoyXWNjdC7DN9ZhskmF2v88dzvqIlZZk23Hv5hk9Boz+NuS08/wkrA==
   dependencies:
     immer "^5.0.0"
 
@@ -4943,10 +4943,10 @@ eslint-plugin-prettier@3.1.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react-hooks@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
-  integrity sha512-iXTCFcOmlWvw4+TOE8CLWj6yX1GwzT0Y6cUfHHZqWnSk144VmVIRcVGtUAzrLES7C798lmvnt02C7rxaOX1HNA==
+eslint-plugin-react-hooks@^4.0.5:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.1.0.tgz#6323fbd5e650e84b2987ba76370523a60f4e7925"
+  integrity sha512-36zilUcDwDReiORXmcmTc6rRumu9JIM3WjSvV0nclHoUQ0CNrX866EwONvLR/UqaeqFutbAnVu8PEmctdo2SRQ==
 
 eslint-plugin-react@7.14.3:
   version "7.14.3"
