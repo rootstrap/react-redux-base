@@ -1,26 +1,35 @@
 import { useState, useCallback } from 'react';
+import { isEmpty, pickBy, mapValues } from 'lodash';
 
 const useForm = (
   {
-    initialValues = {},
-    onSubmit,
-    validator = () => {},
-    validateOnChange = true,
-    validateOnBlur = false
+    onSubmit, // Callback for when the form submits
+    initialValues = {}, // Initial values that the form should load with
+    validator = () => {}, // validation function that already contains the appropriate constraints
+    validateOnChange = false, // should validate on change?
+    validateOnBlur = false, // should validate on blur?
+    validateAll = false // should validate all when one field changes? Set it to true for forms with fields that depend on other fields
   },
   ...dependencies
 ) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  const [blurredFields, setBlurredFields] = useState({});
+  const [activeFields, setActiveFields] = useState({});
+  const [touched, setTouched] = useState({});
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
       const newErrors = validator(values) || {};
+
+      setTouched(mapValues(newErrors, () => true));
+
       const valid = !Object.values(newErrors)
         .filter(error => !!error)
-        .flat().length;
+        .reduce((acc, error) => {
+          error.forEach(e => acc.push(e));
+          return acc;
+        }, []).length;
       if (valid) {
         onSubmit(values);
       } else {
@@ -34,50 +43,66 @@ const useForm = (
   const runValidations = useCallback(
     (newValues, key) => {
       const validations = validator(newValues) || {};
-      if (key) {
+      if (!validateAll && key) {
         setErrors({ ...errors, [key]: validations[key] });
       } else {
         setErrors(validator(newValues));
       }
     },
-    [validator, errors, setErrors]
+    [validator, errors, setErrors, validateAll]
   );
 
   const handleValueChange = useCallback(
-    (key, value) => {
+    (key, value, isInitialSetup = false) => {
       const newValues = {
         ...values,
         [key]: value
       };
       setValues(newValues);
       if (validateOnChange) {
-        runValidations(newValues, key);
+        runValidations(newValues, !isInitialSetup && key);
       }
     },
     [values, setValues, runValidations, validateOnChange]
   );
 
-  const handleBlur = useCallback(
+  const handleFocus = useCallback(
     key => {
-      setBlurredFields({
-        ...blurredFields,
+      setActiveFields({
+        ...activeFields,
         [key]: true
       });
-      if (validateOnBlur) runValidations(values, key);
     },
-    [blurredFields, setBlurredFields, runValidations, values, validateOnBlur]
+    [activeFields, setActiveFields]
   );
+
+  const handleBlur = useCallback(
+    key => {
+      setActiveFields({
+        ...activeFields,
+        [key]: false
+      });
+      if (validateOnBlur) runValidations(values, key);
+      setTouched({ ...touched, [key]: true });
+    },
+    [activeFields, setActiveFields, runValidations, values, validateOnBlur, setTouched, touched]
+  );
+
+  const formHasErrors = !isEmpty(pickBy(errors));
 
   return {
     values,
     setValues,
     errors,
     setErrors,
-    blurredFields,
-    setBlurredFields,
+    activeFields,
+    setActiveFields,
     handleValueChange,
     handleSubmit,
-    handleBlur
+    handleFocus,
+    handleBlur,
+    touched,
+    formHasErrors
   };
 };
 

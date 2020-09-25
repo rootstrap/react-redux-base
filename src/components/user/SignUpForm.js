@@ -26,7 +26,16 @@ export const SignUpForm = ({ onSubmit }) => {
   const { status, error } = useStatus(signUp);
 
   const validator = useValidation(signUpValidations);
-  const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
+  const {
+    values,
+    errors,
+    handleValueChange,
+    handleSubmit,
+    handleFocus,
+    handleBlur,
+    activeFields,
+    touched
+  } = useForm(
     {
       onSubmit,
       validator,
@@ -35,7 +44,15 @@ export const SignUpForm = ({ onSubmit }) => {
     [onSubmit]
   );
 
-  const inputProps = useTextInputProps({ handleValueChange, handleBlur, values, errors });
+  const inputProps = useTextInputProps(
+    handleValueChange,
+    handleFocus,
+    handleBlur,
+    values,
+    errors,
+    activeFields,
+    touched
+  );
 
   return (
     <form onSubmit={handleSubmit}>
