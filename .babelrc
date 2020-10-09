@@ -8,18 +8,23 @@
         "targets": {}
       }
     ],
-    "@babel/preset-react"
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ]
   ],
   "env": {
     "production": {
       "plugins": [
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
+        "transform-react-remove-prop-types"
       ]
     },
     "test_cypress": {
       "plugins": ["istanbul"]
-    },
+    }
   },
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
