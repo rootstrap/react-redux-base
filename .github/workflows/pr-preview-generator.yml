@@ -1,0 +1,76 @@
+name: PR-Preview-Generator
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set deployment status
+        uses: pbrandone/create-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: pending
+          description: Preview link is being generated
+          context: Deploy Preview URL
+      - name: Setup node version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.18.2'
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - name: Generate AWS bucket name
+        uses: bluwy/substitute-string-action@v1
+        id: bucket_name
+        with:
+          _input-text: '${{ github.event.repository.name }}-${{ github.event.pull_request.head.ref }}'
+          /: x
+          _: x
+      - uses: actions/checkout@v1
+      - name: Cache Node Modules
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install
+      - name: Build static site
+        run: |
+          touch .env.prod
+          echo API_URL =${{ secrets.API_URL_PREVIEW }} >> .env.prod
+          yarn babel-node tools/build.js
+      - name: Create S3 bucket
+        run: aws s3 mb s3://${{ steps.bucket_name.outputs.result }}
+      - name: Sync S3 bucket
+        run: aws s3 sync ./dist/ s3://${{ steps.bucket_name.outputs.result }}
+      - name: Config public access to the bucket
+        run: aws s3api put-public-access-block --bucket ${{ steps.bucket_name.outputs.result }} --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+      - name: Config Bucket index/error
+        run: aws s3 website s3://${{ steps.bucket_name.outputs.result }} --index-document index.html --error-document index.html
+      - name: Add bucket policy
+        run: aws s3api put-bucket-policy --bucket ${{ steps.bucket_name.outputs.result }} --policy '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::${{ steps.bucket_name.outputs.result }}/*"}]}'
+      - name: Set success deployment status
+        if: success()
+        uses: pbrandone/create-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: success
+          description: Deploy preview link is ready!
+          url: http://${{ steps.bucket_name.outputs.result }}.s3-website-us-west-2.amazonaws.com
+          context: Deploy Preview URL
+      - name: Set failed deployment status
+        if: failure()
+        uses: pbrandone/create-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: failure
+          description: Failed to deploy, check the logs
+          context: Deploy Preview URL

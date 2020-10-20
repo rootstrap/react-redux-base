@@ -1,0 +1,30 @@
+name: PR-Preview-Clean
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - name: Get branch name
+        uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate AWS bucket name
+        uses: bluwy/substitute-string-action@v1
+        id: bucket_name
+        with:
+          _input-text: '${{ github.event.repository.name }}-${{ github.event.pull_request.head.ref }}'
+          /: x
+          _: x
+      - name: Delete bucket
+        run: aws s3 rb s3://${{ steps.bucket_name.outputs.result }} --force

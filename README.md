@@ -69,6 +69,12 @@ The server is prepared to fetch data directly from the backend before rendering 
 2. **Add the env variable NPM_CONFIG_PRODUCTION=false to Heroku**
 2. **Deploy your branch to Heroku**
 
+## Preview links on PR's
+Github action which implements a preview link generator
+
+### Setup
+Set `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `API_URL_PREVIEW` on the secrets settings page of the repository
+
 ## Technologies
 
 | **Tech** | **Description**
