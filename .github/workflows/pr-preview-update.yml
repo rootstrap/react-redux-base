@@ -2,7 +2,7 @@ name: PR-Preview-Generator
 
 on:
   pull_request:
-    types: [edited, synchronize]
+    types: [edited]
 
 jobs:
   deploy:
