@@ -5,12 +5,13 @@ import { AppContainer } from 'react-hot-loader';
 import { IntlProvider } from 'react-intl';
 import includes from 'lodash/includes';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import configureStore from 'state/store/configureStore';
 import App from 'components/App';
 import locales from 'locales';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
 import httpClient from 'httpClient';
 import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
+
+import { configureStore } from './store';
 import 'styles/styles.scss';
 
 require('../src/favicon.ico'); // Tell webpack to load favicon.ico

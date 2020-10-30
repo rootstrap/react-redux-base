@@ -5,18 +5,22 @@ import Helmet from 'react-helmet';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { getStoredState } from 'redux-persist';
+import { CookieStorage, NodeCookiesWrapper } from 'redux-persist-cookie-storage';
+import Cookies from 'cookies'
 import { matchRoutes } from 'react-router-config';
 import { IntlProvider } from 'react-intl';
 import serialize from 'serialize-javascript';
 
 import locales from 'locales';
-import configureStore from 'state/store/configureStore.prod';
 import routesPaths from 'constants/routesPaths';
 import { applyQueryParams } from 'utils/helpers';
+import { sessionPersistConfig } from 'state/reducers';
 import App from './_app';
 import routes from '../src/routes';
 import Doc from './_document';
 import { getLanguageFromHeader } from './helpers';
+import { configureStore } from './store';
 
 const assets = require('./build/assets.json'); // eslint-disable-line import/no-unresolved
 
@@ -32,8 +36,23 @@ server
       maxAge: cacheTime
     })
   )
-  .get('*', (req, res) => {
-    const { store } = configureStore(undefined, true);
+  .get('*', async (req, res) => {
+    // Get session info from cookies
+    let sessionInfo;
+    try {
+      const cookieJar = new NodeCookiesWrapper(new Cookies(req, res));
+      const config = {
+        ...sessionPersistConfig,
+        storage: new CookieStorage(cookieJar),
+      };
+      sessionInfo = await getStoredState(config);
+    } catch (error) {
+      console.log(error)
+    }
+
+    const { authenticated, info, user } = sessionInfo || {};
+    const preloadedState = { session: { authenticated, info, user } };
+    const { store } = configureStore(preloadedState, true);
     const context = {};
 
     // Fetch data promises
