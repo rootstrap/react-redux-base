@@ -41,7 +41,7 @@ export default (store, client) => {
     },
     error => {
       if (error.response && error.response.status === UNAUTHORIZED) {
-        store.dispatch(logout());
+        store.dispatch(logout.success());
       }
 
       return Promise.reject(error);
