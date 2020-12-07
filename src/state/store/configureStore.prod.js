@@ -1,13 +1,13 @@
-import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore } from 'redux-persist';
-import { thunkMiddleware } from '@rootstrap/redux-tools';
+import { configureStore } from '@reduxjs/toolkit';
 
-import rootReducer from 'state/reducers';
+import reducer from 'state/reducers';
 
-export default function configureStore(initialState, isServerSide = false) {
-  const middlewares = [thunkMiddleware];
-
-  const store = createStore(rootReducer(), initialState, compose(applyMiddleware(...middlewares)));
+export default (initialState, isServerSide = false) => {
+  const store = configureStore({
+    reducer,
+    preloadedState: initialState
+  });
 
   if (isServerSide) {
     return { store };
@@ -16,4 +16,4 @@ export default function configureStore(initialState, isServerSide = false) {
   const persistor = persistStore(store);
 
   return { store, persistor };
-}
+};

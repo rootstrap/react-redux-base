@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "Rootstrap React Redux Base",
   "engines": {
-    "npm": ">4",
-    "node": "12.18.2"
+    "npm": ">4"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
@@ -63,7 +62,7 @@
   "license": "MIT",
   "dependencies": {
     "@formatjs/intl-relativetimeformat": "2.6.3",
-    "@rootstrap/redux-tools": "1.0.0",
+    "@reduxjs/toolkit": "1.4.0",
     "@rootstrap/validate": "1.0.0",
     "axios": "0.19.2",
     "classnames": "2.2.6",
@@ -87,7 +86,6 @@
     "redux": "4.0.4",
     "redux-logger": "3.0.6",
     "redux-persist": "6.0.0",
-    "reselect": "4.0.0",
     "rootstrap-ui": "0.0.2"
   },
   "devDependencies": {

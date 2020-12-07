@@ -1,5 +1,10 @@
-import { createReducer } from '@rootstrap/redux-tools';
-import { login, signUp, logout, updateSession } from 'state/actions/userActions';
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  loginFulfilled,
+  logoutFulfilled,
+  signUpFulfilled,
+  updateSession
+} from 'state/actions/userActions';
 
 const initialState = {
   authenticated: false,
@@ -7,18 +12,22 @@ const initialState = {
   info: {}
 };
 
-const actionHandlers = {
-  [login.success]: (state, { payload }) => {
-    state.user = payload;
-  },
-  [signUp.success]: (state, { payload }) => {
-    state.user = payload;
-  },
-  [updateSession]: (state, { payload }) => {
-    state.info = payload;
-    state.authenticated = true;
-  },
-  [logout.success]: () => initialState
-};
+const sessionSlice = createSlice({
+  name: 'session',
+  initialState,
+  extraReducers: {
+    [loginFulfilled]: (state, { payload }) => {
+      state.user = payload;
+    },
+    [signUpFulfilled]: (state, { payload }) => {
+      state.user = payload;
+    },
+    [logoutFulfilled]: () => initialState,
+    [updateSession]: (state, { payload }) => {
+      state.info = payload;
+      state.authenticated = true;
+    }
+  }
+});
 
-export default createReducer(initialState, actionHandlers);
+export default sessionSlice.reducer;

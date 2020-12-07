@@ -1,12 +1,13 @@
 import React, { memo } from 'react';
 import { func } from 'prop-types';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { useStatus, ERROR, LOADING } from '@rootstrap/redux-tools';
+
+import { REJECTED, PENDING } from 'constants/actionStatusConstants';
 
 import Loading from 'components/common/Loading';
 import Input from 'components/common/Input';
 import { login as loginValidations } from 'utils/constraints';
-import { useForm, useValidation, useTextInputProps } from 'hooks';
+import { useStatus, useForm, useValidation, useTextInputProps } from 'hooks';
 import { login } from 'state/actions/userActions';
 
 const messages = defineMessages({
@@ -53,7 +54,7 @@ export const LoginForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {status === ERROR && <strong>{error}</strong>}
+      {status === REJECTED && <strong>{error}</strong>}
       <div>
         <Input
           name="email"
@@ -73,7 +74,7 @@ export const LoginForm = ({ onSubmit }) => {
       <button type="submit">
         <FormattedMessage id="login.form.submit" />
       </button>
-      {status === LOADING && <Loading />}
+      {status === PENDING && <Loading />}
     </form>
   );
 };

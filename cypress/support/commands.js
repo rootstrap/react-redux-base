@@ -51,7 +51,7 @@ Cypress.Commands.add('loginUser', () => {
     .its('store')
     .then(store => {
       store.dispatch(updateSession(session()));
-      store.dispatch(login.success(user()));
+      store.dispatch(login.fulfilled(user()));
     });
 });
 
@@ -71,7 +71,7 @@ Cypress.Commands.add('realLoginUser', () => {
           .its('store')
           .then(store => {
             store.dispatch(updateSession(session));
-            store.dispatch(login.success(user));
+            store.dispatch(login.fulfilled(user));
           });
       }
     }
