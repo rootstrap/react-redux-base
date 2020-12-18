@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { FULFILLED, REJECTED, PENDING } from 'constants/actionStatusConstants';
+import { FULFILLED, REJECTED, PENDING, RESET } from 'constants/actionStatusConstants';
 
 const DELIMITER = '/';
 
@@ -28,6 +28,13 @@ export default createReducer({}, builder => {
       ({ type }) => type.endsWith(`/${PENDING}`),
       (state, { type }) => {
         state[getActionKey(type)] = { status: PENDING };
+      }
+    )
+    .addMatcher(
+      ({ type }) => type.endsWith(`/${RESET}`),
+      (state, { type }) => {
+        delete state[getActionKey(type)];
+        return state;
       }
     )
     .addDefaultCase(() => {});

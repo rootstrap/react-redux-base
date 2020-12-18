@@ -1,6 +1,8 @@
-import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
+
 import userService from 'services/userService';
 import parseError from 'utils/parseError';
+import createAsyncThunk from 'utils/createAsyncThunk';
 
 export const login = createAsyncThunk('user/login', async user => {
   try {
