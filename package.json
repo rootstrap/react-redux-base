@@ -68,7 +68,7 @@
     "classnames": "2.2.6",
     "eslint-plugin-prettier": "3.1.0",
     "humps": "2.0.1",
-    "immer": "5.0.0",
+    "immer": "8.0.1",
     "intl": "1.2.5",
     "loaders.css": "0.1.2",
     "localforage": "1.7.3",
