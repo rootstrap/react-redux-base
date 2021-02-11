@@ -20,7 +20,7 @@
 2. Install dependencies: `yarn` or `npm install`
 3. Create the environment variables files in root folder(.env.dev, .env.staging and .env.prod):
 
-`.env.example` example:
+`.env.example` [example](/.env.sample):
 
 ```
   API_URL=http://your-api-url.com
@@ -28,6 +28,7 @@
   AWS_REGION=region
   AWS_ACCESS_KEY_ID=key_id
   AWS_SECRET_ACCESS_KEY=secret_key
+  GZIP_ENABLED=false
 ```
 
 4. Start the dev server: `yarn start` or `npm start -s`
