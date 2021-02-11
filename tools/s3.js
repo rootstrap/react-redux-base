@@ -4,6 +4,8 @@ import path from 'path';
 import mime from 'mime';
 import { consoleQuestion, JS_OR_CSS_REGEX } from './helpers';
 
+const GZIP_DEFAULT_ENABLED = false;
+
 class s3 {
   constructor(distFolder) {
     this.distPath = path.join(__dirname, distFolder);
@@ -55,7 +57,7 @@ class s3 {
         Body: fs.readFileSync(filePath),
         ContentType: mimeType,
       };
-      if (JSON.parse(process.env.GZIP_ENABLED) && JS_OR_CSS_REGEX.test(key)) {
+      if (JSON.parse(process.env.GZIP_ENABLED || GZIP_DEFAULT_ENABLED) && JS_OR_CSS_REGEX.test(key)) {
         params.ContentEncoding = 'gzip';
       }
       promises.push(this.client.putObject(params).promise());
