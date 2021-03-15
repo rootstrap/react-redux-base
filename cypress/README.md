@@ -205,7 +205,7 @@ It's what you will use in the response attribute of stubs.
 
 You can take `fakeUser.js` as a reference on how to define fixtures and how to use them.
 
-`faker` library is already integrated so it's easier to create fake data.
+`test-data-bot` library is already integrated so it's easier to create fake data.
 
 -----
 

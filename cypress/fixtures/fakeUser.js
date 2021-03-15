@@ -1,24 +1,19 @@
-import faker from 'faker';
+import { build, fake, sequence } from '@jackfranklin/test-data-bot';
 
-const fakeUser = ({
-  email = faker.internet.email(),
-  createdAt = faker.date.past(),
-  firstName = faker.name.firstName(),
-  lastName = faker.name.lastName(),
-  username = faker.internet.userName(),
-  provider = 'email',
-  updatedAt = faker.date.past(),
-  id = faker.random.number()
-} = {}) => ({
-  email,
-  createdAt,
-  firstName,
-  lastName,
-  username,
-  provider,
-  updatedAt,
-  id,
-  uid: email
+const fakeUserBuilder = build('User', {
+  fields: {
+    email: fake(f => f.internet.email()),
+    createdAt: fake(f => f.date.past()),
+    firstName: fake(f => f.name.firstName()),
+    lastName: fake(f => f.name.lastName()),
+    username: fake(f => f.internet.userName()),
+    provider: 'email',
+    updatedAt: fake(f => f.date.past()),
+    id: sequence()
+  }
 });
 
-export default fakeUser;
+const userOne = fakeUserBuilder();
+console.log(userOne);
+
+export default fakeUserBuilder;
